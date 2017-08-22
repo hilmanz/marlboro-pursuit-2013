@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/marlboro-hunt-2013/!svn/ver/1621/trunk/marlboro_hunt/tools/cron
+END
+curl_class.php
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/marlboro-hunt-2013/!svn/ver/529/trunk/marlboro_hunt/tools/cron/curl_class.php
+END
+ga_bot.php
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/marlboro-hunt-2013/!svn/ver/1621/trunk/marlboro_hunt/tools/cron/ga_bot.php
+END
+dashboardbot.php
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/marlboro-hunt-2013/!svn/ver/1083/trunk/marlboro_hunt/tools/cron/dashboardbot.php
+END
+inbound.php
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/marlboro-hunt-2013/!svn/ver/529/trunk/marlboro_hunt/tools/cron/inbound.php
+END
+outbound.php
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/marlboro-hunt-2013/!svn/ver/1463/trunk/marlboro_hunt/tools/cron/outbound.php
+END
+silverpopsendmailtoken.php
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/marlboro-hunt-2013/!svn/ver/626/trunk/marlboro_hunt/tools/cron/silverpopsendmailtoken.php
+END
+db.php
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/marlboro-hunt-2013/!svn/ver/529/trunk/marlboro_hunt/tools/cron/db.php
+END
+delRegAfterSevenDays.php
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/marlboro-hunt-2013/!svn/ver/1395/trunk/marlboro_hunt/tools/cron/delRegAfterSevenDays.php
+END

@@ -1,0 +1,35 @@
+<div id="top" class="topbar clearfix">
+    <div id="site-title">
+    	<a href="{$basedomain}index.php"><img src="{$assets_domain}images/logo.png" /></a>
+    </div><!-- END #site-title -->
+    <div class="infoPage" >
+    	<h3>Administrator
+    </div>
+</div><!-- END .topbar -->
+{if $isLogin}
+<div id="main-menu-wrapper" class="clearfix">
+    <ul id="main-menu" class="fl">
+        <li><a href="#" class="">User</a>
+        	<ul>
+            	<li><a href="{$basedomain}home" class="">User Category</a></li>
+            	<li><a href="{$basedomain}user_activities" class="">User Activities</a></li>
+                <li><a href="{$basedomain}user_demographic" class="">User Demographic</a></li>
+                <li><a href="{$basedomain}user_registration_method" class="">User Registration Method</a></li>
+                
+            </ul>
+        </li>
+        <li><a href="{$basedomain}google_analytic" class="">Google Analytics</a></li>
+        <li><a href="{$basedomain}letter_and_trading"class="">Letter & Trading</a></li>
+        <li><a href="{$basedomain}task" class="">Task</a></li>
+        <li><a href="{$basedomain}redeem_merchandise" class="">Redeem Merchandise</a></li>
+        <li><a href="{$basedomain}web_activities" class="">Web Activities</a></li>
+        <li><a href="{$basedomain}demographic_data" class="">Demographic Data</a></li>
+        <div class="admin-info">
+            <!--span class="username"> Welcome, Admin </span-->
+            <a class="btn_red btn_lock" href="logout.php"><span>Logout</span></a>
+            <!-- <a class="  btn_red btn_users btn_redAdmin" href="{$basedomain}admin"><span>Administrator</span></a> -->
+        </div>
+
+    </ul>
+</div><!-- END .main-menu-wrapper -->
+{/if}

@@ -1,0 +1,41 @@
+<div id="earnpoints-page" class="universal">
+	<div class="landing-page">
+		<div id="earnpoints">
+        	<h1>EARN POINTS</h1>
+            <p>Earn points as you discover how far making decisions can take you. </p>
+            <div class="rowd">
+            	<div class="text">
+                	<a class="" href="{$basedomain}games"><h3>Challenge yourself with our webgames</h3></a>
+                </div><!-- END .text -->
+            	{*}<!--div class="button">
+					<a class="landbtn landbtn2" href="{$basedomain}games">Play Now</a>
+                </div--><!-- END .button -->{/*}
+            </div><!-- END .rowd -->
+            <div class="rowd">
+            	<div class="text">
+                	<a class="" href="{$basedomain}movefwd"><h3>Post comments and upload photos</h3></a>
+                </div><!-- END .text -->
+            	{*}<!--div class="button">
+					<a class="landbtn landbtn2" href="{$basedomain}movefwd">MOVE FWD</a>
+                </div--><!-- END .button -->{/*}
+            </div><!-- END .rowd -->
+            <div class="rowd">
+            	<div class="text">
+                	<a class="" href="{$basedomain}about/video"><h3>WATCH OUR VIDEOS </h3></a>
+                </div><!-- END .text -->
+            	{*}<!--div class="button">
+					<a class="landbtn landbtn2" href="{$basedomain}movefwd">MOVE FWD</a>
+                </div--><!-- END .button -->{/*}
+            </div><!-- END .rowd -->
+           {*} <div class="rowd">
+            	<div class="text">
+                	<a class="" href="{$basedomain}video"><h3>Watch our videos to learn how to cross "Maybe" out of your life. . </h3> </a>
+                </div><!-- END .text -->
+            	<div class="button">
+					<a class="landbtn landbtn2" href="{$basedomain}about/video">Watch Video</a>
+                </div><!-- END .button --> 
+            </div><!-- END .rowd -->{/*}
+            <p>Visit the website everyday to keep earning points and reward yourself.</p>
+        </div><!-- END #earnpoints -->
+    </div><!-- END .landingPage -->
+</div><!-- END #landingPage -->

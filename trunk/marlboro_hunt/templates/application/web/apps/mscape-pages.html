@@ -1,0 +1,59 @@
+{literal}
+<script>
+$(window).load(function() {
+  $('#prizeList').flexslider({
+    animation: "slide",
+    animationLoop: false,
+	itemWidth: 200,
+	itemMargin: 15,
+	minItems: 1,
+	maxItems: 1,
+  });
+});
+</script>
+{/literal}
+<div id="prizePage" class="universal">
+	<div class="prizePage">
+    	<div id="prizeList" class="carousel">
+            <ul class="slides">	
+            	<li class="slidesitem">
+                    <ul class="columns-3 clearfix">
+                        <li class="col3">
+                            <div class="boxPrize">
+                                <div class="thumbPrize">
+                                    <a href="#"><img src="{$basedomain}assets/content/phase4/prize/prize1.png" /></a>
+                                </div><!-- END .thumbPrize -->
+                                <div class="captions">
+                                    <h1>BID</h1>
+                                    <a class="landbtn landbtn2" href="{$basedomain}games/crossout">CONTINUE</a>
+                                </div><!-- END .captions -->
+                            </div><!-- END .boxPrize -->
+                        </li>
+                          <li class="col3">
+                            <div class="boxPrize">
+                                <div class="thumbPrize">
+                                    <a href="#"><img src="{$basedomain}assets/content/phase4/prize/prize2.png" /></a>
+                                </div><!-- END .thumbPrize -->
+                                <div class="captions">
+                                    <h1>BUY</h1>
+                                    <a class="landbtn landbtn1" href="{$basedomain}games/wordhunt">CONTINUE</a>
+                                </div><!-- END .captions -->
+                            </div><!-- END .boxPrize -->
+                        </li>
+                          <li class="col3">
+                            <div class="boxPrize">
+                                <div class="thumbPrize">
+                                    <a href="#"><img src="{$basedomain}assets/content/phase4/prize/prize3.png" /></a>
+                                </div><!-- END .thumbPrize -->
+                                <div class="captions">
+                                    <h1>RESERVE</h1>
+                                    <a class="landbtn landbtn2" href="{$basedomain}games/doubtcrasher">CONTINUE</a>
+                                </div><!-- END .captions -->
+                            </div><!-- END .boxPrize -->
+                        </li>
+                    </ul>
+                </li><!-- END .slidesitem -->
+           	</ul><!-- END .slides -->
+         </div><!-- END #prizeList -->
+    </div><!-- END .prizePage -->
+</div><!-- END #prizePage -->

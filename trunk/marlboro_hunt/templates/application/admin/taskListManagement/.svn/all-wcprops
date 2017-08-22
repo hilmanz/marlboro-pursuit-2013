@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/marlboro-hunt-2013/!svn/ver/1511/trunk/marlboro_hunt/templates/application/admin/taskListManagement
+END
+taskListManagement_edit.html
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/marlboro-hunt-2013/!svn/ver/1098/trunk/marlboro_hunt/templates/application/admin/taskListManagement/taskListManagement_edit.html
+END
+taskListManagement_new.html
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/marlboro-hunt-2013/!svn/ver/1098/trunk/marlboro_hunt/templates/application/admin/taskListManagement/taskListManagement_new.html
+END
+taskListManagement_list.html
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/marlboro-hunt-2013/!svn/ver/1511/trunk/marlboro_hunt/templates/application/admin/taskListManagement/taskListManagement_list.html
+END

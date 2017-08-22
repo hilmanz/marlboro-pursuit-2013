@@ -1,0 +1,15 @@
+{*}
+<div class="popup">
+	<div class="popupContainer popupContainer4" id="popup-inbox">
+        <div class="popupContent">
+        	<div class="entry-popup popupInbox">
+            	<h1>Inbox</h1>
+                <div class="inner listmessageinbox">
+                         
+                </div><!-- END .inner -->
+            </div><!--END .entry-popup-->
+        </div><!-- END .popupContent -->
+    </div><!-- END .popupContainer -->
+</div><!-- END .popup -->
+
+{/*}

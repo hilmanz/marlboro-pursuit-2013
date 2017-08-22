@@ -1,0 +1,97 @@
+<div class="section">
+	<div class="the-title fl">
+        <h2>USER DEMOGRAPHIC</h2>
+    </div>
+    <!-- <div class="select_op rt">
+        <span class="fl sorterBy">Sort by:</span>
+        <div class="styledProvince">
+                    
+            <select class="">
+              <option value="1">Activity 1</option>
+              <option value="2">Activity 2</option>
+              <option value="3">Activity 3</option>
+              <option value="4">Activity 4</option>
+            </select>
+        </div>
+     </div> -->
+	<div class="accordion">                           
+        <h3 class=""><span>Number of Participant by Gender</span>
+        <a class="icon_arrow expand" href="#">Click to Expand</a>
+        <a class="icon_arrow_grey hide2" href="#">hide</a> </h3>
+        <div class="acc_section">
+            <div class="chart_section" id="byGender">
+                <!-- <img src="{$assets_domain}images/charts_male.jpg" /> -->
+            </div>         
+        </div><!--end.acc_section-->
+        <h3 class=""><span>Number of Participant by Age</span>
+        <a class="icon_arrow expand" href="#">Click to Expand</a>
+        <a class="icon_arrow_grey hide2" href="#">hide</a> </h3>
+        <div class="acc_section">
+            <div class="chart_section" id="byAge">
+                <!-- <img src="{$assets_domain}images/charts.jpg" /> -->
+            </div>         
+        </div><!--end.acc_section-->
+       
+        <h3 class=""><span>Number of Participant by City</span>
+        <a class="icon_arrow expand" href="#">Click to Expand</a>
+        <a class="icon_arrow_grey hide2" href="#">hide</a> </h3>
+       <div class="acc_section">
+            <div class="chart_section" id="byCity">
+                <!-- <img src="{$assets_domain}images/charts.jpg" /> -->
+            </div>         
+        </div><!--end.acc_section-->
+       <!--  
+        <h3 class=""><span>Number of Participant in Each Offline Task</span>
+        <a class="icon_arrow expand" href="#">Click to Expand</a>
+        <a class="icon_arrow_grey hide2" href="#">hide</a> </h3>
+       <div class="acc_section">
+            <div class="chart_section">
+                <img src="{$assets_domain}images/charts.jpg" />
+            </div>         
+        </div><!--end.acc_section-->
+        
+    </div><!---end.accodrion-->
+</div><!--end.section-->
+
+
+<script type="text/javascript">
+	var participantByGender = {$participantByGender|@json_encode};	
+	var paticipantByAge = {$paticipantByAge|@json_encode};
+	var participantByCity = {$participantByCity|@json_encode};
+	
+{literal}	
+$(function () {
+
+	var byGenderData = new Array();
+	var byGenderDate = new Array();	
+	
+	var byAgeData = new Array();
+	var byAgeDate = new Array();
+	
+	var byCityData = new Array();
+	var byCityDate = new Array();
+
+	for (var partByGender in participantByGender){
+		byGenderData.push(parseInt(participantByGender[partByGender].num));
+		byGenderDate.push(String(participantByGender[partByGender].sex));
+	}
+	
+	for (var partByAge in paticipantByAge){
+		byAgeData.push(parseInt(paticipantByAge[partByAge].num));
+		byAgeDate.push(String(paticipantByAge[partByAge].age));
+	}
+	
+	for (var partByCity in participantByCity){
+		byCityData.push(parseInt(participantByCity[partByCity].num));
+		byCityDate.push(String(participantByCity[partByCity].city));
+	}
+	
+	gethighChart('column','test  Chart','byGender',byGenderData,byGenderDate,1, true, false, false, true, false, true);
+	gethighChart('column','test  Chart','byAge',byAgeData,byAgeDate,1, true, false, false, true, false, true);
+	gethighChart('column','test  Chart','byCity',byCityData,byCityDate,1, true, false, false, true, false, true);
+	
+	//drillDownChart('column','test Chart','cont',dataCoba,cateActivityGroup,1 ,false);
+	});
+		
+</script>
+{/literal}

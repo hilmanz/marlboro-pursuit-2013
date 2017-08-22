@@ -1,0 +1,9 @@
+<div class="popup">
+	<div class="popupContainer popupBlack" id="popup-hidden-package" style="width:400px" >
+        <div class="popupContent centerText">
+        	<h2 class="titlehiddencode"></h2>
+            <h3 class="contenthiddenpack"></h3>
+			<!--<input type="text" value="pck6789" class="theCodes" />-->
+        </div><!-- END .popupContent -->
+    </div><!-- END .popupContainer -->
+</div><!-- END .popup -->

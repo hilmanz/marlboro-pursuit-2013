@@ -1,0 +1,173 @@
+<div id="moveFwd" class="universal">
+	<div class="blackPaper"></div>
+	<div class="moveFwd">
+        <ul class="columns-content clearfix">
+            <li class="col-main">
+            	<div class="mfwd-container">
+                	<div class="mfwd-header">
+                        <div class="mfwd-desc">
+                    		<h1 class="mfwd-title">ULTIMATE WAKEBOARDING EXPERIENCE</h1>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at augue massa. Donec sed nulla a sem fringilla volutpat ut in purus. Aliquam egestas tellus id hendrerit facilisis. </p>
+                            <p>Phasellus imperdiet sodales leo consequat ultrices. Nunc mattis ante augue, at ornare metus dignissim dignissim. Duis non nisl justo. Pellentesque laoreet massa.</p>
+                        </div><!-- END .mfwd-desc -->
+                        <a href="#" class="btn-challenge">&nbsp;</a>
+                    </div><!-- END .mfwd-header -->
+                    <div class="mfwd-body">
+                        <div class="mfwd-status">
+                        	<div class="row">
+                                <div class="thumb-user">
+                                    <a href="#"><img src="https://si0.twimg.com/profile_images/378800000469036933/a4b88d40f2c3482ead08df9c1d99a20a_bigger.jpeg" /></a>
+                                </div>
+                                <div class="entry-right">
+                                    <div class="entry-header">
+                                        <h3 class="username"><a href="#">Robert Cruz</a></h3>
+                                        <a href="#" class="attachfoto">&nbsp;</a>
+                                        <a href="#" class="attachvideo">&nbsp;</a>
+                                    </div><!-- END .entry-header -->
+                                    <div class="entry-body">
+                                        <form id="createstatus">
+                                            <textarea>Enter your comment here</textarea>
+                                            <input type="submit" value="&nbsp;" />
+                                        </form>
+                                    </div><!-- END .entry-body -->
+                                </div><!-- END .entry-right -->
+                            </div><!-- END .row -->
+                        </div><!-- END .body -->
+                        <div class="mfwd-body">
+                        	<div class="comments">
+                                <div class="row">
+                                    <div class="thumb-user">
+                                        <a href="#"><img src="https://si0.twimg.com/profile_images/378800000469036933/a4b88d40f2c3482ead08df9c1d99a20a_bigger.jpeg" /></a>
+                                    </div>
+                                    <div class="entry-right">
+                                        <div class="entry-header">
+                                            <h3 class="username"><a href="#">Robert Cruz</a></h3>
+                                        </div><!-- END .entry-header -->
+                                        <div class="entry-body">
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at augue massa. Donec sed nulla a sem fringilla volutpat ut in purus. Aliquam egestas tellus id hendrerit facilisis. Phasellus imperdiet sodales leo consequat ultrices. Nunc mattis ante augue, </p>
+                                            <span class="comment-date">Posted on 08/08/2013 - 4:10 PM</span>
+                                        </div><!-- END .entry-body -->
+                                    </div><!-- END .entry-right -->
+                                </div><!-- END .row -->
+                                <div class="row comment-child">
+                                    <div class="thumb-user">
+                                        <a href="#"><img src="https://si0.twimg.com/profile_images/1287417101/aq1_bigger.JPG" /></a>
+                                    </div>
+                                    <div class="entry-right">
+                                        <div class="entry-header">
+                                            <h3 class="username"><a href="#">Robert Cruz</a></h3>
+                                        </div><!-- END .entry-header -->
+                                        <div class="entry-body">
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at augue massa. Donec sed nulla a sem fringilla volutpat ut in purus.</p>
+                                            <span class="comment-date">Posted on 08/08/2013 - 4:10 PM</span>
+                                        </div><!-- END .entry-body -->
+                                    </div><!-- END .entry-right -->
+                                </div><!-- END .row -->
+                                <div class="row reply-comment">
+                                    <div class="thumb-user-small">
+                                        <a href="#"><img src="https://si0.twimg.com/profile_images/2858306125/5c5ba99ce071f093a631ecc6b95ed124_bigger.png" /></a>
+                                    </div>
+                                    <div class="entry-right">
+                                        <form class="replycomment">
+                                            <textarea>Type your comment here</textarea>
+                                            <input type="submit" value="&nbsp;" />
+                                        </form>
+                                    </div><!-- END .entry-right -->
+                                </div><!-- END .reply-comment -->
+                            </div><!-- END .comments -->
+                        	<div class="comments">
+                                <div class="row">
+                                    <div class="thumb-user">
+                                        <a href="#"><img src="https://si0.twimg.com/profile_images/378800000469036933/a4b88d40f2c3482ead08df9c1d99a20a_bigger.jpeg" /></a>
+                                    </div>
+                                    <div class="entry-right">
+                                        <div class="entry-header">
+                                            <h3 class="username"><a href="#">Robert Cruz</a></h3>
+                                        </div><!-- END .entry-header -->
+                                        <div class="entry-body">
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at augue massa. Donec sed nulla a sem fringilla volutpat ut in purus. Aliquam egestas tellus id hendrerit facilisis. Phasellus imperdiet sodales leo consequat ultrices. Nunc mattis ante augue, </p>
+                                            <span class="comment-date">Posted on 08/08/2013 - 4:10 PM</span>
+                                        </div><!-- END .entry-body -->
+                                    </div><!-- END .entry-right -->
+                                </div><!-- END .row -->
+                                <div class="row comment-child">
+                                    <div class="thumb-user">
+                                        <a href="#"><img src="https://si0.twimg.com/profile_images/1287417101/aq1_bigger.JPG" /></a>
+                                    </div>
+                                    <div class="entry-right">
+                                        <div class="entry-header">
+                                            <h3 class="username"><a href="#">Robert Cruz</a></h3>
+                                        </div><!-- END .entry-header -->
+                                        <div class="entry-body">
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at augue massa. Donec sed nulla a sem fringilla volutpat ut in purus.</p>
+                                            <span class="comment-date">Posted on 08/08/2013 - 4:10 PM</span>
+                                        </div><!-- END .entry-body -->
+                                    </div><!-- END .entry-right -->
+                                </div><!-- END .row -->
+                                <div class="row reply-comment">
+                                    <div class="thumb-user-small">
+                                        <a href="#"><img src="https://si0.twimg.com/profile_images/2858306125/5c5ba99ce071f093a631ecc6b95ed124_bigger.png" /></a>
+                                    </div>
+                                    <div class="entry-right">
+                                        <form class="replycomment">
+                                            <textarea>Type your comment here</textarea>
+                                            <input type="submit" value="&nbsp;" />
+                                        </form>
+                                    </div><!-- END .entry-right -->
+                                </div><!-- END .reply-comment -->
+                            </div><!-- END .comments -->
+                        </div><!-- END .body -->
+                    </div><!-- END .body -->
+                </div><!-- END .mfwd-container -->
+            </li>
+            <li class="col-sidebar">
+            	<div id="participantBox">
+                	<h3>Participants</h3>
+                    <div class="participantBox">
+                        <div class="thumb-user-small">
+                            <a href="#"><img src="https://si0.twimg.com/profile_images/2858306125/5c5ba99ce071f093a631ecc6b95ed124_bigger.png" /></a>
+                        </div>
+                        <div class="thumb-user-small">
+                            <a href="#"><img src="https://si0.twimg.com/profile_images/2858306125/5c5ba99ce071f093a631ecc6b95ed124_bigger.png" /></a>
+                        </div>
+                        <div class="thumb-user-small">
+                            <a href="#"><img src="https://si0.twimg.com/profile_images/2858306125/5c5ba99ce071f093a631ecc6b95ed124_bigger.png" /></a>
+                        </div>
+                        <div class="thumb-user-small">
+                            <a href="#"><img src="https://si0.twimg.com/profile_images/2858306125/5c5ba99ce071f093a631ecc6b95ed124_bigger.png" /></a>
+                        </div>
+                        <div class="thumb-user-small">
+                            <a href="#"><img src="https://si0.twimg.com/profile_images/2858306125/5c5ba99ce071f093a631ecc6b95ed124_bigger.png" /></a>
+                        </div>
+                        <div class="thumb-user-small">
+                            <a href="#"><img src="https://si0.twimg.com/profile_images/2858306125/5c5ba99ce071f093a631ecc6b95ed124_bigger.png" /></a>
+                        </div>
+                        <div class="thumb-user-small">
+                            <a href="#"><img src="https://si0.twimg.com/profile_images/2858306125/5c5ba99ce071f093a631ecc6b95ed124_bigger.png" /></a>
+                        </div>
+                        <div class="thumb-user-small">
+                            <a href="#"><img src="https://si0.twimg.com/profile_images/2858306125/5c5ba99ce071f093a631ecc6b95ed124_bigger.png" /></a>
+                        </div>
+                        <div class="thumb-user-small">
+                            <a href="#"><img src="https://si0.twimg.com/profile_images/2858306125/5c5ba99ce071f093a631ecc6b95ed124_bigger.png" /></a>
+                        </div>
+                        <div class="thumb-user-small">
+                            <a href="#"><img src="https://si0.twimg.com/profile_images/2858306125/5c5ba99ce071f093a631ecc6b95ed124_bigger.png" /></a>
+                        </div>
+                        <div class="thumb-user-small">
+                            <a href="#"><img src="https://si0.twimg.com/profile_images/2858306125/5c5ba99ce071f093a631ecc6b95ed124_bigger.png" /></a>
+                        </div>
+                        <div class="thumb-user-small">
+                            <a href="#"><img src="https://si0.twimg.com/profile_images/2858306125/5c5ba99ce071f093a631ecc6b95ed124_bigger.png" /></a>
+                        </div>
+                    </div><!-- END .Participants -->
+                    <div class="paging">
+                    	<a class="fl" href="#">&laquo; PREV</a>
+                        <a class="fr" href="#">NEXT &raquo;</a>
+                    </div><!-- END .paging -->
+                </div><!-- END #participantBox -->
+            	<a href="#" id="galleryButton">&nbsp;</a>
+            </li>
+        </ul>
+    </div><!-- END .moveFwd -->
+</div><!-- END #moveFwd -->

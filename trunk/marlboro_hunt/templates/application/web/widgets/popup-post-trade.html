@@ -1,0 +1,61 @@
+{*}
+<div class="popup">
+	<div class="popupContainer popupBlackPaper" id="popup-post-trade">
+        <div class="popupContent">
+        	<div class="popup-title">
+            	<h3 class="icon_title icon_request fl">Trade</h3>
+                <a href="#popup-trading-floor" class="showPopup btn_black2 fr">Back to Trading Floor</a>
+            </div><!--END .entry-title-->
+            <ul class="columns-2 clearfix">
+                <li class="col2">
+                    <div class="entry-popup">
+                    	<h3 class="black_title">What I'm Looking For</h3>
+						<input type="hidden" class="lookLeter" value="">
+                        <div class="preview-box prevCode">
+						
+                        </div>
+                        <div class="letter-box">
+						{section name=i loop=$needcode}
+                        	<img src="{$basedomain}assets/content/font/{$needcode[i]|lower}.png" prop="{$codeID[i]}" class="code"/>
+                        	<!--<img src="{$basedomain}assets/content/font/e.png" />
+                        	<img src="{$basedomain}assets/content/font/a.png" />
+                        	<img src="{$basedomain}assets/content/font/m.png" />
+                        	<img src="{$basedomain}assets/content/font/n.png" />
+                        	<img src="{$basedomain}assets/content/font/e.png" />-->
+						{/section}
+                        </div>
+          		    </div><!--END .entry-popup-->
+                </li><!-- END .col2 -->
+                <li class="col2">
+                    <div class="entry-popup">
+                    	<h3 class="black_title">Im Trading The Letter</h3>
+						<input type="hidden" class="tradeLeter" value="">
+                        <div class="preview-box prevMyCode">
+                        </div>
+                        <div class="letter-box">
+						{section name=i loop=$mycode}
+                        	<img src="{$basedomain}assets/content/font/{$mycode[i]|lower}.png" prop="{$mycodeID[i]}" class="mycode"/>
+                        	<!--<img src="{$basedomain}assets/content/font/e.png" />
+                        	<img src="{$basedomain}assets/content/font/a.png" />
+                        	<img src="{$basedomain}assets/content/font/m.png" />
+                        	<img src="{$basedomain}assets/content/font/n.png" />
+                        	<img src="{$basedomain}assets/content/font/e.png" />-->
+						{/section}
+                        </div>
+          		    </div><!--END .entry-popup-->
+                </li><!-- END .col2 -->
+            </ul><!-- END .columns-2 -->
+            <div class="center-button">
+				<!--<a href="#popup-post-trade-message" class="btn_black2 showPopup postTrade">Post On Trading Floor</a>-->
+				<a href="javascript:void(0)" class="btn_black2 postTrade">Post On Trading Floor</a>
+            </div>
+        </div><!-- END .popupContent -->
+    </div><!-- END .popupContainer -->
+</div><!-- END .popup -->
+
+<script>
+	{literal}
+	
+	{/literal}
+</script>
+{/*}

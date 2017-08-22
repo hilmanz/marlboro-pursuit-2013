@@ -1,0 +1,9 @@
+<div id="event-upcoming">
+	<div class="thumb-event-detail">
+		{if $upcomingEvent}
+			{foreach from=$upcomingEvent key=k item=v}
+				<img src="{$basedomain}public_assets/eventManagement/{$v.image}" />
+			{/foreach}
+		{/if}
+	</div>
+</div><!-- END #event-upcoming -->

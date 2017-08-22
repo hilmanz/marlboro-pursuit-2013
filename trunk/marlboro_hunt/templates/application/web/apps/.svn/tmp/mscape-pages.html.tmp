@@ -1,0 +1,36 @@
+<div id="landingPage">
+	<div class="landingPage landing-mscape">
+        <ul class="columns-2 clearfix">
+            <li class="col2">
+                <div class="box fl">
+                    <div class="thumbLanding" style="width:222px;">
+                        <a class="thumb300" href="{$basedomain}mscape/video">
+                            <img src="{$basedomain}assets/content/mscape2.jpg" />
+                       
+                        <span class="icon_play">&nbsp;</span>
+						 </a>
+                    </div><!-- END .thumbLanding -->
+                    <div class="captions">
+                        <a  style="margin:15px 0; display:block;" class="readmore" href="{$basedomain}mscape/video">Watch Video</a>
+                        <h1 style="margin:0;">MSCAPE 2012</h1>
+                    </div><!-- END .captions -->
+                </div><!-- END .box -->
+            </li><!-- END .col2 -->
+            <li class="col2">
+                <div class="box fr">
+                    <div class="thumbLanding" style="width:222px;">
+                        <a class="thumb300" href="{$basedomain}mscape/video2">
+                            <img src="{$basedomain}assets/content/mscape3.jpg" />
+                       
+                        <span class="icon_play">&nbsp;</span>
+						 </a>
+                    </div><!-- END .thumbLanding -->
+                    <div class="captions">
+                        <a style="margin:15px 0; display:block;" class="readmore" href="{$basedomain}mscape/video">Watch Video</a>
+                        <h1 style="margin:0;">MSCAPE 2012</h1>
+                    </div><!-- END .captions -->
+                </div><!-- END .box -->
+            </li><!-- END .col2 -->
+        </ul><!-- END .columns-2 -->
+    </div><!-- END .landingPage -->
+</div><!-- END #landingPage -->

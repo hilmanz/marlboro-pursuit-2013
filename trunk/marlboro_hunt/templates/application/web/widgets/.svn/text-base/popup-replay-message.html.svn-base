@@ -1,0 +1,29 @@
+<div class="popup">
+	<div class="popupContainer popupContainer4 popupBlack" id="popup-replay-message">
+        <div class="popupContent">
+        	<div class="entry-popup popupInbox">
+                <div class="inner">
+                         <ul class="columns-1 clearfix">
+                            <li class="col1 isi-inbox1">
+								<form method="post" action="{$basedomain}movefwd/sendMessage" id="sendMessageToUser">
+								<div class="row">
+                                  	<label>To :</label> <input type="text" name="to" value="" class="messgTo"/>
+                                  </div><!-- END #isi-message-->
+								 <div class="row">
+                                  	<label>Subject :</label><input type="text" name="subject" value="" class="messgSubject"/>
+                                  </div><!-- END #isi-message-->
+                                  <div id="isi-message1 " class="replaymessagecontent row">
+                                  		<label>Message:</label><textarea class="messgContent" name="message"></textarea>
+                                  </div><!-- END #isi-message-->
+                                  <div class="row">
+								 <input type="submit" name="sendButton" value="Send"/>
+								 <input type="hidden" name="hiddenid" value="" class="hiddenid"/>
+								 </form>
+                                 </div>
+                            </li><!-- END .columns-2 clearfix -->
+                         </ul><!-- END .columns-2 clearfix -->
+                </div><!-- END .inner -->
+            </div><!--END .entry-popup-->
+        </div><!-- END .popupContent -->
+    </div><!-- END .popupContainer -->
+</div><!-- END .popup -->

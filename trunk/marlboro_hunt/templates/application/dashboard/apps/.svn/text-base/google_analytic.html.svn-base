@@ -1,0 +1,292 @@
+<div class="section">
+	<ul class="columns-content page-content clearfix">
+    	<div class="the-title fl">
+        	<h2 class="red">Google Analytic</h2>
+    	</div>
+    	<form method="GET" action="">
+		<div class="menu_charts">
+				<input type="text"  id="from" name="startdate" value="{$startdate}" ><span>-</span>
+				<input type="text"  id="to" name="enddate" value="{$enddate}" /><a href="javascript:void(0)" class="calendar"></a>
+		</div>
+		</form>
+        <div class="accordion">                           
+            <h3 class=""><span>Visits</span>
+            <a class="icon_arrow expand" href="#">Click to Expand</a>
+            <a class="icon_arrow_grey hide2" href="#">hide</a> </h3>
+            <div class="acc_section">
+            	<div class="chart_section" id="visit" >
+                	<!-- <img src="{$assets_domain}images/charts3.jpg" /> -->
+                </div>         
+            </div><!--end.acc_section-->
+            <h3 class=""><span>Pageviews</span>
+            <a class="icon_arrow expand" href="#">Click to Expand</a>
+            <a class="icon_arrow_grey hide2" href="#">hide</a> </h3>
+            <div class="acc_section">
+            	<div class="chart_section" id="pageview" >
+                	<!-- <img src="{$assets_domain}images/charts3.jpg" /> -->
+                </div>    
+            </div><!--end.acc_section-->
+            <h3 class=""><span>Avg. Visit Duration</span>
+            <a class="icon_arrow expand" href="#">Click to Expand</a>
+            <a class="icon_arrow_grey hide2" href="#">hide</a> </h3>
+            <div class="acc_section">
+                <div class="chart_section" id="avgVisit" >
+                	<!-- <img src="{$assets_domain}images/charts3.jpg" /> -->
+                </div>    
+            </div><!--end.acc_section-->
+            <h3 class=""><span>Avg. Time On Page</span>
+            <a class="icon_arrow expand" href="#">Click to Expand</a>
+            <a class="icon_arrow_grey hide2" href="#">hide</a> </h3>
+            <div class="acc_section">
+                <div class="chart_section" id="avgTimeonpage" >
+                	<!-- <img src="{$assets_domain}images/charts3.jpg" /> -->
+                </div>    
+            </div><!--end.acc_section-->
+            <h3 class=""><span>Bounce Rate</span>
+            <a class="icon_arrow expand" href="#">Click to Expand</a>
+            <a class="icon_arrow_grey hide2" href="#">hide</a> </h3>
+            <div class="acc_section">
+                <div class="chart_section" id="bounceRate" >
+                	<!-- <img src="{$assets_domain}images/charts3.jpg" /> -->
+                </div>    
+            </div><!--end.acc_section-->
+			<h3 class=""><span>Login - Mobile</span>
+            <a class="icon_arrow expand" href="#">Click to Expand</a>
+            <a class="icon_arrow_grey hide2" href="#">hide</a> </h3>
+            <div class="acc_section">
+                <div class="chart_section" id="mobileChart" >
+                	<!-- <img src="{$assets_domain}images/charts3.jpg" /> -->
+                </div>    
+            </div><!--end.acc_section-->
+			<h3 class=""><span>Login - Desktop</span>
+            <a class="icon_arrow expand" href="#">Click to Expand</a>
+            <a class="icon_arrow_grey hide2" href="#">hide</a> </h3>
+            <div class="acc_section">
+                <div class="chart_section" id="desktopChart" >
+                	<!-- <img src="{$assets_domain}images/charts3.jpg" /> -->
+                </div>    
+            </div><!--end.acc_section-->
+			<h3 class=""><span>Login - Tablet</span>
+            <a class="icon_arrow expand" href="#">Click to Expand</a>
+            <a class="icon_arrow_grey hide2" href="#">hide</a> </h3>
+            <div class="acc_section">
+                <div class="chart_section" id="tabletChart" >
+                	<!-- <img src="{$assets_domain}images/charts3.jpg" /> -->
+                </div>    
+            </div><!--end.acc_section-->
+			
+			<h3 class=""><span>All Device Data</span>
+            <a class="icon_arrow expand" href="#">Click to Expand</a>
+            <a class="icon_arrow_grey hide2" href="#">hide</a> </h3>
+            <div class="acc_section">
+                <div class="chart_section" id="gaAllDevice" >
+                	<!-- <img src="{$assets_domain}images/charts3.jpg" /> -->
+                </div>    
+            </div><!--end.acc_section-->
+			
+    	</div><!---end.accodrion-->
+    </ul><!---end.columns-content page-content clearfix-->
+</div><!--end.section-->
+
+<script type="text/javascript">
+	
+	var gaAllDeviceData = {$gaAllDeviceData|@json_encode};
+ 
+	
+{literal}
+$(function () {
+
+	var gaLabel = new Array();
+	var gaDataData = new Array();
+	var deviceData = new Object();
+	var colors= ['#FF8C00', '#50B432', '#ED561B', '#DDDF00', '#24CBE5', '#64E572', '#FF9655', '#FFF263', '#6AF9C4'];
+	var datas = [];
+	var dataser = [];
+
+	var dataarrempty = new Array();
+	var dataWithColor = new Object();
+	var nColor = 0;
+	var nIdxColors = colors.length;
+	//console.log(gaAllDeviceData);
+	//dates
+	for( var idx in gaAllDeviceData){
+		gaLabel.push(idx);		
+	}
+	//device
+	for( var idx in gaAllDeviceData){
+		for( var idxdevice in gaAllDeviceData[idx]){
+			deviceData[idxdevice] = new Array();
+		}
+	}
+ 
+	for( var idx in gaAllDeviceData){
+		for( var idxdevice in gaAllDeviceData[idx]){
+			if(deviceData.hasOwnProperty(idxdevice)) deviceData[idxdevice].push(parseInt(gaAllDeviceData[idx][idxdevice],10));
+		}
+	}
+	//console.log(deviceData);
+	for( var idx in deviceData ){
+		datas.push({ name:idx , data:deviceData[idx] });
+	}
+	//console.log(datas);
+	
+	gaDataData = datas;
+	
+	  Highcharts.setOptions({
+     colors: ['#ff9933', '#009933','#0099ff','#ff3333','#bdb299']
+    });
+        var colors = Highcharts.getOptions().colors,
+            categories = gaLabel,
+            name = false,
+            data = gaDataData;
+    
+        function setChart(name, categories, data, color) {
+			chart.xAxis[0].setCategories(categories, false);
+			chart.series[0].remove(false);
+			chart.addSeries({
+				name: false,
+				data: data,
+				color: color 
+			}, false);
+			chart.redraw();
+        }
+		
+		
+        chart = new Highcharts.Chart({
+            chart: {
+                type: 'column',
+				renderTo: 'gaAllDevice'
+            },
+            title: {
+                text: 'All Device Data'
+            },
+            subtitle: {
+                text: 'Source: marlboro.ph'
+            },
+            xAxis: {
+                categories: gaLabel
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: ''
+                }
+            },
+            tooltip: {
+                useHTML: true
+            },
+            plotOptions: {
+                column: {
+                    pointPadding: 0.2,
+                    borderWidth: 0
+                }
+            },
+              series:   data 
+		});
+    });
+    
+
+</script>
+{/literal}
+
+<script type="text/javascript">
+
+		var gaData = {$dataChart|@json_encode};
+		var gaMobileChart = {$gaMobileChart|@json_encode};
+		var gaDesktopChart = {$gaDesktopChart|@json_encode};
+		var gaTabletChart = {$gaTabletChart|@json_encode};
+		
+{literal}	
+$(function () {
+
+
+	var visitData = new Array();
+	var visitLabel = new Array();		
+	
+	var pageViewData = new Array();
+	var pageViewLabel = new Array();
+	
+	var avgVisitData = new Array();
+	var avgVisitLabel = new Array();
+	
+	var avgTopData = new Array();
+	var avgTopLabel = new Array();
+	
+	var BounceData = new Array();
+	var BounceLabel = new Array();
+	
+	var mobileData = new Array();
+	var mobileLabel = new Array();
+	
+	var desktopData = new Array();
+	var desktopLabel = new Array();
+	
+	var tabletData = new Array();
+	var tabletLabel = new Array();
+	
+    for (var visitChart in gaData.data.visit){
+			visitData.push(parseInt(gaData.data.visit[visitChart]));
+			visitLabel.push(String(visitChart));
+		}
+		
+	for (var pageViewChart in gaData.data.page_views){
+			pageViewData.push(parseInt(gaData.data.page_views[pageViewChart]));
+			visitLabel.push(String(pageViewChart));
+		}
+	
+
+	for (var avgVisitChart in gaData.data.time_onSite){
+			avgVisitData.push(parseInt(gaData.data.time_onSite[avgVisitChart]));
+
+			avgVisitLabel.push(String(avgVisitChart));
+		}
+		
+	for (var avgtopChart in gaData.data.time_onPage){
+			avgTopData.push(parseInt(gaData.data.time_onPage[avgtopChart]));
+			avgTopLabel.push(String(avgtopChart));
+		}
+	
+	for (var bounceChart in gaData.data.bounce_rate){
+			BounceData.push(parseInt(gaData.data.bounce_rate[bounceChart]));
+			BounceLabel.push(String(bounceChart));
+		}
+		
+	for (var mobileDataChart in gaMobileChart){
+		mobileData.push(parseInt(gaMobileChart[mobileDataChart].num));
+		mobileLabel.push(String(gaMobileChart[mobileDataChart].dd));
+	}
+	
+	for (var desktopDataChart in gaDesktopChart){
+		desktopData.push(parseInt(gaDesktopChart[desktopDataChart].num));
+		desktopLabel.push(String(gaDesktopChart[desktopDataChart].dd));
+	}
+	
+	for (var tabletDataChart in gaTabletChart){
+		tabletData.push(parseInt(gaTabletChart[tabletDataChart].num));
+		tabletLabel.push(String(gaTabletChart[tabletDataChart].dd));
+	}
+	    
+	gethighChart('line','test  Chart','visit',visitData,visitLabel,1,true);
+	gethighChart('line','test  Chart','pageview',pageViewData,visitLabel,1,true);
+	gethighChart('line','test  Chart','avgVisit',avgVisitData,avgVisitLabel,1,true);
+	gethighChart('line','test  Chart','avgTimeonpage',avgTopData,avgTopLabel,1,true);
+	gethighChart('line','test  Chart','bounceRate',BounceData,BounceLabel,1,true);
+	gethighChart('line','test  Chart','mobileChart',mobileData,mobileLabel,1,true);
+	gethighChart('line','test  Chart','desktopChart',desktopData,desktopLabel,1,true);
+	gethighChart('line','test  Chart','tabletChart',tabletData,tabletLabel,1,true);
+	
+	//drillDownChart('column','test Chart','container',dataCoba,cateActivityGroup,1 ,false);
+	});
+	
+	
+	$(document).on('click','.calendar', function(){
+		
+		var from = $('#from').val();
+		var to = $('#to').val();
+		
+		window.location.href='?startdate='+from+'&enddate='+to;
+	
+	})
+		
+</script>
+{/literal}

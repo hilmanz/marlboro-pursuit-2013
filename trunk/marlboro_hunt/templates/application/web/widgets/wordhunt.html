@@ -1,0 +1,47 @@
+<div id="gamesPage">
+	<div class="papergame"></div>
+	<div class="gamesPage imhide" id="gamesPageDetail">
+        <ul class="columns-2 clearfix">
+            <li class="col2">
+            	<div class="thumbGameBig">
+					<a href="javascript:void(0)" class="checkFlash"><img src="{$basedomain}assets/content/game_wordhunt.png" /></a>
+					
+                </div><!-- END .boxPaper -->
+            </li>
+            <li class="col2">
+            	<div class="gameDesc">
+                    <h1>WORDHUNT</h1>
+                     <p>Get rid of your MAYBE with WORDHUNT.Several words that represent indecisiveness are hidden in the board.<br>Look for them and cross them out to earn points.</p>
+                    <p>Every Wordhunt game you complete will earn you 1 point on the website counter.</p>
+                    <!--<a class="btn_red" href="{$basedomain}games/play/wallbreaker">PLAY NOW</a>-->
+                    <a class="btnRed1 checkFlash" href="javascript:void(0)">PLAY NOW</a>
+                    <a class="btnRed2 showPopups" href="#popup-leaderboard">LEADERBOARD</a>
+                </div><!-- END .gameDesc -->
+            </li>
+        </ul>
+    </div><!-- END .gamesPage -->
+</div><!-- END #gamesPage -->
+
+{include file="application/web/widgets/popup_leaderboard_wordhunt.html"}
+{include file="application/web/widgets/popup-full-mechanics-wordhunt.html"}
+<script>
+	{literal}
+	
+	$(document).on('click', '.checkFlash', function(){
+		var version = getFlashVersion().split(',').shift();
+		var html ="";
+		if(version < 11){
+		 
+			html += locale.flashplayerrequired;
+			$(".contentmyaccount").html(html);
+			$(".my-account-profile").trigger("click");
+			//$(".confirmTitle").html('Flash Player');
+			
+		}else{
+			window.location.href=basedomain+'games/play/wordhunt';
+			
+		}
+	})
+	
+	{/literal}
+</script>

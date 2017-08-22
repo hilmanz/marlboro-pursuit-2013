@@ -1,0 +1,21 @@
+
+<div class="popup2 popup-leaderboard" id="popup-full-mechanics-wallbraker">
+    <div class="popupContent3">
+            <div class="popup-title">
+                <h1>HOW TO PLAY WALLBRAKER</h1>
+            </div><!--END .entry-title-->
+            <div class="entry-popup popupmechanicsGame">
+                    <p>Several words can be found on the right side of the screen.</p>
+                    <p>Use the maybe arrow to aim and hit the words that represent indecisiveness.</p>
+                    
+                    <p>Earn up to 2 points in the game for every indecisive word you hit, and lose up to 2 points in the game for every decisive word you hit</p>
+                    
+                    <p>Every level you complete will earn you 1 point on the website counter.</p>
+          </div>
+          </div><!--END .entry-popup-->
+        <div class="centering">
+            <a class="btnRed1 checkFlash" href="javascript:void(0)">PLAY NOW</a>
+            <a class="btnRed2 showPopups" href="#popup-leaderboard">LEADERBOARD</a>
+        </div><!--END .centering-->
+    </div><!-- END .popupContent -->
+</div><!-- END .popupContainer -->

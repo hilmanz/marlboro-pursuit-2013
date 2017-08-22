@@ -1,0 +1,136 @@
+
+<div class="theContent">
+    <div class="theTitle">
+        <h2>{$folder} List {if $contentid!=0} of Content {$list[0].title}{/if}</h2>       
+        {if $contentid!=0}<a href="index.php?s=eventManagement" class="btn btn_orange"><span>Back To {$folder} List</span></a>{/if}
+        <a href="index.php?s={$folder}&act=add{if $contentid}&contentid={$contentid}{/if}" class="btn btn_pencil"><span>Add {$folder}</span></a>
+    </div><!--contenttitle-->
+    <div class="tableoptions">        
+    <form>
+        <input type="text" name="search" value="{$search}">
+        <input type="hidden" name="s" value="{$folder}" />
+        <input type="hidden" name="cari" value="cari" />
+        <input type="hidden" name="contentid" value="{$contentid}" />
+     
+       
+        <select name="article_type">
+            <option value=""> - Type - </option>
+            {section name=i loop=$typelist}
+            {if $typelist[i].id == $article_type}<option value="{$typelist[i].id}" selected>{$typelist[i].content_name}</option>
+            {else}<option value="{$typelist[i].id}">{$typelist[i].content_name}</option>
+            {/if}
+            {/section}
+        </select>
+       <span>Date Range</span>
+        <input type="text" name="startdate" value="{$startdate}" class="datepicker radius3" />
+       <span>s/d</span>
+        <input type="text" name="enddate" value="{$enddate}" class="datepicker radius3" />
+        <input type="submit" value="cari" class="stdbtn btn_orange" />
+    </form>
+    </div><!--tableoptions-->	
+    <table cellpadding="0" cellspacing="0" border="0" id="table1" class="stdtable">
+        <colgroup>
+            <col class="con0" style="width: 4%" />
+            <col class="con1" />
+            <col class="con0" />
+            <col class="con1" />
+            <col class="con0" />
+            <col class="con1" />
+        </colgroup>
+        <thead>
+            <tr>
+                <th class="head0">No</th>
+                <th class="head0">Title</th>
+                <th class="head0">Name</th>
+                <th class="head1">Published Date</th>
+                <th class="head0">{if $contentid!=0}Files{else}Gallery List{/if}</th>
+                
+               {if $contentid!=0} <th class="head0">Status</th>{/if}
+                <th class="head1">Action</th>
+                <th class="head1">Approved</th>
+            </tr>
+        </thead>
+        <tbody>
+            {foreach from=$list key=k item=v}
+            <tr>
+                <td width="10">{$v.no}&nbsp;</td>
+              
+                <!--<td>{if $contentid!=0}{$v.repotitle}{else}{$v.title}{/if}</td>-->
+                <td>
+					<select class="themeEvent" prop="{$v.repoid}" userid="{$v.userid}">
+						{foreach from=$tema key=k item=val}
+						<option value="{$val.id}" {if $val.title==$v.title}selected="selected"{/if} >{$val.title}</option>
+						{/foreach}
+						
+					</select>
+				</td>
+                <td>{$v.name} {$v.last_name}</td>
+              
+                <td><nobr>{if $contentid!=0}{$v.repocreateddate}{else}{$v.posted_date}{/if}</nobr></td>
+                <td><nobr>
+				{if $contentid!=0}
+					<a class="showPopup" id="{$v.id}" href="#imagegallerylist{$v.repoid}"><img src="{if $v.typealbum==1}{$baseurl}public_assets/gallery/{$v.repofile}{else}{$baseurl}public_assets/gallery/small_{$v.repofile}{/if}" /></a></nobr>
+				{else}    
+					<a href="index.php?s=gallery&contentid={$v.id}" class="orange" >See Gallery</a>
+				{/if}
+				</td>
+              {if $contentid!=0}  <td align="center"  >
+                    {if $v.n_status==0} <span class="orange">Unpublish</span>
+                    {elseif $v.n_status==1} <span class="green">Publish</span>
+                    {elseif $v.n_status==2} <span class="red">Inactive</span>
+                    {elseif $v.n_status==3} <span class="red">Approved</span>
+                    {elseif $v.n_status==4} <span class="red">Rejected</span>
+                    {else}
+                    {/if}
+                </td>
+                {/if}
+                <td>
+                    <nobr>
+                   
+							<a href="index.php?s={$folder}&act=hapus&id={$v.repoid}&userid={$v.userid}&page=photo&otherid={$v.otherid}" class="red" onclick="return confirm('Are you sure want to reject this photo?')">reject</a>
+						 | 	<a href="index.php?s={$folder}&act=edit&id={$v.repoid}{if $contentid}&contentid={$contentid}{/if}" class="blue" >update</a>
+                      
+                    </nobr>
+                </td>
+				<td><input type="checkbox" value="{$v.repoid}" repostat="{$v.repostat}" typealbum="{$v.typealbum}" userid="{$v.userid}" otherid="{$v.otherid}" class="approved" {if $v.repostat==3}checked{/if}/></td>
+				<div id="imagegallerylist{$v.repoid}" style="display:none">
+					<img src="{if $v.typealbum==1}{$baseurl}public_assets/gallery/{$v.repofile}{else}{$baseurl}public_assets/gallery/{$v.repofile}{/if}" width="400px" height="300px" />		
+				</div>
+            </tr>
+            {/foreach}
+		
+        </tbody>
+    </table>
+    <div class="paging">
+    	{$paging}
+    </div>
+</div><!--theContent-->
+
+<script>
+{literal}
+	$(document).on('click','.approved', function(){
+		
+		var idrepo = $(this).val();
+		var typealbum = $(this).attr('typealbum');
+		var userid = $(this).attr('userid');
+		var otherid = $(this).attr('otherid');
+		var repostat = $(this).attr('repostat');
+		
+		$.post("index.php?s=gallery&act=ajax",{idrepo:idrepo,typealbum:typealbum,userid:userid,otherid:otherid,repostat:repostat},function(data){
+			 
+			
+		},"JSON");
+	});
+	
+	$(document).on('change','.themeEvent', function(){
+		
+		var rid = $(this).attr('prop');
+		var cid = $(this).val();
+		var userid = $(this).attr('userid');
+		$.post("index.php?s=gallery&act=ajaxTheme",{updateTheme:true, cid:cid,rid:rid,userid:userid},function(data){
+			 
+			
+		},"JSON");
+	})
+{/literal}	
+</script>

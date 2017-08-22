@@ -1,0 +1,50 @@
+<div id="gamesPage">
+	<div class="papergame"></div>
+	<div class="gamesPage imhide" id="gamesPageDetail">
+        <ul class="columns-2 clearfix">
+            <li class="col2">
+            	<div class="thumbGameBig">
+					<a href="javascript:void(0)" class="checkFlash"><img src="{$basedomain}assets/content/game_moveforward.png" /></a>
+					
+                </div><!-- END .boxPaper -->
+            </li>
+            <li class="col2">
+            	<div class="gameDesc">
+                    <h1>MOVE FORWARD</h1>
+                     <p style="margin-bottom:3px;">Find a way to rearrange the scattered words and place them correctly to form a perfect sentence:"DON'T BE A MAYBE"</p>
+                    <p style="margin-bottom:3px;">Use the arrow buttons to move the words around the maze.</p>
+                    <p style="margin-bottom:3px;">Move as fast as you can and complete all 3 levels before the time runs out</p>
+                    <p style="margin-bottom:3px;">If you move too slow and the time runs out, you will have to restart the level you're currently on</p>
+                    <p style="margin-bottom:3px;">1 point will be rewarded when you finish all 3 levels within the given time limits</p>
+                    <!--<a class="btn_red" href="{$basedomain}games/play/wallbreaker">PLAY NOW</a>-->
+                    <a class="btnRed1 checkFlash" href="javascript:void(0)">PLAY NOW</a>
+                    <a class="btnRed2 showPopups" href="#popup-leaderboard">LEADERBOARD</a>
+                </div><!-- END .gameDesc -->
+            </li>
+        </ul>
+    </div><!-- END .gamesPage -->
+</div><!-- END #gamesPage -->
+
+{include file="application/web/widgets/popup_leaderboard_moveforward.html"}
+{include file="application/web/widgets/popup-full-mechanics-moveforward.html"}
+<script>
+	{literal}
+	
+	$(document).on('click', '.checkFlash', function(){
+		var version = getFlashVersion().split(',').shift();
+		var html ="";
+		if(version < 11){
+		 
+			html += locale.flashplayerrequired;
+			$(".contentmyaccount").html(html);
+			$(".my-account-profile").trigger("click");
+			//$(".confirmTitle").html('Flash Player');
+			
+		}else{
+			window.location.href=basedomain+'games/play/moveforward';
+			
+		}
+	})
+	
+	{/literal}
+</script>

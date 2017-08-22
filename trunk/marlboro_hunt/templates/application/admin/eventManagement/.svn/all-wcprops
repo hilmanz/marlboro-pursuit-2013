@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/marlboro-hunt-2013/!svn/ver/2145/trunk/marlboro_hunt/templates/application/admin/eventManagement
+END
+eventManagement_comment.html
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/marlboro-hunt-2013/!svn/ver/1913/trunk/marlboro_hunt/templates/application/admin/eventManagement/eventManagement_comment.html
+END
+eventManagement_edit.html
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/marlboro-hunt-2013/!svn/ver/1098/trunk/marlboro_hunt/templates/application/admin/eventManagement/eventManagement_edit.html
+END
+eventManagement_new.html
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/marlboro-hunt-2013/!svn/ver/1098/trunk/marlboro_hunt/templates/application/admin/eventManagement/eventManagement_new.html
+END
+eventManagement_list.html
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/marlboro-hunt-2013/!svn/ver/2145/trunk/marlboro_hunt/templates/application/admin/eventManagement/eventManagement_list.html
+END

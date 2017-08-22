@@ -1,0 +1,25 @@
+
+{$landing}
+
+{$countdown}
+{$popup_game}
+
+<!-- s: popup welcome -->
+
+{include file="application/web/widgets/popup-welcome.html"}
+<a class="showPopup welcomepopuppursuit " href="#popup-full-mechanics-pursuit" style="display:none" ></a>
+{if $openwelcome=='ok'}
+{literal}
+        <script>
+                $(document).ready(function(){
+					$('.welcomepopuppursuit').trigger('click');
+					 
+				});
+        </script>
+{/literal}
+{/if}
+<!-- e: popup welcome -->
+
+
+
+

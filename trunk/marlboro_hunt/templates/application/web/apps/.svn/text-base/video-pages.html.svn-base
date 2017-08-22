@@ -1,0 +1,39 @@
+<div id="videoPage">
+	<div class="videoPage">
+    
+	<div id="ideo-laborday">
+        <div class="video-frame">
+        	<div class="gamepopup">
+                	<div id="video-box" class="video-labor-content" >
+						 <video id="video-labor" class="video-js vjs-default-skin" controls="controls" preload="none" width="100%" height="400"
+                              poster="{$basedomain}assets/content/thumb_video_kickoff.jpg"
+                              data-setup=""  >
+                            <source src="{$basedomain}assets/video/BE_MARLBORO.mp4" type="video/mp4" />
+                            <source src="{$basedomain}assets/video/BE_MARLBORO.ogg" type="video/ogg" />
+                          
+                          </video>
+                    </div>
+            </div><!--END .entry-popup-->
+        </div><!-- END .popupContent -->
+    </div><!-- END .popupContainer -->
+    </div><!-- END .videoPage -->
+</div><!-- END #videoPage -->
+
+{*}
+		<script>
+		{literal}
+					var myPlayerlabor = _V_("video-labor");
+				
+					 _V_("video-labor").ready(function(){
+
+						var myPlayerlabor = this;
+
+						myPlayerlabor.play();
+
+					});
+		
+		</script>
+	
+	
+	{/literal}
+{/*}

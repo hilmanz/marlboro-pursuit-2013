@@ -1,0 +1,628 @@
+<div class="section">
+	<div class="the-title fl">
+        <h2>Web Activities</h2>
+    </div>
+    <div class="boxBig">
+    	<div class="title_box">
+            <div class="the-title fl">
+                <h2>Top 10 Visited Page</h2>
+            </div>
+         </div>
+        <div class="chart-section" id="topvisited">
+			<!-- <img src="{$assets_domain}images/charts.jpg"> -->
+        </div>
+     </div><!--end.boxBig-->
+     <div class="the-title fl">
+        <h2>Number of Activities History</h2>
+    </div>
+<div>    
+     <div class="boxBig-2">
+         <div class="summary-redeem">	
+			<div class="summary_box-5 center_box">
+				<div class="summary_center">
+					<div class="summary_stats">
+					<h1 class="brown">{$joinPursuitAct.num}</h1>
+						<h4>{$joinPursuitAct.action_value}</h4>
+					</div>
+				</div>
+			</div><!--end.summary_box-->  		 
+				{foreach from=$gamePursuit key=k item=v}		
+            <div class="summary_box-5 center_box">
+            	<div class="summary_center">
+                    <div class="summary_stats">
+                    <h1 class="brown">{$v.num}</h1>
+                        <h4>{$v.action_value}</h4>
+                    </div>
+                </div>
+            </div><!--end.summary_box-->
+			 {/foreach}
+			<div class="summary_box-5 center_box">
+            	<div class="summary_center">
+                    <div class="summary_stats">
+                    <h1 class="brown">{$tradePursuit.num}</h1>
+                        <h4>Trade</h4>
+                    </div>
+                </div>
+            </div><!--end.summary_box-->
+			 <div class="summary_box-5 center_box">
+            	<div class="summary_center">
+                    <div class="summary_stats">
+                    <h1 class="brown">{$redeemMerchandiseAct.num}</h1>
+                        <h4>Redeem Merchandise</h4>
+                    </div>
+                </div>
+            </div><!--end.summary_box-->
+			 <div class="summary_box-5 center_box">
+            	<div class="summary_center">
+                    <div class="summary_stats">
+                    <h1 class="brown">{$thisorthatact.num}</h1>
+                        <h4>This or That</h4>
+                    </div>
+                </div>
+            </div><!--end.summary_box-->
+			 <div class="summary_box-5 center_box">
+            	<div class="summary_center">
+                    <div class="summary_stats">
+                    <h1 class="brown">{$newsAct.num}</h1>
+                        <h4>News</h4>
+                    </div>
+                </div>
+            </div><!--end.summary_box-->
+			 <div class="summary_box-5 center_box">
+            	<div class="summary_center">
+                    <div class="summary_stats">
+                    <h1 class="brown">{$eventAct.num}</h1>
+                        <h4>Event</h4>
+                    </div>
+                </div>
+            </div><!--end.summary_box-->
+			 <div class="summary_box-5 center_box">
+            	<div class="summary_center">
+                    <div class="summary_stats">
+                    <h1 class="brown">{$myAccountact.num}</h1>
+                        <h4>MyAccount</h4>
+                    </div>
+                </div>
+            </div><!--end.summary_box-->
+        </div>
+     </div><!--end.boxBig-->
+	 
+	 
+	     <div class="boxBig">
+    	<div class="title_box">
+            <div class="the-title fl">
+                <h2>WEEKLY REPORT</h2>
+            </div>
+			<form method="GET" action="">
+				<div class="menu_charts">
+						<input type="text"  id="from" name="startdate" value="{$startdate}" ><span>-</span>
+						<input type="text"  id="to" name="enddate" value="{$enddate}" /><a href="javascript:void(0)" class="calendar"></a>
+				</div>
+			</form>
+			<div class="the-title fr">
+                 <h2><a href="{$basedomain}web_activities/downloadreport/{$startdate}/{$enddate}" style=" float:right;position:relative">[ download report ]</a></h2>
+            </div>
+         </div>
+       <table class="gridtable">
+			<tr>
+			<td>ACTIVITY</td> 
+			{foreach from=$weeklyreport.login.total key=k item=v}				
+                <td>{$v.dd}</td>			
+			{/foreach}
+			</tr>
+			
+			
+			<tr><td>LOGIN</td></tr>
+			<tr>				
+				<td>TOTAL</td>
+			{foreach from=$weeklyreport.login.total key=k item=v}				
+                <td>{$v.total}</td>			
+			{/foreach}
+			</tr>
+			<tr>
+				<td>UNIQUE</td>
+			{foreach from=$weeklyreport.login.unique key=k item=v}				
+                <td>{$v.total}</td>			
+			{/foreach}
+			</tr>
+			
+			<tr><td>&nbsp;</td></tr>
+			<tr><td>GAMES</td></tr>
+			
+			{foreach from=$weeklyreport.games key=k item=v}				
+               	<tr>
+				<td>TOTAL {if $k==1}CROSS OUT{/if} {if $k==2}WALL BREAKER{/if}{if $k==3}HIDDEN MARLBORO{/if}{if $k==5}DOUBT CRASHER{/if} {if $k==4}WORD HUNT{/if} {if $k==6}MOVE FORWARD{/if} {if $k==7}WORD MASTER{/if}</td>
+                {foreach from=$v.total key=key item=val}
+				<td>{$val.total}</td>		
+				{/foreach}
+				</tr>						
+			{/foreach}
+		
+			
+			{foreach from=$weeklyreport.games key=k item=v}				
+                 	<tr>
+				<td>UNIQUE {if $k==1}CROSS OUT{/if} {if $k==2}WALL BREAKER{/if}{if $k==3}HIDDEN MARLBORO{/if}{if $k==5}DOUBT CRASHER{/if} {if $k==4}WORD HUNT{/if} {if $k==6}MOVE FORWARD{/if} {if $k==7}WORD MASTER{/if}</td>
+                {foreach from=$v.unique key=key item=val}
+				<td>{$val.total}</td>		
+				{/foreach}
+				</tr>			
+			{/foreach}
+		
+			
+			
+			<tr><td>&nbsp;</td></tr>
+			{*}
+			<tr><td>THIS OR THAT</td></tr>
+		
+			{foreach from=$weeklyreport.thisorthat key=k item=v}
+				<tr>
+				<td>TOTAL {$k}</td>
+                {foreach from=$v.total key=key item=val}
+				<td>{$val.total}</td>	
+				{/foreach}
+				</tr>				
+			{/foreach}
+		
+			{foreach from=$weeklyreport.thisorthat key=k item=v}				
+               <tr>
+				<td>UNIQUE {$k}</td>
+                {foreach from=$v.unique key=key item=val}
+				<td>{$val.total}</td>		
+				{/foreach}
+				</tr>				
+			{/foreach}
+		
+			
+			<tr><td>&nbsp;</td></tr>
+			{/*}
+			<tr><td>VIDEO</td></tr>
+		
+			{foreach from=$weeklyreport.video key=k item=v}				
+               <tr>
+				<td>TOTAL {$k}</td>
+                {foreach from=$v.total key=key item=val}
+				<td>{$val.total}</td>		
+				{/foreach}
+				</tr>				
+			{/foreach}
+			
+			{foreach from=$weeklyreport.video key=k item=v}				
+                <tr>
+				<td>UNIQUE {$k}</td>
+                {foreach from=$v.unique key=key item=val}
+				<td>{$val.total}</td>		
+				{/foreach}
+				</tr>			
+			{/foreach}
+			
+			
+				
+			<tr><td>&nbsp;</td></tr>
+			<tr><td>PAGES</td></tr>
+			{foreach from=$weeklyreport.pages key=k item=v}				
+                <tr>
+				<td>TOTAL {$k}</td>
+                {foreach from=$v.total key=key item=val}
+				<td>{$val.total}</td>		
+				{/foreach}
+				</tr>				
+			{/foreach}
+		
+			{foreach from=$weeklyreport.pages key=k item=v}				
+                 <tr>
+				<td>UNIQUE {$k}</td>
+                {foreach from=$v.unique key=key item=val}
+				<td>{$val.total}</td>		
+				{/foreach}
+				</tr>					
+			{/foreach}
+		
+			
+          </table>
+     </div><!--end.boxBig-->
+	
+	<div class="boxBig">
+    	<div class="title_box">
+            <div class="the-title fl">
+                <h2>THIS OR THAT</h2>
+            </div>
+         </div>
+        <div class="chart-section" id="">
+			<table class="gridthisorthat" style="width:100%;">
+				<tr>
+					<th>Weeks Period</th>
+					<th>Themes</th>
+					<th class="text-center">Total Submission</th>
+					<th class="text-center">Unique User</th>
+				</tr>
+				{foreach from=$thisorthatsubmission key=k item=v}			
+				<tr>
+					<td rowspan="2">{$v.change_create_date} - {$v.change_due_date}</td>
+					
+					<td>{$v.submission[0].eventName}</td>
+					
+					
+					<td class="text-center">{$v.submission[0].total}</td>
+					<td class="text-center">{$v.submission[0].unique}</td>
+				</tr>
+				<tr>
+					
+					<td>{$v.submission[1].eventName}</td>
+					<td class="text-center">{$v.submission[1].total}</td>
+					<td class="text-center">{$v.submission[1].unique}</td>
+				</tr>
+				{/foreach}
+			</table>
+			<!-- <img src="{$assets_domain}images/charts.jpg"> -->
+        </div>
+     </div><!--end.boxBig-->
+	 
+	 <div class="boxBig">
+    	<div class="title_box">
+            <div class="the-title fl">
+                <h2>Top 10 User Activity</h2>
+            </div>
+         </div>
+        <div class="chart-section" id="">
+        	<div class="table-rows2">
+                <table class="gridthisorthat full-width">
+                    <tr>
+                        <th class="text-center" colspan=2>Upload</th>
+                    </tr>
+                    <tr>
+                        <th>Name</th>
+                        <th class="text-center">Total</th>
+                    </tr>
+                    {foreach from=$uploadActivity key=k item=v}	
+                    <tr>
+                        <td>{$v.name} {$v.last_name}</td>
+                        <td>{$v.num}</td>
+                    </tr>
+                    {/foreach}
+                </table>
+            </div>
+			<div class="table-rows2 last-rows2">
+                <table class="gridthisorthat full-width">
+                    <tr>
+                        <th class="text-center" colspan=2>Comment</th>
+                    </tr>
+                    <tr>
+                        <th>Name</th>
+                        <th class="text-center">Total</th>
+                    </tr>
+                    {foreach from=$commentActivity key=k item=v}	
+                    <tr>
+                        <td>{$v.name} {$v.last_name}</td>
+                        <td>{$v.num}</td>
+                    </tr>
+                    {/foreach}
+                </table>
+            </div>
+			<!-- <img src="{$assets_domain}images/charts.jpg"> -->
+        </div>
+     </div><!--end.boxBig-->
+	 
+	 <div class="boxBig">
+    	<div class="title_box">
+            <div class="the-title fl">
+                <h2>Top 100 User Highest Point</h2>
+            </div>
+			<div class="the-title fr">
+                 <h2><a href="{$basedomain}web_activities/downloadreporttop/{$startdate}/{$enddate}" style=" float:right;position:relative">[ download report ]</a></h2>
+            </div>
+         </div>
+        <div class="chart-section" id="">
+			<table class="gridthisorthat full-width">
+				<tr>
+					<th>Name</th>
+					<th class="text-center">Total Point</th>
+				</tr>
+                <tbody id="topHighestPoint">
+				{foreach from=$userHighPoint key=k item=v}	
+				<tr>
+					<td>{$v.name} {$v.last_name}</td>
+					<td class="text-center">{$v.totalpoint}</td>
+				</tr>
+				{/foreach}
+                </tbody>
+			</table>
+            <div id="holderhighPoint" class="text-center holder"></div>
+			<!-- <img src="{$assets_domain}images/charts.jpg"> -->
+        </div>
+     </div><!--end.boxBig-->
+	 
+	 <div class="boxBig">
+    	<div class="title_box">
+            <div class="the-title fl">
+                <h2>Top Content</h2>
+            </div>
+         </div>
+        <div class="chart-section" id="">
+        	<div class="table-rows2">
+			<table class="gridthisorthat full-width">
+				<tr>
+					<th class="text-center" colspan=3>Read Article</th>
+				</tr>
+				<tr>
+					<th>Title</th>
+					<th class="text-center">Activity</th>
+					<th class="text-center">Count</th>
+				</tr>
+				{foreach from=$topViewedArticle key=k item=v}	
+				<tr>
+					<td>{$v.action_value}</td>
+					<td>{$v.activityName}</td>
+					<td class="text-center">{$v.num}</td>
+				</tr>
+				{/foreach}
+			</table>
+            </div>
+            <div class="table-rows2 last-rows2">
+			<table class="gridthisorthat full-width">
+				<tr>
+					<th class="text-center" colspan=3>Comment Article</th>
+				</tr>
+				<tr>
+					<th>Title</th>
+					<th class="text-center">Activity</th>
+					<th class="text-center">Count</th>
+				</tr>
+				{foreach from=$topCommentArticle key=k item=v}	
+				<tr>
+					<td>{$v.action_value}</td>
+					<td>{$v.activityName}</td>
+					<td class="text-center">{$v.num}</td>
+				</tr>
+				{/foreach}
+			</table>
+            </div>
+			<!-- <img src="{$assets_domain}images/charts.jpg"> -->
+        </div>
+     </div><!--end.boxBig-->
+	 
+	 <div class="box-rows-4">
+    	<div class="title_box">
+            <div class="the-title fl">
+                <h2>Total upload Photo in event</h2>
+            </div>
+         </div>
+        <div class="chart-section" id="">
+			<table class="gridthisorthat full-width">
+				<tr>
+					<th>Count</th>
+				</tr>
+				{foreach from=$uploadFotoEvent key=k item=v}	
+				<tr>
+					<td>{$v.num}</td>
+				</tr>
+				{/foreach}
+			</table>
+			<!-- <img src="{$assets_domain}images/charts.jpg"> -->
+        </div>
+     </div><!--end.boxBig-->
+	 <div class="the-title fr">
+                 <h2><a href="{$basedomain}web_activities/downloadreportupload/{$startdate}/{$enddate}" style=" float:right;position:relative">[ download report ]</a></h2>
+            </div>
+	 <div class="box-rows-4">
+    	<div class="title_box">
+            <div class="the-title fl">
+                <h2>Total comment in article</h2>
+            </div>
+         </div>
+        <div class="chart-section" id="">
+			<table class="gridthisorthat full-width">
+				<tr>
+					<th>Count</th>
+				</tr>
+				{foreach from=$totalCommentAricle key=k item=v}	
+				<tr>
+					<td>{$v.num}</td>
+				</tr>
+				{/foreach}
+			</table>
+			<!-- <img src="{$assets_domain}images/charts.jpg"> -->
+        </div>
+     </div><!--end.boxBig-->
+	 
+	<div class="box-rows-4">
+    	<div class="title_box">
+            <div class="the-title fl">
+                <h2>Total User DYO</h2>
+            </div>
+         </div>
+        <div class="chart-section" id="">
+			<table class="gridthisorthat full-width">
+				<tr>
+					<th>Count</th>
+				</tr>
+				{foreach from=$totalUserDyo key=k item=v}	
+				<tr>
+					<td>{$v.totaldyo}</td>
+				</tr>
+				{/foreach}
+			</table>
+			<!-- <img src="{$assets_domain}images/charts.jpg"> -->
+        </div>
+     </div><!--end.boxBig-->
+	 <div class="box-rows-4 last-box-4">
+    	<div class="title_box">
+            <div class="the-title fl">
+                <h2>Total DYO Submission</h2>
+            </div>
+         </div>
+        <div class="chart-section" id="">
+			<table class="gridthisorthat full-width">
+				<tr>
+					<th>Count</th>
+				</tr>
+				{foreach from=$totalSubmissiondyo key=k item=v}	
+				<tr>
+					<td>{$v.total}</td>
+				</tr>
+				{/foreach}
+			</table>
+			<!-- <img src="{$assets_domain}images/charts.jpg"> -->
+        </div>
+     </div><!--end.boxBig-->
+	 
+	 <div class="boxBig">
+    	<div class="title_box">
+            <div class="the-title fl">
+                <h2>Number of Participant per Category MOVE FWD</h2>
+            </div>
+         </div>
+        <div class="chart-section" id="">
+			<table class="gridthisorthat" style="width:100%;">
+				<tr>
+				{section name=i loop=$numParticipantMovefd}
+					<th class="text-center">{$numParticipantMovefd[i].category}</th>
+				{/section}
+				</tr>		
+				<tr>
+				{section name=i loop=$numParticipantMovefd}
+					<td class="text-center">{$numParticipantMovefd[i].num}</td>
+				{/section}
+				</tr>
+			</table> 
+        </div>
+     </div><!--end.boxBig-->
+	 
+	 <div class="boxBig">
+    	<div class="title_box">
+            <div class="the-title fl">
+                <h2>Number of Sharing Experience submission per category Move FWD</h2>
+            </div>
+         </div>
+        <div class="chart-section" id="">
+			<table class="gridthisorthat" style="width:100%;">
+				<tr>
+				{section name=i loop=$numShareExpMovefd}
+					<th class="text-center">{$numShareExpMovefd[i].category}</th>
+				{/section}
+				</tr>		
+				<tr>
+				{section name=i loop=$numShareExpMovefd}
+					<td class="text-center">{$numShareExpMovefd[i].num}</td>
+				{/section}
+				</tr>
+			</table>
+			<!-- <img src="{$assets_domain}images/charts.jpg"> -->
+        </div>
+     </div><!--end.boxBig-->
+	 
+	  <div class="boxBig">
+    	<div class="title_box">
+            <div class="the-title fl">
+                <h2>Top Content Move FWD</h2>
+				<h4>Top 5 Viewed Sharing Experience Post (All Category)</h4>
+            </div>
+         </div>
+        <div class="chart-section" id="">
+			<table class="gridthisorthat" style="width:100%;">
+				<tr>
+					<th class="text-center">Total</th> 
+					<th class="text-center">Title</th> 
+					<th class="text-center">Category</th> 
+				</tr>		
+				{section name=i loop=$top5sharepost}
+				<tr>
+					<td class="text-center">{$top5sharepost[i].num}</td> 
+					<td class="text-center">{$top5sharepost[i].brief}</td> 
+					<td class="text-center">{$top5sharepost[i].category}</td> 
+				</tr>  
+				{/section}
+			</table> 
+        </div>
+     </div><!--end.boxBig-->
+	
+	  <div class="boxBig">
+    	<div class="title_box">
+            <div class="the-title fl">
+                <h2>Top Content Move FWD</h2>
+                <h4>Top 5 Commented Sharing Experience Post (All Category)</h4>
+            </div>
+         </div>
+        <div class="chart-section" id="">
+			<table class="gridthisorthat" style="width:100%;">
+				
+				<tr>
+					<th  class="text-center">Total</th> 
+					<th  class="text-center">Post</th> 
+					<!-- <th  class="text-center">Image</th>  -->
+					<th  class="text-center">Title</th> 
+					<th  class="text-center">Category</th> 
+				</tr>		
+				{if $top5sharexp}
+				{section name=i loop=$top5sharexp}
+				<tr>
+					<td class="text-center">{$top5sharexp[i].total}</td> 
+					<td class="text-center">{$top5sharexp[i].content}</br><img src="{$basedomainpath}public_assets/post/photo/{$top5sharexp[i].image}" width="100px" height="70px"/></td> 
+					<!-- <td class="text-center">{$top5sharexp[i].image}</td>  -->
+					<td class="text-center">{$top5sharexp[i].title}</td> 
+					<td class="text-center">{$top5sharexp[i].category}</td> 
+				</tr>  
+				{/section}
+				{else}
+				<tr>
+					<td class="text-center" colspan="4">No Comment sharing</td> 
+				</tr>
+				{/if}
+			</table> 
+        </div>
+     </div><!--end.boxBig-->
+	 
+	 <div class="boxBig">
+    	<div class="title_box">
+            <div class="the-title fl">
+                <h2>Daily Hidden Marlboro</h2>
+            </div>
+         </div>
+        <div class="chart-section" id="hiddenMarlboroChart">
+			<!-- <img src="{$assets_domain}images/charts.jpg"> -->
+        </div>
+     </div><!--end.boxBig-->
+</div><!--end.section-->
+
+<script type="text/javascript">
+	var top10visitedPage = {$top10visitedPage|@json_encode};	
+	var hiddenMarlboro = {$hiddenMarlboro|@json_encode};	
+	//console.log(hiddenMarlboro);
+{literal}	
+$(function () {
+
+	var visitedData = new Array();
+	var visitedDate = new Array();	
+	
+	var hiddenData = new Array();
+	var hiddenDate = new Array();	
+	
+	for (var visitedPage in top10visitedPage){
+		visitedData.push(parseInt(top10visitedPage[visitedPage].num));
+		visitedDate.push(String(top10visitedPage[visitedPage].action_value));
+	}
+	
+	for (var hiddenPage in hiddenMarlboro){
+		hiddenData.push(parseInt(hiddenMarlboro[hiddenPage].num));
+		hiddenDate.push(String(hiddenMarlboro[hiddenPage].dd));
+	}
+			
+	gethighChart('column','test  Chart','topvisited',visitedData,visitedDate,1, true, false, false, true, false, true);
+	gethighChart('column','test  Chart','hiddenMarlboroChart',hiddenData,hiddenDate,1,true);
+	
+	//drillDownChart('column','test Chart','cont',dataCoba,cateActivityGroup,1 ,false);
+	});
+	
+	
+	
+	$(document).on('click','.calendar', function(){
+		
+		var from = $('#from').val();
+		var to = $('#to').val();
+		
+		window.location.href='?startdate='+from+'&enddate='+to;
+	
+	})
+	
+		
+</script>
+{/literal}

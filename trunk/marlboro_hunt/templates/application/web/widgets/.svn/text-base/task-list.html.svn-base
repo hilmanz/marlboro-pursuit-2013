@@ -1,0 +1,37 @@
+
+
+
+		{if $tasklist}
+        {foreach from=$tasklist key=k item=v}
+			{if $v.topcontent == 0}{assign var="levels" value="Easy"}{/if}
+			{if $v.topcontent == 1}{assign var="levels" value="Medium"}{/if}
+			{if $v.topcontent > 1}{assign var="levels" value="Hard"}{/if}
+		<div class="row">
+            {*}<a class="thumb-small fl"><img src='{$v.image}' /></a>{/*}
+            <div class="entry-lefts fl">
+                <h6>
+                {if $v.articleType == 20}<a class="greyBtn showPopup" href="#popup-invitefriend" prop="{$v.id}">GO</a>{/if}				
+				{*}{if $v.articleType == 18}<a class="greyBtn entercodetask"  href="javascript:void(0)" prop="{$v.id}">GO</a>{/if}{/*}
+				{if $v.articleType == 21}<a class="greyBtn uploadphototask"  href="javascript:void(0)" prop="{$v.id}">GO</a>{/if}
+				
+				{if $v.articleType == 3}<a class="greyBtn gettask"  href="javascript:void(0)" prop="{$v.id}">GO</a>{/if}
+				{if $v.articleType == 6}<a class="greyBtn gettask"  href="javascript:void(0)" prop="{$v.id}">GO</a>{/if}
+				{if $v.articleType == 17}<a class="greyBtn gettask"  href="javascript:void(0)" prop="{$v.id}">GO</a>{/if}
+				{if $v.articleType == 19}<a class="greyBtn gettask"  href="javascript:void(0)" prop="{$v.id}">GO</a>{/if}
+				
+				{if $v.articleType == 22}<a class="greyBtn gettask"  href="javascript:void(0)" prop="{$v.id}">GO</a>{/if}
+				
+				{if $v.articleType == 23}<a class="greyBtn gettask"  href="javascript:void(0)" prop="{$v.id}">GO</a>{/if}
+				
+				{if $v.articleType == 18}<a class="greyBtn gettask"  href="javascript:void(0)" prop="{$v.id}">GO</a>{/if}
+				{if $v.articleType == 24}<a class="greyBtn gettask"  href="javascript:void(0)" prop="{$v.id}">GO</a>{/if}
+				{if $v.articleType == 25}<a class="greyBtn gettask"  href="javascript:void(0)" prop="{$v.id}">GO</a>{/if}
+			
+                {$v.title}</h6>
+				<input type="hidden" value="{$v.id}" class="taskid"/>
+            </div><!-- END .entry-task -->
+        </div><!-- END .row -->
+        {/foreach}
+		{/if}
+    
+

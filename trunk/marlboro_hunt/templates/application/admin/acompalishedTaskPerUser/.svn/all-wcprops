@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/marlboro-hunt-2013/!svn/ver/1516/trunk/marlboro_hunt/templates/application/admin/acompalishedTaskPerUser
+END
+acompalishedTaskPerUser_list.html
+K 25
+svn:wc:ra_dav:version-url
+V 139
+/marlboro-hunt-2013/!svn/ver/1516/trunk/marlboro_hunt/templates/application/admin/acompalishedTaskPerUser/acompalishedTaskPerUser_list.html
+END
+acompalishedTaskPerUser_edit.html
+K 25
+svn:wc:ra_dav:version-url
+V 139
+/marlboro-hunt-2013/!svn/ver/1098/trunk/marlboro_hunt/templates/application/admin/acompalishedTaskPerUser/acompalishedTaskPerUser_edit.html
+END
+acompalishedTaskPerUser_new.html
+K 25
+svn:wc:ra_dav:version-url
+V 138
+/marlboro-hunt-2013/!svn/ver/1098/trunk/marlboro_hunt/templates/application/admin/acompalishedTaskPerUser/acompalishedTaskPerUser_new.html
+END

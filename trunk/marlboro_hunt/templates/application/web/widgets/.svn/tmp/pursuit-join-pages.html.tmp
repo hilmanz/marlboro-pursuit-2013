@@ -1,0 +1,981 @@
+<!-- trade Floor-->
+<script>
+	{literal}
+	
+	$(document).on('click','.showpopuptradingfloor',function(){
+		
+		$.post(basedomain+'pursuit/ajax', {popuptradingfloor:true}, function(data){
+			var html = "";
+			if (data.status == true){
+				
+					//console.log(e.name);
+				
+				html += "<table width='100%' border='0' cellspacing='0' cellpadding='0'>";
+				html += "<thead>";
+				html += "  <tr>";
+				html += "    <th class='usertrade'><h3>Players</h3></th>";
+				html += "    <th class='letter-looking'><h3>Looking For</h3></th>";
+				html += "    <th class='letter-totrade'><h3>To Trade With</h3></th>";
+				html += "    <th>&nbsp;</th>";
+				html += "  </tr>";
+				html += "</thead>";
+				html += "<tbody class='listTradingFloor'>";
+					$.each(data.rec, function(i,e){
+						html += "  <tr>";
+						html += "    <td class='usertrade'>";
+						html += "        <a class='thumb-small fl'><img src='"+basedomain+"assets/content/thumb_user.jpg' /></a>";
+						html += "        <div class='entry-left fl'>";
+						html += "            <h4 class='username'>"+e.name+"</h4>";
+						html += "        </div>";
+						html += "    </td>";
+						html += "    <td class='letter-looking'><img src='"+basedomain+"assets/content/font/"+e.targetCodeName.toLowerCase()+".png' /></td>";
+						html += "    <td class='letter-totrade'><img src='"+basedomain+"assets/content/font/"+e.sourceCodeName.toLowerCase()+".png' /></td>";
+						html += "    <td>";
+						//html += "		<a href='javascript:void(0)' class='btn_black canceltrade ' prop='"+e.id+"'>Cancel</a>";
+						html += "		<a href='javascript:void(0)' class='btn_black showpopuptradeLetter' prop='"+e.id+"'>Trade</a>";
+						html += "	</td>";
+						html += "  </tr>";
+					})
+				html += "</tbody>";
+				html += "</table>";
+				
+				
+				
+			}else{
+				html += "Player not found";
+			}
+			
+			var searchFr = "";
+			
+			searchFr += "<input type='text' value='' id='searchTrading'/>";
+            searchFr += "<input type='submit' value='SEARCH' class='searchTradingFloor'/>";
+					
+			$(".pursuit-popup").trigger("click");		
+			$(".pursuitsearchbox").html(searchFr);	
+			$(".titlePopupTradealetter").html(locale.tradealatter);	
+			$(".contentpursuit").html(html);
+			$(".titlepursuit").html(locale.tradingfloor);
+			
+		},"JSON")
+	})
+	{/literal}
+</script>
+
+
+
+<!-- tombol trade -->
+<script>
+	{literal}
+	
+	$(document).on('click','.showpopuptradeLetter',function(){
+		var tradeid = $(this).attr('prop');
+		$.post(basedomain+'pursuit/ajax', {popuptradeletter:true, idtrade:tradeid}, function(data){
+			var html = "";
+			var e = data.rec;
+			if (data.status == true){
+				
+				html += "<li class='col2'>";
+                html += "    <div class='entry-popup'>";
+                html += "    	<div class='usertrade'>";
+                html += "            <a class='thumb-small fl'><img src='"+basedomain+"assets/content/thumb_user.jpg' /></a>";
+                html += "            <div class='entry-left fl'>";
+                html += "                <h4 class='username'>"+e.myname+"</h4>";
+                html += "            </div>";
+                html += "        </div>";
+                html += "        <div class='preview-box'>";
+                html += "        	<img src='"+basedomain+"assets/content/font/"+e.sourceCodeName.toLowerCase()+".png' />";
+                html += "        </div>";
+          		html += "		<div class='entry-popup-center'>";
+                html += "        	<p>yeah here you go!</p>";
+                html += "        </div>";
+          		html += "    </div>";
+                html += "</li>";
+                html += "<li class='col2'>";
+                html += "    <div class='entry-popup'>";
+                html += "    	<div class='usertrade'>";
+                html += "            <a class='thumb-small fl'><img src='"+basedomain+"assets/content/thumb_user.jpg' /></a>";
+                html += "            <div class='entry-left fl'>";
+                html += "                <h4 class='username'>"+e.name+"</h4>";
+                html += "            </div>";
+                html += "        </div>";
+                html += "        <div class='preview-box'>";
+                html += "        	<img src='"+basedomain+"assets/content/font/"+e.targetCodeName.toLowerCase()+".png' />";
+                html += "        </div>";
+          		html += "		<div class='entry-popup-center'>";
+               	html += "		 <a href='javascript:void(0)' class='btn_black3 confirmTrade' prop='"+e.id+"'>Confirm Trade</a>";
+                html += "        </div>";
+          		html += "    </div>";
+                html += "</li>";
+				
+				$(".trade-confirm").trigger("click");		
+				$(".confirmContent").html(html);
+				$(".confirmTitle").html(locale.traderequest);
+				
+			}else{
+				html += "<h1>Trade not allowed</h1>";
+				
+				$(".post-trade-message").trigger("click");		
+				$(".postradecontent").html(html);
+				
+			}
+			
+			
+			
+			
+		},"JSON")
+	})
+	{/literal}
+</script>
+
+<!-- untuk submit code dari task list-->
+<script>
+	{literal}
+	
+	
+	$(document).on('click', '#fancybox-close , #fancybox-overlay', function(){
+		
+		//location.href = basedomain+"pursuit/join";
+		
+	})
+	
+	$(document).on('click', '.gettask', function(){
+		
+		var idTask = $(this).attr('prop');
+		var html = "";
+		$.post(basedomain+'pursuit/ajax',{id:idTask, p_task:true}, function(data){
+			//console.log(data);
+		});
+		
+	})
+	{/literal}
+</script>
+
+<!-- untuk cancel trade dari list sebelah kanan -->
+<script>
+	{literal}
+	$(document).on('click','.cancelTrade', function(){
+		
+		var tradeid = $(this).attr('prop');
+		
+		$.post(basedomain+'pursuit/ajax',{cancelTrade:tradeid}, function(data){
+			
+			var status = data.status;
+			var html = "";
+			
+			if (status == true){
+				html += "<h2>"+locale.tradecancel+"</h2>";
+			}else{
+				html += "<h2>"+locale.tradenotcancel+"</h2>";
+			}
+			
+
+			$(".post-trade-message").trigger("click");			
+			$(".postradecontent").html(html);
+			
+			refreshTradewhenDelete();
+			
+		}, "JSON");
+		
+	})
+	
+	function refreshTradewhenDelete()
+	{
+		$.post(basedomain+'pursuit/task', {mytrade:true}, function(data){
+			var html = "";
+			
+			if (data.status == true){
+				
+					$.each(data.rec, function(i,e){
+		
+					html += "<div class='row'>";
+					html += "<ul class='columns-3 clearfix'>";
+					html += "<li class='col3'>";
+                	html += "<h4>Looking For</h4>";
+					html += "<a class='thumb-small fl'><img src='"+basedomain+"assets/content/font/"+e.toCode.toLowerCase()+".png' /></a>";
+					html += "</li>";
+					html += "<li class='col3'>";
+                	html += "<h4>To Trade With</h4>";
+					html += "<a class='thumb-small fl'><img src='"+basedomain+"assets/content/font/"+e.fromCode.toLowerCase()+".png' /></a>";
+					html += "</li>";
+					html += "<li class='col3'>";
+					if (e.n_status == 1){
+                	html += "<a class='icon_check' href='#'>&nbsp;</a>";
+					}else{
+					html += "<a class='icon_cross cancelTrade' href='#' prop='"+e.id+"'>&nbsp;</a>";
+					}
+					html += "</li>";
+					html += "</ul>";
+
+					html += "</div>";
+
+					})
+					
+				
+				
+				
+			}else{
+				html += "No trade";
+			}
+			
+			$(".mytradeList").html(html);
+			
+		},"JSON")
+	}
+	
+	{/literal}
+</script>
+
+<script>
+	{literal}
+	$(document).on('click','.getradefloor', function(){
+		
+		var tradeid = $(this).attr('prop');
+		
+		$.post(basedomain+'pursuit/ajax',{getTrade:tradeid}, function(data){
+			
+			var status = data.status;
+			var html = "";
+			
+			if (status == true){
+				console.log(true);
+				
+			}else{
+				html += "<h1>"+locale.failed+"</h1>";
+				console.log(false);
+			}
+			
+			$(".pursuit-popup").trigger("click");			
+			$(".contentpursuit").html(html);
+			$(".titlepursuit").html(locale.traderequest);
+			//$(".popupContainer").attr('id', 'popup-trade-open');
+			
+			
+			
+			//$(".popupContainer").addclass('popupBlackPaper');
+		}, "JSON");
+	})
+	
+	$(document).on('click','.canceltrade',function(){
+		
+		var tradeid = $(this).attr('prop');
+		$.post(basedomain+'pursuit/ajax',{cancelTrade:tradeid}, function(data){
+			var statusCancel = data.status;
+			html = "";
+			if (statusCancel == true){
+				html += "<h2>"+locale.successdelete+"</h2>";
+			}else{
+				html += "<h2>"+locale.failedtodelete+"</h2>";
+			}
+			$(".trigun").trigger("click");
+			$(".msgpopupglobal").html(html);
+		},'JSON')
+	})
+	
+	$(document).on('click', '.sendTradereq', function(){
+		var targetcode = $(".targetid").attr('prop');
+		var sourcecode = $(".sourceid").val();
+		var targetid = $(".userTargetid").val();
+		var tradeMesg = $(".tradeMesg").val();
+		
+		
+		$.post(basedomain+'pursuit/ajax',{sendTradeReq:true, codefrom:sourcecode, codeto:targetcode, msg:tradeMesg, idtarget:targetid}, function(data){
+			
+			var statusSend = data.status;
+			console.log(statusSend);
+			
+		},"JSON")
+		
+	})
+	{/literal}
+</script>
+
+<script>
+	{literal}
+	$(document).on('click','.popup-trade-message',function(){
+		
+		var userID = $(this).attr('prop');
+		var userName = $(this).attr('desc');
+		var html = "";
+		
+		html += "<div class='entry-popup popup-create-message'>";
+        html += "    	<h4 class='titleMessages'>Enter your message to "+userName+" bellow</h4>";
+		html += "        	<div class='row'>";
+        html += "			<textarea class='trademessage'></textarea>";
+        html += "			<input type='hidden' value='"+userID+"' class='tradeidUser'/>";
+		html += "            <input type='submit' value='SUBMIT' class='button btn_grey fl submittrademessage' />";
+        html += "            </div>";
+        html += "    </div>";
+		
+		$(".pursuit-popup").trigger("click");			
+		$(".contentpursuit").html(html);
+		$(".titlepursuit").html("Message");
+	})
+	
+	$(document).on('click','.submittrademessage',function(){
+		var idUser = $('.tradeidUser').val();
+		var getMesg = $('.trademessage').val();
+		
+		$.post(basedomain+'pursuit/ajax', {tradeMesg:true, id:idUser, mesg:getMesg}, function(data){
+			var html = "";
+			var getStatus = data.status;
+			if (getStatus == true){
+				html += "<h1>Success</h1>";
+			}else{
+				html += "<h1>Failed</h1>";
+			}
+			
+			$(".pursuit-popup").trigger("click");			
+			$(".contentpursuit").html(html);
+			$(".titlepursuit").html(locale.messagetitle);
+		},"JSON")
+	})
+	{/literal}
+</script>
+
+<!-- Untuk search Pursuit player-->
+<script>
+	{literal}
+	
+	$(document).on('click','.searchPursuitPlayer',function(){
+		var searchKeywords = $('#searchPlayerbox').val();
+		
+		$.post(basedomain+'search/friends', {keywords:searchKeywords}, function(data){
+			var html = "";
+			
+			if (data.status == true){
+				$.each(data.rec, function(i,e){
+					//console.log(e.name);
+					html += "<div class='boxPlayer'>";
+					html += " <a class='thumb-small'><img src='"+basedomain+"assets/content/thumb_user.jpg'/></a>";
+					html += " <p class='username'>"+e.name+"</p>";
+					html += " <a class='icons icon_trade' aria-hidden='true' data-icon='&#xe009;' href='#'>&nbsp;</a>";
+					html += " <a class='icons icon_message popup-trade-message' aria-hidden='true' data-icon='&#xe01c;' href='javascript:void(0)' prop='"+e.id+"' desc='"+e.name+"'>&nbsp;</a>";
+					html += "</div>";
+				})
+				
+				
+			}else{
+				html += locale.playernotfound;
+			}
+			
+			$(".listPlayerPursuit").html(html);
+			
+		},"JSON")
+	})
+	{/literal}
+</script>
+
+
+<!-- right pursuit task list -->
+<script>
+	{literal}
+	
+	$(document).on('click','.tasklistpursuit',function(){
+		
+		$.post(basedomain+'pursuit/task', {tasklist:true}, function(data){
+			var html = "";
+			
+			if (data.status == true){
+				
+					$.each(data.rec, function(i,e){
+		
+					html += "<div class='row'>";
+					html += "		<a class='thumb-small fl'></a>";
+					html += "		<div class='entry-left fl'>";
+					html += "			<h6>"+e.title+"</h6>";
+								if (e.articleType == 6){
+									if (e.topcontent == 0){
+					html += "				<a class='greenBtn' href='"+basedomain+"games' prop='"+e.id+"'>Easy</a>";
+									}else if (e.topcontent == 1){
+					html += "				<a class='greenBtn' href='"+basedomain+"games' prop='"+e.id+"'>Medium</a>";
+									}else{
+					html += "				<a class='greenBtn' href='"+basedomain+"games' prop='"+e.id+"'>Hard</a>";
+									}
+								
+								}else if (e.articleType == 19){
+									if (e.topcontent == 0){
+					html += "				<a class='greenBtn ' href='#popup-offline' prop='"+e.id+"'>Easy</a>";
+									}else if (e.topcontent == 1){
+					html += "				<a class='greenBtn ' href='#popup-offline' prop='"+e.id+"'>Medium</a>";
+									}else{
+					html += "				<a class='greenBtn ' href='#popup-offline' prop='"+e.id+"'>Hard</a>";
+									}
+								
+								}else if (e.articleType == 20){
+									if (e.topcontent == 0){
+					html += "				<a class='greenBtn ' href='#popup-invitefriend' prop='"+e.id+"'>Easy</a>";
+									}else if (e.topcontent == 1){
+					html += "				<a class='greenBtn ' href='#popup-invitefriend' prop='"+e.id+"'>Medium</a>";
+									}else{
+					html += "				<a class='greenBtn ' href='#popup-invitefriend' prop='"+e.id+"'>Hard</a>";
+									}
+								
+								}else{
+									if (e.topcontent == 0){
+					html += "				<a class='greenBtn  gettask entercodetask' href='javascript:void(0)' prop='"+e.id+"'>Easy</a>";
+									}else if (e.topcontent == 1){
+					html += "				<a class='greenBtn  gettask entercodetask' href='javascript:void(0)' prop='"+e.id+"'>Medium</a>";
+									}else{
+					html += "				<a class='greenBtn  gettask entercodetask' href='javascript:void(0)' prop='"+e.id+"'>Hard</a>";
+									}
+									
+								
+								}
+					html += "			<input type='hidden' value='"+e.id+"' class='taskid'/>";
+					html += "		</div>";
+					html += "	</div>";
+						
+					})
+			}else{
+				html += "No Message";
+			}
+			
+			$(".tasklistpursuitcontent").html(html);
+			
+		},"JSON")
+		
+	})
+	{/literal}
+</script>
+
+<!-- right pursuit message list -->
+<script>
+	{literal}
+	
+	$(document).on('click','.taskpursuitmessage',function(){
+		
+		$.post(basedomain+'pursuit/task', {taskmessage:true}, function(data){
+			var html = "";
+			
+			if (data.status == true){
+				
+					$.each(data.rec, function(i,e){
+		
+					html += "<div class='row'>";
+					html += "		<a class='thumb-small fl'><img src='"+basedomain+"assets/content/thumb_user.jpg'/></a>";
+					html += "		<div class='entry-left fl'>";
+					html += "			<h4 class='username'>"+e.name+"</h4>";
+					html += "			<h6 class='date'>"+e.datetime+"</h6>";
+					html += "			<a class='theMessages' href='#'>"+e.message+"</a>";
+					html += "		</div>";
+					html += "	</div>";
+
+					})
+			}else{
+				html += locale.nomessage;
+			}
+			
+			$(".mymessagesList").html(html);
+			
+		},"JSON")
+		
+	})
+	{/literal}
+</script>
+
+<!-- right pursuit accomplished task list -->
+<script>
+	{literal}
+	
+	$(document).on('click','.taskpursuitaccomplished',function(){
+		
+		$.post(basedomain+'pursuit/task', {accomplishedtask:true}, function(data){
+			var html = "";
+			
+			if (data.status == true){
+				
+					$.each(data.rec, function(i,e){
+		
+					html += "<div class='row'>";
+					html += "		<a class='thumb-small fl'></a>";
+					html += "		<div class='entry-left fl'>";
+					html += "			<h6 class='accomplished-tasks'>"+e.title+"</h6>";
+					html += "			<h3 class='task-counter'>1/5</h3>";
+					html += "		</div>";
+					html += "	</div>";
+
+					})
+			}else{
+				html += locale.noaccompalished;
+			}
+			
+			$(".pursuitaccomlishedcontent").html(html);
+			
+		},"JSON")
+		
+	})
+	{/literal}
+</script>
+
+
+<!-- right pursuit update list -->
+<script>
+	{literal}
+	
+	$(document).on('click','.taskpursuitupdate',function(){
+		
+		$.post(basedomain+'pursuit/task', {pursuitupdate:true}, function(data){
+			var html = "";
+			
+			if (data.status == true){
+				
+					$.each(data.rec, function(i,e){
+		
+					html += "<div class='row'>";
+					html += "		<a class='thumb-small fl'><img src='"+basedomain+"assets/content/thumb_user.jpg'/></a>";
+					html += "		<div class='entry-left fl'>";
+					html += "		  <p class='entry-update'>"+e.action_value+"</p>";
+					html += "		</div>";
+					html += "	</div>";
+
+					})
+			}else{
+				html += locale.notrade;
+			}
+			
+			$(".pursuitupdatecontent").html(html);
+			
+		},"JSON")
+		
+	})
+	{/literal}
+</script>
+
+<!-- right trade list -->
+<script>
+	{literal}
+	
+	$(document).on('click','.taskpursuitmytrade',function(){
+		
+		$.post(basedomain+'pursuit/task', {mytrade:true}, function(data){
+			var html = "";
+			
+			if (data.status == true){
+				
+					$.each(data.rec, function(i,e){
+		
+					html += "<div class='row'>";
+					html += "<ul class='columns-3 clearfix'>";
+					html += "<li class='col3'>";
+                	html += "<h4>Looking For</h4>";
+					html += "<a class='thumb-small fl'><img src='"+basedomain+"assets/content/font/"+e.toCode.toLowerCase()+".png' /></a>";
+					html += "</li>";
+					html += "<li class='col3'>";
+                	html += "<h4>To Trade With</h4>";
+					html += "<a class='thumb-small fl'><img src='"+basedomain+"assets/content/font/"+e.fromCode.toLowerCase()+".png' /></a>";
+					html += "</li>";
+					html += "<li class='col3'>";
+					if (e.n_status == 1){
+                	html += "<a class='icon_check' href='#'>&nbsp;</a>";
+					}else{
+					html += "<a class='icon_cross cancelTrade' href='#' prop='"+e.id+"'>&nbsp;</a>";
+					}
+					html += "</li>";
+					html += "</ul>";
+
+					html += "</div>";
+
+					})
+					
+				
+				
+				
+			}else{
+				html += locale.notrade;
+			}
+			
+			$(".mytradeList").html(html);
+			
+		},"JSON")
+		
+	})
+	{/literal}
+</script>
+
+<!-- right pursuit player list -->
+<script>
+	{literal}
+	
+	$(document).on('click','.pursuitListplayer',function(){
+		
+		$.post(basedomain+'pursuit/task', {pursuitlistplayer:true}, function(data){
+			var html = "";
+			
+			var no = 0;
+			if (data.status == true){
+				
+					$.each(data.rec, function(i,e){
+		
+					html += "<div class='boxPlayer'>";
+					html += "		 <a class='thumb-small'><img src='"+basedomain+"assets/content/thumb_user.jpg'/></a>";
+					html += "		 <p class='username'>"+e.name+"</p>";
+					html += "		 <a class='icons icon_trade' aria-hidden='true' data-icon='&#xe009;' href='#'>&nbsp;</a>";
+					html += "		 <a class='icons icon_message popup-trade-message' aria-hidden='true' data-icon='&#xe01c;' href='javascript:void(0)' prop='"+e.id+"' desc='"+e.name+"'>&nbsp;</a>";
+					html += "	</div>";
+
+					})
+			}else{
+				html += locale.notrade;
+			}
+			
+			$(".listPlayerPursuit").html(html);
+			$(".framelistplayer").attr('total', data.total);
+			
+		},"JSON")
+		
+	})
+	{/literal}
+</script>
+
+<!-- right pursuit player list paging -->
+<script>
+	
+	{literal}
+	
+	$(document).on('click','.prevlistpursuitplayer',function(){
+		
+		var start = parseInt($(".framelistplayer").attr("startpage"),10)-12;
+		var totalplayer = parseInt($(".framelistplayer").attr("total"));
+		
+		//console.log(start);
+		//console.log(totalplayer);
+		if(start>=0){
+			$.post(basedomain+'pursuit/task', {prevlistplayer:true, start:start}, function(data){
+				var html = "";
+				
+				if (data.status == true){
+					
+						$.each(data.rec, function(i,e){
+			
+						html += "<div class='boxPlayer'>";
+						html += "		 <a class='thumb-small'><img src='"+basedomain+"assets/content/thumb_user.jpg'/></a>";
+						html += "		 <p class='username'>"+e.name+"</p>";
+						html += "		 <a class='icons icon_trade' aria-hidden='true' data-icon='&#xe009;' href='#'>&nbsp;</a>";
+						html += "		 <a class='icons icon_message popup-trade-message' aria-hidden='true' data-icon='&#xe01c;' href='javascript:void(0)' prop='"+e.id+"' desc='"+e.name+"'>&nbsp;</a>";
+						html += "	</div>";
+
+						})
+						
+					$(".framelistplayer").attr("startpage", start);
+				}else{
+					html += locale.notrade;
+				}
+				
+				$(".listPlayerPursuit").html(html);
+				
+			},"JSON")
+		
+		}
+		
+		
+	})
+	{/literal}
+</script>
+<!-- right pursuit player list paging -->
+<script>
+	
+	{literal}
+	
+	$(document).on('click','.nextlistpursuitplayer',function(){
+		
+		var start = parseInt($(".framelistplayer").attr("startpage"),10)+12;
+		var totalplayer = parseInt($(".framelistplayer").attr("total"));
+		
+		console.log(start);
+		console.log(totalplayer);
+		if(start < totalplayer){
+			$.post(basedomain+'pursuit/task', {nextlistplayer:true, start:start}, function(data){
+				var html = "";
+				
+				if (data.status == true){
+					
+						$.each(data.rec, function(i,e){
+			
+						html += "<div class='boxPlayer'>";
+						html += "		 <a class='thumb-small'><img src='"+basedomain+"assets/content/thumb_user.jpg'/></a>";
+						html += "		 <p class='username'>"+e.name+"</p>";
+						html += "		 <a class='icons icon_trade' aria-hidden='true' data-icon='&#xe009;' href='#'>&nbsp;</a>";
+						html += "		 <a class='icons icon_message popup-trade-message' aria-hidden='true' data-icon='&#xe01c;' href='javascript:void(0)' prop='"+e.id+"' desc='"+e.name+"'>&nbsp;</a>";
+						html += "	</div>";
+
+						})
+						
+					$(".framelistplayer").attr("startpage", start);
+				}else{
+					html += locale.notrade;
+				}
+				
+				$(".listPlayerPursuit").html(html);
+				
+			},"JSON")
+		
+		}
+		
+		
+	})
+	{/literal}
+</script>
+
+<!-- right pursuit popup task list -->
+<script>
+	{literal}
+	
+	$(document).on('click','.entercodetask',function(){
+		
+		var idTask = $(this).attr('prop');
+		
+		var html = "";
+		html += "<h4>Invite three of your ADULT (MIN. 18) SMOKER friends RESIDING IN THE PHILIPPINES to register at Marlboro.ph and cite your e-mail on the 'referred by' section during their registration. You get a code for every three friends who cite your e-mail. </h4>";
+		html += "		<h4>Take on the task and get a code.</h4>";
+		html += "    		<form class='small_form'>";
+		html += "    		<div class='row'>";
+        html += "        	<input type='text' placeholder='ENTER CODE' value='' class='fl taskCode maskcode' />";
+        html += "        	<input type='hidden' value='"+idTask+"' class='fl tasklistCode'/>";
+        html += "            <input type='button' value='SUBMIT' class='button btn_grey fl submitaskcode' />";
+        html += "            </div>";
+        html += "            </form>";
+		
+		$(".task-small-master").trigger("click");		
+		$(".tasksmallcontent").html(html);
+		$(".tasksmalltitle").html("invite 3 friends at marlboro.ph");
+		
+		
+	})
+	{/literal}
+</script>
+
+<!-- trade a letter -->
+<script>
+	{literal}
+	
+	$(document).on('click','.titlePopupTradealetter',function(){
+		
+		postTradingFloor();
+		
+	})
+	
+	function postTradingFloor()
+	{
+		$.post(basedomain+'pursuit/trade', {tradealetter:true}, function(data){
+			var html = "";
+			
+			if (data.status == true){
+				
+					
+		
+					html += "<li class='col2'>";
+					html += "		<div class='entry-popup'>";
+					html += "			<h3 class='black_title'>What I'm Looking For</h3>";
+					html += "			<input type='hidden' class='lookLeter' value=''>";
+					html += "			<div class='preview-box prevCode'>";
+					html += "			</div>";
+					html += "			<div class='letter-box'>";
+					
+					$.each(data.rec.needcode, function(i,e){
+					
+					html += "				<img src='"+basedomain+"assets/content/font/"+e.toLowerCase()+".png' prop='"+data.rec.codeID[i]+"' class='code'/>";
+								
+					})
+					html += "			</div>";
+					html += "		</div>";
+					html += "	</li>";
+					html += "	<li class='col2'>";
+					html += "		<div class='entry-popup'>";
+					html += "			<h3 class='black_title'>Im Trading The Letter</h3>";
+					html += "			<input type='hidden' class='tradeLeter' value=''>";
+					html += "			<div class='preview-box prevMyCode'>";
+					html += "			</div>";
+					html += "			<div class='letter-box'>";
+					$.each(data.rec.mycode, function(i,e){
+					
+					html += "				<img src='"+basedomain+"assets/content/font/"+e.toLowerCase()+".png' prop='"+data.rec.mycodeID[i]+"' class='mycode'/>";
+								
+					})
+					html += "			</div>";
+					html += "		</div>";
+					html += "	</li>";
+
+					
+			}else{
+				html += locale.notrade;
+			}
+			
+			$(".trade-confirm").trigger("click");		
+			$(".confirmContent").html(html);
+			$(".posttradetitlebutton").html("Post On Trading Floor");
+			$(".confirmTitle").html(locale.traderequest);
+			
+		},"JSON")
+	}
+	{/literal}
+</script>
+
+<div id="pursuitPage">
+	<div class="pursuitPage">
+        <ul class="columns-content clearfix">
+            <li class="col-sidebar">
+                <div class="titlePaper">
+                    <h1><span class="black">THE</span><span class="red">PURSUIT</span></h1>
+                </div><!-- END .titlePaper -->
+                <div class="sideBar">
+                    <div class="entry">
+                       	<h6>Life is about making choices and there are only two that will move you forward - yes, and sometimes, no. Maybe won't get you anywhere.</h6>
+<h6>So it is with The Pursuit - a game where your choice moves you forward.</h6>
+<h6>Complete the phrase DON'T BE A MAYBE by accomplishing tasks asked by Marlboro. Choose whether you will cash in your letters and reap the rewards soon, or wait and get a chance to win something even better - a trip to a breathtaking destination to watch a Formula 1 race.</h6>
+                        
+                        <div class="row"><a class="readmore rblack" href="{$basedomain}pursuit">Join The Pursuit</a></div>
+                        <div class="row"><a class="readmore rblack" href="{$basedomain}pursuit/detail">Learn More</a></div>
+                        <div class="row"><a class="readmore rblack" href="{$basedomain}pursuit/prize">What You Can Win</a></div>
+                        <div class="row"><a class="readmore rblack" href="{$basedomain}pursuit/grandPrize">See The Grand Prize</a></div>
+                    </div><!-- END .entry -->
+                    <div class="be-marlboro"></div>
+                </div><!-- END .sideBar -->
+            </li><!-- END .col-sidebar -->
+            <li class="col-main">
+            	<div id="joinPursuit">
+                    <ul class="columns-2 clearfix">
+                        <li class="col2">
+                            <div id="text-collection">
+							
+									<span {if $myletter.1 !=''}class="red"{/if}>D</span>
+									<span {if $myletter.2 !=''}class="red"{/if}>O</span>
+									<span {if $myletter.3 !=''}class="red"{/if}>N</span>
+									<span {if $myletter.3 !=''}class="red"{/if}>'</span>
+									<span {if $myletter.4 !=''}class="red"{/if}>T</span>
+									<span class="space"></span>
+									<span {if $myletter.5 !=''}class="red"{/if}>B</span>
+									<span {if $myletter.6 !=''}class="red"{/if} >E</span><br />
+									<span {if $myletter.7 !=''}class="red"{/if} >A</span>
+									<span class="space"></span>
+									<span {if $myletter.8 !=''}class="red"{/if}>M</span>
+									<span {if $myletter.9 !=''}class="red"{/if}>A</span>
+									<span {if $myletter.10 !=''}class="red"{/if}>Y</span>
+									<span {if $myletter.11 !=''}class="red"{/if}>B</span>
+									<span {if $myletter.12 !=''}class="red"{/if}>E</span>
+								
+                            </div><!-- END #text-collection -->
+                            <div id="text-collected-container">
+                                <div id="text-collected">
+                                    <h6 class="clue-text">HunT for the letters by completing the tasks</h6>
+                                </div><!-- END #text-collected -->
+                                <div class="row">
+                                    <a class="whiteBtns showpopuptradingfloor" href="javascript:void(0)">Open Trading Floor</a>
+                                    <!--<a class="whiteBtns showPopup" href="#popup-trading-floor">Open Trading Floor</a>-->
+                                </div><!-- END .row -->
+                            </div><!-- END #text-collected-container -->
+                    	</li><!-- END .col2 -->
+                        <li class="col2">
+                        	<div id="userBox">
+                                <div class="authorBox">
+                                    <a class="thumb-user fl" href="#"><img src="{$basedomain}assets/content/thumb_user.jpg" /></a>
+                                    <h3 class="username fl">{$user->name}</h3>
+                                </div>
+                                <div class="accordion">
+                                    <h3 class="icon_title icon_tasklist tasklistpursuit">Task List</h3>
+                                         
+										<div class='entry-accordion ' id='task-list'>
+											<div class='control-bar'>
+												<a class='arrow-top' href='#'>&nbsp;</a>
+											</div><!-- END .control-bar -->
+											<div class='entries tasklistpursuitcontent' >
+											{$task_list}
+											</div><!-- END .entries -->
+											<div class='control-bar control-bottom'>
+												<a class='arrow-bottom' href='#'>&nbsp;</a>
+											</div><!-- END .control-bar -->
+										</div><!-- END .entry-accordion -->
+
+											
+                                   <h3 class="icon_title icon_message taskpursuitmessage">Messages</h3>
+										<div class='entry-accordion' id='messages-user'>
+											<div id='message-list'>
+												<div class='control-bar'>
+													<a class='arrow-top' href='#'>&nbsp;</a>
+												</div>
+												<div class='entries mymessagesList'></div>
+												<div class='control-bar control-bottom'>
+													<a class='arrow-bottom' href='#'>&nbsp;</a>
+												</div>
+											</div>
+										</div>
+		
+									<h3 class="icon_title icon_request taskpursuitmytrade">My Trade</h3>
+										<div class="entry-accordion" id="trade-request">
+											<div class="control-bar">
+												<a class="arrow-top" href="#">&nbsp;</a>
+											</div><!-- END .control-bar -->
+											<div class="entries mytradeList">	
+												<!-- trade list content -->
+												
+											</div><!-- END .entries -->
+											<div class="control-bar control-bottom">
+												<a class="arrow-bottom" href="#">&nbsp;</a>
+											</div><!-- END .control-bar -->
+											<a class="btn_black showPopup" href="#popup-post-trade">Trade A Letter</a>
+											<a class="btn_black showPopup" href="#popup-trading-floor">Trade Floor</a>
+										</div><!-- END .entry-accordion -->
+										
+										<h3 class="icon_title icon_task taskpursuitaccomplished">Accomplished Tasks</h3>
+										<div class='entry-accordion' id='accomplished-tasks'>
+											<div class='control-bar'>
+												<a class='arrow-top' href='#'>&nbsp;</a>
+											</div><!-- END .control-bar -->
+											<div class='entries pursuitaccomlishedcontent'></div><!-- END .entries -->
+											<div class="control-bar control-bottom">
+												<a class="arrow-bottom" href="#">&nbsp;</a>
+											</div><!-- END .control-bar -->
+										</div><!-- END .entry-accordion -->
+										
+										<h3 class="icon_title icon_update taskpursuitupdate">The Pursuit Updates</h3>
+										<div class='entry-accordion' id='pursuit-updates'>
+											<div class='control-bar'>
+												<a class='arrow-top' href='#'>&nbsp;</a>
+											</div><!-- END .control-bar -->
+											<div class='entries pursuitupdatecontent'></div><!-- END .entries -->
+											<div class="control-bar control-bottom">
+												<a class="arrow-bottom" href="#">&nbsp;</a>
+											</div><!-- END .control-bar -->
+										</div><!-- END .entry-accordion -->
+										
+										<h3 class="icon_title icon_player pursuitListplayer">The Pursuit Players</h3>
+											<div class="entry-accordion" id="pursuit-players">
+												<div class="control-bar">
+													<a class="arrow-top prevlistpursuitplayer" href="#">&nbsp;</a>
+												</div><!-- END .control-bar -->
+												<div class="entries framelistplayer" startpage="0" total="">
+													<div class="searchBox">
+														
+															<input type="text" value="" id="searchPlayerbox"/>
+															<input type="submit" value="SEARCH" class="searchPursuitPlayer"/>
+														
+													</div><!-- END .searchBox -->
+													<div id="listPlayer" class="listPlayerPursuit"></div><!-- END #listPlayer -->
+												</div><!-- END .entries -->
+													<div class="control-bar control-bottom">
+														<a class="arrow-bottom nextlistpursuitplayer" href="#" >&nbsp;</a>
+													</div><!-- END .control-bar -->
+												</div><!-- END .entry-accordion -->
+										
+                                </div><!-- END .accordion -->
+                            </div><!-- END #userBox -->
+                        </li><!-- END .col2 -->
+                    </ul><!-- END .columns-2 -->
+                </div><!-- END #joinPursuit -->
+            </li><!-- END .col-main -->
+        </ul>
+    </div><!-- END .dyoshirtPages -->
+</div><!-- END #dyoshirtPages -->
+
+
+
+{$popup_trading_floor}
+{$popup_post_trade}
+{$popup_post_trade_message}
+{$popup_trade_open}
+{$popup_trade_confirm}
+{$popup_trade_success}
+{$popup_task}
+{$popup_offline}
+{$popup_invitefriend}
+{$popup_get_letter}
+{$popup_message_black}

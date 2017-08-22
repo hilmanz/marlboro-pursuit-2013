@@ -1,0 +1,27 @@
+<div class="moveFwd">
+	<ul class="columns-4 clearfix">
+		{section name=i loop=$movefwd}
+		<li class="col4">
+			<div class="boxGame">
+				{if $movefwd[i].id==1478 || $movefwd[i].id==1476}
+					<div class="thumbGame">
+						<a href="{$basedomain}movefwd/activity/{$movefwd[i].id}"><img src="{$basedomain}assets/content/phase4/movefwd/{$movefwd[i].image}" /></a>
+					</div><!-- END .thumbGame -->
+					<div class="captions">
+						<h1>{$movefwd[i].title}</h1>
+						<a class="landbtn landbtn1" href="{$basedomain}movefwd/activity/{$movefwd[i].id}">SIGN ME UP</a>
+					</div><!-- END .captions -->
+				{elseif $movefwd[i].id==1477 || $movefwd[i].id==1475}
+					<div class="captions">
+						<h1>{$movefwd[i].title}</h1>
+						<a class="landbtn landbtn2" href="{$basedomain}movefwd/activity/{$movefwd[i].id}">SIGN ME UP</a>
+					</div><!-- END .captions -->
+					<div class="thumbGame">
+						<a href="{$basedomain}movefwd/activity/{$movefwd[i].id}"><img src="{$basedomain}assets/content/phase4/movefwd/{$movefwd[i].image}" /></a>
+					</div><!-- END .thumbGame -->
+				{/if}
+			</div><!-- END .boxGame -->
+		</li>
+		{/section}
+	</ul>
+</div><!-- END .moveFwd -->

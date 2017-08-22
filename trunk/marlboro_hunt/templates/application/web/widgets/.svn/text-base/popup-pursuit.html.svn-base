@@ -1,0 +1,13 @@
+<div class="popup">
+	<div class="popupContainer popupBlackPaper" id="pursuit-popup">
+        <div class="popupContent">
+        	<div class="popup-title">
+            	<h3 class="icon_title icon_request fl titlepursuit"></h3>
+				<!--<a href="javascript:void(0)" class=" btn_black2 fr titlePopupTradealetter"></a>-->
+				<a href="javascript:void(0)" class="titlePopupTradealetter"></a>
+				<div class="searchBox fr pursuitsearchbox"></div>
+            </div><!--END .entry-title-->
+			<div class="contentpursuit entry-popup" id="trading-floor-list"></div>
+        </div><!-- END .popupContent -->
+    </div><!-- END .popupContainer -->
+</div><!-- END .popup -->

@@ -1,0 +1,20 @@
+<div class="popup">
+	<div class="popupContainer popupBlack popup-small" id="popup-wakeboarding-choosing">
+        <div class="popupContent contentWakeboarding">
+        	<div class="row title-wakeboarding">
+            	<h1>ultimate WAKEBOARDING<br />experience</h1>
+                <h5>10 Slot Left</h5>
+                <p>How do you wan to pay for this experience? Choose below.</p>
+            </div>
+            <div class="row">
+            	<div id="wake1" class="paper-button task-done"></div>
+				<div id="wake2" class="paper-button"><p>Upload a photo/video of you doing<br />water sports</p></div>
+                <div id="wake2" class="paper-button task-lock"></div>
+            </div>
+            <div class="row">
+           		 <a class="landbtn landbtn2 showPopup" href="#popup-wakeboarding-upload">Continue</a>
+                <a class="landbtn landbtn2" href="#">Do it Later</a>
+            </div>
+        </div><!-- END .popupContent -->
+    </div><!-- END .popupContainer -->
+</div><!-- END .popup -->

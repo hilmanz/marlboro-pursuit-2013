@@ -1,0 +1,60 @@
+
+<div class="entry-accordion" id="trade-request">
+    <div class="control-bar">
+        <a class="arrow-top" href="#">&nbsp;</a>
+    </div><!-- END .control-bar -->
+    <div class="entries">
+        {section name=i loop=$myTradeReq}
+        <div class="row">
+            <ul class="columns-3 clearfix">
+                <li class="col3">
+                	<div class="myTradeBox">
+                        <h4>Looking For</h4>
+                        <a class="thumb-small fl"><img src="{$basedomain}assets/content/font/{$myTradeReq[i].toCode|lower}.png" /></a>
+                    </div>
+                </li>
+                <li class="col3">	
+                	<div class="myTradeBox">
+                        <h4>To Trade With</h4>
+                        <a class="thumb-small fl"><img src="{$basedomain}assets/content/font/{$myTradeReq[i].fromCode|lower}.png" /></a>
+                    </div>
+                </li>
+                <li class="col3">
+                	<div class="myTradeBox">
+                        {if $myTradeReq[i].n_status == 1}
+                        <a class="icon_check" href="#">&nbsp;</a>
+                        {else}
+                        <a class="icon_cross cancelTrade" href="#" prop="{$myTradeReq[i].id}">&nbsp;</a>
+                        {/if}
+                    </div>
+                </li>
+            </ul>
+
+        </div><!-- END .row -->
+
+        {/section}
+		<!--
+        <div class="row">
+            <ul class="columns-3 clearfix">
+                <li class="col3">
+                	<h4>Looking For</h4>
+					<a class="thumb-small fl"><img src="{$basedomain}assets/content/font/a.png" /></a>
+                </li>
+                <li class="col3">
+                	<h4>To Trade With</h4>
+					<a class="thumb-small fl"><img src="{$basedomain}assets/content/font/d.png" /></a>
+                </li>
+                <li class="col3">
+                	<a class="icon_check" href="#">&nbsp;</a>
+                </li>
+            </ul>
+        </div><!-- END .row -->
+        
+    </div><!-- END .entries -->
+    <div class="control-bar control-bottom">
+        <a class="arrow-bottom" href="#">&nbsp;</a>
+    </div><!-- END .control-bar -->
+	<a class="btn_black showPopup" href="#popup-post-trade">Trade A Letter</a>
+	<a class="btn_black showPopup" href="#popup-trading-floor">Trade Floor</a>
+</div><!-- END .entry-accordion -->
+

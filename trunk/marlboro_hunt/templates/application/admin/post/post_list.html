@@ -1,0 +1,79 @@
+
+<div class="theContent">
+    <div class="theTitle">
+        <h2>{$folder} List</h2>
+       
+        <a href="index.php?s={$folder}&act=add" class="btn btn_pencil"><span>Add {$folder}</span></a>
+    </div><!--contenttitle-->
+    <div class="tableoptions">        
+    <form>
+        <input type="text" name="search" value="{$search}">
+        <input type="hidden" name="s" value="{$folder}" />
+        <input type="hidden" name="cari" value="cari" />
+     
+		<select name="article_type">
+            <option value=""> - Type - </option>
+            {section name=i loop=$typelist}
+            {if $typelist[i].id == $article_type}<option value="{$typelist[i].id}" selected>{$typelist[i].content_name}</option>
+            {else}<option value="{$typelist[i].id}">{$typelist[i].content_name}</option>
+            {/if}
+            {/section}
+        </select>
+       
+		<span>Date Range</span>
+        <input type="text" name="startdate" value="{$startdate}" class="datepicker radius3" />
+       <span>s/d</span>
+        <input type="text" name="enddate" value="{$enddate}" class="datepicker radius3" />
+        <input type="submit" value="cari" class="stdbtn btn_orange" />
+    </form>
+    </div><!--tableoptions-->	
+    <table cellpadding="0" cellspacing="0" border="0" id="table1" class="stdtable">
+        <colgroup>
+            <col class="con0" style="width: 4%" />
+            <col class="con1" />
+            <col class="con0" />
+            <col class="con1" />
+            <col class="con0" />
+            <col class="con1" />
+        </colgroup>
+        <thead>
+            <tr>
+                <th class="head0">No</th>
+                <th class="head0">Title</th>
+                <th class="head1">Published Date</th>
+                <th class="head0">Unpublished Date</th>
+                <!-- <th class="head1">Add as Banner</th> -->
+                <th class="head1">Comment</th>
+                <th class="head0">Total Comment</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            {foreach from=$list key=k item=v}
+            <tr>
+                <td width="10">{$v.no}&nbsp;</td>
+              
+                <td>{$v.title}</td>
+              
+                <td><nobr>{$v.posted_date}</nobr></td>
+                <td><nobr>{$v.expired_date}</nobr></td>
+                             
+
+				<!-- <td>{if $v.is_banner}is Banner ( <a href="index.php?s=banner&act=edit&id={$v.id}" class="orange" >edit banner</a> ){else}<a href="index.php?s=banner&act=edit&id={$v.id}" class="blue">save to banner</a>{/if}</td> -->
+				<!-- <td><a href="index.php?s=gallery&contentid={$v.otherid}" class="orange" >See Event Gallery</a></td>-->
+
+				<td><a href="index.php?s=post&act=comment&id={$v.id}" class="orange" >See Comment</a></td> 
+
+                <td align="center">
+                    {$v.total}
+                </td>
+                
+               
+            </tr>
+            {/foreach}
+        </tbody>
+    </table>
+    <div class="paging">
+    	{$paging}
+    </div>
+</div><!--theContent-->

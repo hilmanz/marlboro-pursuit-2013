@@ -1,0 +1,113 @@
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/marlboro-hunt-2013/!svn/ver/2156/trunk/marlboro_hunt/com/application/services
+END
+facebook_service.php
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/marlboro-hunt-2013/!svn/ver/3/trunk/marlboro_hunt/com/application/services/facebook_service.php
+END
+dyo.php
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/marlboro-hunt-2013/!svn/ver/1532/trunk/marlboro_hunt/com/application/services/dyo.php
+END
+sendmail.php
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/marlboro-hunt-2013/!svn/ver/1490/trunk/marlboro_hunt/com/application/services/sendmail.php
+END
+recoverpass.php
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/marlboro-hunt-2013/!svn/ver/1384/trunk/marlboro_hunt/com/application/services/recoverpass.php
+END
+games.php
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/marlboro-hunt-2013/!svn/ver/2019/trunk/marlboro_hunt/com/application/services/games.php
+END
+leaderboardgame.php
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/marlboro-hunt-2013/!svn/ver/1505/trunk/marlboro_hunt/com/application/services/leaderboardgame.php
+END
+submitcode.php
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/marlboro-hunt-2013/!svn/ver/919/trunk/marlboro_hunt/com/application/services/submitcode.php
+END
+inbound.php
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/marlboro-hunt-2013/!svn/ver/529/trunk/marlboro_hunt/com/application/services/inbound.php
+END
+outbound.php
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/marlboro-hunt-2013/!svn/ver/1461/trunk/marlboro_hunt/com/application/services/outbound.php
+END
+task.php
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/marlboro-hunt-2013/!svn/ver/1018/trunk/marlboro_hunt/com/application/services/task.php
+END
+login.php
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/marlboro-hunt-2013/!svn/ver/756/trunk/marlboro_hunt/com/application/services/login.php
+END
+example_service.php
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/marlboro-hunt-2013/!svn/ver/46/trunk/marlboro_hunt/com/application/services/example_service.php
+END
+mlbevent.php
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/marlboro-hunt-2013/!svn/ver/762/trunk/marlboro_hunt/com/application/services/mlbevent.php
+END
+twitter_service.php
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/marlboro-hunt-2013/!svn/ver/3/trunk/marlboro_hunt/com/application/services/twitter_service.php
+END
+bhdata.php
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/marlboro-hunt-2013/!svn/ver/2156/trunk/marlboro_hunt/com/application/services/bhdata.php
+END
+pointmanager.php
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/marlboro-hunt-2013/!svn/ver/1547/trunk/marlboro_hunt/com/application/services/pointmanager.php
+END
+notification.php
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/marlboro-hunt-2013/!svn/ver/744/trunk/marlboro_hunt/com/application/services/notification.php
+END
+home.php
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/marlboro-hunt-2013/!svn/ver/901/trunk/marlboro_hunt/com/application/services/home.php
+END

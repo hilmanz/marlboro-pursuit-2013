@@ -1,0 +1,214 @@
+
+<ul class="tr-list">
+	<li class="row active">
+		<h3 class="title"><a href="#">
+		<input type="hidden" value="{$idactive}" class="idEvent">
+		{if $idactive}
+			{foreach from=$pastEvent key=k item=v}
+			{if $v.id == $idactive}
+				{$v.title}
+			{/if}
+			{/foreach}
+		{else}
+			{$pastEvent[0].title}
+		{/if}
+		
+		
+		
+		</a></h3>
+	</li><!-- END .row -->
+		{if $pastEvent}
+		{foreach from=$pastEvent key=k item=v}
+			{if $k ==0}
+				<div class="sub-row">
+					
+					{if $photo}
+					<a href="javascript:void(0)" class="eventFoto" idevent="{$v.id}" prop="2">Photos</a>
+					{/if}
+					{if $video}
+					<a href="javascript:void(0)" class="eventVideo" idevent="{$v.id}" prop="3">Videos</a>
+					{/if}
+				</div><!-- END .sub-row -->
+			{/if}
+			{if $idactive ==""}
+				{if $k !=0}
+					<li class="row">
+						<h3 class="title"><a href="{$basedomain}event/past/{$v.id}">{$v.title}</a></h3>
+					</li><!-- END .row -->
+				{/if}
+			{else}
+				{if $v.id !== $idactive}
+					<li class="row">
+						<h3 class="title"><a href="{$basedomain}event/past/{$v.id}">{$v.title}</a></h3>
+					</li><!-- END .row -->
+				
+				{/if}
+			{/if}
+			
+			
+			
+		{/foreach}
+		{/if}
+</ul><!-- END .tr-list -->
+{$popup_game}
+<script>
+
+	var currentid = {$pastEvent[0].id}
+{literal}
+	
+	$(document).ready(function(){
+		var idEvent = $(".idEvent").val();
+		
+		if(idEvent=="") window.location.href=currentid;
+	})
+	
+		$(document).on('click', '.eventFoto', function(){
+			var start = parseInt($(".galeryEvent").attr("startpage"),10);
+			if(isNaN(start)) start = 0;
+			var id = parseInt($(".idEvent").val());
+			var end = parseInt(start+4,10);
+			
+			var myPlayerlabor = _V_("video-labor");
+				
+			 _V_("video-labor").ready(function(){
+
+				var myPlayerlabor = this;
+
+				myPlayerlabor.pause();
+
+			});
+							
+			$.post(basedomain+'event/ajax',{getPhoto:true,start:start,end:end, type:2,id:id},function(data){
+					if(data.status == true){
+						var gallerydata = data.rec[0].gallery_paging;
+					
+						var html ="";
+						html +="<div class='perspective contentGalery'>";
+						$.each(gallerydata,function(i,e){
+							
+							html +="<div class='perspective_diap galeryEvent' total='"+data.rec[0].total+"' startpage='"+end+"'>";
+							html +="             <img src='"+basedomain+"public_assets/gallery/"+e.files+"' alt='image' />";
+							html += "<p class='caption-event'>";
+							html += "<span class='entry-caption'>";
+							html += "<span class='title-photo'>"+e.title+"</span>";
+							html += "<span class='venue-event'>"+e.content+"</span>";
+							html += "</span>";
+							html += "</p>";
+							html +="</div>";
+							
+						});
+						html +="</div>";
+						html +="<div class='gallery-act'>";
+						html +="			<div class='paging fr'>";
+						html +="				<a class='prev prevgallery' href='javascript:void(0)'>PREV</a>";
+						html +="				<a class='next nextgallery' href='javascript:void(0)'>NEXT</a>";
+						html +="			</div>";
+						html +="		</div>";
+						
+						//html += galleryviews(gallerydata);
+						
+						//$(".contentGalery").html(html);
+						$("#event-gallery").html(html);
+						$(".galeryEvent").attr("startpage",start);
+						$(".eventFoto").attr('prop', '2');
+						$(".eventVideo").attr('prop', '');
+						$(".paging").attr("style","display:block;")
+						
+						if (data.rec[0].total){
+							$('.perspective').perspective({
+								scrollingSpeed : 8000,
+								slidingSpeed : 400,
+								depth :60,
+								flightPoint : 'top',
+								hoverGap : 5,
+								maxDarkening : 1,
+								timerPers : 'hide',
+								playPers : 'hide'
+							});
+						}
+						
+					}
+				},"JSON");
+		})
+		
+		$(document).on('click', '.eventVideo', function(){
+			var idevent=$(this).attr('idevent');
+		
+			var start = parseInt($(".galeryEvent").attr("startpage"));
+			if(isNaN(start)) start = 0;
+			var id = parseInt($(".idEvent").val());
+			var end = start+4;
+			$.post(basedomain+'event/ajax',{getVideo:true,start:start,end:end, type:3, id:id},function(data){
+					if(data.status == true){
+						var gallerydata = data.rec[0].gallery_paging;
+					
+						var html ="";
+						$.each(gallerydata,function(i,e){
+							//console.log('video');
+							//console.log(e);
+							if (e.gallerytype==1){
+							html +="<div class='galeryEvent'>";
+							html +="<div id='video-box' class='video-labor-content' >";
+							html +="<video id='video-labor' class='video-js vjs-default-skin' controls='controls' preload='none' width='100%' height='305px' poster='"+basedomain+"public_assets/gallery/"+e.thumbnail+"' data-setup=''  >";
+							html += "<source src='"+basedomain+"public_assets/gallery/"+e.files+"' type='video/mp4' />";
+							//html += "<source src='"+basedomain+"assets/video/labor-teaser.ogg' type='video/ogg' />";
+							html += "</video>";
+							html +="</div>";
+							html +="</div>";
+							
+							}
+							
+						});
+						
+						//html += galleryviews(gallerydata);
+						
+						//$(".contentGalery").html(html);
+						$("#event-gallery").html(html);
+						$(".galeryEvent").attr("startpage",start);
+						$(".eventFoto").attr('prop', '');
+						$(".eventVideo").attr('prop', '3');
+						$(".paging").attr("style","display:none;")
+						
+						if (data.rec[0].total){
+							var myPlayerlabor = _V_("video-labor");
+				
+							 _V_("video-labor").ready(function(){
+		
+								var myPlayerlabor = this;
+		
+								myPlayerlabor.play();
+		
+							});
+						}
+						
+					}
+				},"JSON");
+		})
+	//})
+	
+	function generateHtml(data,video)
+	{
+		var html = "";
+		$.each(data,function(i,e){
+			//html += "<div class='perspective'>";
+			html += "<div class='perspective_diap'>";
+			
+				if(video==true) html =+ "<video src='"+basedomain+"public_assets/gallery/"+e.files+"' type='video' ></video>";
+				else  html += "<img src='"+basedomain+"public_assets/gallery/"+e.files+"' alt='image' />";
+				html += "<p class='caption-event'>";
+					html += "<span class='entry-caption'>";
+					html += "<span class='title-photo'>"+e.title+"</span>";
+					html += "<span class='date-event'>"+e.created_date+"</span>";
+					html += "<span class='venue-event'>"+e.content+"</span>";
+				html += "</span>";
+				html += "</p>";
+			html += "</div>";
+			//html += "</div>";
+			
+		});
+		
+		return html;
+	}
+	
+{/literal}
+</script>

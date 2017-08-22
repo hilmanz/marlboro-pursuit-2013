@@ -1,0 +1,24 @@
+<div id="gamesPage">
+	<div class="gamesPage" id="gamesPageDetail">
+        <ul class="columns-2 clearfix">
+            <li class="col2">
+            	<div class="thumbGameBig">
+					<a href="{$basedomain}games/play/wallbreaker"><img src="{$basedomain}assets/content/game1.jpg" /></a>
+                </div><!-- END .boxPaper -->
+            </li>
+            <li class="col2">
+            	<div class="gameDesc">
+                    <h1>WALLBREAKER</h1>
+                    <h4>Get rid of your MAYBE with WALLBREAKER.</h4>
+                    <h4> Several words will scroll down on the screen. Use the MAYBE arrow to aim at and hit the words that represent indecisiveness.</h4>
+                    <h4>Earn up to 2 points for every indecisive word you hit.</h4>
+                    <h4> Get deducted up to 2 points for every decisive word you hit</h4>
+                    <h4> Earn 20 points under 65 seconds to win the game.</h4>
+                    <a class="btn_red" href="{$basedomain}games/play/wallbreaker">PLAY NOW</a>
+                    <a class="btn_red showPopup" href="#popup-leaderboard">LEADERBOARD</a>
+                </div><!-- END .gameDesc -->
+            </li>
+        </ul>
+    </div><!-- END .gamesPage -->
+</div><!-- END #gamesPage -->
+{$popup_leaderboard_wallbraker}

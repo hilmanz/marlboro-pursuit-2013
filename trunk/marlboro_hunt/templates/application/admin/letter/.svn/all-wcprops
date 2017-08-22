@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/marlboro-hunt-2013/!svn/ver/840/trunk/marlboro_hunt/templates/application/admin/letter
+END
+letter-detail.html
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/marlboro-hunt-2013/!svn/ver/629/trunk/marlboro_hunt/templates/application/admin/letter/letter-detail.html
+END
+letter.html
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/marlboro-hunt-2013/!svn/ver/840/trunk/marlboro_hunt/templates/application/admin/letter/letter.html
+END
+letter-form.html
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/marlboro-hunt-2013/!svn/ver/629/trunk/marlboro_hunt/templates/application/admin/letter/letter-form.html
+END

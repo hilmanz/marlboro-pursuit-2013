@@ -1,0 +1,15 @@
+<div class="popup">
+	<div class="popupContainer popupBlackPaper" id="trade-confirm">
+        <div class="popupContent">
+        	<div class="popup-title">
+            	<h3 class="icon_title icon_request fl confirmTitle"></h3>
+            </div><!--END .entry-title-->
+            <ul class="columns-2 clearfix confirmContent"></ul><!-- END .columns-2 -->
+			
+			<div class="center-button buttonFrame" >
+				<!--<a href="javascript:void(0)" class="btn_black2 postTrade posttradetitlebutton"></a>-->
+            </div>
+        </div><!-- END .popupContent -->
+    </div><!-- END .popupContainer -->
+</div><!-- END .popup -->
+

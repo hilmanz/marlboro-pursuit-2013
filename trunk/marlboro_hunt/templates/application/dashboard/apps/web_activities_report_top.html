@@ -1,0 +1,14 @@
+<table class="gridthisorthat full-width">
+	<tr>
+		<th>Name</th>
+		<th class="text-center">Total Point</th>
+	</tr>
+	<tbody id="topHighestPoint">
+	{foreach from=$userHighPoint key=k item=v}	
+	<tr>
+		<td>{$v.name} {$v.last_name}</td>
+		<td class="text-center">{$v.totalpoint}</td>
+	</tr>
+	{/foreach}
+	</tbody>
+</table>

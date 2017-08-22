@@ -1,0 +1,9 @@
+<div id="landing-page" class="section2">
+	<div class="landing-page" id="landingHome">
+        <div class="centerButton" id="lineHOme3">
+        <h2>decide now</h2>
+        <a id="yes_bt" class="landbtn landbtn1" href="{$basedomain}earnpoints"><div class="line1"></div>Earn Points</a>
+        <a id="no_bt" class="landbtn landbtn2" href="{$basedomain}movefwd"><div class="line2"></div>movefwd</a>
+        </div>
+    </div><!-- END .landingPage -->
+</div><!-- END #landingPage -->

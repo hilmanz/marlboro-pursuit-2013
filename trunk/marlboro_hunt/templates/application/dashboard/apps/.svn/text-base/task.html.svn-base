@@ -1,0 +1,183 @@
+<div class="section">
+	<div class="the-title fl">
+        <h2>Task (Online & Brand Hostess App)</h2>
+    </div>
+    <div class="menu_charts">
+        <input type="text"  id="from" name="from"><span>-</span>
+        <input type="text"  id="to" name="to" /><a href="#" class="calendar"></a>
+    </div>
+    <div class="boxBig">
+    	<div class="title_box">
+            <div class="the-title fl">
+                <h2>Number of Each Task Completed</h2>
+            </div>
+         </div>
+        <div class="chart-section" id="eachTaskField">
+			<!-- <img src="{$assets_domain}images/charts3.jpg"> -->
+        </div>
+     </div><!--end.boxBig-->
+     
+     <div class="box-task-2">
+     	<div class="title_box">
+            <div class="the-title fl">
+                <h2>Number of task completed through app from each Brand Hostess</h2>
+            </div>
+         </div>
+        <div class="letterTable-content">
+		<form method="POST" action="{$basedomain}task/getBHdetail">
+        	<table class="gridtable">
+			{section name=i loop=$bhtaskComplete}
+				<tr>
+					<td><a class="detailBH" href="javascript:void(0)" bhid="{$bhtaskComplete[i].bhid}" >{$bhtaskComplete[i].bhname} </a></td>
+					<td>{$bhtaskComplete[i].num}</td>
+				</tr>
+			{/section}
+            </table>
+		</form>
+        </div>
+		<div class="pagination">
+           {$paging}
+        </div>
+     </div><!--end.box-letterTable-->
+     
+    <div class="box-task-2 last-box">
+     	<div class="title_box">
+            <div class="the-title fl">
+                <h2>Brand Hostess involved in each offline activity</h2>
+            </div>
+         </div>
+        <div class="task-content">
+        	<div class="taskRow-3">
+                <div class="select_task fl">
+                    <span class="fl sorterBy">Select:</span>
+                    <div class="styledTask">
+						<input type="hidden" class="hiddenbhInvolvedOffline" value="{$bhInvolvedOfflinereload}">
+                        <select class="bhInvolvedOffline">
+						
+						{section name=i loop=$bhInvolvedOffline}
+                          <option value="{$bhInvolvedOffline[i].histories}">{if $bhInvolvedOffline[i].histories == 'get from event stranger'}The Stranger{/if}{if $bhInvolvedOffline[i].histories == 'get from event marlboros'}Where's Marlboro{/if}{if $bhInvolvedOffline[i].histories == 'get from event minicooper'}Find The Mini Cooper{/if}</option>
+						{/section}
+                        
+						</select>
+                    </div>
+                 </div>
+            </div><!--end.taskRow-3-->
+            <div class="taskRow-3 taskRow-center">
+            <div class="taskRow-3">
+                <div class="taskRow-title">
+                    <h2 class="fl">Brand Hostess:</h2>
+                    <a class="detail rt" href="#"></a>
+                </div>
+                <h1 class="jumlah"></h1>
+            </div><!--end.taskRow-3-->
+            </div>            
+        </div>
+     </div><!--end.box-letterTable-->
+     <div class="boxBig">
+    	<div class="title_box">
+            <div class="the-title fl">
+                <h2>Top 10 Most Popular Task</h2>
+            </div>
+         </div>
+        <div class="chart-section" id="popularTaskField">
+			<!-- <img src="{$assets_domain}images/charts.jpg"> -->
+        </div>
+     </div><!--end.boxBig-->
+</div><!--end.section-->
+
+
+
+<script type="text/javascript">
+	var eachTaskCompleted = {$eachTaskCompleted|@json_encode};	
+	var mostPopularTask = {$mostPopularTask|@json_encode};
+	
+{literal}	
+$(function () {
+
+	var eachTaskData = new Array();
+	var eachTaskDate = new Array();	
+	
+	var popularTaskData = new Array();
+	var popularTaskDate = new Array();
+	
+	for (var eachTask in eachTaskCompleted){
+		eachTaskData.push(parseInt(eachTaskCompleted[eachTask].num));
+		eachTaskDate.push(String(eachTaskCompleted[eachTask].dd));
+	}
+	
+	for (var popularTask in mostPopularTask){
+		popularTaskData.push(parseInt(mostPopularTask[popularTask].num));
+		popularTaskDate.push(String(mostPopularTask[popularTask].title));
+	}
+		
+	gethighChart('line','test  Chart','eachTaskField',eachTaskData,eachTaskDate,1,true);
+	gethighChart('column','test  Chart','popularTaskField',popularTaskData,popularTaskDate,1, true, false, false, true, false, true);
+	
+	//drillDownChart('column','test Chart','cont',dataCoba,cateActivityGroup,1 ,false);
+	});
+
+	
+	$(document).on("click",".detailBH",function(){
+	
+		var bhid = $(this).attr('bhid');
+		var html ="";
+		$.post(basedomain+"task/getBHdetail",{bhid:bhid},function(data){
+		
+			if(data.status==true){
+				var no = 1;
+				$.each(data.rec,function(i,e){
+					
+					html +="<tr>";
+					html +="		<td>"+no+"</td>";
+					html +="		<td>"+e.email+"</td>";
+					html +="		<td>"+e.code+"</td>";
+					html +="	</tr>";
+					
+					
+					no++;
+				})
+				
+				
+				$('.BrandHostes').trigger('click');
+				$('.contentBrandhostes').html(html);
+			}
+			
+	},"JSON");
+	
+	
+	})
+	
+	$(document).on("change",".bhInvolvedOffline",function(){
+		
+		var value = $(this).val();
+	
+		$.post(basedomain+"task/ajax",{histories:value},function(data){
+		
+		if(data.status==true){
+				var html = data.rec.num;
+				console.log(html);
+				$('.jumlah').html(html);
+			}
+		
+		},"JSON");
+	
+	})
+	
+	$(document).ready(function(){
+		
+		var value = $('.hiddenbhInvolvedOffline').val();
+	
+		$.post(basedomain+"task/ajax",{histories:value},function(data){
+		
+		if(data.status==true){
+				var html = data.rec.num;
+				$('.jumlah').html(html);
+			}
+		
+		},"JSON");
+	
+	})
+	
+		
+</script>
+{/literal}

@@ -1,0 +1,595 @@
+
+<div id="moveFwd" class="universal">
+	<div class="blackPaper"></div>
+	<div class="moveFwd">
+        <ul class="columns-content clearfix">
+        <li class="col-sidebar">
+        	<a href="javascript:void(0)" id="galleryButton" class="getDetailContent"  theid="{$activity[0].id}"  gid="0"  ><img onerror="onerrorMvf(this);" src="{$basedomain}public_assets/moveForward/frame_{$activity[0].image}.png" 			
+			/></a>
+        </li><!-- END .col-sidebar -->
+            <li class="col-main">
+            	<div class="mfwd-container">
+					{if $activity}
+                	<div class="mfwd-header">
+                    		<h1 class="mfwd-title">{$activity[0].brief}</h1>
+                        <div class="mfwd-desc">
+                            <p>{$activity[0].content|@html_entity_decode}</p>
+                            <a href="#popup-full-mechanics-movefwd" class="showPopup readMechanicFwd">Read Full Mechanics</a>
+                        </div><!-- END .mfwd-desc -->
+                        <!--<a href="#popup-wakeboarding" class="showPopup btn-challenge">&nbsp;</a>-->
+                        {if $taskActive} 
+						{if $completeTask}
+						<a href="javascript:void(0)" class="btn-challenge-completed completeChallenge" prop="{$activity[0].id}">&nbsp;</a>
+						{else}
+						<a href="javascript:void(0)" class="btn-challenge challengePopup" prop="{$activity[0].id}">&nbsp;</a>
+						{/if}
+						{/if}
+					</div><!-- END .mfwd-header -->
+                    <div class="mfwd-body">
+                        
+						<div class="mfwd-status">
+                        	<div class="row">
+							{*}{if $completeTask}{/*}
+                                <div class="thumb-user">
+                                    <a  href="#popup-inbox-new" class="showPopup composemessagefromthumbnail" recepienttxt="{$myaccount.name}" recepientid="{$myaccount.id}"  ><img src="{$basedomain}public_assets/user/photo/{if $myaccount.photo_moderation==1}{$myaccount.image_profile}{else}default.jpg{/if}" width="50px"/></a>
+									
+                                </div>
+                                <div class="entry-right">
+								 <div class="entry-body">
+                                        <div style="display:none" class="imagePreview">
+											<img src="" id="previewphoto"/>
+										</div>
+                                    </div><!-- END .entry-body -->
+                                    <form id="createstatus" action="{$basedomain}movefwd/posts" method="POST" enctype="multipart/form-data">
+									<div class="entry-header">
+                                        <h3 class="username"><a href="javascript:void(0)">{$myaccount->name}</a></h3>
+										<input type="file" name="postfoto" id="imgPost"/>
+										<input type="file" name="postvideo" id="vidPost"/>
+                                        <a href="javascript:void(0)" class="attachfoto moveforwardUpload">&nbsp;</a>
+                                        {*}<a href="javascript:void(0)" class="attachvideo">&nbsp;</a>{/*}
+                                    </div><!-- END .entry-header -->
+                                    <div class="entry-body">
+                                        
+                                            <textarea name="mystatus" class="postarea" placeholder="Enter your post here"></textarea>
+                                            <input type="submit" value="&nbsp;" name="submitpost"/>
+                                            <input type="hidden" value="{$activity[0].id}" name="content_id"/>
+                                            <p style="margin-top:10px; font-size:10px;">*Picture maximum file size is 2MB (format file : jpeg, png, gif)<br />Comments are subject to moderation. PM reserves the right to reject or remove any comment as per the <a class="showPopup popuptnc" href="#popup-tnc">Terms and Condition</a></p>
+                                        
+                                    </div><!-- END .entry-body -->
+									</form>
+                                </div><!-- END .entry-right -->
+								{*}{/if}{/*}
+                            </div><!-- END .row -->
+                        </div><!-- END .body -->
+						
+                        <div class="mfwd-body">
+                        {if $postContent}
+							
+							{foreach from=$postContent key=k item=v}
+								
+								
+							<div class="comments">
+                                <div class="row">
+                                    <div class="thumb-user">
+                                        {*}<a href="#"><img src="{$basedomain}public_assets/user/photo/{$myaccount.image_profile}" width="50px"/></a>
+										{/*}
+										<a  href="#popup-inbox-new" class="showPopup composemessagefromthumbnail" recepienttxt="{$v.name}" recepientid="{$v.userid}" ><img src="{$basedomain}public_assets/user/photo/{$v.image_profile}" width="50px" height="50px" class='count-inbox'/></a>
+									</div>
+                                    <div class="entry-right">
+                                        <div class="entry-header">
+                                            <h3 class="username"><a href="#">{$v.name}</a></h3>
+                                        </div><!-- END .entry-header -->
+                                        <div class="entry-body">
+                                            <p>{$v.content}</p>
+											{if $v.image}
+												<a  class="getDetailContent"  theid="{$activity[0].id}" gid="{$v.id}" href="javascript:void(0)" ><img src="{$basedomain}public_assets/post/photo/{$v.image}" width="100px" height="100" /></a><br/>
+											{/if}
+											{if $v.video}
+												<a class="" id="" href="javascript:void(0)"><img src="{$basedomain}assets/images/Video-Clip-icon.png" width="100px" height="100" /></a><br/>
+											{/if}
+                                            <span class="comment-date">Posted on {$v.newDate} - {$v.newTime}</span>
+                                            <a class="child-reply commentstatus" href="javascript:void(0)" prop="{$v.id}">Reply</a>
+											
+                                        </div><!-- END .entry-body -->
+                                    </div><!-- END .entry-right -->
+                                </div><!-- END .row -->
+								<div class="row reply-comment commentbox_{$v.id}" style="display:none">
+                                    <div class="thumb-user-small">
+									
+                                        <a href="#"><img src="{$basedomain}public_assets/user/photo/{if $myaccount.photo_moderation==1}{$myaccount.image_profile}{else}default.jpg{/if}" width="50px" /></a>
+                                    
+									</div>
+                                    <div class="entry-right">
+                                        <form class="replycomment">
+                                            <textarea class="mystatuscomment_{$v.id}" placeholder="Type your comment here"></textarea>
+                                            <input type="button" value="&nbsp;" class="post postComment" prop="{$v.id}"/>
+                                            <input type="hidden" value="{$v.content_id}" class="hiddencontentid"/>
+                                        </form>
+                                        <p style="margin-top:10px; font-size:9px;">Comments are subject to moderation. PM reserves the right to reject or remove any comment as per the <a class="showPopup popuptnc" href="#popup-tnc">Terms and Condition</a></p>
+                                    </div><!-- END .entry-right -->
+                                </div><!-- END .reply-comment -->
+                                <div class="commentFrame_{$v.id}">
+								{if $v.comment}
+								
+									{foreach from=$v.comment key=key item=val}
+								
+								<div class="row comment-child ">
+                                    <div class="thumb-user">
+                                        {*}
+										<a href="#"><img src="{$basedomain}public_assets/user/photo/{$val.image_profile}" width="50px" /></a>{/*}
+										<a href="#popup-inbox-new" class="showPopup composemessagefromthumbnail" recepienttxt="{$val.name}" recepientid="{$val.userid}"  ><img src="{$basedomain}public_assets/user/photo/{$val.image_profile}" width="50px" height="50px" class='count-inbox'/></a>
+										
+                                    </div>
+                                    <div class="entry-right">
+                                        <div class="entry-header">
+                                            <h3 class="username"><a href="#">{$val.name}</a></h3>
+                                        </div><!-- END .entry-header -->
+                                        <div class="entry-body">
+                                            <p>{$val.content}</p>
+                                            <span class="comment-date">Posted on {$val.newDate} - {$val.newTime}</span>
+                                            <a class="child-reply replycomment" href="javascript:void(0)" prop="{$val.id}">Reply</a>
+                                        </div><!-- END .entry-body -->
+                                    </div><!-- END .entry-right -->
+									
+									<div class="row reply-comment replycommentbox_{$val.id}" style="display:none">
+										<div class="thumb-user-small">
+											<a href="#"><img src="{$basedomain}public_assets/user/photo/{if $myaccount.photo_moderation==1}{$myaccount.image_profile}{else}default.jpg{/if}" width="50px" /></a>
+										</div>
+										<div class="entry-right">
+											<form class="replycomment">
+												<textarea class="mystatuscommentreply_{$val.id}" placeholder="Type your comment here"></textarea>
+												<input type="button" value="&nbsp;" class="post replyCommentbutton postCommentreply" prop="{$val.id}"/>
+												<input type="hidden" value="{$val.content_id}" class="hiddencontentcommentid"/>
+											</form>
+                                            <p style="margin-top:10px; font-size:9px;">Comments are subject to moderation. PM reserves the right to reject or remove any comment as per the <a class="showPopup popuptnc" href="#popup-tnc">Terms and Condition</a></p>
+										</div><!-- END .entry-right -->
+									</div><!-- END .reply-comment -->
+									
+									<div class="framereplycommentbox_{$val.id}">
+										{if $val.reply}
+								
+										{foreach from=$val.reply key=keys item=value}
+											<div class="row comment-child ">
+												<div class="thumb-user">
+													{*}<a href="#"><img src="{$basedomain}public_assets/user/photo/{$value.image_profile}" width="50px" /></a>{/*}
+													<a  href="#popup-inbox-new" class="showPopup composemessagefromthumbnail" recepienttxt="{$value.name}" recepientid="{$value.userid}" ><img src="{$basedomain}public_assets/user/photo/{$value.image_profile}" width="50px" height="50px" class='count-inbox'/></a>
+												</div>
+												<div class="entry-right">
+													<div class="entry-header">
+														<h3 class="username"><a href="#">{$value.name}</a></h3>
+													</div><!-- END .entry-header -->
+													<div class="entry-body">
+														<p>{$value.content}</p>
+														<span class="comment-date">Posted on {$value.newDate} - {$value.newTime}</span>
+														
+													</div><!-- END .entry-body -->
+												</div><!-- END .entry-right -->
+												
+											</div><!-- END .row -->
+										{/foreach}
+								
+										{/if}
+									</div>
+									
+                                </div><!-- END .row -->
+									{/foreach}
+								
+								{/if}
+								</div>
+                                
+								
+                            </div><!-- END .comments -->
+                        	{/foreach}
+						{/if}
+                        </div><!-- END .body -->
+                    </div><!-- END .body -->
+					{/if}
+                </div><!-- END .mfwd-container -->
+            </li>
+            <li class="col-sidebar">
+            	<div id="participantContainer">
+            	<h3>Participants</h3>
+				<div id="participantBox">	
+                    <div class="listParticipant" startpage="0" total="{$participant.total.total}" prop="{$pagesid}">
+					
+				
+					<div class="participantBox participantBoxList">
+						
+                        {foreach from=$participant.res key=k item=v}
+							 
+							<a href="#popup-inbox-new" class="showPopup composemessagefromthumbnail" recepienttxt="{$v.name}" recepientid="{$v.id}"  ><img src="{$basedomain}public_assets/user/photo/{$v.image_profile}" width="50px" height="50px"  /></a>
+						{/foreach}
+                    </div><!-- END .participantContainer -->
+					</div>
+                    <div class="paging">
+                    	<a class="fl prevlistpursuitplayer" href="javascript:void(0)">&laquo; PREV</a>
+                        <a class="fr nextlistpursuitplayer" href="javascript:void(0)">NEXT &raquo;</a>
+                    </div><!-- END .paging -->
+                </div><!-- END #participantBox -->
+                </div><!-- END #participantBox -->
+                <div class="catbox">
+                    <h3>Categories</h3>
+                        {foreach from=$moveforwardlist key=k item=v}
+                            <a href="{$basedomain}movefwd/activity/{$v.id}" {if $v.id==$pagesid}class="current"{/if}  >{$v.categoryname}</a>
+                        {/foreach}
+                </div>
+            	
+				
+				
+				<a class="showPopup getEvent" style="display:none" href="#popup-eventdetail"  ></a>
+                <a href="#popup-full-mechanics-movefwd" class="showPopup fullmekanicsredeem" style="display:none"></a>
+                <a href="#popup-tnc" class="showPopup popuptnc-nya" style="display:none"></a>
+				
+            </li>
+        </ul>
+    </div><!-- END .moveFwd -->
+</div><!-- END #moveFwd -->
+
+
+{literal}
+	<script>
+		
+	$(document).on('click','.composemessagefromthumbnail',function(event){
+		event.preventDefault();
+		$("#fancybox-close").addClass("fancybox-close-inbox");	
+		$(".fancybox-close-inbox").click(function(event) {
+			event.preventDefault();
+			$(this).removeClass("fancybox-close-inbox");	
+		});
+		$(".composebutton").trigger("click");
+		var recepienttxt = $(this).attr("recepienttxt")
+		var recepientid = $(this).attr("recepientid")
+		$("#recepienttxt").val(recepienttxt);
+		$("#recepientid").val(recepientid);
+		$(document).scrollTop(0);
+		 
+	
+	});
+		
+	$(document).on('click', '.attachfotoPost', function(){
+		$('#imgPost').trigger('click');
+	})
+		
+	$(document).on('click', '.attachvideo', function(){
+		$('#vidPost').trigger('click');
+	})	
+	$(document).on('click','.openpopupfullmekanincredeem',function(){
+		$(".fullmekanicsredeem").trigger("click");
+		$('.scroll-paneRedem').jScrollPane(
+			{
+				showArrows: true,
+				arrowScrollOnHover: true,
+				autoReinitialise: true
+			}
+		);
+	})
+	$(document).on('click','.open-popup-tnc',function(){
+		$(".popuptnc-nya").trigger("click");
+		$('.scroll-pane').jScrollPane(
+			{
+				showArrows: true,
+				arrowScrollOnHover: true,
+				autoReinitialise: true
+			}
+		);
+	})
+	/*	
+	$(document).on('click', '.readfull-mechanic', function(){
+		//alert('ada');
+		$('#popup-full-mechanics-redeem').trigger('click');
+	})		
+		*/
+	</script>
+
+{/literal}
+
+
+
+
+<script>
+ 
+	var defaultimagesgallery = "{$activity[0].image}";
+{literal}
+	function onerrorMvf(img){
+		$(img).attr('src',basedomain+'public_assets/moveForward/'+defaultimagesgallery);
+		//$(img).attr('src',basedomain+'assets/images/phase4/gallerybox.png');
+	}
+	$(document).on('click','.getDetailContent',function(){
+		 
+	 
+		/* message to wait data */
+			$(".getEvent").trigger('click');
+			$(".thedatadetail").html(" <img style='padding-top:150px' src='"+basedomain+"assets/images/loader.gif' /> ");
+			$(".detailusercontent").html(" <img style='padding-top: 10px; padding-left: 0;' src='"+basedomain+"assets/images/loader.gif' /> ");
+			$(".commentuserdetail").html("  "); 
+			$("#thecommentcontentid").hide();
+		/* message to wait data */
+		
+		var theid = $(this).attr('theid');
+		var gid = $(this).attr('gid');	
+			 
+			$.post(basedomain+'content/detail',{id:theid},function(arr){
+				 
+				
+				if(arr.result){
+					var data = arr.article;
+					 
+					var html = viewgallerycontent(data,'moveForward');					
+					var usercontent = viewdetailusercontent(arr.article);
+					
+					
+					var commenthtml = viewcomments(arr.comment);
+					
+					$(".thedatadetail").html(html);
+					//$(".detailusercontent").html(usercontent);
+					$(".detailusercontent").html("");
+					$(".commentuserdetail").html(commenthtml);
+					$("#thecommentcontentid").show();
+					
+					$(".thecontentidcomment").val(theid);
+					
+					
+					var updateoptions = {
+					dataType:  'json', 	
+					beforeSubmit: function(data) { 
+							 
+							$(".messagesendingcontent").html(locale.pleasewait);		
+							 
+					},
+					success : function(data) {		
+							$(".messagesendingcontent").html('');
+							if(data.result){
+										 
+									 
+										
+										var htmlThanks ="";
+										htmlThanks = "<p class='postSucces'>"+locale.postcommentorreply+"</p>";
+										$(".wakeboarding-thanks").trigger("click");
+										$(".content").html(htmlThanks);
+										$("#fancybox-close").addClass("fancybox-close-postsucces");
+										$(document).on('click', '#fancybox-close, #fancybox-overlay', function(){
+											location.reload();
+										})
+								 							
+							}
+								 
+					}
+					};					
+
+					$("#thecommentcontentid").ajaxForm(updateoptions);
+					 	
+					 
+					//$(".getEvent").trigger('click');
+					reinitpopupevent();
+					
+				}
+						if(gid!=0) {
+							console.log(gid);
+													
+							$(".allimagesdetail").fadeOut();
+							$(".thiscontentfullimage_"+gid).fadeIn();
+							gid= 0;
+						}
+				
+			},"JSON");
+			
+				
+	});
+
+	 $(document).on('click','.addReplytothiscomment',function(){
+		var cid = $(this).attr('cid');
+		var parentid = $(this).attr('parentid');
+		var siblingsobject = $(this).siblings('.replytxt');
+		var comment = $(this).siblings('.replytxt').val();
+		if(comment=='') return false;
+		$.post(basedomain+'content/comment',{cid:cid,parentid:parentid,comment:comment},function(data){
+				if(data){
+						var comhtml ="";
+					
+					 
+						
+						var htmlThanks ="";
+						htmlThanks = "<p class='postSucces'>"+locale.postcommentorreply+"</p>";
+						$(".wakeboarding-thanks").trigger("click");
+						$(".content").html(htmlThanks);
+						$("#fancybox-close").addClass("fancybox-close-postsucces");
+						$(document).on('click', '#fancybox-close, #fancybox-overlay', function(){
+							location.reload();
+						})
+						
+					siblingsobject.val("");
+				}
+		},"JSON");
+		
+		
+	});
+/* blow of this function goto the js helper */
+	 /* this function same as event */
+	 $(document).on('click','.detailimageplease',function(){
+	 
+		var fullimage = $(this).attr('fullimage');
+		var gid = $(this).attr('gid');
+		
+		$(".allimagesdetail").fadeOut();
+		$(".thiscontentfullimage_"+gid).fadeIn();
+	 });
+	
+	/* this function same as event */
+	function viewgallerycontent(data,imagepaths){
+			var html="";
+			if(data){
+					
+				 
+						html+=" <div class='eventthumb'>";
+						html+="    <div id=' ' class='flexslider'>";
+						html+="       <ul class='slides'>";
+						if(data.image){
+							html+="<li  class='allimagesdetail thiscontentfullimage_"+data.id+"' >";
+							html+="			<a class='eventthumbimg' href='#'>";
+							html+="			<img src='"+basedomain+"public_assets/"+imagepaths+"/"+data.image+"' class='allimagesdetail thiscontentfullimage_"+data.id+"'  style='height:260px'  />";
+							html+="		</a>";
+							html+="   </li>	";
+						}
+						if(data.gallery){
+							$.each(data.gallery,function(i,e){
+								 if(e.files){
+									html+="<li class='allimagesdetail thiscontentfullimage_"+e.id+"' >";
+									html+="			<a class='eventthumbimg' href='#'>";
+									 html+="			<img src='"+basedomain+"public_assets/post/photo/"+e.files+"' class='allimagesdetail thiscontentfullimage_"+e.id+"'    style='height:260px'  />";
+									html+="		</a>";
+									html+="   </li>	";
+								 }
+							});
+						}
+						html+="       </ul>";
+						html+="     </div>";
+						html+=" </div> ";
+						
+								
+					if(imagepaths=='moveForward'){
+						if(data.image||data.gallery){
+								html+="     <div id='mycarousel' class='jcarousel-skin-tango'>";
+								html+="       <ul class='slides'>";
+								
+							 
+								
+								if(data.image){
+									html+="	 <li>";
+									html+="		<a class='smallthumb detailimageplease' href='javascript:void(0)' fullimage='"+basedomain+"public_assets/"+imagepaths+"/"+data.image+"' gid='"+data.id+"' >";
+									html+="			<img src='"+basedomain+"public_assets/"+imagepaths+"/small_"+data.image+"' />";
+									html+="		</a>";
+									html+="	</li>	";
+								}
+								
+								if(data.gallery){
+									
+									$.each(data.gallery,function(i,e){
+										var queue = 'odd';
+										if(i%2==0) queue = 'even';
+										if(e.files){
+										html+="	 <li>";
+										html+="		<a class='smallthumb detailimageplease "+queue+"' href='javascript:void(0)' fullimage='"+basedomain+"public_assets/gallery/"+e.files+"' gid='"+e.id+"' >";
+										html+="			<img src='"+basedomain+"public_assets/post/photo/"+e.files+"' />";
+										html+="		</a>";
+										html+="	</li>	";
+										}
+
+									})
+								}
+								html+="       </ul>";
+								html+="     </div>";
+							}
+						
+						}
+						
+						html+=" <div class='eventStats'>";
+						//html+="    <h3 class='event-title'>"+data.title+"</h3>";
+						html+="    <h3 class='likecount'>  ";
+						//html+="    <a href='javascript:void(0)' class='addfavoritearticle' theid='"+data.id+"' totalvalue='"+data.favorite+"' >LIKE</a>  <span class='thisfavvalues'>("+data.favorite+")</span>  ";
+						if(data.commentcount > 1) html+="     COMMENTS  <span class='values'>( "+data.commentcount+" )</span> ";
+						else html+="     COMMENT  <span class='values'>( "+data.commentcount+" )</span> ";
+						if(data.views > 1) html+="     VIEWS  <span class='values'>( "+data.views+" )</span> ";
+						else html+="     VIEW  <span class='values'>( "+data.views+" )</span> ";
+						html+="    </h3>";
+						html+="  </div>";
+						
+						var judul="<h3 class='event-title'>"+data.title+"</h3>";
+			}
+			
+			$('#judulEvent').html(judul);
+			
+			return html;		 
+	}
+	
+	/* this function same as event */
+	function viewcomments(comment){
+	
+				var html="";
+			
+			if(comment){
+				
+				$.each(comment,function(i,e){
+					html+="<div class='row comment-child'>";
+					html+="             <div class='thumb-user'>";
+					if(e.img)html+="                <a href='#'><img src='"+basedomain+"public_assets/user/photo/"+e.img+"' /></a>";
+					else html+="                <a href='#'><img src='"+basedomain+"public_assets/user/photo/default.jpg' /></a>";
+					html+="            </div>";
+					html+="            <div class='entry-right'>";
+					html+="               <div class='entry-header'>";
+								html+="<h3 class='username'>";
+					html+="<a href='#'>"+e.name+"</a>";
+					html+="<span class='commentafternames' >"+e.comment+"</span>";
+					html+="</h3>";		
+					html+="               </div> ";
+														
+					
+					html+="               <div class='entry-body'>";
+				//html+="                   <p>"+e.comment+"</p>";
+					html+="                   <span class='comment-date'>Posted on "+e.date+"</span>";
+						html+=" 					<a href='javascript:void(0)' class='replyBtn replybuttontrigger' replyid='"+e.id+"' > reply </a> ";
+					html+="               </div> ";
+					html+="           </div> ";
+					html+=" <span class='allreplybox replyboxtriggered_"+e.id+"' style='padding-left: 10px;display:none' ><input type='text' style='width: 169px; height: 10px; font-size: 14px;margin-right:50px; ' name='replytxt' class='replytxt ml10 mr50' /><a  parentid='"+e.id+"'  cid='"+e.contentid+"'  href='javascript:void(0)' class='addReplytothiscomment' > Reply </a></span>";
+					html+="       </div> ";
+					html+="<div class='row repycommentlists_"+e.id+"' style='padding-left:10px'>";					
+					html+=" </div> ";
+				});
+				
+				
+			}
+		return html;
+	}
+	
+	/* this function same as event */
+	function viewdetailusercontent(contentdata){
+		
+		var html="";
+		if(contentdata){
+					html+=" <div class='thumb-user'> ";
+					if(contentdata.author.img)html+="                <a href='#'><img src='"+basedomain+"public_assets/user/photo/"+contentdata.author.img+"' /></a>";
+					else html+="                <a href='#'><img src='"+basedomain+"public_assets/user/photo/default.jpg' /></a>";
+					html+="                                </div> ";
+					html+="                               <div class='entry-right'> ";
+					html+="                                   <div class='entry-header'> ";
+					html+="                                        <h3 class='username'><a href='#'>"+contentdata.author.name+"</a></h3> ";
+					html+="                                   </div>  ";
+					html+="                                    <div class='entry-body'> ";
+					html+= 										contentdata.content ;
+					html+="                                       <span class='comment-date'>Posted on "+contentdata.posted_date+"</span> <a class='replyBtn'>Reply</a>";
+					html+="                                     </div>  ";
+					html+="                                    <a href='#' class='replycount'>"+contentdata.commentcount+" Replies</a> ";
+					html+="                                </div>  ";
+		}
+			return html;
+										
+	}
+	
+	/* this function same as event */
+	$(document).on('click','.addfavoritearticle',function(){
+	
+		var thisobject = $(this);
+		var cid = $(this).attr('theid');
+		
+		
+		$.post(basedomain+'content/favorite',{cid:cid},function(data){
+			if(data){
+				var favvalue = parseInt(thisobject.attr('totalvalue'),10);
+				var newvaluefav = favvalue+1 ;
+				thisobject.siblings(".thisfavvalues").html(newvaluefav);
+				thisobject.attr('totalvalue',newvaluefav);
+			}
+		
+		
+		},"JSON");
+	})
+	 
+	var statreply = false;
+	$(document).on('click','.replybuttontrigger',function(){
+			var replyid = $(this).attr("replyid");
+			$(".allreplybox").hide();
+			 
+			$(".replyboxtriggered_"+replyid).show();
+			 
+	});
+</script>
+{/literal}

@@ -1,0 +1,21 @@
+<div class="popup">
+	<div class="popupContainer popupBlack popup-small" id="popup-statements">
+        <div class="popupContent">
+			 	<div class='the-statements' style="text-align:left !important;">
+				
+					{foreach  from=$liststatement key=k item=v}
+			         	<div class='row'>
+							<input type="checkbox" status="{if $v.n_status==2}unused{else}used{/if}" class=" mystatement" {if $v.n_status==2}checked{/if} statementid={$v.id} />
+			    		   <span>{$v.description}</span>
+			            </div><!-- END .row -->
+					 {/foreach}
+			         	
+			            <div class='row rowSubmit' >
+                        	<p>*Choose your 3 choice out of these 10 statements </p>
+			                <input type='submit' class='button btnRed closestatement' value='CLOSE' style="margin:20px 0;">
+			            </div>
+				
+            	</div>
+        </div><!-- END .popupContent -->
+    </div><!-- END .popupContainer -->
+</div><!-- END .popup -->

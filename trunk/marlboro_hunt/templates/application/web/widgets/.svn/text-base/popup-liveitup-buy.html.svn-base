@@ -1,0 +1,65 @@
+<div class="popup">
+	<div class="popupContainer" id="popup-liveitup-buy">
+    <div class="popupContent" id="liveitupBuy">
+    	<div class="entry-popup popupnewsdetail">
+            <div class="thumbPopup">
+                <a href="#" class="rotate7deg" style="background-image:url({$basedomain}assets/content/phase4/liveitup/buy_img.jpg)">&nbsp;</a>
+                <span class="frameImages">&nbsp;</span>
+                <span class="photo-desc rotate7deg">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
+            </div>
+            <div class="otherPhoto">
+            	<div class="smallPhotoBox rotate7degR photo1">
+                    <a href="#" class="" style="background-image:url({$basedomain}assets/content/phase4/liveitup/buy_img1.jpg)">&nbsp;</a>
+                    <span class="smallFrame">&nbsp;</span>
+                </div><!--end .smallPhotoBox-->
+            	<div class="smallPhotoBox photo2">
+                    <a href="#" class="" style="background-image:url({$basedomain}assets/content/phase4/liveitup/buy_img2.jpg)">&nbsp;</a>
+                    <span class="smallFrame">&nbsp;</span>
+                </div><!--end .smallPhotoBox-->
+            	<div class="smallPhotoBox rotate7deg photo3">
+                    <a href="#" class="" style="background-image:url({$basedomain}assets/content/phase4/liveitup/buy_img3.jpg)">&nbsp;</a>
+                    <span class="smallFrame">&nbsp;</span>
+                </div><!--end .smallPhotoBox-->
+            </div><!--end .otherPhoto-->
+            <div class="popupDesc">
+            	<div class="descLeft">
+            		<h1>16GB 5th gen ipod touch</h1>
+                </div><!--end .descLeft-->
+                <div class="descRight">
+                	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis. magna aliqua. </p>
+                </div><!--end .descRight-->
+                <div class="itemDetail">
+                	<h3><span class="red">credit value: </span>5,500 pts</h3>
+                    <form>
+                        <div class="row">
+                            <label>Choose Quantity</label>
+                            <select class="styled" name="qty">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                            </select>
+                        </div>
+                        <div class="row">
+                            <label>Choose Color</label>
+                            <select class="styled" name="color">
+                                <option>White</option>
+                                <option>Black</option>
+                                <option>Red</option>
+                            </select>
+                        </div>
+                    	<a href="#" class="landbtn landbtn2">BUY</a><br />
+                    	<a href="#" class="landbtn landbtn2">ADD TO WISHLIST</a><br />
+                    </form>
+                    {*}
+                    <!-- AFTER PURCHASE-->
+                    <h5>remaining points after purchase: <span class="red">2,500</span></h5>
+                    <h4><span class="qtyItem">QUANTITY: 1</span> <span class="colorItem">COLOR: WHITE</span></h4>
+                    <a href="#" class="landbtn landbtn2">Confirm</a><br />
+                    <a href="#" class="landbtn landbtn2">Cancel</a><br />
+                    {/*}
+                </div><!--end .currentBid-->
+            </div><!--end .popupDesc-->
+      </div><!--END .entry-popup-->
+    </div><!-- END .popupContent -->
+  </div><!-- END .popupContainer -->
+</div><!-- END .popup -->

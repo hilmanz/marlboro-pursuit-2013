@@ -1,0 +1,21 @@
+<div class="popup2 popup-leaderboard" id="popup-full-mechanics-doubtcrush">
+    <div class="popupContent3">
+        <div class="popup-title">
+				<h1>HOW TO PLAY Doubt Crasher</h1>
+        </div><!--END .entry-title-->
+        <div class="entry-popup popupmechanicsGame">
+            		<p>Arrow key designations:<img src="{$basedomain}assets/images/icon/dc-arrow-left.png"> LEFT <img src="{$basedomain}assets/images/icon/dc-arrow-up.png"> JUMP <img src="https://www.marlboro.ph/assets/images/icon/dc-arrow-right.png"> RIGHT</p>
+                    <p>You're playing as "Doubt Crasher". You will run forward no matter what. <br>
+Make him change lanes &amp; <span style="color:#e6ad00;">jump</span> using the arrow buttons. </p>
+                    
+                    <p>Break through the <span class="red">"MAYBE's"</span> while running past motivational words and phrases.</p>
+					<p>Smashing through the <span class="red">"MAYBE"</span> word or phrase earns you 10 points while crashing into motivational words and phrases gets you a penalty of -5 points.</p>
+			<p>Reach the minimum number of points to play the next level.</p>
+            <h3 style="text-align:center;">START CRASHING!</h3>
+        </div><!--END .entry-popup-->
+        <div class="centering">
+            <a class="btnRed1 checkFlash" href="javascript:void(0)">PLAY NOW</a>
+            <a class="btnRed2 showPopups" href="#popup-leaderboard">LEADERBOARD</a>
+        </div><!--END .centering-->
+    </div><!-- END .popupContent -->
+</div><!-- END .popupContainer -->        

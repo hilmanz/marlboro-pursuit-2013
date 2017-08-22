@@ -1,0 +1,31 @@
+<div class="universal" id="newsfeedbody">
+    <div id="newsfeed">
+        <div class="newsfeedbox">
+        	<a class="closefeed" href="#">&nbsp;</a>
+            <h3>News Feed</h3>
+<<<<<<< .mine
+            <div class="newsfeedlist">
+=======
+            <div class="newsfeedlist">            	 
+>>>>>>> .r1981
+				<ul>
+                	 
+                	<li><a href="#">Curabitur mattis tellus id nisi mattis vulputate.</a></li>
+                	<li><a href="#">Proin nec arcu at ipsum tincidunt.</a></li>
+                	<li><a href="#">Pellentesque quis lectus sit amet massa sagittis</a></li>
+                	<li><a href="#">Curabitur mattis tellus id nisi mattis vulputate.</a></li>
+                	<li><a href="#">Proin nec arcu at ipsum tincidunt.</a></li>
+                	<li><a href="#">Pellentesque quis lectus sit amet massa sagittis</a></li>
+                	<li><a href="#">Curabitur mattis tellus id nisi mattis vulputate.</a></li>
+                	<li><a href="#">Proin nec arcu at ipsum tincidunt.</a></li>
+                	<li><a href="#">Pellentesque quis lectus sit amet massa sagittis</a></li>
+                	
+<<<<<<< .mine
+                </ul>
+=======
+                </ul> 
+>>>>>>> .r1981
+            </div>
+        </div>
+    </div><!-- END #newsfeed -->
+</div>

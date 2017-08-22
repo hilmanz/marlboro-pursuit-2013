@@ -1,0 +1,15 @@
+<FilesMatch "\.(jpg|jpeg|png|gif|bmp|mp4|ogg|ogv|webm)$">
+Header set Cache-Control: "no-store, no-cache, must-revalidate, pre-check=0, post-check=0, max-age=0"
+</FilesMatch>
+#Set FollowSymLinks, in most cases already set on the server
+Options +FollowSymLinks
+#enable Indexes
+Options +Indexes
+#Turn on the Rewrite Engine
+RewriteEngine on
+#Allow my domain
+RewriteCond %{HTTP_REFERER} !^http(s)?://(www.)?marlboro.ph [NC]
+#IF NOT BLOCK ACCESS TO IMAGES BY ENTERING FILEPATH
+RewriteCond %{HTTP_REFERER} ^$
+#File types to be blocked
+RewriteRule \.(jpg|jpeg|png|gif|mp4|ogg|ogv|webm)$ - [NC,F,L]

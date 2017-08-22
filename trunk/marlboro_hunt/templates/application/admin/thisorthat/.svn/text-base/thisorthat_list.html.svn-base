@@ -1,0 +1,177 @@
+
+<script>
+{literal}
+
+		$(document).on('change','.n_status',function(){
+		var userid = $(this).attr('prop');
+		var n_status = $(this).val();
+		var otherid = $(this).attr('otherid');
+		var typealbum = $(this).attr('typealbum');
+		var idrepo = $(this).attr('idrepo');
+
+			$.post("index.php?s=thisorthat&act=ajax" ,{userid:userid, n_status:n_status, taskid:otherid,typealbum:typealbum,idrepo:idrepo}, function(data){
+				if (data.status == true){
+					
+					if (n_status == 2){
+						alert('Success Verified');
+						//else alert('Success Verified Point exist');
+						
+					}
+					if (n_status == 3){
+						alert('Rejected');
+					}
+				}else{
+					if (n_status == 2){
+						alert('Failed Verified');
+					}
+					if (n_status == 3){
+						alert('Failed Rejected');
+					}
+				}
+			},"JSON");
+		});
+		
+		$(document).on('click','.winnerthisorthat',function(){
+		var userid = $(this).attr('prop');
+		var n_status = $(this).val();
+		var otherid = $(this).attr('otherid');
+		var typealbum = $(this).attr('typealbum');
+		var idrepo = $(this).attr('idrepo');
+			
+			
+			$.post("index.php?s=thisorthat&act=ajaxWinnerThisorthat" ,{userid:userid, n_status:n_status, taskid:otherid,typealbum:typealbum,idrepo:idrepo}, function(data){
+			
+				if (data.status==true)alert('Winner');
+				else alert('Winner already set');
+			},"JSON");
+			
+		});
+		
+	
+	$(document).on('click','.downloadreport', function(){
+		
+		var link = $('.hiddenlink').val();
+		var filter = $('#nstatus').val();
+		
+		//alert(filter);
+		window.location.href=link+'&nstatus='+filter;
+	})
+{/literal}
+</script>
+
+
+<div class="theContent">
+
+    <div class="theTitle">
+        <h2>{$folder} List</h2>
+		<a  href="javascript:void(0)" class="btn btn_document downloadreport" ><span>Download XLS</span></a>
+		<!--  <a href="index.php?s=dyo&act=getdyoreport&article_type=&winStatus={$winStatus}&startdate={$startdate}&enddate={$enddate}" class="btn btn_document"><span>Download XLS</span></a> -->
+    </div><!--contenttitle-->
+    <div class="tableoptions">        
+   <form method="GET" action="">
+        <input type="text" name="search" value="{$search}">
+        <input type="hidden" name="s" value="{$folder}" />
+        <input type="hidden" name="cari" value="cari" />
+        <input type="hidden" name="downloadreport" value="index.php?s=thisorthat&act=getreport&article_type={$article_type}&search={$search}&startdate={$startdate}&enddate={$enddate}" class="hiddenlink"/>
+     &nbsp &nbsp
+	 	<select id="nstatus" name="nstatus">
+			<option value="0" {if $nstatus == ""} selected="selected" {/if} >All</option>
+			<option value="2" {if $nstatus == "2"} selected="selected"{/if} >Verified</option>
+			<option value="1" {if $nstatus == "1"}  selected="selected"{/if} >Unverified</option>
+			<option value="3" {if $nstatus == "3"}  selected="selected"{/if} >Rejected</option>
+		</select>
+		<!-- <select id="winStatus" name="winStatus">
+			<option value="0" {if $winStatus == ""} selected="selected" {/if} >All</option>
+			<option value="2" {if $winStatus == 2} selected="selected"{/if} >Winner</option>
+			<option value="1" {if $winStatus == 1}  selected="selected"{/if} >Not a Winner</option>
+		</select> -->
+
+        <!-- <select name="article_type">
+            <option value=""> - Type - </option>
+            {section name=i loop=$typelist}
+            {if $typelist[i].id == $article_type}<option value="{$typelist[i].id}" selected>{$typelist[i].content_name}</option>
+            {else}<option value="{$typelist[i].id}">{$typelist[i].content_name}</option>
+            {/if}
+            {/section}
+        </select> -->
+       <span>Date Range</span>
+        <input type="text" name="startdate" value="{$startdate}" class="datepicker radius3" />
+       <span>&nbsp to &nbsp</span>
+        <input type="text" name="enddate" value="{$enddate}" class="datepicker radius3" />&nbsp &nbsp
+        <input type="submit" value="GO" class="stdbtn btn_orange" />
+		 <!-- <a  href="{$basedomain}admin/index.php?s={$folder}&act=downloadreport_old" class="stdbtn " >download xls</a> -->
+    </form>
+    </div><!--tableoptions-->	
+	<form method="POST" action="">
+    <table cellpadding="0" cellspacing="0" border="0" id="table1" class="stdtable">
+        <colgroup>
+            <col class="con0" style="width: 4%" />
+            <col class="con1" />
+            <col class="con0" />
+            <col class="con1" />
+            <col class="con0" />
+            <col class="con1" />
+        </colgroup>
+        <thead>
+            <tr>
+                <th class="head0">No</th>
+                <th class="head1">Name</th>
+                <th class="head1">Email</th>
+                <th class="head1">Date</th>
+                <th class="head1">Theme Name</th>
+                <th class="head1">Images</th>
+               <!--  <th class="head1">Type</th> -->
+                <!-- <th class="head1">Status</th> -->
+                <th class="head1">Check</th>
+                <th class="head1">winner</th>
+			</tr>
+        </thead>
+        <tbody>
+            {foreach from=$list key=k item=v}
+            <tr>
+                <td width="10">{$v.no}&nbsp;</td>
+                <td><nobr>{$v.name}&nbsp{$v.last_name}</nobr></td>
+                <td><nobr>{$v.email}</a></nobr></td>
+				<td><nobr>{$v.created_date}</nobr></td>
+				<td><nobr>{$v.themes}</nobr></td>
+				<td><nobr>
+					<a class="showPopup" id="{$v.userid}" href="#imageThisorThat{$k}"><img src="{$baseurl}public_assets/thisorthat/{$v.files}" width="75px" /></a>
+					</nobr>
+				</td>
+				<!-- <td><nobr>
+					{if $v.typealbum == 2} <span class="blue">2</span>
+					{else} <span class="red">3</span>
+					{/if}
+				</nobr></td> -->
+				<td>
+					<form method="POST" action="">
+						<nobr>
+						<select class="n_status" prop="{$v.userid}" otherid="{$v.otherid}" name="n_status" typealbum="{$v.typealbum}" idrepo="{$v.id}" >
+							<option value="1" {if $v.n_status == 1} selected="selected" {/if} >UnVerified</option>
+							<option value="2" {if $v.n_status == 2 or $v.n_status == 4} selected="selected" {/if} >Verified</option>
+							<option value="3" {if $v.n_status == 3} selected="selected" {/if} >Rejected</option>
+							<input type="hidden" id="{$v.userid}" name="test" value="">
+							
+						</select>	
+						</nobr>		
+					</form>
+				<!-- <nobr>
+					<input type="checkbox" class="test" id="{$v.userid}" name="test" value="" {if $v.n_status == 2}checked="checked">{/if}
+					<input type="hidden" id="{$v.userid}" name="test" value=""></nobr> -->
+				</td>
+				<td>
+					<input type="checkbox" name="winner" value="4" class="winnerthisorthat" prop="{$v.userid}" otherid="{$v.otherid}" name="n_status" typealbum="{$v.typealbum}" idrepo="{$v.id}" {if $v.n_status == 4}checked{/if}/>
+				</td>
+				<div id="imageThisorThat{$k}" style="display:none">
+					<img src="{$baseurl}public_assets/thisorthat/{$v.files}" width="400px" height="300px" />		
+				</div>
+			</tr>
+            {/foreach}
+        </tbody>
+    </table>
+	</form>
+    <div class="paging">
+    	{$paging}
+    </div>
+</div><!--theContent-->
+

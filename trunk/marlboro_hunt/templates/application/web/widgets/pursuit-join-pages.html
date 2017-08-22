@@ -1,0 +1,242 @@
+
+<div id="pursuitPage">
+	<div class="pursuitPage">
+        <ul class="columns-content clearfix">
+            <li class="col-sidebar">
+                <div class="titlePaper">
+                    <h1><span class="black">THE</span><span class="red">PURSUIT</span></h1>
+                </div><!-- END .titlePaper -->
+                <div class="sideBar">
+                	<div style="height:170px;">
+                    <div class="be-marlboro3"></div>
+                    </div>
+                    <div class="entry">
+                        <div class="row"><a class="readmore rblack" href="{$basedomain}pursuit/learnMore">Learn More</a></div>
+                        <div class="row"><a class="readmore rblack showPopup" href="#popup-full-mechanics-pursuit">Read Full Mechanics</a></div>
+                        <div class="row"><a class="readmore rblack" href="{$basedomain}pursuit/prize">What You Can Win</a></div>
+                        <div class="row"><a class="readmore rblack" href="{$basedomain}mscape">See The Grand Prize</a></div>
+                        <div class="row"><a class="readmore rblack redeemprize" href="javascript:void(0)">Redeem Prize</a></div>
+                    </div><!-- END .entry -->
+                </div><!-- END .sideBar -->
+            </li><!-- END .col-sidebar -->
+            <li class="col-main">
+            	<div id="joinPursuit">
+                    <ul class="columns-2 clearfix">
+                        <li class="col2">
+                            <div id="text-collection">
+							{*}
+									<span {if $myletter.1 !=''}class="red"{/if}>D</span>
+									<span {if $myletter.2 !=''}class="red"{/if}>O</span>
+									<span {if $myletter.3 !=''}class="red"{/if}>N</span>
+									<span {if $myletter.3 !=''}class="red"{/if}>'</span>
+									<span {if $myletter.4 !=''}class="red"{/if}>T</span>
+									<span class="space"></span>
+									<span {if $myletter.5 !=''}class="red"{/if}>B</span>
+									<span {if $myletter.6 !=''}class="red"{/if} >E</span><br />
+									<span {if $myletter.7 !=''}class="red"{/if} >A</span>
+									<span class="space"></span>
+									<span {if $myletter.8 !=''}class="red"{/if}>M</span>
+									<span {if $myletter.9 !=''}class="red"{/if}>A</span>
+									<span {if $myletter.10 !=''}class="red"{/if}>Y</span>
+									<span {if $myletter.11 !=''}class="red"{/if}>B</span>
+									<span {if $myletter.12 !=''}class="red"{/if}>E</span>
+							{/*}
+									<span {if $myletter.1 !=''}class="red"{/if} id="1letter">D</span>
+									<span {if $myletter.2 !=''}class="red"{/if} id="2letter">O</span>
+									<span {if $myletter.3 !=''}class="red"{/if} id="3letter">N</span>
+									<span {if $myletter.4 !=''}class="red"{/if} >'</span>
+									<span {if $myletter.4 !=''}class="red"{/if} id="4letter">T</span>
+									<span class="space"></span>
+									<span {if $myletter.5 !=''}class="red"{/if} id="5letter">B<span class="smallFonts">1</span></span>
+									<span {if $myletter.6 !=''}class="red"{/if} id="6letter">E<span class="smallFonts">1</span></span><br />
+									<span {if $myletter.7 !=''}class="red"{/if} id="7letter">A<span class="smallFonts">1</span></span>
+									<span class="space"></span>
+									<span {if $myletter.8 !=''}class="red"{/if} id="8letter">M</span>
+									<span {if $myletter.9 !=''}class="red"{/if} id="9letter">A<span class="smallFonts">2</span></span>
+									<span {if $myletter.10 !=''}class="red"{/if} id="10letter">Y</span>
+									<span {if $myletter.11 !=''}class="red"{/if} id="11letter">B<span class="smallFonts">2</span></span>
+									<span {if $myletter.12 !=''}class="red"{/if} id="12letter">E<span class="smallFonts">2</span></span>
+                            </div><!-- END #text-collection -->
+                            <h4 style=" float:right;font-size:12px; padding:30px 10px 0 0; margin:0;">Double  Click on a Letter to put it on the board</h4>
+                            <div id="text-collected-container">
+                            	
+                                <div id="text-collected">
+
+                                    
+									{if $myletterdetail}
+
+                                 
+
+									{foreach from=$myletterdetail key=k item=v}
+										{if $v.total !=0}
+
+											<div class="letterBox"><img src="{$basedomain}/assets/content/tiles/{$v.letter|lower}{if $v.type}1{/if}.png" class="changeletter" prop="{$k}" title="Double  Click on a Letter to put it on the board" />
+											<span class="total-tiles">{$v.total}</span>
+											</div>
+									
+										{/if}
+									{/foreach}
+									{else}
+								   <h6 class="clue-text">COMPLETE THE TASKS TO COLLECT LETTERS</h6>
+									{/if}
+                                </div><!-- END #text-collected -->
+                                
+                                <div class="row">
+                                    <a class="whiteBtns showpopuptradingfloor" href="javascript:void(0)">Open Trading Floor</a>
+                                   
+									<!--<a class="whiteBtns showPopup" href="#popup-trading-floor">Open Trading Floor</a>-->
+                                </div><!-- END .row -->
+								
+                            </div><!-- END #text-collected-container -->
+                    	</li><!-- END .col2 -->
+                        <li class="col2">
+                        	<div id="userBox">
+                                <div class="authorBox">
+                                    <!--<a class="thumb-user fl" href="#"><img src="{$basedomain}assets/content/thumb_user.jpg" /></a>-->
+                                    <a class="thumb-user fl" href="#">
+									{if $user.photo_moderation ==1}
+									{if $user.image_profile}
+									<img src="{$basedomain}public_assets/user/photo/{$user.image_profile}" />
+									{else}
+									<img src="{$basedomain}assets/content/thumb_user.jpg" />
+									{/if}
+									
+									{else}
+									<img src="{$basedomain}assets/content/thumb_user.jpg" />
+									{/if}
+									</a>                                    
+                                    <h3 class="username fl">{$user.name}</h3>
+                                </div>
+                                <div class="accordion">
+                                    <h3 class="icon_title icon_tasklist tasklistpursuit">Task List</h3>
+                                         
+										<div class='entry-accordion ' id='task-list'>
+											<div class='control-bar'>
+												<a class='arrow-top pagingtaskprev' href='javascript:void(0)' what='tasklist' >&nbsp;</a>
+											</div><!-- END .control-bar -->
+											<div class='entries tasklistpursuitcontent' startpage="0" total="{$total}">
+											{$task_list}
+											</div><!-- END .entries -->
+											<div class='control-bar control-bottom'>
+												<a class='arrow-bottom pagingtasknext' href='javascript:void(0)' what='tasklist' >&nbsp;</a>
+											</div><!-- END .control-bar -->
+										</div><!-- END .entry-accordion -->
+
+									{*}		
+                                   <h3 class="icon_title icon_message taskpursuitmessage">Messages</h3>
+										<div class='entry-accordion' id='messages-user'>
+											<div id='message-list'>
+												<div class='control-bar'>
+													<a class='arrow-top' href='#'>&nbsp;</a>
+												</div>
+												<div class='entries mymessagesList'></div>
+												<div class='control-bar control-bottom'>
+													<a class='arrow-bottom' href='#'>&nbsp;</a>
+												</div>
+											</div>
+										</div>
+									{/*}
+									
+									<h3 class="icon_title icon_request taskpursuitmytrade">My Trade</h3>
+										<div class="entry-accordion" id="trade-request">
+											<div class="control-bar">
+												<a class="arrow-top prevpagingmytrade" href="javascript:void(0)">&nbsp;</a>
+											</div><!-- END .control-bar -->
+											<div class="entries mytradeList" startpage="0" total="">	
+												<!-- trade list content -->
+												
+											</div><!-- END .entries -->
+											<div class="control-bar control-bottom">
+												<a class="arrow-bottom nextpagingmytrade" href="javascript:void(0)">&nbsp;</a>
+											</div><!-- END .control-bar -->
+											<a class="btn_black showPopup titlePopupTradealetter" href="javascript:void(0)">Trade A Letter</a>
+											<a class="btn_black showPopup showpopuptradingfloor" href="javascript:void(0)">Trade Floor</a>
+										</div><!-- END .entry-accordion -->
+									
+									<h3 class="icon_title icon_task taskpursuitaccomplished">Accomplished Tasks</h3>
+										<div class='entry-accordion' id='accomplished-tasks'>
+											<div class='control-bar'>
+												<a class='arrow-top prevlistaccomplished' href='javascript:void(0)' >&nbsp;</a>
+											</div><!-- END .control-bar -->
+											<div class='entries pursuitaccomlishedcontent' startpage="0" total=""></div><!-- END .entries -->
+											<div class="control-bar control-bottom">
+												<a class="arrow-bottom nextlistaccomplished" href="javascript:void(0)" pagingend="4">&nbsp;</a>
+											</div><!-- END .control-bar -->
+										</div><!-- END .entry-accordion -->
+										
+										<h3 class="icon_title icon_update taskpursuitupdate">The Pursuit Updates</h3>
+										<div class='entry-accordion' id='pursuit-updates'>
+											<div class='control-bar'>
+												<a class='arrow-top prevlistpursuitupdate' href='javascript:void(0)'>&nbsp;</a>
+											</div><!-- END .control-bar -->
+											<div class='entries pursuitupdatecontent' startpage="0" total=""></div><!-- END .entries -->
+											<div class="control-bar control-bottom">
+												<a class="arrow-bottom nextlistpursuitupdate" href="javascript:void(0)">&nbsp;</a>
+											</div><!-- END .control-bar -->
+										</div><!-- END .entry-accordion -->
+										
+										<h3 class="icon_title icon_player pursuitListplayer">The Pursuit Players</h3>
+											<div class="entry-accordion" id="pursuit-players">
+												<div class="control-bar">
+													<a class="arrow-top prevlistpursuitplayer" href="javascript:void(0)">&nbsp;</a>
+												</div><!-- END .control-bar -->
+												<div class="entries framelistplayer" startpage="0" total="">
+													<div class="searchBox">
+														
+															<input type="text" value="" id="searchPlayerbox"/>
+															<input type="submit" value="SEARCH" class="searchPursuitPlayer"/>
+														
+													</div><!-- END .searchBox -->
+													<div id="listPlayer" class="listPlayerPursuit"></div><!-- END #listPlayer -->
+												</div><!-- END .entries -->
+													<div class="control-bar control-bottom">
+														<a class="arrow-bottom nextlistpursuitplayer" href="javascript:void(0)" >&nbsp;</a>
+													</div><!-- END .control-bar -->
+												</div><!-- END .entry-accordion -->
+										
+                                </div><!-- END .accordion -->
+                            </div><!-- END #userBox -->
+                        </li><!-- END .col2 -->
+                    </ul><!-- END .columns-2 -->
+                </div><!-- END #joinPursuit -->
+            </li><!-- END .col-main -->
+        </ul>
+    </div><!-- END .dyoshirtPages -->
+</div><!-- END #dyoshirtPages -->
+
+
+
+{include file="application/web/widgets/popup-full-mechanics-pursuit.html"}
+{include file="application/web/widgets/popup_redeem_4.html"}
+{include file="application/web/widgets/popup_redeem_3.html"}
+{include file="application/web/widgets/popup_redeem_2.html"}
+{include file="application/web/widgets/popup_redeem_1.html"}
+{include file="application/web/widgets/popup_redeem_claim.html"}
+
+{$popup_trading_floor}
+{$popup_post_trade}
+{$popup_post_trade_message}
+{$popup_trade_open}
+{$popup_trade_confirm}
+{$popup_trade_success}
+{$popup_task}
+{$popup_offline}
+{$popup_invitefriend}
+{$popup_get_letter}
+{$popup_message_black}
+
+<div style='display:none'>
+{section name=i loop=$merchanDont loop=1 }
+<a class="thumb-prize redeemPrizeDont"  prop="{$merchanDont[i].id}" filename="{$merchanDont[i].image}" ></a>
+{/section}
+{section name=i loop=$merchanDontbe loop=1 }
+<a class="thumb-prize redeemPrizeDontBe" prop="{$merchanDontbe[i].id}" filename="{$merchanDontbe[i].image}"></a>
+{/section}
+{section name=i loop=$merchanDontbea loop=1 }
+<a class="thumb-prize redeemPrizeDontBeA"  prop="{$merchanDontbea[i].id}" filename="{$merchanDontbea[i].image}"></a>
+{/section}
+{section name=i loop=$merchanDontbeamaybe loop=1 }
+<a class="thumb-prize redeemPrizeDontBeAMaybe"  prop="{$merchanDontbeamaybe[i].id}" filename="{$merchanDontbeamaybe[i].image}"></a>
+{/section}
+</div>
+<script  type="text/javascript" src="{$basedomain}assets/js/helper/pursuitjoin.js"></script>

@@ -1,0 +1,429 @@
+<div class="section">
+	<div class="the-title fl">
+        <h2>Letters</h2>
+    </div>
+    <form method="GET" action="">
+    <div class="menu_charts">
+            <input type="text"  id="from" name="startdate" value="{$startdate}" ><span>-</span>
+            <input type="text"  id="to" name="enddate" value="{$enddate}" /><a href="javascript:void(0)" class="calendar"></a>
+    </div>
+	</form>
+    <div class="boxBig">
+    	<div class="title_box">
+            <div class="the-title fl">
+                <h2>Number of Redeem Letters</h2>
+            </div>
+         </div>
+        <div class="chart-section" id="letterDataField" >
+			<!-- <img src="{$assets_domain}images/charts.jpg"> -->
+        </div>
+     </div><!--end.boxBig-->
+     
+     <div class="box-letterTable">
+     	<div class="title_box">
+            <div class="the-title fl">
+                <h2>Letters Percentage</h2>
+            </div>
+         </div>
+        <div class="letterTable-content">
+        	 <table class="gridtable">
+            <tr>
+                <td>D</td>
+                <td>{$letterPercentage[1].D}%</td>
+            </tr>
+            <tr>
+                <td>O</td>
+                <td>{$letterPercentage[2].O}%</td>
+            </tr>
+            <tr>
+                <td>N</td>
+                <td>{$letterPercentage[3].N}%</td>
+            </tr>
+            <tr>
+                <td>T</td>
+                <td>{$letterPercentage[4].T}%</td>
+            </tr>
+            <tr>
+                <td>B1</td>
+                <td>{$letterPercentage[5].B}%</td>
+            </tr>
+            <tr>
+                <td>E1</td>
+                <td>{$letterPercentage[6].E}%</td>
+            </tr>
+            <tr>
+                <td>A1</td>
+                <td>{$letterPercentage[7].A}%</td>
+            </tr>
+            <tr>
+                <td>M</td>
+                <td>{$letterPercentage[8].M}%</td>
+            </tr>
+            <tr>
+                <td>A2</td>
+                <td>{$letterPercentage[9].A}%</td>
+            </tr>
+            <tr>
+                <td>Y</td>
+                <td>{$letterPercentage[10].Y}%</td>
+            </tr>
+            <tr>
+                <td>B2</td>
+                <td>{$letterPercentage[11].B}%</td>
+            </tr>
+            <tr>
+                <td>E2</td>
+                <td>{$letterPercentage[12].E}%</td>
+            </tr>
+            </table>
+        </div>
+     </div><!--end.box-letterTable-->
+     <div class="box-letterTable">
+     	<div class="title_box">
+            <div class="the-title fl">
+                <h2>Letters Percentage Redeem</h2>
+            </div>
+         </div>
+        <div class="letterTable-content">
+        	 <table class="gridtable">
+            <tr>
+                <td>D</td>
+                <td>{$letterPercentageRedeem[1].persentase}%</td>
+            </tr>
+            <tr>
+                <td>O</td>
+                <td>{$letterPercentageRedeem[2].persentase}%</td>
+            </tr>
+            <tr>
+                <td>N</td>
+                <td>{$letterPercentageRedeem[3].persentase}%</td>
+            </tr>
+            <tr>
+                <td>T</td>
+                <td>{$letterPercentageRedeem[4].persentase}%</td>
+            </tr>
+            <tr>
+                <td>B1</td>
+                <td>{$letterPercentageRedeem[5].persentase}%</td>
+            </tr>
+            <tr>
+                <td>E1</td>
+                <td>{$letterPercentageRedeem[6].persentase}%</td>
+            </tr>
+            <tr>
+                <td>A1</td>
+                <td>{$letterPercentageRedeem[7].persentase}%</td>
+            </tr>
+            <tr>
+                <td>M</td>
+                <td>{$letterPercentageRedeem[8].persentase}%</td>
+            </tr>
+            <tr>
+                <td>A2</td>
+                <td>{$letterPercentageRedeem[9].persentase}%</td>
+            </tr>
+            <tr>
+                <td>Y</td>
+                <td>{$letterPercentageRedeem[10].persentase}%</td>
+            </tr>
+            <tr>
+                <td>B2</td>
+                <td>{$letterPercentageRedeem[11].persentase}%</td>
+            </tr>
+            <tr>
+                <td>E2</td>
+                <td>{$letterPercentageRedeem[12].persentase}%</td>
+            </tr>
+            </table>
+        </div>
+     </div><!--end.box-letterTable-->
+    <div class="box-letterTable">
+     	<div class="title_box">
+            <div class="the-title fl">
+                <h2>Number of Single Letters</h2>
+            </div>
+         </div>
+        <div class="letterTable-content">
+        	<table class="gridtable">
+            <tr>
+                <td>D</td>
+                <td>{$numSingleLetter[1].D}</td>
+            </tr>
+            <tr>
+                <td>O</td>
+                <td>{$numSingleLetter[2].O}</td>
+            </tr>
+            <tr>
+                <td>N</td>
+                <td>{$numSingleLetter[3].N}</td>
+            </tr>
+            <tr>
+                <td>T</td>
+                <td>{$numSingleLetter[4].T}</td>
+            </tr>
+            <tr>
+                <td>B1</td>
+                <td>{$numSingleLetter[5].B}</td>
+            </tr>
+            <tr>
+                <td>E1</td>
+                <td>{$numSingleLetter[6].E}</td>
+            </tr>
+            <tr>
+                <td>A1</td>
+                <td>{$numSingleLetter[7].A}</td>
+            </tr>
+            <tr>
+                <td>M</td>
+                <td>{$numSingleLetter[8].M}</td>
+            </tr>
+            <tr>
+                <td>A2</td>
+                <td>{$numSingleLetter[9].A}</td>
+            </tr>
+            <tr>
+                <td>Y</td>
+                <td>{$numSingleLetter[10].Y}</td>
+            </tr>
+            <tr>
+                <td>B2</td>
+                <td>{$numSingleLetter[11].B}</td>
+            </tr>
+            <tr>
+                <td>E2</td>
+                <td>{$numSingleLetter[12].E}</td>
+            </tr>
+            </table>
+        </div>
+    </div><!--end.box-letterTable-->
+
+    
+	<div class="box-letterTable last-box">
+     	<div class="title_box">
+            <div class="the-title fl">
+                <h2>Number of redeem letters by channel</h2>
+            </div>
+         </div>
+        <div class="letterTable-content">
+        	<table class="gridtable">
+			<tbody id="redeemLetters">
+			 {foreach from=$numRedeemLetter key=k item=v}
+			<tr>
+				<td>{$v.histories}</td>
+				<td>{$v.total}</td>
+				
+			</tr>
+			 {/foreach}
+             </tbody>
+            </table>
+            <div id="holderLetters" class="holder"></div>
+        </div>
+		
+		
+    </div><!--end.box-letterTable-->
+	
+	<div class="box-letterTable">
+     	<div class="title_box">
+            <div class="the-title fl">
+                <h2>Number of Total Trading</h2>
+            </div>
+         </div>
+        <div class="letterTable-content">
+        	<table class="gridtable">
+            
+			 {foreach from=$numTotalTrade.get key=k item=v}
+			<tr>
+				<td>{$v.codeName}</td>
+				<td>{$v.total}</td>
+				
+			</tr>
+			 {/foreach}
+			 <tr>
+				<td>Total</td>
+				<td>{$numTotalTrade.total}</td>
+			</tr>
+            </table>
+        </div>
+		
+		
+    </div><!--end.box-letterTable-->
+	
+	<div class="box-letterTable">
+     	<div class="title_box">
+            <div class="the-title fl">
+                <h2>Number of Succesful Trade</h2>
+            </div>
+         </div>
+        <div class="letterTable-content">
+        	<table class="gridtable">
+            
+			 {foreach from=$numSuccessTrade.get key=k item=v}
+			<tr>
+				<td>{$v.codeName}</td>
+				<td>{$v.total}</td>
+				
+			</tr>
+			 {/foreach}
+			 <tr>
+				<td>Total</td>
+				<td>{$numSuccessTrade.total}</td>
+			</tr>
+            </table>
+        </div>
+		
+		
+    </div><!--end.box-letterTable-->
+	
+	
+     <div class="box-letterTable">
+     	<div class="title_box">
+            <div class="the-title fl">
+                <h2>Number of each Letters Set</h2>
+            </div>
+         </div>
+        <div class="letterTable-content">
+        	 <table class="gridtable">
+            <tr>
+                <td>DONT</td>
+                <td>{$numEachLetterset.DONT}</td>
+            </tr>
+            <tr>
+                <td>DONT BE</td>
+                 <td>{$numEachLetterset.DONTBE}</td>
+            </tr>
+            <tr>
+                <td>DONT BE A</td>
+               <td>{$numEachLetterset.DONTBEA}</td>
+            </tr>
+            <tr>
+                <td>DONT BE A MAYBE</td>
+                 <td>{$numEachLetterset.DONTBEAMAYBE}</td>
+            </tr>
+            </table>
+        </div>
+     </div><!--end.box-letterTable-->
+     <div class="box-letterTable last-box">
+     	<div class="title_box">
+            <div class="the-title fl">
+                <h2>Letter Being Trade</h2>
+            </div>
+         </div>
+        <div class="letterTable-content">
+        	<table class="gridtable">
+            {foreach from=$letterBeingTrade.get key=k item=v}
+            
+			<tr>
+                <td>{$v.codeName}</td>
+                <td>{$v.total}</td>
+            </tr>
+			{/foreach}
+            <tr>
+				<td>Total</td>
+				<td>{$letterBeingTrade.total}</td>
+			</tr>
+			</table>
+        </div>
+     </div><!--end.box-letterTable-->
+	{*}
+     <div class="the-title">
+        <h2>Trading</h2>
+    </div>
+	<div class="lettersInfo">
+     	<div class="trading-title">
+        	<h2>Number of Total Trading</h2>
+        </div>
+        <div class="lettersInfo-content	">
+        	<h1>{$totalTrading.num}</h1>
+        </div>
+     </div><!--end.box-diagram-->
+     
+     <div class="lettersInfo">
+     	<div class="trading-title">
+        	<h2>Most Traded Letters</h2>
+        </div>
+        <div class="lettersInfo-contentCenter">
+        	<img src="{$assets_domain}images/tiles/{$mostTradeLetter[0].codename}.png" />
+        	<h1>{$mostTradeLetter[0].totalCode}</h1>
+        </div>
+     </div><!--end.box-diagram-->
+     
+     <div class="lettersInfo last-box">
+     	<div class="trading-title">
+        	<h2>Number of Successful Trade</h2>
+        </div>
+        <div class="lettersInfo-content">
+        	<h1>{$succesTrade.num}</h1>
+        </div>
+     </div><!--end.box-diagram-->
+      {/*}
+	    <div class="boxBig">
+    	<div class="title_box">
+            <div class="the-title fl">
+                <h2>Letter Per User</h2>
+            </div>
+			<div class="the-title fr">
+                 <h2><a href="{$basedomain}letter_and_trading/downloadreport/{$startdate}/{$enddate}" style=" float:right;position:relative">[ download report ]</a></h2>
+            </div>
+         </div>
+		<table class="gridtable">
+			<tr><th>NAME</th><th>LAST NAME</th><th>EMAIL</th>
+			<th>D</th><th>O</th><th>N</th><th>T</th>
+			<th>B1</th><th>E1</th>
+			<th>A1</th>
+			<th>M</th><th>A2</th><th>Y</th><th>B2</th><th>E2</th></tr>
+			{foreach from=$letterperuser key=k item=v}
+				<tr>
+                <td>{$v.name}</td>
+				<td>{$v.last_name}</td>
+                <td>{$v.email}</td>
+                <td>{$v.D}</td>
+                <td>{$v.O}</td>
+                <td>{$v.N}</td>
+                <td>{$v.T}</td>
+                <td>{$v.B1}</td>
+                <td>{$v.E1}</td>
+                <td>{$v.A1}</td>
+                <td>{$v.M}</td>
+                <td>{$v.A2}</td>
+                <td>{$v.Y}</td>
+                <td>{$v.B2}</td>
+                <td>{$v.E2}</td>
+				</tr>
+			{/foreach}
+           
+           
+          </table>
+     </div><!--end.boxBig-->
+	  
+</div><!--end.section-->
+
+<script type="text/javascript">
+	var numberRedeemLetter = {$numberRedeemLetter|@json_encode};
+	
+{literal}	
+$(function () {
+
+	var letterData = new Array();
+	var letterDate = new Array();	
+	
+	for (var redeemLetter in numberRedeemLetter){
+		letterData.push(parseInt(numberRedeemLetter[redeemLetter].num));
+		letterDate.push(String(numberRedeemLetter[redeemLetter].codename));
+	}
+	
+	gethighChart('column','test  Chart','letterDataField',letterData,letterDate,1, true, false, false, true, false, true);
+	
+	//drillDownChart('column','test Chart','cont',dataCoba,cateActivityGroup,1 ,false);
+	});
+	
+	$(document).on('click','.calendar', function(){
+		
+		var from = $('#from').val();
+		var to = $('#to').val();
+		
+		window.location.href='?startdate='+from+'&enddate='+to;
+	
+	})
+		
+</script>
+{/literal}

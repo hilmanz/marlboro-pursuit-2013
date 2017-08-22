@@ -1,0 +1,67 @@
+<div id="moveFwd" class="universal">
+	<div class="moveFwd">
+        <ul class="columns-4 clearfix">
+            <li class="col4">
+            	<div class="boxGame" style="top:-30px; position:relative;">
+                    <div class="thumbGame">
+                    	<a href="{$basedomain}thisorthat/winner"><img src="{$basedomain}assets/content/phase4/movefwd/1.png" /></a>
+                    </div><!-- END .thumbGame -->
+                    <div class="captions">
+                        <h1>I WILL GLIDE ON WATER</h1>
+                        <a class="landbtn landbtn1" href="{$basedomain}thisorthat/winner">SIGN ME UP</a>
+                    </div><!-- END .captions -->
+                </div><!-- END .boxGame -->
+            </li>
+            <li class="col4">
+            	<div class="boxGame">
+                    <div class="captions">
+                        <h1>i will perform in front of a crowd</h1>
+                        <a class="landbtn landbtn2" href="{$basedomain}thisorthat/winner">SIGN ME UP</a>
+                    </div><!-- END .captions -->
+                    <div class="thumbGame">
+                    	<a href="{$basedomain}thisorthat/winner"><img src="{$basedomain}assets/content/phase4/movefwd/2.png" /></a>
+                    </div><!-- END .thumbGame -->
+                </div><!-- END .boxGame -->
+            </li>
+			  <li class="col4">
+            	<div class="boxGame">
+                    <div class="thumbGame">
+                    	<a href="{$basedomain}thisorthat/winner"><img src="{$basedomain}assets/content/phase4/movefwd/3.png" /></a>
+                    </div><!-- END .thumbGame -->
+                    <div class="captions">
+                        <h1>i will capture the moment</h1>
+                        <a class="landbtn landbtn1" href="{$basedomain}thisorthat/winner">SIGN ME UP</a>
+                    </div><!-- END .captions -->
+                </div><!-- END .boxGame -->
+            </li>
+			  <li class="col4">
+            	<div class="boxGame">
+                    <div class="captions">
+                        <h1>i will impress my friends</h1>
+                        <a class="landbtn landbtn2" href="{$basedomain}thisorthat/winner">SIGN ME UP</a>
+                    </div><!-- END .captions -->
+                    <div class="thumbGame">
+                    	<a href="{$basedomain}thisorthat/winner"><img src="{$basedomain}assets/content/phase4/movefwd/4.png" /></a>
+                    </div><!-- END .thumbGame -->
+                </div><!-- END .boxGame -->
+            </li>
+        </ul>
+    </div><!-- END .moveFwd -->
+</div><!-- END #moveFwd -->
+<div id="welcomeMoveFwd" class="centercontent">
+	<h1>MOVE FWD</h1>
+    <h2>Get Rewarded for Making Decisions</h2>
+    <h3>Earn points for the decisions you make with Marlboro. <br />Use these points to buy limited edition merchandise, bid on exclusive,<br />
+	 once-in-a-lifetime expriences, or reserve a table in any of our partner establishments.  </h3>
+	<a class="landbtn landbtn2" id="closewelcome" href="#">CONTINUE</a>
+</div>
+<div class="bgpopup"></div>
+<script>
+{literal}
+$(document).ready(function() { 
+	jQuery("a#closewelcome").click(function(){
+		jQuery(".bgpopup,.centercontent,.fakeheader").fadeOut();
+	});
+});
+{/literal}
+</script>

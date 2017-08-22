@@ -1,0 +1,331 @@
+<div id="video-list" class="universal">
+    <div class="paperNews"></div>
+   {include file="application/web/widgets/left_navigation.html"}
+    <div id="newslist" class="carousel">
+        <ul class="slides">	
+            <li class="slidesitem">
+                <ul class="columns-2 clearfix">
+							<li class="col2">
+								<div class="boxVideoBig rotation1" style="z-index:100">
+									<div class="thumbVideoBig">
+										<div class="box-frame">
+											<a class="getDetailContent " href="javascript:void(0)" prop="{$dataEvent[0].id}" theid="{$dataEvent[0].id}"  >
+												<img src="{$basedomain}public_assets/video/a288326806887dd113fe10c987a551bd.jpg" />
+											</a>
+										</div>
+										
+									</div><!-- END .thumbVideoBig --><br />
+									<div class="captions">
+										<h3>Judul Video</h3>
+									</div><!-- END .captions -->
+								</div><!-- END .boxVideoBig -->
+							</li>
+                            <li class="col2-2">
+								<div class="boxVideosmall  rotation2">
+									<div class="thumbVideosmall">
+										<div class="box-frame">
+											<a class="getDetailContent " href="javascript:void(0)" prop="{$val.id}" theid="{$val.id}"  >
+												<img src="{$basedomain}public_assets/video/9e29c26924c6cf0758c6191b06a3a66d.jpg" />
+											</a>
+										</div>
+									</div><!-- END .thumbVideosmall --><br />
+									<div class="captions">
+										<h3>Judul Video</h3>
+									</div><!-- END .captions -->
+								</div><!-- END .boxVideosmall -->
+                                <div class="boxVideosmall  rotation3">
+									<div class="thumbVideosmall">
+										<div class="box-frame">
+											<a class="getDetailContent " href="javascript:void(0)" prop="{$val.id}" theid="{$val.id}"  >
+												<img src="{$basedomain}public_assets/video/9e29c26924c6cf0758c6191b06a3a66d.jpg" />
+											</a>
+										</div>
+									</div><!-- END .thumbVideosmall --><br />
+									<div class="captions">
+										<h3>Judul Video</h3>
+									</div><!-- END .captions -->
+								</div><!-- END .boxVideosmall -->				
+									<a class="showPopup getVideoAbout" style="display:none" href="#popup-videodetail"  ></a>
+                </ul>
+            </li><!-- END .slidesitem -->
+        </ul><!-- END .slides -->
+	</div><!-- END #prizeList -->
+</div><!-- END #prizePage -->
+
+
+
+<script>
+
+{literal}
+	function onerrorEvent(img){
+		$(img).attr('src',basedomain+'public_assets/photo_frame.png');
+	}
+	$(document).on('click','.getDetailContent',function(){
+		
+		/* message to wait data */
+			$(".getVideoAbout").trigger('click');
+			$(".thedatadetail").html(" <img style='padding-top:150px' src='"+basedomain+"assets/images/loader.gif' /> ");
+			$(".detailusercontent").html(" <img style='padding-top: 10px; padding-left: 0;' src='"+basedomain+"assets/images/loader.gif' /> ");
+			$(".commentuserdetail").html("  "); 
+			$("#thecommentcontentid").hide();
+		/* message to wait data */
+		
+		var theid = $(this).attr('theid');
+			
+			 
+			$.post(basedomain+'content/detail',{id:theid},function(arr){
+				 
+				
+				if(arr.result){
+					var data = arr.article;
+				
+					var html = viewgallerycontent(data,'video');					
+					var usercontent = viewdetailusercontent(arr.article);
+					
+					
+					var commenthtml = viewcomments(arr.comment);
+					
+					$(".thedatadetail").html(html);
+					$(".detailusercontent").html(usercontent);
+					$(".commentuserdetail").html(commenthtml);
+					$("#thecommentcontentid").show();
+					
+					$(".thecontentidcomment").val(theid);
+					
+					
+					var updateoptions = {
+					dataType:  'json', 	
+					beforeSubmit: function(data) { 
+							 
+							$(".messagesendingcontent").html(locale.pleasewait);		
+							 
+					},
+					success : function(data) {		
+							$(".messagesendingcontent").html('');
+							if(data.result){
+										 
+										/*
+										var comhtml ="";
+									
+										comhtml+="<div class='row comment-child'>";
+										comhtml+="             <div class='thumb-user'>";
+										if(data.img)comhtml+="                <a href='#'><img src='"+basedomain+"public_assets/user/photo/small_"+data.img+"' /></a>";
+										else comhtml+="                <a href='#'><img src='"+basedomain+"public_assets/user/photo/default.jpg' /></a>";
+										comhtml+="            </div>";
+										comhtml+="            <div class='entry-right'>";
+										comhtml+="               <div class='entry-header'>";
+										comhtml+="                   <h3 class='username'><a href='#'>"+data.name+"</a></h3>";
+										comhtml+="               </div> ";
+										comhtml+="               <div class='entry-body'>";
+										//comhtml+="                   <p>"+data.comment+"</p>";
+										comhtml+="                   <p> please wait your comment on moderation </p>";
+										comhtml+="                   <span class='comment-date'>Posted on "+data.date+"</span>";
+										comhtml+="               </div> ";
+										comhtml+="           </div> ";
+										comhtml+="       </div> ";
+										$(".commentuserdetail").prepend(comhtml);
+										*/
+										var htmlThanks ="";
+										htmlThanks = "<p class='postSucces'>Successfully uploaded your comment and is subject to moderation,</br>please allow 24 hours for changes to take effect</p>";
+										$(".wakeboarding-thanks").trigger("click");
+										$(".content").html(htmlThanks);
+										
+										$(document).on('click', '#fancybox-close, #fancybox-overlay', function(){
+											location.reload();
+										})
+								 							
+							}
+								 
+					}
+					};					
+
+					$("#thecommentcontentid").ajaxForm(updateoptions);
+					
+					 
+					//$(".getEvent").trigger('click');
+					reinitpopupevent();
+				}
+				
+				
+			},"JSON");
+			
+		
+	})
+
+	 
+/* blow of this function goto the js helper */
+	 /* this function same as event */
+	 $(document).on('click','.detailimageplease',function(){
+	 
+		var fullimage = $(this).attr('fullimage');
+		var gid = $(this).attr('gid');
+		
+		$(".allimagesdetail").fadeOut();
+		$(".thiscontentfullimage_"+gid).fadeIn();
+	 });
+	
+ 
+	function viewgallerycontent(data,imagepaths){
+			var html="";
+			if(data){
+					
+				 
+						 
+						if(data.hasfile){
+								html+="<div id='video-box' class='video-labor-content' >";
+								html+="	 <video id='video-labor' class='video-js vjs-default-skin' controls='controls' preload='none' width='100%' height='298' poster='"+basedomain+"public_assets/"+imagepaths+"/"+data.image+"'  data-setup=''  >";
+								html+="		<source src='"+basedomain+"public_assets/"+imagepaths+"/"+data.file+"' type='video/mp4' />";
+							 
+								  
+								html+="	  </video>";
+								html+="</div> ";
+							 
+						}
+						 
+				 
+								
+						 
+						/*
+						html+=" <div class='eventStats'>";
+						html+="    <h3 class='event-title'>"+data.title+"</h3>";
+						html+="    <h3 class='likecount'>  ";
+						html+="    <a href='javascript:void(0)' class='addfavoritearticle' theid='"+data.id+"' totalvalue='"+data.favorite+"' >LIKE</a>  <span class='thisfavvalues'>("+data.favorite+")</span>  ";
+						html+="     COMMENT  <span class='values'>( "+data.commentcount+" )</span> ";
+						html+="     VIEW  <span class='values'>( "+data.views+" )</span> ";
+						html+="    </h3>";
+						html+="  </div>";
+						*/
+			}
+			return html;		 
+	}
+	
+	/* this function same as event */
+	function viewcomments(comment){
+	
+				var html="";
+			
+			if(comment){
+				
+				$.each(comment,function(i,e){
+					html+="<div class='row comment-child'>";
+					html+="             <div class='thumb-user'>";
+					if(e.img)html+="                <a href='#'><img src='"+basedomain+"public_assets/user/photo/small_"+e.img+"' /></a>";
+					else html+="                <a href='#'><img src='"+basedomain+"public_assets/user/photo/default.jpg' /></a>";
+					html+="            </div>";
+					html+="            <div class='entry-right'>";
+					html+="               <div class='entry-header'>";
+					html+="                   <h3 class='username'><a href='#'>"+e.name+"</a></h3>";
+					html+="               </div> ";
+					html+="               <div class='entry-body'>";
+					html+="                   <p>"+e.comment+"</p>";
+					html+="                   <span class='comment-date'>Posted on "+e.date+"</span>";
+					html+=" 					<a href='javascript:void(0)' class='replyBtn replybuttontrigger' replyid='"+e.id+"' > reply </a> ";
+					html+="               </div> ";
+					html+="           </div> ";
+					
+					html+="                   <span class='allreplybox replyboxtriggered_"+e.id+"' style='padding-left: 59px;display:none' ><input type='text' style='width: 169px; height: 10px; font-size: 14px;' name='replytxt' class='replytxt' /><a  parentid='"+e.id+"'  cid='"+e.contentid+"'  href='javascript:void(0)' class='addReplytothiscomment' > Reply </a></span>";
+					html+="       </div> ";
+						html+="<div class='row comment-child repycommentlists_"+e.id+"' style='padding-left:59px'>";
+						
+						html+="       </div> ";
+				});
+				
+				
+			}
+		return html;
+	}
+	
+	
+	
+	/* this function same as event */
+	function viewdetailusercontent(contentdata){
+		
+		var html="";
+		if(contentdata){
+					html+=" <div class='thumb-user'> ";
+					if(contentdata.author.img)html+="                <a href='#'><img src='"+basedomain+"public_assets/user/photo/small_"+contentdata.author.img+"' /></a>";
+					else html+="                <a href='#'><img src='"+basedomain+"public_assets/user/photo/default.jpg' /></a>";
+					html+="                                </div> ";
+					html+="                               <div class='entry-right'> ";
+					html+="                                   <div class='entry-header'> ";
+					html+="                                        <h3 class='username'><a href='#'>"+contentdata.author.name+"</a></h3> ";
+					html+="                                   </div>  ";
+					html+="                                    <div class='entry-body'> ";
+					html+= 										contentdata.content ;
+					html+="                                       <span class='comment-date'>Posted on "+contentdata.posted_date+"</span> ";
+					//html+=" <a class='replyBtn'>Reply</a>";
+					html+="                                     </div>  ";
+					html+="                                    <a href='#' class='replycount'>"+contentdata.commentcount+" Replies</a> ";
+					html+="                                </div>  ";
+		}
+			return html;
+										
+	}
+	
+	/* this function same as event */
+	$(document).on('click','.addfavoritearticle',function(){
+	
+		var thisobject = $(this);
+		var cid = $(this).attr('theid');
+		
+		
+		$.post(basedomain+'content/favorite',{cid:cid},function(data){
+			if(data){
+				var favvalue = parseInt(thisobject.attr('totalvalue'),10);
+				var newvaluefav = favvalue+1 ;
+				thisobject.siblings(".thisfavvalues").html(newvaluefav);
+				thisobject.attr('totalvalue',newvaluefav);
+			}
+		
+		
+		},"JSON");
+	})
+	 
+	$(document).on('click','.addReplytothiscomment',function(){
+		var cid = $(this).attr('cid');
+		var parentid = $(this).attr('parentid');
+		var siblingsobject = $(this).siblings('.replytxt');
+		var comment = $(this).siblings('.replytxt').val();
+		if(comment=='') return false;
+		$.post(basedomain+'content/comment',{cid:cid,parentid:parentid,comment:comment},function(data){
+				if(data){
+						var comhtml ="";
+					
+						comhtml+="<div class='row comment-child'>";
+						comhtml+="             <div class='thumb-user'>";
+						if(data.img)comhtml+="                <a href='#'><img src='"+basedomain+"public_assets/user/photo/small_"+data.img+"' /></a>";
+						else comhtml+="                <a href='#'><img src='"+basedomain+"public_assets/user/photo/default.jpg' /></a>";
+						comhtml+="            </div>";
+						comhtml+="            <div class='entry-right'>";
+						comhtml+="               <div class='entry-header'>";
+						comhtml+="                   <h3 class='username'><a href='#'>"+data.name+"</a></h3>";
+						comhtml+="               </div> ";
+						comhtml+="               <div class='entry-body'>";
+						//comhtml+="                   <p>"+data.comment+"</p>";
+						comhtml+="                   <p> please wait your comment on moderation </p>";
+						comhtml+="                   <span class='comment-date'>Posted on "+data.date+"</span>";
+						comhtml+="               </div> ";
+						comhtml+="           </div> ";
+						comhtml+="       </div> ";
+						$(".repycommentlists_"+parentid).prepend(comhtml);
+					siblingsobject.val("");
+				}
+		},"JSON");
+		
+		
+	});
+	var statreply = false;
+	$(document).on('click','.replybuttontrigger',function(){
+			var replyid = $(this).attr("replyid");
+			$(".allreplybox").hide();
+			 
+			$(".replyboxtriggered_"+replyid).show();
+			 
+	});
+	
+	
+
+</script>
+{/literal}
+
+ 

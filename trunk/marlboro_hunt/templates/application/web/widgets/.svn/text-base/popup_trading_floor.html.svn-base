@@ -1,0 +1,19 @@
+<div class="popup">
+	<div class="popupContainer popupBlackPaper" id="popup-trading">
+        <div class="popupContent">
+        	<div class="popup-title">
+            	<h3 class="icon_title icon_request fl titlePopup"></h3>
+                <a href="javascript:void(0)" class=" btn_black2 fr titlePopupTradealetter"></a>
+                <div class="searchBox fr searchBoxContent">
+                    
+                </div><!-- END .searchBox -->
+            </div><!--END .entry-title-->
+        	<div class="entry-popup contentTradingFloor" id="trading-floor-list">
+            </div><!--END .entry-popup-->
+            	<div class="action-tradefloor fr framePagingTrade" total="" startpage="0">
+                	<a href="javascript:void(0)" class="prevblack prevpageTradeFloor">Prev</a>
+                    <a href="javascript:void(0)" class="nextblack nextpageTradeFloor">Next</a>
+                </div>
+        </div><!-- END .popupContent -->
+    </div><!-- END .popupContainer -->
+</div><!-- END .popup -->

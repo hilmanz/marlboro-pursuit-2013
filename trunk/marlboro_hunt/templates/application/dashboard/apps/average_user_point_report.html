@@ -1,0 +1,27 @@
+<div class="summary_box">
+            	<table class="gridtable" style="margin-left: 10px; width: 641px; margin-right: 10px; position: relative;" >
+					<tr>
+						<th>Point</th>
+						<th colspan="2" >user ID </th>
+					</tr>
+					<tbody id="timeForVisit"> 
+					{if $averageuserpointweekly.result}
+						
+					 
+						{foreach from=$averageuserpointweekly.result key=k item=v}
+						<tr>
+							<td>{$v.apoint}</td>
+							<td>{$v.userid}</td>
+							 
+						</tr> 
+						{/foreach}
+					{/if}
+					<tr>
+							<td>Median </td>
+							<td>{$averageuserpointweekly.median}</td>
+							 
+					</tr> 
+					</tbody>
+				</table>
+			 
+            </div><!--end>summary_box-->

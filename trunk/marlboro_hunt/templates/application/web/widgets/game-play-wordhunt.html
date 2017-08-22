@@ -1,0 +1,45 @@
+<div id="gamesPage">
+	<div class="bgpopup2"></div>
+	<div class="papergame"></div>
+	<div class="gamesPage imhide boxGamePlay" id="gamesPageDetail">
+    	<div class="boxGamePlay">
+        	<a class="closeGame" href="{$basedomain}games">X</a>
+            <div id="maybeninjas">
+            	<div class="theGame maybeninjas">
+                	<div class="maybeninja ">
+						<embed src="{$basedomain}assets/games/wordhunt/MarlboroWH.swf" wmode="transparent" style="" width="675px" height="675px" >
+						</embed>
+                    </div>
+                </div><!-- END .theGame -->
+            	<div class="gameDesc2">
+                    <a class="btnRed1 showPopups" href="#popup-leaderboard">LEADERBOARD</a>
+                    <a class="btnRed2 showPopups" href="#popup-full-mechanics-wordhunt">How to Play</a>
+                </div><!-- END .gameDesc -->
+            </div>
+        </div><!-- END .boxGame -->
+    </div><!-- END .gamesPage -->
+</div><!-- END #gamesPage -->
+{include file="application/web/widgets/popup_leaderboard_wordhunt.html"}
+{include file="application/web/widgets/popup-full-mechanics-wordhunt.html"}
+
+<script>
+	{literal}
+	
+	$(document).on('click', '.checkFlash', function(){
+		var version = getFlashVersion().split(',').shift();
+		var html ="";
+		if(version < 11){
+		 
+			html += locale.flashplayerrequired;
+			$(".contentmyaccount").html(html);
+			$(".my-account-profile").trigger("click");
+			//$(".confirmTitle").html('Flash Player');
+			
+		}else{
+			window.location.href=basedomain+'games/play/wordhunt';
+			
+		}
+	})
+	
+	{/literal}
+</script>

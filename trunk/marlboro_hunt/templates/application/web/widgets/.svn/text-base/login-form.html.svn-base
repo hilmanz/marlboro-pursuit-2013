@@ -1,0 +1,105 @@
+<!--Header, Navigasi page-->
+
+
+	<div id="circleLogin">
+		<div class="circleContent">
+			<h1>Already registered?</h1>
+			<h3>Please provide your log-in details below</h3>
+			<form class="loginBox theForms" action="{$basedomain}login/local"  method="POST" onSubmit="return validate()" autocomplete="off">
+				<div class="row">
+					
+					<div class="the-field">
+						<input type="text" class="username full-width required checkthis" name="username" id="theUsername"/>
+					</div>
+				</div>
+				<div class="row">
+					<div class="the-field">
+						<input  type="password" class="password full-width required checkthis" name="password" id="thePassword"/>
+					</div>
+				</div>
+				
+				<div class="moreInfo">
+                    <div class="row">
+                        <a href="{$basedomain}forgotpassword" class="forgotPassword">Forgot Your Password?</a>
+                    </div>
+                    <div class="row rowCheck">
+                        <div class="clear required">
+                            <input type="checkbox" class="checkbox" name="colors[]" />
+                            <label>I am an adult smoker 18 years or older, residing in the Philippines</label>
+                        </div>
+                        <div class="clear">
+                            <input type="checkbox" name="colors[]" class="checkbox" />
+                            <label>I have read and understood the <a href="#popup-tnc" class="showPopup popuptnc">Terms and Conditions</a> and <a class="showPopup popupprivacy" href="#popup-privacy">Privacy Statement and Consent</a></label>
+                        </div>
+                    </div>
+                    <div class="row rowInformation">
+                        <p>Member must tick both statements to log in.</p>
+                        <p>Registered but haven't submitted your documents yet? <a href="{$basedomain}register/trackingcode">Click here</a></p>
+                    </div>
+                    <div class="row rowSubmit">
+                        <input type="hidden" value="1" name="login"/>
+						<input type="submit" value="LOGIN" class="loginBtn" name="submit"/>
+						<input type="hidden" value="{$ref}" name="ref"/>
+                    </div>
+                </div>
+				
+			</form>
+		</div><!-- END .circleContent -->
+	</div><!-- END #circleLogin -->
+ </div><!-- END .loginPage -->
+ </div><!-- END #loginPage -->
+
+{literal}
+	<script language="javascript">
+		
+		
+		$(function () {
+			$("#theUsername").watermark( "Your@email.com", { useNative: false } );
+			$("#thePassword").watermark( "Your password", { useNative: false } );
+		});
+		
+		function validate()
+		{
+			var chks = document.getElementsByName('colors[]');
+			var checkCount = 0;
+			var checkfields = true;
+			for (var i = 0; i < chks.length; i++)
+			{
+				if (chks[i].checked)
+				{
+					checkCount++;
+				}
+			}
+			$(".checkthis").each(function(i,e){
+				
+					if($(this).val()=='') {		
+							
+						checkfields = false;
+							
+						}
+				
+			});
+			
+			if(checkfields==false){
+				/* s: popup global */
+					$(".trigun").trigger("click");
+					$(".msgpopupglobal").html(locale.fillallthefielduserpass);
+				/* e: popup global */
+				return false;
+			}
+			
+			if (checkCount < 2)
+			{
+
+				/* s: popup global */
+					$(".trigun").trigger("click");
+					$(".msgpopupglobal").html(locale.musttick);
+				/* e: popup global */
+			
+				return false;
+			}
+			
+			return true;
+		}
+	</script>
+{/literal}

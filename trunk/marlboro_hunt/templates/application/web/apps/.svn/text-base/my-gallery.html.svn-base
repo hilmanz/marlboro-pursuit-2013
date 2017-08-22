@@ -1,0 +1,76 @@
+<div id="dyoshirtPages">
+	<div class="dyoshirtPages">
+        <ul class="columns-content clearfix">
+            <li class="col-sidebar">
+                <div class="titlePaper">
+                    <h2>Design Your</h2>
+                    <h1>OWN SHIRT</h1>
+                </div><!-- END .titlePaper -->
+                <div class="sideBar">
+                    <div class="entry">
+                        <p>YES fits, NO fits, MAYBE never did.<br />
+                        customize your own <img src="{$basedomain}assets/images/maybe.png" /> statement shirt!<br />
+                        
+                        <p>MARLBORO will choose a weekly winner and produce his or her design.</p>
+                        <a class="showPopup readmore rblack popup-game" href="#popup-game">Create Design</a><br /><br />
+                        <a class="showPopup readmore rblack popupmechanics" href="#popup-full-mechanics">Read Full Mechanics</a><br /><br />
+                        <a class="readmore rblack" href="{$basedomain}mygallery">My Gallery</a><br /><br />
+                        <p class="f12">Please be reminded that as per the Terms and Conditions, all photos, images or designs submitted will become the property of PM</p>
+                    </div><!-- END .entry -->
+                    <div class="be-marlboro"></div>
+                </div><!-- END .sideBar -->
+            </li><!-- END .col-sidebar -->
+            <li class="col-main">
+            	<div class="section-landing" id="myGallery">
+                	<div class="the_title">
+                		<h1 class="fl">My Gallery</h1>
+                        <div class="gallery-act fr">
+                            <form class="shorter fr" method="GET" action="{$basedomain}dyo">
+                                <div class="colFilter weeks">
+                                    <label>Filter</label>
+                                    <select class="styled filter weeks" name="weeks">
+                                        <option value="1" {if $week == 1} selected="selected" {/if}>Week 1</option>
+                                        <option value="7" {if $week == 7} selected="selected" {/if}>Week 2</option>
+                                        <option value="14" {if $week == 14} selected="selected" {/if}>Week 3</option>
+                                    </select>
+                                </div><!-- END .colFilter -->
+                            </form>
+                        </div><!-- END .gallery-act -->
+                    </div>
+                    <ul class="columns-3 clearfix">
+                        <li class="col3">
+                            <div class="box">
+                                <div class="thumbGallery">
+                                    <a class="thumb200">
+                                        <img src="http://preview.kanadigital.com/marlboro_hunt_2013/public_html/public_assets/user/dyo/4104590dac013a29a1c3755c172d0405.jpg" />
+                                    </a>
+                                </div><!-- END .thumbGallery -->
+                            </div><!-- END .box -->
+                        </li><!-- END .col3 -->
+                        <li class="col3">
+                            <div class="box">
+                                <div class="thumbGallery">
+                                    <a class="thumb200">
+                                        <img src="http://preview.kanadigital.com/marlboro_hunt_2013/public_html/public_assets/user/dyo/4104590dac013a29a1c3755c172d0405.jpg" />
+                                    </a>
+                                </div><!-- END .thumbGallery -->
+                            </div><!-- END .box -->
+                        </li><!-- END .col3 -->
+                        <li class="col3">
+                            <div class="box">
+                                <div class="thumbGallery">
+                                    <a class="thumb200">
+                                        <img src="http://preview.kanadigital.com/marlboro_hunt_2013/public_html/public_assets/user/dyo/4104590dac013a29a1c3755c172d0405.jpg" />
+                                    </a>
+                                </div><!-- END .thumbGallery -->
+                            </div><!-- END .box -->
+                        </li><!-- END .col3 -->
+                    </ul><!-- END .columns-3 -->
+                    <div class="rows">
+                    	<a href="{$basedomain}dyo" class="btn_red btn_redBig">VIEW ALL GALLERY</a>
+                    </div>
+                </div><!-- END .section-landing -->
+            </li><!-- END .col-main -->
+        </ul>
+    </div><!-- END .landingPage -->
+</div><!-- END #landingPage -->

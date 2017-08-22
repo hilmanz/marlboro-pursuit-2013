@@ -1,0 +1,7 @@
+<div class="popup">
+	<div class="popupContainer popupBlack" id="popup-my-account-profile">
+        <div class="popupContent contentmyaccount">
+        
+        </div><!-- END .popupContent -->
+    </div><!-- END .popupContainer -->
+</div><!-- END .popup -->

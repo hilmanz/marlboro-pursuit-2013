@@ -1,0 +1,60 @@
+
+<div class="popup">
+	<div class="popupContainer popupBlackPaper" id="popup-trade-open">
+        <div class="popupContent">
+        	<div class="popup-title">
+            	<h3 class="icon_title icon_request fl">Trade Request</h3>
+            </div><!--END .entry-title-->
+            <ul class="columns-2 clearfix">
+                <li class="col2">
+                    <div class="entry-popup">
+                    	<div class="usertrade">
+                            <a class="thumb-small fl"><img src="{$basedomain}assets/content/thumb_user.jpg" /></a>
+                            <div class="entry-left fl">
+                                <h4 class="username">C. Ronaldo</h4>
+                            </div><!-- END .entry-task -->
+                        </div><!-- END .user-trading -->
+                        <div class="preview-box">
+                        	<img src="{$basedomain}assets/content/font/a.png" />
+                        </div>
+                        <div class="message-box">
+                        	<p>I'm trading the my letter "D" for a letter "N".</p>
+                        </div>
+          		    </div><!--END .entry-popup-->
+                </li><!-- END .col2 -->
+                <li class="col2">
+                    <div class="entry-popup">
+                    	<form>
+                    	<div class="usertrade">
+                            <a class="thumb-small fl"><img src="{$basedomain}assets/content/thumb_user.jpg" /></a>
+                            <div class="entry-left fl">
+                                <h4 class="username">Robert Perez</h4>
+                            </div><!-- END .entry-task -->
+                        </div><!-- END .user-trading -->
+                        <div class="preview-box">
+                        	<img src="{$basedomain}assets/content/font/b.png" />
+                            <a class="icon_close" href="#">&nbsp;</a>
+                        </div>
+                        <div class="rows">
+                        	<label>type in your message</label>
+                            <input type="text" />
+                        </div>
+                        <div class="rows">
+                        	<label>select a letter to trade</label>
+                            <div class="letter-box">
+                                <img src="{$basedomain}assets/content/font/b.png" />
+                                <img src="{$basedomain}assets/content/font/e.png" />
+                                <img src="{$basedomain}assets/content/font/a.png" />
+                                <img src="{$basedomain}assets/content/font/m.png" />
+                                <img src="{$basedomain}assets/content/font/n.png" />
+                                <img src="{$basedomain}assets/content/font/e.png" />
+                            </div>
+                        </div>
+               			 <a href="#popup-trade-confirm" class="showPopup btn_black3 fr">Send Trade Request</a>
+                         </form>
+          		    </div><!--END .entry-popup-->
+                </li><!-- END .col2 -->
+            </ul><!-- END .columns-2 -->
+        </div><!-- END .popupContent -->
+    </div><!-- END .popupContainer -->
+</div><!-- END .popup -->

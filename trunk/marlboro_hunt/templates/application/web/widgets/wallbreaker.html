@@ -1,0 +1,48 @@
+<div id="gamesPage">
+	<div class="papergame"></div>
+	<div class="gamesPage imhide" id="gamesPageDetail">
+        <ul class="columns-2 clearfix">
+            <li class="col2">
+            	<div class="thumbGameBig">
+					<a href="javascript:void(0)" class="checkFlash"><img src="{$basedomain}assets/content/game_wallbreaker.png" /></a>
+					
+                </div><!-- END .boxPaper -->
+            </li>
+            <li class="col2">
+            	<div class="gameDesc">
+                      <h1>WALLBREAKER</h1>
+                    <p>Several words can be found on the right side of the screen.</p>
+                    <p>Use the maybe arrow to aim and hit the words that represent indecisiveness.</p>
+                    <p>Earn up to 2 points in the game for every indecisive word you hit, and lose up to 2 points in the game for every decisive word you hit</p>
+                    <p>Every level you complete will earn you 1 point on the website counter.</p>
+                    <!--<a class="btn_red" href="{$basedomain}games/play/wallbreaker">PLAY NOW</a>-->
+                    <a class="btnRed1 checkFlash" href="javascript:void(0)">PLAY NOW</a>
+                    <a class="btnRed2 showPopups" href="#popup-leaderboard">LEADERBOARD</a>
+                </div><!-- END .gameDesc -->
+            </li>
+        </ul>
+    </div><!-- END .gamesPage -->
+</div><!-- END #gamesPage -->
+{include file="application/web/widgets/popup_leaderboard_wallbraker.html"}
+{include file="application/web/widgets/popup-full-mechanics-wallbraker.html"}
+<script>
+	{literal}
+	
+	$(document).on('click', '.checkFlash', function(){
+		var version = getFlashVersion().split(',').shift();
+		var html ="";
+		if(version < 11){
+		 
+			html += locale.flashplayerrequired;
+			$(".contentmyaccount").html(html);
+			$(".my-account-profile").trigger("click");
+			//$(".confirmTitle").html('Flash Player');
+			
+		}else{
+			window.location.href=basedomain+'games/play/wallbreaker';
+			
+		}
+	})
+	
+	{/literal}
+</script>

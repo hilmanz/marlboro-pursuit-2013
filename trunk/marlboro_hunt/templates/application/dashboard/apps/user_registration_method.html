@@ -1,0 +1,110 @@
+<div class="section">
+	<div class="the-title fl">
+        <h2>User Registration Method</h2>
+    </div>
+   <form method="GET" action="">
+    <div class="menu_charts">
+            <input type="text"  id="from" name="startdate" value="{$startdate}" ><span>-</span>
+            <input type="text"  id="to" name="enddate" value="{$enddate}" /><a href="javascript:void(0)" class="calendar"></a>
+    </div>
+	</form>
+	<div class="accordion">                           
+        <h3 class=""><span>Online Registration</span>
+        <a class="icon_arrow expand" href="#">Click to Expand</a>
+        <a class="icon_arrow_grey hide2" href="#">hide</a> </h3>
+        <div class="acc_section">
+            <div class="chart_section" id="onlineField">
+                <!-- <img src="{$assets_domain}images/charts3.jpg" /> -->
+            </div>         
+        </div><!--end.acc_section-->
+        <h3 class=""><span>Offline Registration</span>
+        <a class="icon_arrow expand" href="#">Click to Expand</a>
+        <a class="icon_arrow_grey hide2" href="#">hide</a> </h3>
+        <div class="acc_section">
+            <div class="chart_section" id="offlineField">
+                <!-- <img src="{$assets_domain}images/charts3.jpg" /> -->
+            </div>         
+        </div><!--end.acc_section-->
+       
+        <h3 class=""><span>Verified Registration</span>
+        <a class="icon_arrow expand" href="#">Click to Expand</a>
+        <a class="icon_arrow_grey hide2" href="#">hide</a> </h3>
+       <div class="acc_section">
+            <div class="chart_section" id="verifiedField">
+                <!-- <img src="{$assets_domain}images/charts3.jpg" /> -->
+            </div>         
+        </div><!--end.acc_section-->
+        
+        <h3 class=""><span>Unverified Registration</span>
+        <a class="icon_arrow expand" href="#">Click to Expand</a>
+        <a class="icon_arrow_grey hide2" href="#">hide</a> </h3>
+       <div class="acc_section">
+            <div class="chart_section" id="unverifField">
+                <!-- <img src="{$assets_domain}images/charts3.jpg" /> -->
+            </div>         
+        </div><!--end.acc_section-->
+        
+    </div><!---end.accodrion-->
+</div><!--end.section-->
+
+<script type="text/javascript">
+	var onlineReg = {$onlineReg|@json_encode};	
+	var offlineReg = {$offlineReg|@json_encode};	
+	var verifiedReg = {$verifiedReg|@json_encode};	
+	var unverifiedReg = {$unverifiedReg|@json_encode};
+	
+{literal}	
+$(function () {
+	
+	var onlineData = new Array();
+	var onlineDate = new Array();
+	
+	var offlineData = new Array();
+	var offlineDate = new Array();
+	
+	var verifiedData = new Array();
+	var verifiedDate = new Array();	
+	
+	var unverifData = new Array();
+	var unverifDate = new Array();
+	
+	for (var onlined in onlineReg){
+		onlineData.push(parseInt(onlineReg[onlined].num));
+		onlineDate.push(String(onlineReg[onlined].dd));
+	}
+	
+	for (var offlined in offlineReg){
+		offlineData.push(parseInt(offlineReg[offlined].num));
+		offlineDate.push(String(offlineReg[offlined].dd));
+	}
+	
+	for (var verif in verifiedReg){
+		verifiedData.push(parseInt(verifiedReg[verif].num));
+		verifiedDate.push(String(verifiedReg[verif].datetime));
+	}
+	
+	for (var unverif in unverifiedReg){
+		unverifData.push(parseInt(unverifiedReg[unverif].num));
+		unverifDate.push(String(unverifiedReg[unverif].datetime));
+	}
+		
+	gethighChart('line','test  Chart','onlineField',onlineData,onlineDate,1,true);
+	gethighChart('line','test  Chart','offlineField',offlineData,offlineDate,1,true);
+	gethighChart('line','test  Chart','verifiedField',verifiedData,verifiedDate,1,true);
+	gethighChart('line','test  Chart','unverifField',unverifData,unverifDate,1,true);
+	
+	//drillDownChart('column','test Chart','cont',dataCoba,cateActivityGroup,1 ,false);
+	});
+		
+	
+	$(document).on('click','.calendar', function(){
+		
+		var from = $('#from').val();
+		var to = $('#to').val();
+		
+		window.location.href='?startdate='+from+'&enddate='+to;
+	
+	})
+	
+</script>
+{/literal}

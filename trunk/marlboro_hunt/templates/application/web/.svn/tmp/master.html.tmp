@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html dir="ltr" lang="en-US" class="ie6"> <![endif]-->
+<!--[if IE 7]>    <html dir="ltr" lang="en-US" class="ie7"> <![endif]-->
+<!--[if IE 8]>    <html dir="ltr" lang="en-US" class="ie8"> <![endif]-->
+<!--[if gt IE 8]><!--> 
+<html dir="ltr" lang="en-US" > 
+<!--<![endif]--><head>
+
+{$meta}
+</head>
+<body {if $pages =='news' && $acts=="detail"}class="landingHidens"{elseif $pages =='news'}class="landingHiden"{/if} {if $pages =='home'}class="landingHiden"{/if}{if $pages =='thisorthat'}class="landingHiden"{/if} id="{if $pages =='dyo'}dyoshirtPage{/if}{if $pages =='thisorthat'}thisorthat{/if}{if $pages =='games'}gamesPages{/if}{if $pages =='register'}registerPage{/if}{if $pages =='account'}myaccountPage{/if}{if $pages =='pursuit'}join-pursuit{/if}{if $pages =='inputcode'}the-pursuit{/if}{if $pages =='mscape'}mscapePages{/if}{if $pages =='news'}news-page{/if}{if $pages =='event'}news-page{/if}{if $pages =='home' || $pages==''}landingHome{/if}{if $pages == 'pursuit' && $acts == 'detail'}the-pursuit-detail{/if}{if $pages == 'pursuit' && $acts == 'prize'}the-pursuit-detail{/if}{if $pages == 'pursuit' && $acts == 'grandPrize'}the-pursuit-detail{/if}{if $pages =='mygallery' || $pages==''}dyoshirtPage{/if}">
+<!--[if lte IE 8]>
+{if $pages =='dyo'}<img src="{$basedomain}assets/images/bg3.jpg" id="bg" alt=""/>{/if}
+{if $pages =='mygallery'}<img src="{$basedomain}assets/images/bg3.jpg" id="bg" alt=""/>{/if}
+{if $pages =='news'}<img src="{$basedomain}assets/images/bg_news.jpg" id="bg" alt=""/>{/if}
+{if $pages =='event'}<img src="{$basedomain}assets/images/bg3.jpg" id="bg" alt=""/>{/if}
+{if $pages =='account'}<img src="{$basedomain}assets/images/bg2.jpg" id="bg" alt=""/>{/if}
+{if $pages =='games'}<img src="{$basedomain}assets/images/bg_game.jpg" id="bg" alt=""/>{/if}
+{if $pages =='thisorthat'}<img src="{$basedomain}assets/images/bg5.jpg" id="bg" alt=""/>{/if}
+{if $pages =='pursuit'}<img src="{$basedomain}assets/images/bg_paper.jpg" id="bg" alt=""/>{/if}
+{if $pages =='home' || $pages==''}<img src="{$basedomain}assets/images/bg_landing.jpg" id="bg" alt=""/>{/if}
+{if $pages =='login'}<img src="{$basedomain}assets/images/bg.jpg" id="bg" alt=""/>{/if}
+{if $pages=="pursuit" && $acts=="detail"}<img src="{$basedomain}assets/images/bg_pursuit_detail.jpg" id="bg" alt=""/>{/if}
+{if $pages=="pursuit" && $acts=="prize"}<img src="{$basedomain}assets/images/bg_pursuit_detail.jpg" id="bg" alt=""/>{/if}
+{if $pages=="pursuit" && $acts=="grandPrize"}<img src="{$basedomain}assets/images/bg_pursuit_detail.jpg" id="bg" alt=""/>{/if}
+{if $pages =='mscape'}<img src="{$basedomain}assets/images/bg_pursuit_detail.jpg" id="bg" alt=""/>{/if}
+{if $pages =='inputcode'}<img src="{$basedomain}assets/images/bg_pursuit.jpg" id="bg" alt=""/>{/if}
+<!--<![endif]-->
+<div id="body" class="wrapper">
+            {$header}
+            {$mainContent}
+</div><!-- END .wrapper -->
+        {$footer}
+		
+
+{include file="application/web/widgets/popup-privacy.html"}
+{include file="application/web/widgets/popup-tnc.html"}
+{include file="application/web/widgets/popup-contact.html"}
+{include file="application/web/widgets/popup-global.html"}
+{include file="application/web/widgets/popup-pursuit.html"}
+{include file="application/web/widgets/popup-redeem.html"}
+{include file="application/web/widgets/popup-trade-confirm-master.html"}
+{include file="application/web/widgets/popup-post-trade-message-master.html"}
+{include file="application/web/widgets/popup-task-small-master.html"}
+{include file="application/web/widgets/popup-game.html"}
+{include file="application/web/widgets/popup-full-mechanics.html"}
+{include file="application/web/widgets/popup-my-account.html"}
+
+
+ <a href="#popup-trigun" class="showPopup trigun" style="display:none" ></a>
+ <a href="#pursuit-popup" class="showPopup pursuit-popup" style="display:none" ></a>
+ <a href="#trade-confirm" class="showPopup trade-confirm" style="display:none" ></a>
+ <a href="#redeem-popup" class="showPopup redeem-popup" style="display:none" ></a>
+ <a href="#post-trade-message" class="showPopup post-trade-message" style="display:none" ></a>
+ <a href="#task-small-master" class="showPopup task-small-master" style="display:none" ></a>
+ <a href="#popup-my-account-profile" class="showPopup my-account-profile" style="display:none" ></a>
+ {literal}
+ <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-26876401-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+
+			
+	$(document).ready(function(){
+		if(isLogin) {
+			$('.listmessageinbox').hide();
+			
+			$.post(basedomain+'pursuit/task', {taskmessage:true}, function(data){
+				var html = "";
+				var total = 0;
+				if (data.status == true){
+					
+						$.each(data.rec, function(i,e){
+						
+							var datetimes = e.datetime.split(' ');
+							var dates = datetimes[0].split('-');
+						
+							html += "<div class='row'>";
+							html += "     <span class='date'>"+e.name+" : "+dates[2]+" / "+dates[1]+" / "+dates[0]+"</span>";
+							html += "     <p>"+e.message+"</p>";
+							html += "  </div>";			
+							
+						})
+				}else{
+					html += locale.nomessage;
+				}
+				
+				if(total>10){
+					html+="<div class='row paging'>";
+					html+="<a class='prev' href='#'>PREV</a>";
+					html+="<a class='next' href='#'>NEXT</a>";
+					html+="</div>";
+				}
+				
+				$(".listmessageinbox").html(html);
+			
+				
+			},"JSON")
+		}
+	})
+	
+	
+</script>
+ {/literal}
+	 
+	 
+{if $showhiddencode}
+<a class="hiddenPackage " href="javascript:void(0)" token="{$showhiddencode}" ></a>
+{include file="application/web/widgets/popup-hidden-package.html"}	
+	{literal}
+	<script>
+		$(document).on('click', '.hiddenPackage', function(){
+			
+			var getToken = $(this).attr('token');
+			$.post(basedomain+"games/hiddencode",{hiddenCode:true, param:getToken}, function(data){
+				
+				var html = "";
+				if (data.status == true){
+					//html += "<div class='popup'>";
+					//html += "<div class='popupContainer popup-hidden-package' id='popup-hidden-package' style='width:400px' >";
+					html += "<div class='popupContent centerText'>";
+					html += "<h2>congratulations!</h2>";
+					html += "<h3>you've found a hidden marlboro pack.<br />you got yourself a code for <a href='"+basedomain+"pursuit'>the pursuit.</a> <br />copy the code below and use it to<br /> redeem a letter.</h3>";
+					html += "<input type='text' value='"+data.rec+"' class='theCodes' />";
+					html += "</div>";
+					//html += "</div>";
+					//html += "</div>";
+				}
+				
+				$(".pursuit-popup").trigger("click");			
+				//$(".contentpursuit").html(html);
+				$(".titlepursuit").html(html);
+				
+			},"JSON")
+			
+		});
+		
+	</script>
+	{/literal}
+{/if}
+
+
+{if $mybirthday}
+<a class="birthdaygift " href="javascript:void(0)" token="" style="display:none" ></a>
+
+		{literal}
+		<script>
+		
+		$(document).ready(function(){
+			if(isLogin) {
+				var getToken = $(this).attr('token');
+			
+						
+						html = "<div class='popupContent ' style='text-align:left;' >";
+						html += "<h2>Happy Birth Day To You!!</h2>";
+						html += "<h2>It is a present from us</h2>";
+						html += "<div class='row' ><img src='"+basedomain+"assets/content/thumb_gift.jpg' width='100%' /></div>";
+						html += "<div class='row' > And we want to deliver this gift to you, please provide your information first:   </div>";
+						html += "<div class='row' > Address <input type='text' value='' class='birthdayaddress' /></div>";
+						html += "<div class='row' > Phone Number <input type='text' value='' class='birthdayphone' /></div>";
+						html += "<div class='row' > Email <input type='text' value='' class='birthdayemail' /></div>";
+						html += "<input type='button' value='GET GIFT' class='button btn_grey fl submitfriends' /></div>";
+						html += "</div>";
+						
+				
+					
+						$(".contentmyaccount").html(html);
+						$(".my-account-profile").trigger("click");
+					
+				
+			}
+		
+		});
+		 </script>
+	{/literal}
+
+
+{/if}
+
+
+{if $get20login}
+<a class="get20logingift " href="javascript:void(0)" token="" style="display:none" ></a>
+
+		
+		<script>
+		var letter = "L";
+		{literal}
+		$(document).ready(function(){
+			if(isLogin) {
+				var getToken = $(this).attr('token');
+				
+						
+						html = "<div class='popupContent ' style='text-align:left;' >";
+						html += "<h2>Congratulation!!</h2>";
+						html += "<h2>You get 20th Login Letter</h2>";
+						html += "<div class='row' ><img src='"+basedomain+"assets/font/"+letter+".png' width='100%' /></div>";
+					
+						html += "</div>";
+						
+				
+					
+						$(".contentmyaccount").html(html);
+						$(".my-account-profile").trigger("click");
+					
+				
+			}
+		
+		});
+		 </script>
+	{/literal}
+
+
+{/if}
+ 
+</body>
+</html>

@@ -1,0 +1,37 @@
+<table class="gridthisorthat full-width">
+	<tr>
+		<th>Name</th>
+		<th>email</th>
+		<th class="text-center">Total Upload</th>
+		<th class="text-center">Date</th>
+	</tr>
+	<tbody id="topHighestPoint">
+	{foreach from=$uploadfotoReport key=k item=v}	
+	<tr>
+		<td>{$v.name} {$v.last_name}</td>
+		<td>{$v.email}</td>
+		<td class="text-center">{$v.num}</td>
+		<td class="text-center">{$v.created_date}</td>
+	</tr>
+	{/foreach}
+	</tbody>
+</table>
+<br/>
+<table class="gridthisorthat full-width">
+	<tr>
+		<th>Name</th>
+		<th>email</th>
+		<th class="text-center">Total Comment</th>
+		<th class="text-center">Date</th>
+	</tr>
+	<tbody id="topHighestPoint">
+	{foreach from=$commentReport key=k item=v}	
+	<tr>
+		<td>{$v.name} {$v.last_name}</td>
+		<td>{$v.email}</td>
+		<td class="text-center">{$v.num}</td>
+		<td class="text-center">{$v.date}</td>
+	</tr>
+	{/foreach}
+	</tbody>
+</table>

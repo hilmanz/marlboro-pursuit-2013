@@ -1,0 +1,46 @@
+<div class="entry-accordion" id="messages-user">
+    <div id="message-read"  style="display:none">
+        <div class="row">
+            <a class="btn_black" href="#">Back to Messages</a>
+            <a class="btn_black" href="#">Delete Thread</a>
+        </div><!-- END .row -->
+        <div class="message-container">
+            <div class="message-bubble">
+                <h4 class="username">Robert Perez</h4>
+                <h6 class="date">05/23/2013</h6>
+                <a class="theMessages" href="#">Hey Juan! I just got a letter "M"</a>
+            </div><!-- END .message-bubble -->
+            <div class="message-bubble">
+                <h4 class="username">Robb Bredel</h4>
+                <h6 class="date">05/23/2013</h6>
+                <a class="theMessages" href="#">No Problem Bro!</a>
+            </div><!-- END .message-bubble -->
+        </div><!-- END .message-container -->
+        <div class="message-action">
+            <form class="form-message">
+                <textarea></textarea>
+                <input type="submit" class="btn_white" value="REPLY" />
+            </form>
+        </div><!-- END .message-action -->
+    </div><!-- END #message-read -->
+    <div id="message-list">
+        <div class="control-bar">
+            <a class="arrow-top" href="#">&nbsp;</a>
+        </div><!-- END .control-bar -->
+        <div class="entries">
+            {section name=i loop=$messg}
+			<div class="row">
+                <a class="thumb-small fl"><img src="{$basedomain}assets/content/thumb_user.jpg"/></a>
+                <div class="entry-left fl">
+                    <h4 class="username">{$messg[i].name}</h4>
+                    <h6 class="date">05/23/2013</h6>
+                    <a class="theMessages" href="#">{$messg[i].message}</a>
+                </div><!-- END .entry-task -->
+            </div><!-- END .row -->
+            {/section}
+        </div><!-- END .entries -->
+        <div class="control-bar control-bottom">
+            <a class="arrow-bottom" href="#">&nbsp;</a>
+        </div><!-- END .control-bar -->
+    </div><!-- END #message-list -->
+</div><!-- END .entry-accordion -->

@@ -1,0 +1,122 @@
+
+<div class="theContent">
+    <div class="theTitle">
+        <h2>Trader Monitoring List</h2>
+		<a href="index.php?s=traderMonitoring&act=gettradereport" class="btn btn_document"><span>Download XLS</span></a>
+        <!-- <a href="index.php?s={$folder}&act=add" class="btn btn_pencil"><span>Add Trader Monitoring</span></a> -->
+    </div><!--contenttitle-->
+    <div class="tableoptions">        
+    <form>
+        <input type="text" name="search" value="{$search}">
+        <input type="hidden" name="s" value="{$folder}" />
+        <input type="hidden" name="cari" value="cari" />
+     
+       
+        {*}
+		<select name="article_type">
+            <option value=""> - Type - </option>
+            {section name=i loop=$typelist}
+            {if $typelist[i].id == $article_type}<option value="{$typelist[i].id}" selected>{$typelist[i].content_name}</option>
+            {else}<option value="{$typelist[i].id}">{$typelist[i].content_name}</option>
+            {/if}
+            {/section}
+        </select>
+		{/*}
+       <span>Date Range</span>
+        <input type="text" name="startdate" value="{$startdate}" class="datepicker radius3" />
+       <span>s/d</span>
+        <input type="text" name="enddate" value="{$enddate}" class="datepicker radius3" />
+        <input type="submit" value="cari" class="stdbtn btn_orange" />
+    </form>
+    </div><!--tableoptions-->	
+    <table cellpadding="0" cellspacing="0" border="0" id="table1" class="stdtable">
+        <colgroup>
+            <col class="con0" style="width: 4%" />
+            <col class="con1" />
+            <col class="con0" />
+            <col class="con1" />
+            <col class="con0" />
+            <col class="con1" />
+        </colgroup>
+        <thead>
+            <tr>
+                <th class="head0">No</th>
+				<th class="head1">User Name</th>
+				{*}<th class="head1">Activity</th>{/*}
+                <th class="head0">Source Letter</th><!--Huruf yang mau di tukar-->
+                <th class="head1">Target Letter</th><!--Hasil Penukaran Huruf menjadi-->
+                <th class="head0">Status</th><!--di transfer ke 0 = open trade , 1 = ke user-->
+				<th class="head0">Date Time</th>
+				<th class="head0">Status</th>
+            </tr>
+        </thead>
+        <tbody>
+             {foreach from=$list key=k item=v}
+            <tr>
+                <td width="10">{$v.no}&nbsp;</td>
+				 <td><nobr>{$v.name}</nobr></td>
+                 {*}<td><nobr>
+					{if $v.activity==1} <span>Task List</span>
+                    {elseif $v.activity==2} <span>Game</span>
+                    {else}
+                    {/if}
+				 </nobr></td>{/*}
+                <td><nobr>
+				{if $v.sourceCode==1} <span>D</span>
+                    {elseif $v.sourceCode==2} <span>O</span>
+                    {elseif $v.sourceCode==3} <span>N</span>
+                    {elseif $v.sourceCode==4} <span>T</span>
+                    {elseif $v.sourceCode==5} <span>B1</span>
+                    {elseif $v.sourceCode==6} <span>E1</span>
+                    {elseif $v.sourceCode==7} <span>A1</span>
+                    {elseif $v.sourceCode==8} <span>M</span>
+                    {elseif $v.sourceCode==9} <span>A2</span>
+                    {elseif $v.sourceCode==10} <span>Y</span>
+                    {elseif $v.sourceCode==11} <span>B2</span>
+                    {elseif $v.sourceCode==12} <span>E2</span>
+                    {else}
+                    {/if}
+				</nobr></td>
+                <td><nobr>
+					{if $v.targetCode==1} <span>D</span>
+                    {elseif $v.targetCode==2} <span>O</span>
+                    {elseif $v.targetCode==3} <span>N</span>
+                    {elseif $v.targetCode==4} <span>T</span>
+                    {elseif $v.targetCode==5} <span>B1</span>
+                    {elseif $v.targetCode==6} <span>E1</span>
+                    {elseif $v.targetCode==7} <span>A1</span>
+                    {elseif $v.targetCode==8} <span>M</span>
+                    {elseif $v.targetCode==9} <span>A2</span>
+                    {elseif $v.targetCode==10} <span>Y</span>
+                    {elseif $v.targetCode==11} <span>B2</span>
+                    {elseif $v.targetCode==12} <span>E2</span>
+                    {else}
+                    {/if}
+				</nobr></td>
+                <td><nobr>
+					{if $v.otheruserid==0}
+					<span>{if $v.n_status == 0 and $v.activity==1}Open Trade{/if}</span>
+					<span>{if $v.n_status == 1 and $v.activity==1}Trade Pending{/if}</span>
+					<span>{if $v.n_status == 2 and $v.activity==1}Success Trade{/if}</span>
+					<span>{if $v.n_status == 2 and $v.activity==0}Cancel Trade{/if}</span>
+					<span>{if $v.n_status == 0 and $v.activity==0}Cancel Trade{/if}</span>
+					
+                    {elseif $v.otheruserid==otheruserid} <span>{$v.otheruserid}</span>
+                    {else}
+                    {/if}
+				</nobr></td>
+                <td>{$v.datetime}</td>
+				<td>
+				   <nobr>
+							 <!-- <a href="index.php?s={$folder}&act=edit&id={$v.id}" class="green"> update </a>| -->
+							 <a href="index.php?s={$folder}&act=hapus&id={$v.id}" class="red" onclick="return confirm('Are you sure you want to delete this?')">delete</a>
+                    </nobr>
+                </td> 
+            </tr>
+           {/foreach}
+        </tbody>
+    </table>
+    <div class="paging">
+    	{$paging}
+    </div>
+</div><!--theContent-->

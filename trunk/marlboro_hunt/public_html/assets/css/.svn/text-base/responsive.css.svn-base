@@ -1,0 +1,309 @@
+/* Responsive */
+
+@media only screen and (max-width: 1500px) {
+	.hiddenPackage{
+		top:100px;
+	}
+	#leftNav{
+		padding:100px 0 0 0;
+	}
+	#camera{
+		bottom:-80px;
+		right:-50px;
+	}
+	#prizeList .flex-viewport,
+	.flex-viewport{
+		left:0;
+		padding:0 40px;
+	}
+	#mscapePages #landingPage{
+		width:500px !important;
+	}
+	.popup-video{
+		width:700px  !important;
+		margin:-180px 0 0 -350px  !important;
+		top:50%  !important;
+	}
+	.popup-video #video-pursuit,.popup-video #video-labor{
+		height:395px !important; 
+	}
+	.popup-video .video-js,.popup-video .vjs-poster{
+		width:700px  !important;
+		height:395px !important; 
+	}
+	.popup-video .vjs-default-skin .vjs-control-bar{
+		width:700px  !important;
+	}
+	#dyoshirtPages .entry{
+		padding:0 0 0 30px;
+	}
+	#dyoshirtPages .entry p{
+		font-size:12px;
+		margin:5px 0;
+	}
+	.be-marlboro{
+		background:url(../images/be-marlboro_small.png) no-repeat;
+		width:191px; height:65px;
+		margin:30px 0;
+	}
+	.gallery-act .colFilter{
+		width:160px;
+	}
+	.gallery-act .colFilter label{
+		font-size:14px;
+		padding:0 5px;
+		width:30px;
+	}
+	.gallery-act select.styled{
+		width:100px !important;
+	}
+	.gallery-act .select{
+		font-size:14px;
+		line-height:22px;
+		height:14px;
+		width:96px;
+	}
+	#dyo-gallery .paging a{
+		font-size:18px;
+		line-height:28px;
+	}
+	.thumb300 img{
+		width:200px; height:200px;
+	}
+	.thumbLanding{
+		width:100%;
+	}
+	.captions h1{
+		font-size:20px;
+	}
+	input[type=text],
+	input[type=password]{
+		background:#fff;
+		padding:4px 10px 2px;
+		height:20px;
+		font-family: 'maybebold';
+		border:none;
+		box-shadow:0 1px 1px rgba(0,0,0,0.8) inset;
+		font-size:20px;
+	}
+	.theForm label{
+		font-size:14px;
+		line-height:18px;
+	}
+	.row{
+		padding:5px 0;
+	}
+	.rowSubmit{
+		padding:10px 0;
+	}
+	.button{
+		font-size:18px;
+		line-height:35px;
+		height:35px;
+	}
+	#registerPage .section{
+		padding:0;
+	}
+	.head h3{
+		margin:0;
+	}
+	.formInfo,#reg3{
+		font-size:14px;
+	}
+	#landingPage{
+		padding:70px 0 0 0;
+	}
+	.select{
+		padding:2px 10px 7px;
+		font-size:18px;
+	}
+	#enterGIID label{
+		width:100px;
+		line-height:30px;
+	}
+	.columns-content li.col-main{
+		width:65%;
+	}
+	.controlActive #big-video-control-container{
+		bottom:180px !important;
+	}
+	#header{
+		background:url(../images/phase4/bg_nav2.png) center top no-repeat;
+		min-height:90px;
+	}
+	.fakeheader{
+		background:url(../images/phase4/bg_nav2.png) center top no-repeat;
+		height:90px;
+	}
+	#body{
+		margin:80px auto 0 auto;
+	}
+	#marlboro-accountchangePassword #body{
+		margin:135px auto 0 auto;
+	}
+	#header .mainmenu a{
+		font-size:22px;
+	}
+	#main-menu{
+		top:5px;
+		right:10px;
+	}
+	#main-menu2{
+		top:45px;
+		right:16px;
+	}
+	#header #main-menu2 li a{
+		font-size:18px;
+	}
+	#registerPage .wrapper{
+		width:90%;
+	}
+	#userBox{
+		float:right;
+		width:75%;
+	}
+	video{
+		width:100%; height:100%;
+	}
+	.columns-content li.col-main{
+		width:66.6%;
+	}
+	.thumbNewsLanding{
+		text-align:center;
+	}
+	.entry-box{
+		text-align:center;
+	}
+	.entry-box h4{
+		float:none;
+		text-align:center;
+		width:100%;
+		font-size:14px;
+	}
+	.columns-2 li.col2{
+	}
+	#landingHome .centerButton h2{
+		font-size:90px;
+	}
+	#marlboro-home .centerButton, #landing-page .centerButton{
+		left:-70px;
+		top:150px;
+	}
+	.centerButton .landbtn{
+		margin:5px 0;
+		padding:0;
+	}
+	#lineHOme3 .line1{
+		left:-586px;
+		top:167px;
+	}
+	#lineHOme3 .line2{
+		left:410px;
+		top:183px;
+	}
+	#footer a{
+		padding:0 10px 0 0;
+	}
+	.papergame{
+		top:-35px;
+	}
+	.thumbGameBig{
+	}
+	#moveFwd{
+	}
+	.boxGame{
+		max-width:220px;
+	}
+	.box2 img{
+		max-width:350px;
+	}
+	.boxnews img{
+		max-width:300px;
+	}
+	.news-list{
+		width:900px;
+		margin:0 auto;
+	}
+	#fancybox-wrap{
+		top:20px !important;
+	}
+	.popup2{
+		top:150px;
+	}
+	#gamesPage,#liveitPage{
+		top:30px;
+	}
+	.newsfeedactive{
+		top:50px !important;
+	}
+	.the-news #landing-page{
+		position:relative;
+		top:30px;
+	}
+}
+@media only screen and (max-width: 1040px) {
+#galleryButton img {
+    left: -65px;
+    position: relative;
+    top: -20px;
+    width: 90%;
+}
+#moveFwd .columns-content li.col-main {
+    margin: 0;
+    width: 48.6%;
+}
+.columns-content li.col-sidebar {
+    float: left;
+    width: 25%;
+}
+#participantBox {
+    width: 155px;
+}
+.catbox h3 {
+    border-bottom: 2px solid #000000;
+    color: #000000;
+    margin: 10px auto 10px 20px;
+    padding: 0 44px;
+    text-align: center;
+    text-transform: uppercase;
+    width: 87px;
+}
+.catbox a{
+	margin-left:20px;
+}
+.paperNews{
+	right:-112px;
+}
+}
+@media only screen and (max-width: 930px) {
+	#header .mainmenu a{
+		font-size:18px;
+		padding:0 10px;
+	}
+	#header #main-menu2 li a{
+		font-size:16px;
+	}
+	.papergame{
+		width:750px;
+		margin:0 0 0 -375px;
+	}
+	.thumbGameBig{
+		left:auto;
+	}
+	#gamesPageDetail .columns-2 li.col2:nth-child(2n){
+		width:100% !important;
+		margin:0 !important;
+	}
+	#logo{
+		background: url(../images/phase4/logo_small.png) no-repeat;
+		width: 235px;
+		height: 97px;
+	}
+}
+/*@media only screen and (max-width: 600px) {
+	.columns-4 li.col4 {
+		width: 45.2%;
+		margin: 0 3.5% 0 0;
+	}
+
+}*/

@@ -1,0 +1,109 @@
+{literal}
+<script>
+$(window).load(function() {
+  $('#prizeList').flexslider({
+    animation: "slide",
+    animationLoop: false,
+	itemWidth: 200,
+	itemMargin: 15,
+	minItems: 1,
+	maxItems: 1
+  });
+});
+</script>
+{/literal}
+<div id="liveitPage" class="universal">
+	<div class="prizePage">
+    	<div id="prizeList" class="carousel">
+            <ul class="slides">	
+            	<li class="slidesitem">
+                    <ul class="columns-3 clearfix">
+                        <li class="col3">
+                            <div class="boxPrizeDetail">
+                                <div class="thumbPrize">
+                                    <a href="#popup-liveitup-buy" class="showPopup getBuyitem"><img src="{$basedomain}assets/content/phase4/liveitup/buy2.png" /></a>
+                                </div><!-- END .thumbPrize -->
+                                <div class="captions">
+                                    <h1>5th gen ipod touch</h1>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec quis molestie sem.</p>
+                                    <p><span class="buy-point">1500 Pts</span></p>
+                                    <a class="landbtn landbtn2 showPopup" href="#popup-liveitup-buy">Details</a>
+                                </div><!-- END .captions -->
+                            </div><!-- END .boxPrizeDetail -->
+                        </li>
+                          <li class="col3">
+                            <div class="boxPrizeDetail">
+                                <div class="thumbPrize">
+                                    <a href="#popup-liveitup-buy" class="showPopup getBuyitem"><img src="{$basedomain}assets/content/phase4/liveitup/buy1.png" /></a>
+                                </div><!-- END .thumbPrize -->
+                                <div class="captions">
+                                    <h1>FERRARI in-EAR monitors</h1>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec quis molestie sem.</p>
+                                    <p><span class="buy-point">1500 Pts</span></p>
+                                    <a class="landbtn landbtn2 showPopup" href="#popup-liveitup-buy">Details</a>
+                                </div><!-- END .captions -->
+                            </div><!-- END .boxPrizeDetail -->
+                        </li>
+                          <li class="col3">
+                            <div class="boxPrizeDetail">
+                                <div class="thumbPrize">
+                                    <a href="#popup-liveitup-buy" class="showPopup getBuyitem"><img src="{$basedomain}assets/content/phase4/liveitup/buy3.png" /></a>
+                                </div><!-- END .thumbPrize -->
+                                <div class="captions">
+                                    <h1>f1 ferrari scale model</h1>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec quis molestie sem.</p>
+                                    <p><span class="buy-point">1500 Pts</span></p>
+                                    <a class="landbtn landbtn2 showPopup" href="#popup-liveitup-buy">Details</a>
+                                </div><!-- END .captions -->
+                            </div><!-- END .boxPrizeDetail -->
+                        </li>
+                    </ul>
+                </li><!-- END .slidesitem -->
+            	<li class="slidesitem">
+                    <ul class="columns-3 clearfix">
+                        <li class="col3">
+                            <div class="boxPrizeDetail">
+                                <div class="thumbPrize">
+                                    <a href="#popup-liveitup-buy" class="showPopup getBuyitem"><img src="{$basedomain}assets/content/phase4/liveitup/buy2.png" /></a>
+                                </div><!-- END .thumbPrize -->
+                                <div class="captions">
+                                    <h1>5th gen ipod touch</h1>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec quis molestie sem.</p>
+                                    <p><span class="buy-point">1500 Pts</span></p>
+                                    <a class="landbtn landbtn2 showPopup" href="#popup-liveitup-buy">Details</a>
+                                </div><!-- END .captions -->
+                            </div><!-- END .boxPrizeDetail -->
+                        </li>
+                          <li class="col3">
+                            <div class="boxPrizeDetail">
+                                <div class="thumbPrize">
+                                    <a href="#popup-liveitup-buy" class="showPopup getBuyitem"><img src="{$basedomain}assets/content/phase4/liveitup/buy1.png" /></a>
+                                </div><!-- END .thumbPrize -->
+                                <div class="captions">
+                                    <h1>FERRARI in-EAR monitors</h1>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec quis molestie sem.</p>
+                                    <p><span class="buy-point">1500 Pts</span></p>
+                                    <a class="landbtn landbtn2 showPopup" href="#popup-liveitup-buy">Details</a>
+                                </div><!-- END .captions -->
+                            </div><!-- END .boxPrizeDetail -->
+                        </li>
+                          <li class="col3">
+                            <div class="boxPrizeDetail">
+                                <div class="thumbPrize">
+                                    <a href="#popup-liveitup-buy" class="showPopup getBuyitem"><img src="{$basedomain}assets/content/phase4/liveitup/buy3.png" /></a>
+                                </div><!-- END .thumbPrize -->
+                                <div class="captions">
+                                    <h1>f1 ferrari scale model</h1>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec quis molestie sem.</p>
+                                    <p><span class="buy-point">1500 Pts</span></p>
+                                    <a class="landbtn landbtn2 showPopup" href="#popup-liveitup-buy">Details</a>
+                                </div><!-- END .captions -->
+                            </div><!-- END .boxPrizeDetail -->
+                        </li>
+                    </ul>
+                </li><!-- END .slidesitem -->
+           	</ul><!-- END .slides -->
+         </div><!-- END #prizeList -->
+    </div><!-- END .prizePage -->
+</div><!-- END #prizePage -->
+{include file="application/web/widgets/popup-liveitup-buy.html"}

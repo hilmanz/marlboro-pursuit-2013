@@ -1,0 +1,93 @@
+{*}
+<script>
+	{literal}
+	
+	$(document).on('click','.searchTradingFloor',function(){
+		var searchKeywords = $('#searchTrading').val();
+		
+		$.post(basedomain+'search/tradingfloor', {keywords:searchKeywords}, function(data){
+			var html = "";
+			
+			if (data.status == true){
+				$.each(data.rec, function(i,e){
+					//console.log(e.name);
+					html += "<tr>";
+                    html += "    <td class='usertrade'>";
+                    html += "        <a class='thumb-small fl'><img src='"+basedomain+"assets/content/thumb_user.jpg' /></a>";
+                    html += "        <div class='entry-left fl'>";
+                    html += "            <h4 class='username'>"+e.name+"</h4>";
+                    html += "        </div>";
+                    html += "    </td>";
+                    html += "    <td class='letter-looking'><img src='"+basedomain+"assets/content/font/"+e.targetCodeName+".png' /></td>";
+                    html += "    <td class='letter-totrade'><img src='"+basedomain+"assets/content/font/"+e.sourceCodeName+".png' /></td>";
+                    html += "    <td>";
+					//html += "		<a href='javascript:void(0)' class='btn_black canceltrade ' prop='{$v.id}'>Cancel</a>";
+					html += "		<a href='#popup-trade-confirm' class='showPopup btn_black getradefloor' prop='"+e.idtrade+"'>Trade</a>";
+					html += "	</td>";
+					html += "</tr>";
+				})
+				
+				
+			}else{
+				html += "Trade not found";
+			}
+			
+			$(".listTradingFloor").html(html);
+			
+		},"JSON")
+	})
+	{/literal}
+</script>
+<div class="popup">
+	<div class="popupContainer popupBlackPaper" id="popup-trading-floor">
+        <div class="popupContent">
+        	<div class="popup-title">
+            	<h3 class="icon_title icon_request fl">Trade</h3>
+                <a href="#popup-post-trade" class="showPopup btn_black2 fr">Trade A Letter</a>
+                <div class="searchBox fr">
+                   
+                        <input type="text" value="" id="searchTrading"/>
+                        <input type="submit" value="SEARCH" class="searchTradingFloor"/>
+                    
+                </div><!-- END .searchBox -->
+            </div><!--END .entry-title-->
+        	<div class="entry-popup" id="trading-floor-list">
+            	<table width="100%" border="0" cellspacing="0" cellpadding="0">
+                	<thead>
+                      <tr>
+                        <th class="usertrade"><h3>Players</h3></th>
+                        <th class="letter-looking"><h3>Looking For</h3></th>
+                        <th class="letter-totrade"><h3>To Trade With</h3></th>
+                        <th>&nbsp;</th>
+                      </tr>
+                  	</thead>
+                    <tbody class="listTradingFloor">
+						{if $listTradeCode !=''}
+						{foreach from=$listTradeCode key=k item=v}
+                      <tr>
+                        <td class="usertrade">
+                            <a class="thumb-small fl"><img src="{$basedomain}assets/content/thumb_user.jpg" /></a>
+                            <div class="entry-left fl">
+                                <h4 class="username">{$v.name}</h4>
+                            </div><!-- END .entry-task -->
+                        </td>
+                        <td class="letter-looking"><img src="{$basedomain}assets/content/font/{$v.targetCodeName|lower}.png" /></td>
+                        <td class="letter-totrade"><img src="{$basedomain}assets/content/font/{$v.sourceCodeName|lower}.png" /></td>
+                        <td>
+							{if $v.userid == $user->id}
+							<a href="javascript:void(0)" class="btn_black canceltrade " prop="{$v.id}">Cancel</a>
+							{else}
+							<a href="#popup-trade-confirm" class="showPopup btn_black getradefloor" prop="{$v.id}">Trade</a>
+							<!--<a href="javascript:void(0)" class="btn_black getrade " prop="{$v.id}">Trade</a>-->
+							{/if}
+						</td>
+                      </tr>
+						{/foreach}
+						{/if}
+                 	</tbody>
+                </table>
+            </div><!--END .entry-popup-->
+        </div><!-- END .popupContent -->
+    </div><!-- END .popupContainer -->
+</div><!-- END .popup -->
+{/*}

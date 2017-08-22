@@ -1,0 +1,8 @@
+{$account_content}
+{$login_new_password}
+{$account_edit}
+{$account_brands}
+{$account_giid}
+
+{include file="application/web/widgets/popup-my-account-photo.html"}
+{include file="application/web/widgets/popup-statements.html"}

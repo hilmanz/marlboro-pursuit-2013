@@ -1,0 +1,99 @@
+<div id="gamesPage" class="universal">
+	<div id="gamelist" class="gamesPage carousel">
+    	<ul class="slides">
+        	<li class="slidesitem">
+            	<ul class="columns-4 clearfix">
+					 
+                	<li class="col4">
+                    	<div class="boxGame">
+                            <div class="thumbGame">
+                                <a href="{$basedomain}games/moveforward"><img src="{$basedomain}assets/content/phase4/game/moveforward.png" /></a>
+                            </div><!-- END .thumbGame -->
+                            <div class="captions">
+                                <h1>Move Forward</h1>
+                                <a class="landbtn landbtn1" href="{$basedomain}games/moveforward">PLAY NOW</a>
+                            </div><!-- END .captions -->
+                        </div><!-- END .boxGame -->
+                    </li><!-- END2 .col4-->
+		  {*}
+                   <li class="col4">
+                    	<div class="boxGame">
+                            <div class="thumbGame">
+                                <a href="{$basedomain}games/moveforward2"><img src="{$basedomain}assets/content/phase4/game/moveforward.png" /></a>
+                            </div><!-- END .thumbGame -->
+                            <div class="captions">
+                                <h1>Move Forward Alternatif</h1>
+                                <a class="landbtn landbtn1" href="{$basedomain}games/moveforward2">PLAY NOW</a>
+                            </div><!-- END .captions -->
+                        </div><!-- END .boxGame -->
+                    </li><!-- END .col4-->
+                   {*}
+                    <li class="col4">
+                    	<div class="boxGame">
+                            <div class="captions">
+                                <h1>WORD MASTER</h1>
+                                <a class="landbtn landbtn2" href="{$basedomain}games/wordmaster">PLAY NOW</a>
+                            </div><!-- END .captions -->
+                            <div class="thumbGame">
+                                <a href="{$basedomain}games/wordmaster"><img src="{$basedomain}assets/content/phase4/game/wordtap.png" /></a>
+                            </div><!-- END .thumbGame -->
+                        </div><!-- END .boxGame -->
+                    </li><!-- END .col4-->
+                <li class="col4">
+                    	<div class="boxGame">
+                            <div class="thumbGame">
+                                <a href="{$basedomain}games/wallbreaker/1"><img src="{$basedomain}assets/content/phase4/game/wallbreaker.png" /></a>
+                            </div><!-- END .thumbGame -->
+                            <div class="captions">
+                                <h1>WALLBREAKER</h1>
+                                <a class="landbtn landbtn1" href="{$basedomain}games/wallbreaker">PLAY NOW</a>
+                            </div><!-- END .captions -->
+                        </div><!-- END .boxGame -->
+                    </li><!-- END .col4-->
+                    <li class="col4">
+                    	<div class="boxGame">
+                            <div class="captions">
+                                <h1>CROSS OUT</h1>
+                                <a class="landbtn landbtn2" href="{$basedomain}games/crossout">PLAY NOW</a>
+                            </div><!-- END .captions -->
+                            <div class="thumbGame">
+                                <a href="{$basedomain}games/crossout/2"><img src="{$basedomain}assets/content/phase4/game/crossout.png" /></a>
+                            </div><!-- END .thumbGame -->
+                        </div><!-- END .boxGame -->
+                    </li><!-- END .col4-->
+                	
+                </ul><!-- END .columns-4-->
+            </li><!-- END .slidesitem-->
+
+            <li class="slidesitem">
+            	<ul class="columns-4 clearfix">
+                    
+                     <li class="col4">
+                    	<div class="boxGame">
+                            <div class="thumbGame">
+                                <a href="{$basedomain}games/wordhunt/4"><img src="{$basedomain}assets/content/phase4/game/wordhunt.png" /></a>
+                            </div><!-- END .thumbGame -->
+                            <div class="captions">
+                                <h1>WORDHUNT</h1>
+                                <a class="landbtn landbtn1" href="{$basedomain}games/wordhunt">PLAY NOW</a>
+                            </div><!-- END .captions -->
+                        </div><!-- END .boxGame -->
+                    </li><!-- END .col4-->
+                    
+                    <li class="col4">
+                    	<div class="boxGame">
+                            <div class="captions">
+                                <h1>DOUBT CRASHER</h1>
+                                <a class="landbtn landbtn2" href="{$basedomain}games/doubtcrasher">PLAY NOW</a>
+                            </div><!-- END .captions -->
+                            <div class="thumbGame">
+                                <a href="{$basedomain}games/doubtcrasher/5"><img src="{$basedomain}assets/content/phase4/game/doubtcrasher.png" /></a>
+                            </div><!-- END .thumbGame -->
+                        </div><!-- END .boxGame -->
+                    </li><!-- END .col4-->
+                    
+                </ul><!-- END .columns-4-->
+            </li><!-- END .slidesitem-->	                
+         <ul><!-- END .slides-->
+    </div><!-- END .gamesPage -->
+</div><!-- END #gamesPage -->

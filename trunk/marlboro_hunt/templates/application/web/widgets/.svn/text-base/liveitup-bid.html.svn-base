@@ -1,0 +1,134 @@
+{literal}
+<script>
+$(window).load(function() {
+	$('#prizeList').flexslider({
+	animation: "slide",
+	animationLoop: false,
+	itemWidth: 200,
+	itemMargin: 15,
+	minItems: 1,
+	maxItems: 1,
+	});
+/*	$(".getBidItem").click(function(event) {
+		event.preventDefault();
+		$('#countdown_dashboard').countDown({
+			targetOffset: {
+				'day': 		0,
+				'month': 	0,
+				'year': 	1,
+				'hour': 	0,
+				'min': 		0,
+				'sec': 		3
+			},
+			omitWeeks: true
+		});
+	});*/
+});
+</script>
+{/literal}
+<div id="liveitPage" class="universal">
+	<div class="prizePage">
+    	<div id="prizeList" class="carousel">
+            <ul class="slides">	
+            	<li class="slidesitem">
+                    <ul class="columns-2 clearfix">
+                        <li class="col2">
+                            <div class="boxPrizeDetail">
+                                <div class="thumbPrize">
+                                    <a href="#popup-liveitup-bid" class="showPopup getBidItem"><img src="{$basedomain}assets/content/phase4/liveitup/bid1.png" /></a>
+                                </div><!-- END .thumbPrize -->
+                                <div class="captions">
+                                    <h1>MOA ARENA BOX SEATS</h1>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec quis molestie sem.</p>
+                                    <p><span class="start-bid">START: 9-17-13</span>
+                                    <span class="end-bid">END: 9-20-13</span></p>
+                                    <a class="landbtn landbtn2 showPopup getBidItem" href="#popup-liveitup-bid">Details</a>
+                                </div><!-- END .captions -->
+                            </div><!-- END .boxPrizeDetail -->
+                        </li>
+                          <li class="col2">
+                            <div class="boxPrizeDetail">
+                                <div class="thumbPrize">
+                                    <a href="#popup-liveitup-bid-end" class="showPopup getBidItem"><img src="{$basedomain}assets/content/phase4/liveitup/bid2.png" /></a>
+                                </div><!-- END .thumbPrize -->
+                                <div class="captions">
+                                    <h1>MOA ARENA BOX SEATS</h1>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec quis molestie sem.</p>
+                                    <p><span class="start-bid">START: 9-17-13</span>
+                                    <span class="end-bid">END: 9-20-13</span></p>
+                                    <a class="landbtn landbtn2 showPopup getBidItem" href="#popup-liveitup-bid-end">Details</a>
+                                </div><!-- END .captions -->
+                            </div><!-- END .boxPrizeDetail -->
+                        </li>
+                    </ul>
+                </li><!-- END .slidesitem -->
+            	<li class="slidesitem">
+                    <ul class="columns-2 clearfix">
+                        <li class="col2">
+                            <div class="boxPrizeDetail">
+                                <div class="thumbPrize">
+                                    <a href="#popup-liveitup-bid-end" class="showPopup getBidItem"><img src="{$basedomain}assets/content/phase4/liveitup/bid1.png" /></a>
+                                </div><!-- END .thumbPrize -->
+                                <div class="captions">
+                                    <h1>MOA ARENA BOX SEATS</h1>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec quis molestie sem.</p>
+                                    <p><span class="start-bid">START: 9-17-13</span>
+                                    <span class="end-bid">END: 9-20-13</span></p>
+                                    <a class="landbtn landbtn2 showPopup getBidItem" href="#popup-liveitup-bid-end">Details</a>
+                                </div><!-- END .captions -->
+                            </div><!-- END .boxPrizeDetail -->
+                        </li>
+                          <li class="col2">
+                            <div class="boxPrizeDetail">
+                                <div class="thumbPrize">
+                                    <a href="#popup-liveitup-bid" class="showPopup getBidItem"><img src="{$basedomain}assets/content/phase4/liveitup/bid2.png" /></a>
+                                </div><!-- END .thumbPrize -->
+                                <div class="captions">
+                                    <h1>MOA ARENA BOX SEATS</h1>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec quis molestie sem.</p>
+                                    <p><span class="start-bid">START: 9-17-13</span>
+                                    <span class="end-bid">END: 9-20-13</span></p>
+                                    <a class="landbtn landbtn2 showPopup getBidItem" href="#popup-liveitup-bid">Details</a>
+                                </div><!-- END .captions -->
+                            </div><!-- END .boxPrizeDetail -->
+                        </li>
+                    </ul>
+                </li><!-- END .slidesitem -->
+            	<li class="slidesitem">
+                    <ul class="columns-2 clearfix">
+                        <li class="col2">
+                            <div class="boxPrizeDetail">
+                                <div class="thumbPrize">
+                                    <a href="#popup-liveitup-bid" class="showPopup getBidItem"><img src="{$basedomain}assets/content/phase4/liveitup/bid1.png" /></a>
+                                </div><!-- END .thumbPrize -->
+                                <div class="captions">
+                                    <h1>MOA ARENA BOX SEATS</h1>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec quis molestie sem.</p>
+                                    <p><span class="start-bid">START: 9-17-13</span>
+                                    <span class="end-bid">END: 9-20-13</span></p>
+                                    <a class="landbtn landbtn2 showPopup getBidItem" href="#popup-liveitup-bid">Details</a>
+                                </div><!-- END .captions -->
+                            </div><!-- END .boxPrizeDetail -->
+                        </li>
+                          <li class="col2">
+                            <div class="boxPrizeDetail">
+                                <div class="thumbPrize">
+                                    <a href="#popup-liveitup-bid" class="showPopup getBidItem"><img src="{$basedomain}assets/content/phase4/liveitup/bid2.png" /></a>
+                                </div><!-- END .thumbPrize -->
+                                <div class="captions">
+                                    <h1>MOA ARENA BOX SEATS</h1>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec quis molestie sem.</p>
+                                    <p><span class="start-bid">START: 9-17-13</span>
+                                    <span class="end-bid">END: 9-20-13</span></p>
+                                    <a class="landbtn landbtn2 showPopup getBidItem" href="#popup-liveitup-bid">Details</a>
+                                </div><!-- END .captions -->
+                            </div><!-- END .boxPrizeDetail -->
+                        </li>
+                    </ul>
+                </li><!-- END .slidesitem -->
+           	</ul><!-- END .slides -->
+         </div><!-- END #prizeList -->
+    </div><!-- END .prizePage -->
+</div><!-- END #prizePage -->
+{include file="application/web/widgets/popup-liveitup-bid.html"}
+{include file="application/web/widgets/popup-liveitup-bid-end.html"}

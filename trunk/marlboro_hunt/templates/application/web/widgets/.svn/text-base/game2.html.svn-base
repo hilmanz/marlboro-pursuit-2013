@@ -1,0 +1,23 @@
+<div id="gamesPage">
+	<div class="gamesPage" id="gamesPageDetail">
+        <ul class="columns-2 clearfix">
+            <li class="col2">
+            	<div class="thumbGameBig">
+					<a href="{$basedomain}games/play/crossout"><img src="{$basedomain}assets/content/game2.jpg" /></a>
+                </div><!-- END .boxPaper -->
+            </li>
+            <li class="col2">
+            	<div class="gameDesc">
+                    <h1>CROSS OUT</h1>
+                    <h4>Get rid of the MAYBE in your life with CROSS OUT MAYBE.</h4>
+                    <h4>Words will randomly appear on the screen. Draw an X on the words that represent a MAYBE attitude!</h4>
+                    <h4>Earn 2 points if you cross out words that represent a MAYBE attitude.</h4>
+                    <h4>Get deducted 2 points if you cross out words that represent a decisive attitude.</h4>
+                    <a class="btn_red" href="{$basedomain}games/play/crossout">PLAY NOW</a>
+                    <a class="btn_red showPopup" href="#popup-leaderboard">LEADERBOARD</a>
+                </div><!-- END .gameDesc -->
+            </li>
+        </ul>
+    </div><!-- END .gamesPage -->
+</div><!-- END #gamesPage -->
+{$popup_leaderboard_maybeninja}

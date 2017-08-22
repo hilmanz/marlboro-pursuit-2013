@@ -1,0 +1,136 @@
+<script>
+{literal}
+
+		$(document).on('change','.coba',function(){
+		var id = $(this).attr('prop');
+		
+		var n_status = $(this).val();
+		var userid = $(this).attr('userid');
+		var taskid = $(this).attr('taskid');
+		
+			$.post("index.php?s=taskListActivity&act=ajax" ,{id:id, n_status:n_status, userid:userid, taskid:taskid}, function(inilemparandatanya){
+				if (inilemparandatanya.status == true){
+					alert('Success');
+				}else{
+					alert('Failed');
+				}
+			},"JSON");
+		});
+		
+		
+		$(document).on('click','.downloadReport',function(){
+		
+			var link = $('.hiddenReport').val();
+			var type = $('.type').val();
+			var n_status = $('.n_status').val();
+			
+			window.location.href=link+'&article_type='+type+'&nstatus='+n_status;
+			//alert(type);
+			//alert(n_status);
+			
+		});
+{/literal}
+</script>
+
+  
+
+<div class="theContent">
+
+    <div class="theTitle">
+        <h2>TASK LIST ACTIVITY</h2>
+		<a  href="javascript:void(0)" class="btn btn_document downloadReport" ><span>Download XLS</span></a>
+		<!--  <a href="index.php?s=dyo&act=getdyoreport&article_type=&winStatus={$winStatus}&startdate={$startdate}&enddate={$enddate}" class="btn btn_document"><span>Download XLS</span></a> -->
+    </div><!--contenttitle-->
+    <div class="tableoptions">        
+   <form method="GET" action="">
+        <input type="text" name="search" value="{$search}">
+        <input type="hidden" name="s" value="{$folder}" />
+        <input type="hidden" name="cari" value="cari" />
+        <input type="hidden" class="hiddenReport" value="index.php?s=taskListActivity&act=gettaskreport&article_type={$article_type}&search={$search}&startdate={$startdate}&enddate={$enddate}" />
+     &nbsp &nbsp
+        <select name="article_type" class="type">
+            <option value="0"> - Type - </option>
+            {section name=i loop=$typelist}
+            {if $typelist[i].id == $article_type}<option value="{$typelist[i].id}" selected>{$typelist[i].content_name}</option>
+            {else}<option value="{$typelist[i].id}">{$typelist[i].content_name}</option>
+            {/if}
+            {/section}
+        </select>
+		
+		<select id="nstatus" name="nstatus" class="n_status">
+			<option value="0" {if $nstatus == ""} selected="selected" {/if} >All</option>
+			<option value="2" {if $nstatus == "2"} selected="selected"{/if} >Verified</option>
+			<option value="1" {if $nstatus == "1"}  selected="selected"{/if} >Unverified</option>
+		</select>
+       <span>Date Range</span>
+        <input type="text" name="startdate" value="{$startdate}" class="datepicker radius3" />
+       <span>&nbsp to &nbsp</span>
+        <input type="text" name="enddate" value="{$enddate}" class="datepicker radius3" />&nbsp &nbsp
+        <input type="submit" value="GO" class="stdbtn btn_orange" />
+        
+    </form>
+		
+    </div><!--tableoptions-->	
+	<form method="POST" action="">
+    <table cellpadding="0" cellspacing="0" border="0" id="table1" class="stdtable">
+        <colgroup>
+            <col class="con0" style="width: 4%" />
+            <col class="con1" />
+            <col class="con0" />
+            <col class="con1" />
+            <col class="con0" />
+            <col class="con1" />
+        </colgroup>
+        <thead>
+            <tr>
+                <th class="head0">No</th>
+                <th class="head1">Name</th>
+                <th class="head1">Email</th>
+                <th class="head1">Date</th>
+                <th class="head1">Theme Name</th>
+                <th class="head1">Images</th>
+                <th class="head1">Status</th>
+               <!--  <th class="head1">Status</th> -->
+			</tr>
+        </thead>
+        <tbody>
+            {foreach from=$list key=k item=v}
+            <tr>
+                <td width="10">{$v.no}&nbsp;</td>
+                <td><nobr>{$v.name}&nbsp{$v.last_name}</nobr></td>
+                <td><nobr>{$v.email}</a></nobr></td>
+				<td><nobr>{$v.created_date}</nobr></td>
+				<td><nobr>{$v.title}</nobr></td>
+
+				<td><nobr>
+				<a class="showPopup" id="{$v.userid}" href="#imageTaskList{$k}">{if $v.paths}<img src="{$baseurl}public_assets/{$v.paths}/{$v.img}" width="75px" />{/if}</a>
+				</nobr></td>
+
+				<td><nobr>
+					{if $v.usedverified==1}
+						<form method="POST" action="">
+							<nobr>
+							
+								<select class="coba" prop="{$v.id}" userid="{$v.userid}" taskid="{$v.taskid}">
+									<option value="2" {if $v.n_status == 2} selected="selected" {/if} >Verified</option>
+									<option value="1" {if $v.n_status == 1} selected="selected" {/if} >UnVerified</option>
+									<option value="3" {if $v.n_status == 3} selected="selected" {/if} >Rejected</option>
+									<input type="hidden" id="{$v.id}" name="test" value="">
+								</select>	
+							
+							</nobr>		
+						</form>
+					{/if}
+				</td>
+			<div id="imageTaskList{$k}" style="display:none">
+					<img src="{$baseurl}public_assets/{$v.paths}/{$v.img}" width="400px" height="300px" />		
+			</div>
+			</tr>
+            {/foreach}
+        </tbody>
+    </table>
+	</form>
+    <div class="paging">
+    	{$paging}
+    </div>
+</div><!--theContent-->

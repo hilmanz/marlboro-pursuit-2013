@@ -1,0 +1,45 @@
+{*}
+<div class="popup">
+	<div class="popupContainer popupBlackPaper" id="popup-trade-confirm">
+        <div class="popupContent">
+        	<div class="popup-title">
+            	<h3 class="icon_title icon_request fl">Trade Request</h3>
+            </div><!--END .entry-title-->
+            <ul class="columns-2 clearfix">
+                <li class="col2">
+                    <div class="entry-popup">
+                    	<div class="usertrade">
+                            <a class="thumb-small fl"><img src="{$basedomain}assets/content/thumb_user.jpg" /></a>
+                            <div class="entry-left fl">
+                                <h4 class="username">{$tradeFlor.myname}</h4>
+                            </div><!-- END .entry-task -->
+                        </div><!-- END .user-trading -->
+                        <div class="preview-box">
+                        	<img src="{$basedomain}assets/content/font/{$tradeFlor.sourceCodeName|lower}.png" />
+                        </div>
+          				<div class="entry-popup-center">
+                        	<p>yeah here you go!</p>
+                        </div>
+          		    </div><!--END .entry-popup-->
+                </li><!-- END .col2 -->
+                <li class="col2">
+                    <div class="entry-popup">
+                    	<div class="usertrade">
+                            <a class="thumb-small fl"><img src="{$basedomain}assets/content/thumb_user.jpg" /></a>
+                            <div class="entry-left fl">
+                                <h4 class="username">{$tradeFlor.name}</h4>
+                            </div><!-- END .entry-task -->
+                        </div><!-- END .user-trading -->
+                        <div class="preview-box">
+                        	<img src="{$basedomain}assets/content/font/{$tradeFlor.targetCodeName|lower}.png" />
+                        </div>
+          				<div class="entry-popup-center">
+               			 <a href="javascript:void(0)" class="btn_black3 confirmTrade">Confirm Trade</a>
+                        </div>
+          		    </div><!--END .entry-popup-->
+                </li><!-- END .col2 -->
+            </ul><!-- END .columns-2 -->
+        </div><!-- END .popupContent -->
+    </div><!-- END .popupContainer -->
+</div><!-- END .popup -->
+{/*}

@@ -1,0 +1,64 @@
+<div class="section">
+	<div class="the-title fl">
+        <h2>Redeem Merchandise</h2>
+    </div>
+    <div class="menu_charts">
+        <input type="text"  id="from" name="from"><span>-</span>
+        <input type="text"  id="to" name="to" /><a href="#" class="calendar"></a>
+    </div>
+    <div class="boxBig">
+    	<div class="title_box">
+            <div class="the-title fl">
+                <h2>Number of Redeem (per each merchandise)</h2>
+            </div>
+         </div>
+        <div class="chart-section" id="redeemField">
+			<!-- <img src="{$assets_domain}images/charts.jpg"> -->
+        </div>
+     </div><!--end.boxBig-->
+      
+     <div class="boxBig-2">
+    	<div class="title_box">
+            <div class="the-title fl">
+                <h2>Total Redeem (per each merchandise)</h2>
+            </div>
+         </div>
+         <div class="summary-redeem">	 
+	 	{section name=i loop=$numberRedeem}
+            <div class="summary_box-5 center_box">
+            	<div class="summary_center">
+                    <div class="summary_stats">
+                    <h1 class="brown">{$numberRedeem[i].num}</h1>
+                        <h4>{$numberRedeem[i].name}</h4>
+                    </div>
+                </div>
+            </div><!--end.summary_box-->
+		{/section}
+        </div>
+     </div><!--end.boxBig-->
+</div><!--end.section-->
+
+
+<script type="text/javascript">
+	var numberRedeem = {$numberRedeem|@json_encode};	
+	var  basedomainpath = "{$basedomainpath}";
+	
+{literal}	
+$(function () {
+
+	var redeemData = new Array();
+	var redeemDate = new Array();	
+	
+	for (var redeem in numberRedeem){
+		redeemData.push(parseInt(numberRedeem[redeem].num));
+		redeemDate.push(String(numberRedeem[redeem].name));
+		//redeemDate.push("<img src='"+basedomainpath+"public_assets/merchandiseStock/"+numberRedeem[redeem].image+"' />");
+	}
+			
+	gethighChart('column','test  Chart','redeemField',redeemData,redeemDate,1, true, false, false, true, false, true);
+	
+	//drillDownChart('column','test Chart','cont',dataCoba,cateActivityGroup,1 ,false);
+	});
+		
+</script>
+{/literal}

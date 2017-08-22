@@ -1,0 +1,95 @@
+<script>
+	{literal}
+	
+	$(document).ready(function(){
+	$.post(basedomain+'pursuit/jointhepursuit', {hasjoin:true}, function(data){
+		var html = "";
+		
+		if (data.status == true){
+			
+			$('.jointhepursuit').hide();
+		}
+	},"JSON")
+	})
+	
+	$(document).on('click','.jointhepursuit',function(){
+		
+		var join = $(this).attr('prop');
+		
+		$.post(basedomain+'pursuit/jointhepursuit', {join:true}, function(data){
+			var html = "";
+			if (data.status == true){
+			
+				window.location.href=basedomain+'pursuit/join';
+			}
+		},"JSON")
+		
+	})
+	{/literal}
+</script>
+
+<div id="pursuitPage">
+	<div class="pursuitPage">
+        <ul class="columns-content clearfix">
+            <li class="col-sidebar">
+                <div class="titlePaper">
+                    <h1><span class="black">THE</span><span class="red">PURSUIT</span></h1>
+                </div><!-- END .titlePaper -->
+                <div class="sideBar">
+                	<div style="height:170px;">
+                    <div class="be-marlboro2"></div>
+                    </div>
+                    <div class="entry">
+                    	<div class="row"><a class="readmore rblack" href="{$basedomain}pursuit/learnMore">Learn More</a></div>
+                        <div class="row"><a class="readmore rblack showPopup" href="#popup-full-mechanics-pursuit">Read Full Mechanics</a></div>
+                        <div class="row"><a class="readmore rblack" href="{$basedomain}pursuit/prize">What You Can Win</a></div>
+                        <div class="row"><a class="readmore rblack" href="{$basedomain}mscape">See The Grand Prize</a></div>
+                        <div class="row"><a class="readmore rblack redeemprize" href="javascript:void(0)">Redeem Prize</a></div>
+                    </div><!-- END .entry -->
+                </div><!-- END .sideBar -->
+            </li><!-- END .col-sidebar -->
+            <li class="col-main">
+            	<div class="theContent" style="max-width:605px;">
+                	<h1>How to <span class="red">Play</span></h1>
+                    <link href="{$basedomain}assets/css/video-js.css" rel="stylesheet" type="text/css">
+                     <script src="{$basedomain}assets/js/video.js"></script>
+                     <script>
+						_V_.options.flash.swf = "js/video-js.swf";
+					 </script>
+                	<div id="video-box">
+					
+						 <video id="video-pursuit" class="video-js vjs-default-skin" controls preload="none" height="340"
+                              poster="{$basedomain}assets/content/thumb_video_learnmore.png"
+                              data-setup="">
+                            <source src="{$basedomain}assets/video/Pursuit_Mechanics.mp4" type='video/mp4' />
+                            <source src="{$basedomain}assets/video/Pursuit_Mechanics.ogg" type='video/ogg' />
+                          </video>
+						  
+                    </div>
+                        <div class="row"><a class="readmore rblack fr jointhepursuit" href="#" prop="1" style="display:block !important;">Join The Pursuit</a></div>
+                </div>
+            </li><!-- END .col-main -->
+        </ul>
+    </div><!-- END .dyoshirtPages -->
+</div><!-- END #dyoshirtPages -->
+{include file="application/web/widgets/popup-full-mechanics-pursuit.html"}
+
+
+{include file="application/web/widgets/popup_redeem_4.html"}
+{include file="application/web/widgets/popup_redeem_3.html"}
+{include file="application/web/widgets/popup_redeem_2.html"}
+{include file="application/web/widgets/popup_redeem_1.html"}
+{include file="application/web/widgets/popup_redeem_claim.html"}
+
+<div style='display:none'>
+{foreach from=$merchanDont key=k item=v}
+<a class="thumb-prize redeemPrizeDont"  prop="{$v.id}" filename="{$v.image}" ></a>
+{/foreach}
+{foreach from=$merchanDontbe key=k item=v}
+<a class="thumb-prize redeemPrizeDontBe" prop="{$v.id}" filename="{$v.image}"></a>
+{/foreach}
+{foreach from=$merchanDontbea key=k item=v}
+<a class="thumb-prize redeemPrizeDontBeA"  prop="{$v.id}" filename="{$v.image}"></a>
+{/foreach}
+</div>
+<script  type="text/javascript" src="{$basedomain}assets/js/helper/pursuitjoin.js"></script>

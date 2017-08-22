@@ -1,0 +1,48 @@
+<div class="popup">
+	<div class="popupContainer popupBlack popup-small" id="popup-play-image-upload">
+        <div class="popupContent">
+        	<div class="popup-title" style="padding:20px 0 0 0;">
+                <h1 class='buttoncondition'>PLAY</h1>
+          		<h3 style="line-height:22px;">Upload a Picture of Yourself<br />{$conditional[1].description}</h3>
+            </div><!--END .entry-title-->
+        	<div class="entry-popup">
+            	<form method="POST" action="{$basedomain}thisorthat" enctype="multipart/form-data">
+                	<div class="row">
+                	<input type="file" name="image" id="imgInpPlay"/>
+                    </div>
+                    <div class="row">
+                    	<div id="photo-preview">
+						<img id="previewplay" src="#" alt="your image" />
+                        </div>
+                    </div>
+                    <div class="row">
+						<p style="font-family:Arial, Helvetica, sans-serif; font-size:11px;">Please be reminded that as per the <a class='showPopup popuptnc' href='#popup-tnc'>Terms and Conditions</a>, all photos, images or designs submitted will become the property of PM. Please do not upload or submit any photos, images or designs depicting the act of smoking or showing a lit cigarette or minors (persons less than 18 years old). PM reserves to the right to remove or reject any photo, image or design which it, in its sole and absolute discretion, deems offensive, violates the law or is unsuitable in any other manner. The photo you upload will be subject to moderation.</p>
+                        <input class="button btnRed" type="submit" value="SUBMIT">
+                        <input class="button btnRed" type="submit" value="CANCEL">
+                        <input type="hidden" value="3" name="token">
+                    </div>
+                </form>
+            </div><!--END .entry-popup-->
+        </div><!-- END .popupContent -->
+    </div><!-- END .popupContainer -->
+</div><!-- END .popup -->
+
+<script>
+{literal}
+	function readURLplay(input) {
+		if (input.files && input.files[0]) {
+            var reader = new FileReader();
+			reader.onload = function (e) {
+                $('#previewplay').attr('src', e.target.result);
+				$('#previewplay').attr('width', '400px');
+                $('#previewplay').attr('height', '200px');
+            }
+			 reader.readAsDataURL(input.files[0]);
+        }
+    }
+    
+    $("#imgInpPlay").change(function(){
+        readURLplay(this);
+    });
+{/literal}
+</script>

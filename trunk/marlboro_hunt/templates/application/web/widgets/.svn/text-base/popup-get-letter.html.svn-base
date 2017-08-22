@@ -1,0 +1,15 @@
+<div class="popup">
+	<div class="popupContainer popupBlack popup-small" id="popup-get-letter">
+        <div class="popupContent2">
+        	<div class="popup-title white_title">
+                <h3>Congratulations!</h3>
+            </div><!--END .entry-title-->
+        	<div class="entry-popup entry-popup-center">
+                <div class="row">
+                	<img src="{$basedomain}assets/content/font/a.png" />
+                    <h4>You Found A Letter "A"</h4>
+                </div>
+            </div><!--END .entry-popup-->
+        </div><!-- END .popupContent -->
+    </div><!-- END .popupContainer -->
+</div><!-- END .popup -->

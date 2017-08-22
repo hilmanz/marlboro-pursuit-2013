@@ -1,0 +1,148 @@
+/* Point of ViUU - CSS */
+	
+	.perspective .perspective_diap:focus { outline:none; }
+	/* Plugin container */
+	.perspective,.dyo-gallery-winner {
+		overflow:hidden; position:relative; /* <- Do not change this line */
+	/*!*/	width:540px; /* Required - Adapt to your template */
+	/*!*/	height:380px; /* Required - Adapt to your template */
+		margin:0 auto;
+	}
+	
+	.dyo-gallery-winner{
+		width:100%;
+		max-width:635px;
+		height:auto;
+		padding:20px 0;
+	}
+	.dyo-gallery-winner .perspective_diap p{
+		display:block;
+	}
+	.dyo-gallery-winner .perspective_diap{
+		position:relative;
+	}
+		/* Plugin content */
+		.perspective .perspective_diap {
+			position:absolute; /* <- Do not change this line */
+/*!*/		width:536px; /* Required - Adapt to your template (Add padding if needed) */
+/*!*/		height:280px; /* Required - Adapt to your template (Add padding if needed) */
+			/*background:url(../images/winner.png) left top no-repeat #000;*/
+			background:#FFF;
+			border:solid 2px #000;
+			display:block;
+			z-index:0;
+			text-align:center;
+		}
+		#event-gallery .perspective .perspective_diap{
+			border:none;
+			text-align:left;
+		}
+			/* Plugin content image */
+			.perspective_diap img {
+	/*!*/		width:100%; /* Required - Adapt to your template (Add padding if needed) */
+/*!*/		height:280px; /* Required - Adapt to your template (Add padding if needed) */
+			}
+			/* All description will be in this 'p' */
+			.perspective_diap p {
+				position:absolute; display:none; /* <- Do not change this line */
+				z-index:5; /* Change if needed */
+				background:#fff;
+				padding:10px 0;
+				font-size:15px;
+				color:#fff;
+				font-family: 'maybebold';
+			}
+			.perspective_diap p.winner{
+				background:url(../images/winner.png) no-repeat;
+				top:0;
+				left:0;
+				width:165px; height:117px;
+				display:block !important;
+			}
+			.perspective_diap p span{
+				padding:0 10px;
+				font-size:14px;
+			}
+				/* Add class if you want different display in your description text */
+				/* Description position */
+				
+				/* Description style */
+				.perspective_diap .caption { width:100%; bottom:0; left:0; background:#000; color:#fff; }
+				.perspective_diap .caption-event,.perspective_diap .caption-photo { width:100%; bottom:2px; left:0;color:#fff; background:none; }
+				.likecount{
+					color:#C00;
+				}
+				.perspective_diap .caption-event{
+					background:url(../images/tr.png) repeat;
+					bottom:0;
+				}
+				.likebtn{
+					color:#fff;
+					text-decoration:none;
+					padding:0 10px;
+				}
+				.perspective_diap p span.entry-caption{
+					padding:0 10px;
+					display:block;
+				}
+				#event-gallery .perspective_diap p span{
+					display:block;
+					text-shadow:0 1px 1px #000;
+				}
+				#event-gallery .perspective_diap p span.title-event,#event-gallery .perspective_diap p span.title-photo{
+					font-size:24px;
+					color:#bf1323;
+				}
+				#dyo-gallery,.gallery-act{
+					width:540px;
+				}
+				#dyo-gallery{
+					height:455px;
+					padding:35px 0 0 0;
+				}
+	
+	/* overlay on the images to simulate Darkening */
+	em.darkPers {
+		position:absolute; top:0; left:0; /* <- Do not change this line */
+		cursor:pointer; /* If you want a cursor pointer on your images */
+		background:none; /* <- choose your color here */
+	}
+	
+	
+	
+/* If you use Timer and/or play */
+	
+	/* Timer */
+	span.timer_rota {
+		position:absolute; overflow:hidden; /* <- Do not change this line */
+		z-index:10; /* Change if needed */
+		width:24px;
+		height:24px;
+		bottom:21px; /* Position in container */
+		right:10px; /* Position in container */
+	}
+		span.timer_rota span {
+			position:absolute; /* <- Do not change this line */
+			width:24px;
+			height:576px;
+			background:url(../images/point_of_viuu/sprite_cercle.png) no-repeat;
+		}
+	
+	/* Play - Pause */
+	span.pause_rota,
+	span.play_rota {
+		position:absolute; cursor:pointer; /* <- Do not change this line */
+		z-index:10; /* Change if needed */
+		width:24px;
+		height:24px;
+		bottom:55px; /* Position by default in container */
+		right:10px; /* Position by default in container */
+		background:url(../images/point_of_viuu/sprite_lecture.png) right top no-repeat;
+		display:none;
+		}
+		span.play_rota { background-position: right bottom; }
+		span.pause_rota:hover { background-position: left top; }
+		span.play_rota:hover { background-position: left bottom; }
+		.perspective_diap a{font-size:14px;}
+
+		

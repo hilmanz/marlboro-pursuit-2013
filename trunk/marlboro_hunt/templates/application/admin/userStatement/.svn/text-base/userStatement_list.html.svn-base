@@ -1,0 +1,115 @@
+<script>
+{literal}
+
+		$(document).on('change','.coba',function(){
+		var id = $(this).attr('prop');
+		var photo_moderation = $(this).val();
+
+			$.post("index.php?s=users&act=publishAjax" ,{id:id, photo_moderation:photo_moderation}, function(inilemparandatanya){
+				if (photo_moderation == 1){
+					alert('Verified');
+				}else if (photo_moderation == 0){
+					alert('Unverified');
+				}else if (photo_moderation == 2){
+					alert('Rejected');
+				}	
+			},"JSON");
+		});
+
+
+{/literal}
+</script>
+
+<div class="theContent">
+    <div class="theTitle">
+        <h2>{$folder} List</h2>
+        {*}<a href="index.php?s={$folder}&act=add" class="btn btn_pencil"><span>Add {$folder}</span></a>{/*}
+    </div><!--contenttitle-->
+    <div class="tableoptions">        
+    <form>
+        <input type="text" name="search" value="{$search}">
+        <input type="hidden" name="s" value="{$folder}" />
+        <input type="hidden" name="cari" value="cari" /> 
+		{*}
+        <select name="article_type">
+            <option value=""> - Type - </option>
+            {section name=i loop=$typelist}
+            {if $typelist[i].id == $article_type}<option value="{$typelist[i].id}" selected>{$typelist[i].content_name}</option>
+            {else}<option value="{$typelist[i].id}">{$typelist[i].content_name}</option>
+            {/if}
+            {/section}
+        </select>
+		{/*}
+		<!-- <select id="photoMod" name="photoMod">
+			<option value="" {if $list[i].photo_moderation == ""} selected="selected" {/if} >All</option>
+			<option value="1" {if $list[i].photo_moderation == "1"} selected="selected"{/if} >Verified</option>
+			<option value="0" {if $list[i].photo_moderation == "0"}  selected="selected"{/if} >Unverified</option>
+		</select> -->
+       <span>&nbsp;Date Range&nbsp;</span>
+        <input type="text" name="startdate" value="{$startdate}" class="datepicker radius3" />
+       <span>&nbsp;s/d&nbsp;</span>
+        <input type="text" name="enddate" value="{$enddate}" class="datepicker radius3" />
+        <input type="submit" value="cari" class="stdbtn btn_orange" />
+    </form>
+    </div><!--tableoptions-->	
+    <table cellpadding="0" cellspacing="0" border="0" id="table1" class="stdtable">
+        <colgroup>
+            <col class="con0" style="width: 4%" />
+            <col class="con1" />
+            <!-- <col class="con0" /> -->
+           <!--  <col class="con1" />
+            <col class="con0" />
+            <col class="con1" /> -->
+        </colgroup>
+        <thead>
+            <tr>
+                <th class="head0">No</th>
+                <th class="head0">Description</th>
+                <!-- <th class="head0">Datetimes</th> -->
+                <th class="head0">Total</th>
+                <!-- <th class="head1">Registered Date</th> -->
+                <!-- <th class="head0">Pages</th> -->
+                <!-- <th class="head0"><nobr>Photo</nobr></th> -->
+               <!--  <th class="head0">Status</th> -->
+                <!-- <th class="head1">Action</th> -->
+            </tr>
+        </thead>
+        <tbody>
+            {section name=i loop=$list}
+            <tr>
+                <td width="10">{$list[i].no}&nbsp;</td>              
+                <td>{$list[i].description}</td>              
+                <!-- <td>{$list[i].datetimes}</td>               -->
+                <td>{$list[i].num}</td>              
+                <!-- <td><nobr>{$list[i].register_date|date_format:"%e %B %Y"} &nbsp;{$list[i].register_time}</nobr></td> -->
+                <!-- <td align="center"><nobr> {if $list[i].typepages}{$list[i].typepages|upper}{else}{/if}</nobr></td> -->
+				<!-- <td width="100" align="center"><img height="65px;" src="{$baseurl}public_assets/user/photo/{if $list[i].image_profile}{$list[i].image_profile}{else}default.jpg{/if}"></td>                            -->
+                <!-- <td align="center">
+                    {if $list[i].n_status==0} <span class="orange">Unpublish</span>
+                    {elseif $list[i].n_status==1} <span class="green">Publish</span>
+                    {elseif $list[i].n_status==2} <span class="red">Inactive</span>
+                    {else}
+                    {/if}
+                </td>          -->       
+                <!-- <td> -->
+				<!-- <form method="POST" action="">
+                    <nobr>
+					<select class="coba" prop="{$list[i].id}">
+						<option value="1" {if $list[i].photo_moderation == 1} selected="selected" {/if} >Verified</option>
+						<option value="0" {if $list[i].photo_moderation == 0} selected="selected" {/if} >UnVerified</option>
+						<option value="2" {if $list[i].photo_moderation == 2} selected="selected" {/if} >Rejected</option>
+						<input type="hidden" id="{$list[i].id}" name="test" value="">
+					</select>		
+				</form> -->
+                        <!-- <a href="index.php?s={$folder}&act=hapus&id={$list[i].id}&do=photo" class="green" onclick="return confirm('Are you sure you want to delete this?')">delete photo</a>                      
+                        | <a href="index.php?s={$folder}&act=hapus&id={$list[i].id}" class="red" onclick="return confirm('Are you sure you want to delete this?')">banned</a>   -->                    
+                    <!-- </nobr> -->
+                <!-- </td> -->
+            </tr>
+            {/section}
+        </tbody>
+    </table>
+    <div class="paging">
+    	{$paging}
+    </div>
+</div><!--theContent-->

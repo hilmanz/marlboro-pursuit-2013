@@ -1,0 +1,20 @@
+<div class="popup2 popup-leaderboard" id="popup-full-mechanics-wordhunt">
+    <div class="popupContent3">
+        <div class="popup-title">
+			<h1>HOW TO PLAY WORD HUNT</h1>
+        </div><!--END .entry-title-->
+        <div class="entry-popup popupmechanicsGame">
+            <ul class="columns-2 clearfix">
+                <li class="col2">
+           			 <img src="{$basedomain}assets/content/wordhunt_mechanic.png" />
+                </li>
+                <li class="col2">
+                    <div class="centering" style="position:absolute; left:450px; top:210px; width:100px;">
+                        <a class="btnRed1 checkFlash" href="javascript:void(0)">PLAY NOW</a>
+                        <a class="btnRed2 showPopups" href="#popup-leaderboard">LEADERBOARD</a>
+                    </div><!--END .centering-->
+                </li>
+            </ul>
+        </div><!--END .entry-popup-->
+    </div><!-- END .popupContent -->
+</div><!-- END .popupContainer -->

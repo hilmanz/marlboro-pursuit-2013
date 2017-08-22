@@ -1,0 +1,26 @@
+<table class="gridtable">
+				<tr>
+					<th>Name</th>
+					<th>Email</th>
+					{foreach from=$dyouserweekly.dates key=k item=v}
+				 
+						<th>{$v}</th>
+					 
+				 
+					{/foreach}
+					
+				</tr>
+                <tbody id="loginInventory">
+				{foreach from=$dyouserweekly.datas key=k item=v}
+					<tr>
+						<td>{$v.users.name|lower|capitalize} {$v.users.last_name|lower|capitalize}</td>
+						<td>{$v.users.email|lower}</td>
+						{foreach from=$dyouserweekly.dates key=kdate item=kdate}
+							<td>{$v.datas[$kdate]}</td>
+						{/foreach}
+					</tr>	 
+				 
+				{/foreach}
+				
+                </tbody>
+            </table>

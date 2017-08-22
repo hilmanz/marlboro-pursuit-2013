@@ -1,0 +1,72 @@
+<div id="uploadPage">
+    <div class='upload-title'>
+        <h3>Upload Photo</h3>
+    </div>
+	<div class="uploadContent contentmyaccountphoto" status="{$status}">
+		<div class=''>
+			<form action="{$basedomain}event/posts/{$id}" method='POST' enctype='multipart/form-data' id='formuploadphotoprofile' >
+				<div class='rowd'>
+					{*}
+					<p>Please be reminded that as per the Terms and Conditions, all photos, images or designs submitted will become the property of PM. No photos of minors allowed. The photo you upload will be subject to moderation.</p>
+					{/*}
+                    <div class="uploadbox">
+					<h3>Photo</h3><input type='file' name='image' id='imgInpProfile'/><p class="infoText">Maximum File Size of 250 KB</p>
+                    </div>
+					{*}
+                    <div class="uploadbox">
+					<h3>Video</h3><input type="file" name="video"><p class="infoText">Maximum File Size of 5 MB</p>
+                    </div>
+					{/*}
+				</div>
+				<div class='row'>
+					<div id='photo-preview'>
+						<img id='previewprofile' src='#' alt='your image' />
+					</div>
+				</div>
+				<div class='row rowSubmit' >
+					<input type='submit' class='button btnRed fl' value='SAVE'>
+					<input type='hidden' class='hiddenEvent' value='{$eventID}' name="eventID">
+                    <button class="buttons btnRed fr backbutton" type="button">BACK</button>
+				</div>
+			</form>
+		</div>
+	</div><!-- END .popupContent -->
+</div><!-- END-->
+
+<script>
+{literal}
+
+	$(document).ready(function(){
+		var html = "";
+		var status = parseInt($('.uploadContent').attr('status'));
+		if (status>0){
+			if (status =='1') html += "Invalid type file";
+			//if (status =='2') html += locale.postphotoevent;
+			//if (status =='3') html += locale.postphotoevent;
+			if (status =='4') html += locale.postphotoeventsuccess;
+		
+			$('.trigun').trigger('click');
+			$('.msgpopupglobal').html(html);
+		}
+	})
+	function readURLProfile(input) {
+		if (input.files && input.files[0]) {
+			var reader = new FileReader();
+			reader.onload = function (e) {
+				$('#previewprofile').attr('src', e.target.result);
+				$('#previewprofile').attr('width', '400px');
+				$('#previewprofile').attr('height', '200px');
+			}
+			 reader.readAsDataURL(input.files[0]);
+		}
+	}
+
+	$("#imgInpProfile").change(function(){
+		readURLProfile(this);
+	});
+	
+	$('.backbutton').click(function(){
+		window.location.href=basedomain+"event/past/";
+	})
+{/literal}
+</script>

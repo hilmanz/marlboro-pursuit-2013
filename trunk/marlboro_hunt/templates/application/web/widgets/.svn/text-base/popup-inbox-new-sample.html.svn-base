@@ -1,0 +1,150 @@
+<div class="popup">
+	<div class="popupContainer popupContainer4" id="popup-inbox-new-sample">
+        <div class="popupContent">
+        	<div class="entry-popup popupInbox">
+            	<h1>Messages</h1>
+                <div class="inner">
+                         <ul class="columns-2 clearfix">
+                         	<li class="inbox-widget">
+                            	<div class="widget-container inbox-action">
+                                	<a href="#" class="btn_red composeMessage ">Compose Message</a>
+                                	<div class="sub-row">
+                                    	<a class="inbox-but active-inbox"href="#">Inbox<span>(3)</span></a>
+                                    	<a class="inbox-but" href="#">Sent</a>
+                                        <a class="inbox-but" href="#">Trash</a>
+                                    </div>
+                                </div>
+                            </li><!-- END .inbox-widget -->
+                            <li class="col2 isi-inbox">
+                            	<div id="list-inbox">
+                                    <div class="table-inbox">
+                                        <table class="inboxtable" id="alternatecolor">
+                                            <thead>
+                                            <tr>
+                                                <th colspan="2">Subject</th>
+                                                <th>Sender</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr class="open-inbox">
+                                                <td class="checklist">
+                                                    <form action="">
+                                                    <input type="checkbox" name="" value="">    
+                                                    </form>
+                                                </td>
+                                                <td>Checkout The activity</td>
+                                                <td>Marlboro</td>
+                                            </tr>
+                                            
+                                            <tr class="open-inbox">
+                                                <td class="checklist">
+                                                    <form action="">
+                                                    <input type="checkbox" name="" value="">    
+                                                    </form>
+                                                </td>
+                                                <td>Checkout The activity</td>
+                                                <td>Marlboro</td>
+                                            </tr> 
+                                             
+                                            <tr class="open-inbox readed-inbox">
+                                                <td class="checklist">
+                                                    <form action="">
+                                                    <input type="checkbox" name="" value="">    
+                                                    </form>
+                                                </td>
+                                                <td>Checkout The activity</td>
+                                                <td>Marlboro</td>
+                                            </tr>  
+                                            <tr class="open-inbox readed-inbox">
+                                                <td class="checklist">
+                                                    <form action="">
+                                                    <input type="checkbox" name="" value="">    
+                                                    </form>
+                                                </td>
+                                                <td>Checkout The activity</td>
+                                                <td>Marlboro</td>
+                                            </tr>
+                                            </tbody>
+                                            </table>
+                                      </div> <!--END.table-inbox-->
+                                      <div class="actionInbox">
+                                            <div class="checkAll-Action fl">
+                                                <a class="selectAll" href="#">Select All</a>
+                                                <a class="deletetAll" href="#">Delete Selected</a>
+                                            </div>
+                                            <div class="pageInbox fr">
+                                                <span class="page">Showing</span> <span class="page-num">11</span> <span class="page">Of</span> <span class="page-num">80</span> <span class="page last-margin">Message</span>
+                                                <a class="prev-Page" href="#"><</a>
+                                                <a class="next-Page" href="#">></a>
+                                            </div>
+                                      </div><!-- END .actionInbox-->
+                                  </div><!-- END #list-inbox-->
+                                  <div id="isi-message">
+                                  		<div class="info-sender">
+                                        	<div class="row">
+                                                <label>From :</label>
+                                                <span>Marlboro</span>
+                                            </div>
+                                            <div class="row">
+                                                <label>Subject :</label>
+                                                <span>Checkout Our Labor day</span>
+                                            </div>
+                                        </div>
+                                        <div class="text-message">
+                                        	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut at auctor turpis. Aenean arcu urna, auctor ut tellus non, suscipit interdum magna. Fusce venenatis pulvinar risus, vel tempus urna tempor at. Sed augue turpis, eleifend nec leo eget, gravida semper neque. Duis et mauris in magna ultricies dignissim. Pellentesque suscipit aliquam porta. Suspendisse sodales ante quam, vitae ultricies felis commodo vitae. Mauris bibendum leo at tincidunt pellentesque. Sed quis ipsum sed urna pharetra malesuada. Nunc at tempus odio, quis volutpat neque. Donec arcu justo, tempor vel mattis nec, pharetra a arcu. Pellentesque blandit dictum lorem, et rutrum sapien aliquet sed. </p>
+                                            <p>In porta accumsan sapien, in pulvinar erat commodo vel. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Etiam ante metus, blandit accumsan dictum eget, bibendum sed nibh. Morbi adipiscing odio ac sem scelerisque, eget sollicitudin purus pharetra. Nulla in suscipit justo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed rutrum lorem ut nisl mollis, a dictum nibh bibendum. </p>
+                                        </div>
+                                        <div class="actionInbox">
+                                        	<div class="back-Action fl">
+                                                <a class="backinbox" href="#">Back To Inbox</a>
+                                        	</div>
+                                             <div class="reply fr">
+                                             	<a class="replyMessage bg_red" href="#">reply</a>
+                                             </div>
+                                      </div><!-- END .actionInbox-->
+                                  </div><!-- END #isi-message-->
+                            </li><!-- END .columns-2 clearfix -->
+                         </ul><!-- END .columns-2 clearfix -->
+                </div><!-- END .inner -->
+            </div><!--END .entry-popup-->
+        </div><!-- END .popupContent -->
+    </div><!-- END .popupContainer -->
+</div><!-- END .popup -->
+{literal}
+<script type="text/javascript">
+/*
+function altRows(id){
+	if(document.getElementsByTagName){  
+		
+		var table = document.getElementById(id);  
+		var rows = table.getElementsByTagName("tr"); 
+		 
+		for(i = 0; i < rows.length; i++){          
+			if(i % 2 == 0){
+				rows[i].className = "evenrowcolor";
+			}else{
+				rows[i].className = "oddrowcolor";
+			}      
+		}
+	}
+}
+window.onload=function(){
+	altRows('alternatecolor');
+}
+*/
+$( document ).ready(function() {
+	$(".open-inbox").click(function(event){
+		event.preventDefault();
+	  $("#list-inbox").hide();
+	  $("#isi-message").show();
+	});
+});
+$( document ).ready(function() {
+	$(".backinbox").click(function(event){
+		event.preventDefault();
+	  $("#isi-message").hide();	  
+	  $("#list-inbox").show();
+	});
+});
+</script>
+{/literal}

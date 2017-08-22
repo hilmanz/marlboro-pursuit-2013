@@ -1,0 +1,88 @@
+<div class="section">
+	<div class="the-title fl">
+        <h2>USER CATEGORY</h2>
+    </div>
+	<form method="GET" action="">
+        <div class="menu_charts">
+            <input type="text"  id="from" name="startdate" value="{$startdate}"><span>-</span>
+            <input type="text"  id="to" name="enddate" value="{$enddate}" /><a href="javascript:void(0)" class="calendar"></a>
+		</div>
+	</form>
+  
+	<div class="accordion">                           
+        <h3 class=""><span>Login User</span>
+        <a class="icon_arrow expand" href="#">Click to Expand</a>
+        <a class="icon_arrow_grey hide2" href="#">hide</a> </h3>
+        <div class="acc_section">
+            <div class="chart_section" id="allUserAct"></div>         
+        </div><!--end.acc_section-->
+        <h3 class=""><span>Active User</span>
+        <a class="icon_arrow expand" href="#">Click to Expand</a>
+        <a class="icon_arrow_grey hide2" href="#">hide</a> </h3>
+        <div class="acc_section">
+            <div class="chart_section" id="actUser" ></div>         
+        </div><!--end.acc_section-->
+       
+        <h3 class=""><span>Unverified User</span>
+        <a class="icon_arrow expand" href="#">Click to Expand</a>
+        <a class="icon_arrow_grey hide2" href="#">hide</a> </h3>
+       <div class="acc_section">
+            <div class="chart_section" id="unverifiedUser" ></div>         
+        </div><!--end.acc_section-->
+    </div><!---end.accodrion-->
+</div><!--end.section-->
+
+<script type="text/javascript">
+	var alluser = {$alluser|@json_encode};
+	var activeUser = {$activeUser|@json_encode};
+	var userUnverified = {$userUnverified|@json_encode};
+	
+	//console.log(veryActive);
+{literal}	
+$(function () {
+
+	var allUserData = new Array();
+	var allUserDate = new Array();	
+	
+	var actUserData = new Array();
+	var actUserDate = new Array();
+	
+	var userUnverData = new Array();
+	var userUnverDate = new Array();
+		
+    for (var dataDate in alluser){
+			allUserData.push(parseInt(alluser[dataDate].num));
+			allUserDate.push(String(alluser[dataDate].dd));
+		}
+		
+   for (var actUsr in activeUser){
+			actUserData.push(parseInt(activeUser[actUsr].num));
+			actUserDate.push(String(activeUser[actUsr].datetime));
+		}
+		
+	for (var userUn in userUnverified){
+			userUnverData.push(parseInt(userUnverified[userUn].num));
+			userUnverDate.push(String(userUnverified[userUn].dd));
+		}
+	
+	gethighChart('line','test  Chart','allUserAct',allUserData,allUserDate,1,true);
+	gethighChart('line','test  Chart','actUser',actUserData,actUserDate,1,true);
+	gethighChart('line','test  Chart','unverifiedUser',userUnverData,userUnverDate,1,true);
+	
+	//drillDownChart('column','test Chart','cont',dataCoba,cateActivityGroup,1 ,false);
+	});
+	
+	
+	$(document).on('click', '.calendar', function(){
+		var from = $('#from').val();
+		var to = $('#to').val();
+		
+		
+		window.location.href='?startdate='+from+'&enddate='+to;
+	})
+	
+	
+	
+	
+</script>
+{/literal}

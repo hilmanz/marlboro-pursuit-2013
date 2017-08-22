@@ -1,0 +1,55 @@
+<div id="landing-page" class="section2">
+	<div class="landing-page">
+        <ul class="columns-content clearfix">
+            <li class="col-sidebar">
+                <div class="sideBar">
+                    <div class="entry landingEntry">
+                    	<h2 style="color:#fff;">Make A Decision To Earn Points In Time<br /> For Our Big Reveal.</h2>
+                    </div><!-- END .entry -->
+                    <div class="be-marlboro2"></div>
+                </div><!-- END .sideBar -->
+            </li><!-- END .col-sidebar -->
+            <li class="col-main">
+            	<div class="centerButton" id="lineHOme2">
+                <h2>&nbsp;</h2>
+                <div class="line1"></div>
+                <div class="line2"></div>
+            	<a id="yes_bt" class="whiteBtns" href="#">WEB GAMES</a>
+            	<a id="no_bt" class="whiteBtnsNo" href="#">THIS OR THAT</a>
+                </div>
+            </li><!-- END .col-main -->
+        </ul>
+    </div><!-- END .landingPage -->
+</div><!-- END #landingPage -->
+{literal}
+<script>
+/*
+$( document ).ready(function() {
+						
+	$("#no_bt").click(function(){
+	$(this).animate({"left": "+=1000px"},"slow");
+	});
+	
+});
+{/literal}
+*/
+{literal}
+$( document ).ready(function() {
+						
+	$('#no_bt').click(function() {
+		$('#no_bt').animate({ bottom: '-1000px', }, 500, function() {
+			window.location.pathname = '/thisorthat'; 												 	
+		});
+		$('.line2').animate({ top: '2000px', }, 500);
+	});
+						
+	$('#yes_bt').click(function() {
+		$('#yes_bt').animate({ bottom: '-1000px', }, 500, function() {
+			window.location.pathname = '/games'; 												 	
+		});
+		$('.line2').animate({ top: '2000px', }, 500);
+	});
+	
+});
+{/literal}
+</script>

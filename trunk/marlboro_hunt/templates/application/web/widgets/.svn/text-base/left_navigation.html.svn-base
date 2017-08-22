@@ -1,0 +1,17 @@
+ 
+<div id="leftNav">
+    	<div class="boxLeftNav">
+            <a href="{$basedomain}about/video"{if $pages=='about' }class="current"{/if}>Videos</a>
+            <a href="{$basedomain}event/past" {if $pages=='event' }class="current"{/if}>Photos</a>
+            <a href="{$basedomain}news/detail" {if $pages=='news' }class="current"{/if}>News</a>
+        </div><!-- END .boxLeftNav -->
+		{*}
+        <div class="shortCat">
+        	<h4>SHORT BY:</h4>
+            <a href="#">Campaign</a>
+            <a href="#">Product</a>
+            <a href="#">Event</a>
+        </div>
+		{/*}
+ 
+ </div><!-- END #leftNav -->

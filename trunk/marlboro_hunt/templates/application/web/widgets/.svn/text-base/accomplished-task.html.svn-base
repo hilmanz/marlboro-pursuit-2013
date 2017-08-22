@@ -1,0 +1,22 @@
+
+
+<div class="entry-accordion" id="accomplished-tasks">
+    <div class="control-bar">
+        <a class="arrow-top" href="#">&nbsp;</a>
+    </div><!-- END .control-bar -->
+    <div class="entries">
+        {foreach from=$list key=k item=v}
+		<div class="row">
+            <a class="thumb-small fl"></a>
+            <div class="entry-left fl">
+                <h6 class="accomplished-tasks">{$v.title}</h6>
+				<h3 class="task-counter">{if $accomplished !=''}{if in_array($v.id, $accomplished)}1/5{else}0/5{/if}{else}0/5{/if}</h3>
+            </div><!-- END .entry-task -->
+        </div><!-- END .row -->
+        {/foreach}
+    </div><!-- END .entries -->
+    <div class="control-bar control-bottom">
+        <a class="arrow-bottom" href="#">&nbsp;</a>
+    </div><!-- END .control-bar -->
+</div><!-- END .entry-accordion -->
+

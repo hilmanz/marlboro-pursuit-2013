@@ -1,0 +1,50 @@
+
+
+<div class="theContent">
+
+    <div class="theTitle">
+        <h2>{$folder} List</h2>
+	
+    </div><!--contenttitle-->
+    
+	<form method="POST" action="">
+    <table cellpadding="0" cellspacing="0" border="0" id="table1" class="stdtable">
+        <colgroup>
+            <col class="con0" style="width: 4%" />
+            <col class="con1" />
+            <col class="con0" />
+            <col class="con1" />
+            <col class="con0" />
+            <col class="con1" />
+        </colgroup>
+        <thead>
+            <tr>
+                <th class="head0">No</th>
+                <th class="head1">Name</th>
+                <th class="head1">Email</th>
+                <th class="head1">Date</th>
+                <th class="head1">Theme Name</th>
+                {*}<th class="head1">submission</th>{/*}
+             
+			</tr>
+        </thead>
+        <tbody>
+            {foreach from=$list key=k item=v}
+            <tr>
+                <td width="10">{$v.no}&nbsp;</td>
+                <td><nobr>{$v.name}&nbsp{$v.last_name}</nobr></td>
+                <td><nobr>{$v.email}</a></nobr></td>
+				<td><nobr>{$v.created_date}</nobr></td>
+				<td><nobr>{$v.themes}</nobr></td>
+				<td><nobr>{$v.total}</nobr></td>
+			
+			
+			
+			</tr>
+            {/foreach}
+        </tbody>
+    </table>
+	</form>
+
+</div><!--theContent-->
+

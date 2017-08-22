@@ -1,0 +1,680 @@
+<div class="section">
+	<div class="the-title fl">
+        <h2>USER ACTIVITIES</h2>
+    </div>
+	<form method="GET" action="">
+    <div class="menu_charts">
+            <input type="text"  id="from" name="startdate" value="{$startdate}" ><span>-</span>
+            <input type="text"  id="to" name="enddate" value="{$enddate}" /><a href="javascript:void(0)" class="calendar calendarsingle"></a>
+    </div>
+	<h2><a href="{$basedomain}user_activities/downloadreportnumlogin/{$startdate}/{$enddate}" style=" float:right;position:relative">[ download report ]</a></h2>
+	<div class="accordion">                           
+        <h3 class=""><span>Number Of Login</span>
+        <a class="icon_arrow expand" href="#">Click to Expand</a>
+        <a class="icon_arrow_grey hide2" href="#">hide</a> </h3>
+        <div class="acc_section">
+            <div class="chart_section" id="numberofUserlogin" ></div>         
+        </div><!--end.acc_section-->
+    </div><!---end.accodrion-->
+    <div class="boxBig">
+    	<div class="title_box">
+            <div class="the-title fl">
+                <h2>Login History</h2>
+            </div>
+	</form>
+	<form method="POST" action="{$basedomain}user_activities" id="bebas" >
+            <div class="select_op rt">
+                <span class="fl sorterBy">Sort by:</span>
+                <div class="styledProvince">                            
+                    <select class="totaltime" name="typeoftime" >
+						<option value="minute" {if $sortby=='minute'} selected{/if}>Minutes</option>
+						<option value="hour" {if $sortby=='hour'} selected{/if}>Hours</option>
+                      
+                    </select>
+                </div>
+             </div>
+			 </form>
+         </div>
+        <div class="chart-section" id="loginHistoryField" >
+			<!-- <img src="{$assets_domain}images/charts3.jpg"> -->
+        </div>
+     </div><!--end.boxBig-->
+     
+     <div class="box-diagram">
+     	<div class="diagram-title">
+        	<h2>Number of Registrant</h2>
+        </div>
+        <div class="diagram-content" id="numregister" >
+        	<!-- <img src="{$assets_domain}images/diagram.png"> -->
+        </div>
+        <div class="diagram-info">
+        	<div class="info-age fl">
+            	<div class="tiny-green-box fl"></div><span class="fl">18-24</span>
+            </div>
+            <div class="info-age fl">
+            	<div class="tiny-orange-box fl"></div><span class="fl">25-29</span>
+            </div>
+            <div class="info-age fl">
+            	<div class="tiny-grey-box fl"></div><span class="fl">30-above</span>
+            </div>
+        </div><!--end.diagram-info-->
+     </div><!--end.box-diagram-->
+     <div class="box-diagram">
+     	<div class="diagram-title">
+        	<h2>Number of Existing User</h2>
+            <span>that participate</span>
+        </div>
+        <div class="diagram-content" id="existingUserField">
+        	<!-- <img src="{$assets_domain}images/diagram.png"> -->
+        </div>
+        <div class="diagram-info">
+        	<div class="info-age fl">
+            	<div class="tiny-green-box fl"></div><span class="fl">18-24</span>
+            </div>
+            <div class="info-age fl">
+            	<div class="tiny-orange-box fl"></div><span class="fl">25-29</span>
+            </div>
+            <div class="info-age fl">
+            	<div class="tiny-grey-box fl"></div><span class="fl">30-above</span>
+            </div>
+        </div><!--end.diagram-info-->
+     </div><!--end.box-userStats-->
+     <div class="box-diagram last-box">
+     	<div class="diagram-title">
+        	<h2>Number of New User</h2>
+            <span>that participate</span>
+        </div>
+        <div class="diagram-content" id="numnew">
+        	<!-- <img src="{$assets_domain}images/diagram.png"> -->
+        </div>
+        <div class="diagram-info">
+        	<div class="info-age fl">
+            	<div class="tiny-green-box fl"></div><span class="fl">18-24</span>
+            </div>
+            <div class="info-age fl">
+            	<div class="tiny-orange-box fl"></div><span class="fl">25-29</span>
+            </div>
+            <div class="info-age fl">
+            	<div class="tiny-grey-box fl"></div><span class="fl">30-above</span>
+            </div>
+        </div><!--end.diagram-info-->
+     </div><!--end.box-userStats-->
+     
+     <div class="box-diagram">
+     	<div class="diagram-title">
+        	<h2>Male & Female User</h2>
+        </div>
+        <div class="summary_box">
+            	<div class="summary_stats">
+                    <h1 class="brown">{$maleFemaleUser.jumlah_male}</h1>
+                    <h4>Male</h4>
+                </div>
+            </div><!--end>summary_box-->
+            <div class="summary_box center_box">
+            	<div class="summary_center">
+                    <div class="summary_stats">
+                    <h1 class="brown">{$maleFemaleUser.jumlah_female}</h1>
+                        <h4>Female</h4>
+                    </div>
+                </div>
+            </div><!--end>summary_box-->
+     </div><!--.box-diagram-->
+	  <div class="box-diagram" style="margin-right: 0px; padding-right: 0px; width: 65%; height: 235px;">
+     	<div class="title_box" style="padding-top: 10px; padding-left: 10px;">
+            <div class="the-title fl">
+				
+                <h2>
+				Average User Point Weekly  
+				&nbsp;&nbsp;
+				<span style="float:right;position:relative ">
+				[ 
+				
+					&nbsp;&nbsp; 
+					pick period : &nbsp;&nbsp; 
+					<select class="pickweekly" name="pickweekly" >
+						{foreach from=$averageuserpointweekly.result key=k item=v name=foo }
+							<option value="{$v.startdates}_{$v.enddates}">{$v.startdates} - {$v.enddates}</option>
+						{/foreach}
+					</select> 
+				
+					
+					<a class="downloadlinkuseraveragepoint" href="{$basedomain}user_activities/downloadreportaverageuserpoint/{$averageuserpointweekly.result[0].startdates}/{$averageuserpointweekly.result[0].enddates}" >&nbsp;&nbsp;download report</a> 
+					&nbsp;&nbsp;
+				 ]
+				 </span>
+				</h2>
+				
+            </div>
+         </div>
+      
+		
+			<div class="summary_box">
+            	<table class="gridtable" style="margin-left: 10px; width: 641px; margin-right: 10px; position: relative;" >
+					<tr>
+						<th>Weekly</th>
+						<th   >Average Point</th>
+						<th   >Median Point</th>
+					</tr>
+					<tbody id="timeForVisit"> 
+						{foreach from=$averageuserpointweekly.result key=k item=v name=foo }
+							{if $smarty.foreach.foo.index <=3 }
+								<tr>
+									<td>{$v.startdates} / {$v.enddates} </td>
+									<td>{$v.wpoint}</td>
+									<td>{$v.median}</td>
+									 
+								</tr> 
+							{/if}
+						{/foreach}
+					</tbody>
+				</table>
+				{*}
+				<div class="paging" id="pagingaveragepointuser"></div> <!-- END .paging -->			
+				<script>				 
+					getpaging(0,{$averageuserpointweekly.total},"pagingaveragepointuser","paging_ajax_averagepointuser",3);
+				</script>
+				{/*}
+            </div><!--end>summary_box-->
+          
+     </div><!--.box-diagram-->
+	 {*}
+     <div class="third-box">
+     	<div class="title_box">
+            <div class="the-title fl">
+                <h2>Top 100 User (the most letters collected)</h2>
+            </div>
+         </div>
+         <div class="topuser_content">
+         	<div class="table_topuser" usethisclass="" >
+            <table class="gridtable">
+			{section name=i start=0 loop=$mostLetterCollect max=$total } 
+				<tr>
+					<td>{$mostLetterCollect[i].name}</td>
+					<td>{$mostLetterCollect[i].num}</td>
+				</tr>
+			{/section}
+            </table>
+            </div>
+			<div class="table_topuser" usethisclass="" >
+            <table class="gridtable">
+			{section name=i start=$total loop=$mostLetterCollect max=$total } 
+				<tr>
+					<td>{$mostLetterCollect[i].name}</td>
+					<td>{$mostLetterCollect[i].num}</td>
+				</tr>
+			{/section}
+            </table>
+            </div>
+         	<div id="holderVisit" class="holder"></div>
+	</div>
+     </div><!--.third-box-->
+	 {/*}
+	 {*}
+	 <div class="box-task-2">
+     	<div class="title_box">
+            <div class="the-title fl">
+                <h2>Times per Visit</h2>
+            </div>
+         </div>
+            <table class="gridtable">
+				<tr>
+					<th>URL</th>
+					<th>Times</th>
+				</tr>
+                <tbody id="timeForVisit">
+				{section name=i loop=$timeVisit}
+				<tr>
+					<td>https://www.marlboro.ph/{$timeVisit[i].action_value}</td>
+					<td>{$timeVisit[i].dd}</td>
+				</tr>
+				{/section}
+                </tbody>
+            </table>
+            <div id="holderVisit" class="holder"></div>
+     </div><!--.third-box-->
+	 
+	 <div class="box-task-2">
+     	<div class="title_box">
+            <div class="the-title fl">
+                <h2>Times per Visit</h2>
+            </div>
+         </div>
+            <table class="gridtable">
+				<tr>
+					<th>URL</th>
+					<th>Times</th>
+				</tr>
+                <tbody id="timeForVisit">
+				{section name=i loop=$timeVisit}
+				<tr>
+					<td>https://www.marlboro.ph/{$timeVisit[i].action_value}</td>
+					<td>{$timeVisit[i].dd}</td>
+				</tr>
+				{/section}
+                </tbody>
+            </table>
+            <div id="holderVisit" class="holder"></div>
+     </div><!--.third-box-->
+	 
+	 {/*}
+	 <div class="boxBig">
+     	<div class="title_box">
+            <div class="the-title fl">
+                <h2>Time Spent</h2>
+            </div>
+         </div>
+            <table class="gridtable">
+				<tr>
+					<th>URL</th>
+					<th>Time</th>
+				</tr>
+                <tbody id="timeSpent">
+				{section name=i loop=$timeSpent}
+				<tr>
+					<td>https://www.marlboro.ph/{$timeSpent[i].action_value}</td>
+					<td>{$timeSpent[i].dd}</td>
+				</tr>
+				{/section}
+                </tbody>
+            </table>
+            <div id="holderSpent" class="holder"></div>
+     </div><!--.third-box-->
+	 
+	 <div class="boxBig">
+     	<div class="title_box">
+            <div class="the-title fl">
+                <h2>Login Inventory</h2>
+            </div>
+         </div>
+		 {*}
+            <table class="gridtable">
+				<tr>
+					<th>Name</th>
+					<th>Email</th>
+					<th>Login Date</th>
+					<th>Login Count</th>
+				</tr>
+                <tbody id="loginInventory">
+				{section name=i loop=$loginInventory}
+				<tr>
+					<td>{$loginInventory[i].name} {$loginInventory[i].last_name}</td>
+					<td>{$loginInventory[i].email}</td>
+					<td>{$loginInventory[i].dd}</td>
+					<td>{$loginInventory[i].login_count}</td>
+				</tr>
+				{/section}
+                </tbody>
+            </table>
+		{/*}
+	<div class="the-title fl">
+    </div>
+	
+    <div class="menu_charts">
+			<form method="GET" action="" class='former' >
+				<input type="text" name="startdate" value="{$startdate}" class="datepick" ><span>-</span>
+				<input type="text"  name="enddate" value="{$enddate}" class="datepick" /><a href="javascript:void(0)" class="calendar calendarall"></a>
+			</form>
+    </div>
+                <h2><a href="{$basedomain}user_activities/downloadreport/{$startdate}/{$enddate}" style=" float:right;position:relative">[ download report ]</a></h2>
+	
+			<table class="gridtable">
+				<tr>
+					<th>Name</th>
+					<th>Email</th>
+					{foreach from=$loginhistories.dates key=k item=v}
+				 
+						<th>{$v[1]}/{$v[2]}</th>
+					 
+				 
+					{/foreach}
+					
+				</tr>
+                <tbody id="loginInventory">
+				{foreach from=$loginhistories.datas key=k item=v}
+					<tr>
+						<td>{$v.users.name|lower|capitalize} {$v.users.last_name|lower|capitalize}</td>
+						<td>{$v.users.email|lower}</td>
+						{foreach from=$loginhistories.dates key=kdate item=kdate}
+							<td>{$v.datas[$kdate]}</td>
+						{/foreach}
+					</tr>	 
+				 
+				{/foreach}
+				
+                </tbody>
+            </table>
+            <div id="holderInventory" class="text-center holder"></div>
+     </div><!--.third-box-->
+	 
+	 <div class="boxBig">
+     	<div class="title_box">
+            <div class="the-title fr">
+                <h2>DYO Inventory
+				<span style="float:right;position:relative ">
+				 
+				
+					&nbsp;&nbsp; 
+					download report By period : &nbsp;&nbsp; 
+					<select class="pickweeklydyo" name="pickweeklydyo" >
+						{foreach from=$averageuserpointweekly.result key=k item=v name=foo }
+							<option value="{$v.startdates}_{$v.enddates}">{$v.startdates} - {$v.enddates}</option>
+						{/foreach}
+					</select> 
+				
+					
+					 <a style="display:none" class="downloadlinkdyohistory" href="{$basedomain}user_activities/downloadreportdyo/{$averageuserpointweekly.result[0].startdates}/{$averageuserpointweekly.result[0].enddates}" >&nbsp;&nbsp;download report</a> 
+					&nbsp;&nbsp;
+				 
+				 </span>
+				
+				
+				</h2>
+            </div>
+         </div>
+					
+			<div class="menu_charts" style="width:54%">
+				<div style="float:left;position: relative;  " ><h2 style="line-height: 0; color: #BF1323;" >REPORT BY RANGE DATE :</h2></div>
+					<form method="GET" action="" class='former' >
+						<input type="text" name="startdate" value="{$startdate}" class="datepick" ><span>-</span>
+						<input type="text"  name="enddate" value="{$enddate}" class="datepick" /><a href="javascript:void(0)" class="calendar calendarall"></a>
+					</form>
+					 <a href="{$basedomain}user_activities/downloadreportdyo/{$startdate}/{$enddate}" style=" float: right; position: relative; "><h2 style="line-height: 0;" >[ DOWNLOAD REPORT ]</h2></a> 
+			</div>
+			
+          	<table class="gridtable">
+				<tr>
+					<th>Name</th>
+					<th>Email</th>
+					{foreach from=$dyouserweekly.dates key=k item=v}
+				 
+						<th>{$v}</th>
+					 
+				 
+					{/foreach}
+					
+				</tr>
+                <tbody id="loginInventory">
+				{foreach from=$dyouserweekly.datas key=k item=v}
+					<tr>
+						<td>{$v.users.name|lower|capitalize} {$v.users.last_name|lower|capitalize}</td>
+						<td>{$v.users.email|lower}</td>
+						{foreach from=$dyouserweekly.dates key=kdate item=kdate}
+							<td>{$v.datas[$kdate]}</td>
+						{/foreach}
+					</tr>	 
+				 
+				{/foreach}
+				
+                </tbody>
+            </table>
+            
+	 </div><!--.third-box-->
+	 <div class="box-task-2">
+     	<div class="title_box">
+            <div class="the-title fl">
+                <h2>Top 10 City Login</h2>
+            </div>
+         </div>
+            <table class="gridtable">
+				<tr>
+					<th>COUNT</th>
+					<th>City</th>
+				</tr>
+				{section name=i loop=$regionLogin}
+				<tr>
+					<td>{$regionLogin[i].num}</td>
+					<td>{$regionLogin[i].city}</td>
+				</tr>
+				{/section}
+            </table>
+     </div><!--.third-box-->
+	 
+	  <div class="box-task-2 last-box">
+     	<div class="title_box">
+            <div class="the-title fl">
+                <h2>Top 10 pages</h2>
+            </div>
+         </div>
+            <table class="gridtable">
+				<tr>
+					<th>Pages</th>
+					<th>Count</th>
+				</tr>
+				{section name=i loop=$top10page}
+				<tr>
+					<td>https://www.marlboro.ph/{$top10page[i].action_value}</td>
+					<td>{$top10page[i].num}</td>
+				</tr>
+				{/section}
+            </table>
+     </div><!--.third-box-->
+	 
+	 <div class="box-task-2 last-box">
+     	<div class="title_box">
+            <div class="the-title fl">
+                <h2>Top 10 pages Move Forward</h2>
+            </div>
+         </div>
+            <table class="gridtable">
+				<tr>
+					<th>Pages</th>
+					<th>Count</th>
+				</tr>
+				{section name=i loop=$top10pageMovefwd}
+				<tr>
+					<td>https://www.marlboro.ph/{$top10pageMovefwd[i].action_value}</td>
+					<td>{$top10pageMovefwd[i].num}</td>
+				</tr>
+				{/section}
+            </table>
+     </div><!--.third-box-->
+	 
+	 <div class="accordion">                           
+        <h3 class=""><span>Time of Day Login</span>
+        <a class="icon_arrow expand" href="#">Click to Expand</a>
+        <a class="icon_arrow_grey hide2" href="#">hide</a> </h3>
+        <div class="acc_section">
+            <div class="chart_section" id="peakHourChart" ></div>         
+        </div><!--end.acc_section-->
+    </div><!---end.accodrion-->
+	
+	  <div class="menu_charts">
+	   <form method="GET" class="former" action="" >
+            <input type="text"   name="startdate" value="{$startdate}" class="datepick"><span>-</span>
+            <input type="text"   name="enddate" value="{$enddate}" class="datepick" />
+			<a href="javascript:void(0)" class="calendar calendarall"></a>
+		</form>
+	</div>
+	
+	<div class="accordion">                           
+        <h3 class=""><span>Time per Visit</span>
+        <a class="icon_arrow expand" href="#">Click to Expand</a>
+        <a class="icon_arrow_grey hide2" href="#">hide</a> </h3>
+        <div class="acc_section">
+            <div class="chart_section" id="timepervisit" ></div>         
+        </div><!--end.acc_section-->
+    </div><!---end.accodrion-->
+</div><!--end.section-->
+
+<script type="text/javascript">
+	var numberofLogin = {$numberofLogin|@json_encode};
+	var loginHistory = {$loginHistory|@json_encode};
+	var numberofRegistrant = {$numberofRegistrant|@json_encode};
+	var numberofExistingUser = {$numberofExistingUser|@json_encode};
+	var numberofNewUser = {$numberofNewUser|@json_encode};
+	var timedayoflogin = {$timedayoflogin|@json_encode};
+	var timeVisit = {$timeVisit|@json_encode};
+	 
+	
+{literal}	
+$(function () {
+
+	var numberLoginData = new Array();
+	var numberLoginDate = new Array();	
+	
+	var logHisData = new Array();
+	var logHisDate = new Array();
+	
+	var numRegisData = new Array();
+	var numRegisDate = new Array();
+	
+	var numExistData = new Array();
+	var numExistDate = new Array();
+	
+	var numNewData = new Array();
+	var numNewDate = new Array();
+	 	
+	var DataPeakNum = new Array();
+	var DataPeakHour = new Array();
+	
+	var timeVisitdata = new Array();
+	var timeVisitdate = new Array();
+
+ 
+ for (var numberLogin in numberofLogin){
+		numberLoginData.push(parseInt(numberofLogin[numberLogin].num));
+		numberLoginDate.push(String(numberofLogin[numberLogin].datetime));
+	}
+	
+	for (var logHis in loginHistory){
+		logHisData.push(parseFloat(loginHistory[logHis].num.substr(0,4)));
+		logHisDate.push(String(loginHistory[logHis].date_time));
+	}
+	
+    for (var register in numberofRegistrant){	
+
+			numRegisData.push( [ String(register) , parseInt(numberofRegistrant[register]) ] ); 	
+		}
+		
+	for (var existingUser in numberofExistingUser){	
+
+			numExistData.push( [ String(existingUser) , parseInt(numberofExistingUser[existingUser]) ] ); 	
+		}
+	
+	for (var ofnewUser in numberofNewUser){	
+
+			numNewData.push( [ String(ofnewUser) , parseInt(numberofNewUser[ofnewUser]) ] ); 	
+		}
+	arrtimedayoflogin  = new Object;
+	for(var datePeak in timedayoflogin){
+		arrtimedayoflogin[parseInt(datePeak,10)]	 = {total:timedayoflogin[String(datePeak)] , hours:String(datePeak)};
+	}
+	//console.log(arrtimedayoflogin);
+	for(var datePeak in arrtimedayoflogin){
+		DataPeakNum.push(arrtimedayoflogin[datePeak].total);
+		DataPeakHour.push(String(arrtimedayoflogin[datePeak].hours));
+			
+	}
+
+	
+	for(var visittime in timeVisit){
+		timeVisitdata.push(parseInt(timeVisit[visittime].intdd,10));
+		timeVisitdate.push(String(timeVisit[visittime].dateday));
+	}
+		
+	gethighChart('column','test  Chart','numberofUserlogin',numberLoginData,numberLoginDate,1,true);
+	gethighChart('line','test  Chart','loginHistoryField',logHisData,logHisDate,1,true);
+	gethighChart('pie','test  Chart','numregister',numRegisData,numRegisDate,1,true,false,false,false,'numeric');
+	gethighChart('pie','test  Chart','existingUserField',numExistData,numExistDate,1,true,false,false,false,'numeric');
+	gethighChart('pie','test  Chart','numnew',numNewData,numNewDate,1,true,false,false,false,'numeric');
+	gethighChart('column','peak Chart','peakHourChart',DataPeakNum,DataPeakHour, 1, true, false, false, true, false, true);
+	gethighChart('column','peak Chart','timepervisit',timeVisitdata,timeVisitdate,1,true);
+	
+	//drillDownChart('column','test Chart','cont',dataCoba,cateActivityGroup,1 ,false);
+	});
+	
+		
+	$(document).on('click', '.calendarsingle', function(){
+		var from = $('#from').val();
+		var to = $('#to').val();
+	
+		window.location.href='?startdate='+from+'&enddate='+to;
+	
+	});
+	
+		
+	$(document).on('click', '.calendarall', function(){
+		 
+		$(this).parent(".former").submit();	
+	 
+	
+	});
+	
+	$(function() {
+		$( ".datepick" ).datepicker({
+		currentDate:"setDate",
+		dateFormat:"yy-mm-dd",
+		//defaultDate: "+1w",
+		changeMonth: true,
+		numberOfMonths: 1
+	});
+	
+	});
+	$(document).on('change', '.totaltime', function(){
+	
+		$("#bebas").submit();
+		
+	})	
+	
+	/*
+	$(document).on('change', '.totaltime', function(){
+		var typeoftime = $(this).val();
+		
+		var logHisData = new Array();
+		var logHisDate = new Array();
+	
+		$.post(basedomain+'user_activities/ajax', {typeoftime:typeoftime}, function(data){
+			
+			var loginHistory = data.data;
+			
+			for (var logHis in loginHistory){
+				logHisData.push(parseInt(loginHistory[logHis].num));
+				logHisDate.push(String(loginHistory[logHis].date_time));
+			}
+			
+			gethighChart('line','test  Chart','loginHistoryField',logHisData,logHisDate,1,true);
+			
+		}, "JSON")
+		//window.location.href='?startdate='+from+'&enddate='+to;
+		
+	})*/
+	$(document).on('change','.pickweekly',function(){
+			var datesstartend = $(this).val();
+			var arrdatesstartend = datesstartend.split('_');
+			var startdates  = arrdatesstartend[0];
+			var enddates= arrdatesstartend[1];
+			
+			$(".downloadlinkuseraveragepoint").attr('href',basedomain+'user_activities/downloadreportaverageuserpoint/'+startdates+'/'+enddates);
+	});
+	
+	$(document).on('change','.pickweeklydyo',function(){
+			var datesstartend = $(this).val();
+			var arrdatesstartend = datesstartend.split('_');
+			
+			var startdates  = arrdatesstartend[0];
+			var enddates= arrdatesstartend[1];
+			
+			var startnewdate = dateaddsub(startdates);
+			var endnewdate = dateaddsub(enddates);
+			
+			
+			
+			$(".downloadlinkdyohistory").attr('href',basedomain+'user_activities/downloadreportdyo/'+startnewdate+'/'+endnewdate);
+			
+			window.location = $(".downloadlinkdyohistory").attr("href");
+	});
+	
+	function dateaddsub(thedates){
+		var date = new Date(thedates);
+		//console.log('the original date is '+date);
+		var newdate = new Date(date);
+
+		newdate.setDate(newdate.getDate() - 1); // minus the date
+
+		var nd = new Date(newdate);
+		var newsetdate = $.datepicker.formatDate('yy-mm-dd', new Date(nd));
+		return newsetdate;
+	}
+</script>
+{/literal}
+

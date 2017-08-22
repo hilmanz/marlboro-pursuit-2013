@@ -1,0 +1,95 @@
+<div id="myaccountPages">
+	<div class="myaccountPages">
+        <ul class="columns-content clearfix">
+            <li class="col-sidebar">
+                <div class="profile-foto">
+                	<div class="profile-frame">                              	
+                    </div>
+                    <img src="{$basedomain}public_assets/user/photo/{$account.image_profile}" />
+                    <a href="javascript:void(0)" class="editit edit-profil"></a>
+                </div><!-- END .profile-foto -->
+                < <div class="bt-chooseMaybe">
+                	<div class="list-corssout">
+					
+						{foreach  from=$mystatement key=k item=v}
+							{if $v.n_status==2}
+								<p><img src="{$basedomain}assets/images/phase4/maybe-cross.png" /><span> {$v.description}</span></p>
+								
+							{/if}
+						{/foreach}
+                 	   <h3>CROSS OUT THE MAYBE IN YOUR LIFE</h3>
+                		<a class="showPopup" href="#popup-statements">CLICK HERE TO CHOOSE </a>
+                    </div>
+                </div>
+            </li><!-- END .col-sidebar -->
+            <li class="col-main">
+            	<div id="container">
+                	<div class="myaccount-entry">
+                    <div class="section">
+                        <form id="reg3" action="{$basedomain}account/giid" class="theForm" method="POST">
+                        	<div class="accountGiid-edit">
+                        	
+                            <h2>TO COMPLETE THE PROFILE UPDATE PROCESS, PLEASE CONFIRM THE FOLLOWING:</h2>
+                            <h3>BY CLICKING THE "CONFIRM" BUTTON BELOW, I, HEREBY DECLARE AND CONFIRM THAT:</h3>
+                            	<table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                  <tr>
+                                    <td>1.</td>
+                                    <td>The information I provided is accurate.</td>
+                                  </tr>
+                                  <tr>
+                                    <td>2.</td>
+                                    <td>I am an adult smoker 18 years old and above.</td>
+                                  </tr>
+                                  <tr>
+                                    <td>3.</td>
+                                    <td>I am a resident of the Philippines.</td>
+                                  </tr>
+                                  <tr>
+                                    <td>4.</td>
+                                    <td>The contact number(s) and/or email address I provided are used personally and exclusively be me and cannot be accessed by or is not shared with other persons.</td>
+                                  </tr>
+                                  <tr>
+                                    <td>5.</td>
+                                    <td>I affirm giving my consent to PMFTC Inc. ("PM") to use my personal information as follows:</td>
+                                  </tr>
+                                </table>
+                                
+                                <table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin:10px 0 0 30px;">
+                                  <tr>
+                                    <td>A.</td>
+                                    <td>Storing and using my personal information to allow PM and its affiliates and duly recognized representatives to verify my age and identity in compliance with applicable laws and internal policies and/or to contact me:</td>
+                                  </tr>
+                                  <tr>
+                                    <td>B.</td>
+                                    <td>Providing me, using mail, email, SMS, telephone, etc., with communications related to tobacco products, including but not limited to information and material on brand launches, packaging changes, events, marketing activities, regulation of tobacco products and political topics that may be of relevance to tobacco products;</td>
+                                  </tr>
+                                  <tr>
+                                    <td>C.</td>
+                                    <td>Processing my information in countries other than the country in which I live (for example, locating the database in one country and accessing the database remotely from another; and</td>
+                                  </tr>
+                                  <tr>
+                                    <td>D.</td>
+                                    <td>Disclosing my personal information to PM service providers for the above purposes, to PM affiliates to do the above for their own purposes, and (if required by law) to relevant authorities. PM may not disclose my personal information to third parties for other purposes, without my consent.</td>
+                                  </tr>
+                                </table>
+                                </div>
+                                <div class="row rowSubmitBrand">
+                                    <input type="hidden" value="1" name="token"/>
+                                    <input type="hidden" value="{$email_token}" name="email_token"/>
+                                    <input type="submit" value="CONFIRM" class="button landbtn landbtn2" name="submit"/>
+                                </div><!-- END .rowSubmit -->
+                                </form>
+                                {*}
+                                <div class="step">
+                                    <a class="page1 btnStep fl" href="{$basedomain}account/edit">Page 1</a>
+                                    <a class="page2 btnStep" href="{$basedomain}account/brands">Page 2</a>
+                                    <a class="page3 btnStep fr current">Page 3</a>
+                                </div><!-- END .step -->
+                                {/*}
+                            </div><!-- END .section -->
+				    </div><!-- END .blackbox -->
+                </div><!-- END #container -->
+            </li><!-- END .col-main -->
+        </ul>
+    </div><!-- END .myaccountPages -->
+</div><!-- END #myaccountPages -->

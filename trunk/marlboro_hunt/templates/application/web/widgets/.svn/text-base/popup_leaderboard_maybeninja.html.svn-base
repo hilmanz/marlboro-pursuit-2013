@@ -1,0 +1,29 @@
+
+<div class="popup2 popup-leaderboard" id="popup-leaderboard">
+    <div class="popupContent3">
+        <div class="popup-title">
+            <h1>CROSS OUT - LEADERBOARD</h1>
+            <span class="date">{$smarty.now|date_format:"%A, %B %e, %Y"}</span>
+        </div><!--END .entry-title-->
+        <div class="entry-popup">
+        	<div class="listPlayer">
+                <ul class="columns-2 clearfix">
+                        {foreach from=$maylead key=k item=v name=foo}
+							{if $smarty.foreach.foo.index % 5 == 0}<li class="col2">{/if}
+								<div class="row">
+									<span class="fl">{$v.no}. {$v.name} {$v.last_name}</span>
+									<span class="fr">{$v.totalpoint}Pts</span>
+								</div>
+							{if $smarty.foreach.foo.index % 5 == 0}
+								{if $smarty.foreach.foo.index>=$smarty.foreach.foo.index+5} </li>{/if}
+							{/if}
+                        {/foreach}
+                </ul>
+            </div><!--END .listPlayer-->
+        </div><!--END .entry-popup-->
+        <div class="centering">
+            <a class="btnRed1 checkFlash" href="javascript:void(0)">PLAY NOW</a>
+            <a class="btnRed2 showPopups" href="#popup-full-mechanics-maybeninja">HOW TO PLAY</a>
+        </div><!--END .centering-->
+    </div><!-- END .popupContent -->
+</div><!-- END .popupContainer -->

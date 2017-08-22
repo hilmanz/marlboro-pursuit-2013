@@ -1,0 +1,108 @@
+<head>
+<meta name="viewport" content="width=device-width; initial-scale=1.0">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Dashboard Marlboro Pursuit</title>
+<!--Stylesheets-->
+<link rel="stylesheet" href="{$assets_domain}css/style.css" type="text/css"  media="all" />
+<link rel="stylesheet" href="{$assets_domain}css/jquery.powertip.css" type="text/css"  media="all" />
+<link rel="stylesheet" href="{$assets_domain}css/colours/red.css" type="text/css"  media="all" />
+<link rel="stylesheet" href="{$assets_domain}css/jquery-ui-datepicker.css" type="text/css"  media="all" />
+<!--Favicon-->
+<!--link rel="shortcut icon" href="images/favicon.png" type="image/x-icon" />
+<!--JavaScript-->
+<!-- <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+<script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js'></script> -->
+<script type="text/javascript" src="{$assets_domain}js/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="{$assets_domain}js/php.js"></script>
+<script type="text/javascript" src="{$assets_domain}js/ui/jquery-ui.min.js"></script>
+<script type="text/javascript" src="{$assets_domain}js/superfish.js"></script>
+<script type="text/javascript" src="{$assets_domain}js/jquery.effect.js"></script>
+<script type="text/javascript" src="{$assets_domain}js/organictabs.jquery.js"></script>
+<script type="text/javascript" src="{$assets_domain}js/customform.js"></script>
+<script type="text/javascript" src="{$assets_domain}js/scripts.js"></script>
+<script type="text/javascript" src="{$assets_domain}js/jquery.powertip.js"></script>
+<script type="text/javascript" src="{$assets_domain}js/fancybox/jquery.fancybox.js?v=2.1.4"></script>
+<link rel="stylesheet" type="text/css" href="{$assets_domain}js/fancybox/jquery.fancybox.css?v=2.1.4" media="screen" />
+<script src="{$assets_domain}js/hchart/highcharts.js"></script>
+<script type="text/javascript" language="javascript" src="{$assets_domain}js/highchartHelper.js"></script>
+<script type="text/javascript" src="{$assets_domain}js/jPages.js"></script>	
+
+
+<script type="text/javascript" src="{$assets_domain}js/kipagination.js"></script>
+<script type="text/javascript" src="{$assets_domain}js/helper/contentHelper.js"></script>
+ 
+
+</head>
+
+<script type="text/javascript">
+{literal}
+
+	$(document).ready(function() {
+		$('.showPopup').fancybox();
+
+	});
+
+{/literal}
+	var basedomain = "{$basedomain}";
+</script>
+{literal}
+  <script>
+  
+  $(function(){
+    $("div#holderLetters").jPages({
+      containerID : "redeemLetters",
+      previous : "←",
+      next : "→",
+      perPage : 9,
+      delay : 20
+    });
+  });
+  
+  </script>
+  {/literal}
+
+  {literal}
+  <script>
+  $(function(){
+    $("div#holderVisit").jPages({
+      containerID : "timeForVisit",
+      previous : "←",
+      next : "→",
+      perPage : 10,
+      delay : 20
+    });
+  });
+  
+  $(function(){
+    $("div#holderSpent").jPages({
+      containerID : "timeSpent",
+      previous : "←",
+      next : "→",
+      perPage : 10,
+      delay : 20
+    });
+  });
+  
+  $(function(){
+    $("div#holderInventory").jPages({
+      containerID : "loginInventory",
+      previous : "←",
+      next : "→",
+      perPage : 10,
+      delay : 20
+    });
+  });
+  
+  $(function(){
+    $("div#holderhighPoint").jPages({
+      containerID : "topHighestPoint",
+      previous : "←",
+      next : "→",
+      perPage : 10,
+      delay : 20
+    });
+  });
+  
+  
+  </script>
+  {/literal}

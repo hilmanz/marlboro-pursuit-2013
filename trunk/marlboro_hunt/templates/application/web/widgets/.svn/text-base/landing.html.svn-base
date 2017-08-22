@@ -1,0 +1,175 @@
+<div id="landingPage">
+	<div class="landingPage">
+        <ul class="columns-3 clearfix">
+            <li class="col3">
+                <div class="box">
+                    <div class="thumbLanding">
+                        <a class="thumb300 showPopup2 kickoffpop" href="#popup-video-kickoff">
+                            <img src="{$basedomain}assets/content/retail-thumb.jpg" />
+                        	<span class="icon_play">&nbsp;</span>
+						 </a>
+                    </div><!-- END .thumbLanding -->
+                    <div class="captions">
+                        <h1>kickoff</h1>
+                        <a class="readmore showPopup2" href="#popup-video-kickoff">let go of your maybe</a>
+                    </div><!-- END .captions -->
+                </div><!-- END .box -->
+            </li><!-- END .col3 -->
+            <li class="col3">
+                <div class="box">
+                    <div class="thumbLanding">
+                        <a class="thumb300 dyo" href="{$basedomain}dyo">
+                            <img src="{$basedomain}assets/content/thumb2.jpg" />
+                        </a>
+                    </div><!-- END .thumbLanding -->
+                    <div class="captions">
+                        <h1>Design Your Shirt</h1>
+                        <a class="readmore" href="{$basedomain}dyo">Gallery</a>
+                    </div><!-- END .captions -->
+                </div><!-- END .box -->
+            </li><!-- END .col3 -->
+            <li class="col3">
+                <div class="box">
+                    <div class="thumbLanding">
+                        <a class="thumb300 showPopup2 laborpopup" href="#popup-video-laborday">
+                            <img src="{$basedomain}assets/content/labor-thumb.jpg" />
+                        	<span class="icon_play">&nbsp;</span>
+                        </a>
+                    </div><!-- END .thumbLanding -->
+                    <div class="captions">
+                        <h1>Labor Day</h1>
+                        <a class="readmore showPopup2" href="#popup-video-laborday">Sneak Peek</a>
+                    </div><!-- END .captions -->
+                </div><!-- END .box -->
+            </li><!-- END .col3 -->
+        </ul><!-- END .columns-3 -->
+    </div><!-- END .landingPage -->
+</div><!-- END #landingPage -->
+{include file="application/web/widgets/popup-video-kickoff.html"}
+{include file="application/web/widgets/popup-video-laborday.html"}
+
+
+
+		<script>
+	
+		
+		var welcomeloginvideo = false;
+		var laborwelcomevideo = false;
+		{if $popvideowelcome==true} var welcomeloginvideo = true; {/if}
+		{if $popvideolabor==true} var laborwelcomevideo = true; {/if}
+		
+		{literal}
+				
+		  var myPlayerpursuit = _V_("video-pursuit");
+		  var myPlayerlabor = _V_("video-labor");
+		
+		$(document).ready(function(){
+		
+			if(welcomeloginvideo==true) {
+				$(".kickoffpop").trigger('click');
+				//if(!navigator.userAgent.match(/MSIE/)) myVideoPursuit.play();
+			}
+			
+			if(laborwelcomevideo==true) {
+				
+				$(".laborpopup").trigger('click');
+				//if(!navigator.userAgent.match(/MSIE/)) myVideoLabor.play();
+			}
+		});
+				
+	
+	
+
+			var myVideoPursuit=document.getElementById("video-pursuit"); 
+			var myVideoLabor=document.getElementById("video-labor"); 
+		
+		function pause(){		
+
+					
+						
+						/* myVideoPursuit.pause();
+				
+						myVideoLabor.pause();	*/
+				
+					window.location = basedomain;
+		
+			
+			
+			
+		}
+		
+		$(document).on('click','.kickoffpop', function(){
+			
+			$.post(basedomain+"home/ajax" ,{popup:1}, function(data){
+			
+			
+				
+					 var myPlayerpursuit = _V_("video-pursuit");
+			
+					 _V_("video-pursuit").ready(function(){
+
+						var myPlayerpursuit = this;
+					
+							if(welcomeloginvideo==true) myPlayerpursuit.play();
+
+					});
+				
+			
+			});
+		})
+		
+		$(document).on('click','.laborpopup', function(){
+			
+			$.post(basedomain+"home/ajax" ,{popup:3}, function(data){
+				
+		
+					var myPlayerlabor = _V_("video-labor");
+				
+					 _V_("video-labor").ready(function(){
+
+						var myPlayerlabor = this;
+
+						if(laborwelcomevideo==true) myPlayerlabor.play();
+
+					});
+				
+			});
+		})
+		
+		$(document).on('click','.dyo', function(){
+			
+			$.post(basedomain+"home/ajax" ,{popup:2}, function(data){});
+		})
+		
+		
+		
+		
+		
+		function kickoffvideo(video){
+			var html ="";
+			html+="<video id='video-pursuit' class='video-js vjs-default-skin' controls preload='none' width='100%' height='400'";
+			html+="poster='"+basedomain+"assets/content/thumb_video_kickoff.jpg'";
+			html+="data-setup='' controls autoplay='autoplay'>";
+			html+="<source src='"+basedomain+"assets/video/MB_Retail.mp4' type='video/mp4' />";
+			html+="</video>";
+			
+			return html;
+			
+		}
+		
+		function laborvideo(){
+			var html ="";
+			html+="<video id='video-labor' class='video-js vjs-default-skin' controls preload='none' width='100%' height='400'";
+			html+="poster='"+basedomain+"assets/content/thumb_video_laborday.jpg'";
+			html+="data-setup='' controls autoplay='autoplay'>";
+			html+="<source src='"+basedomain+"assets/video/labor-teaser.mp4' type='video/mp4' />";
+			html+="</video>";
+			
+			return html;
+			
+		}
+		
+		</script>
+	
+	
+	{/literal}

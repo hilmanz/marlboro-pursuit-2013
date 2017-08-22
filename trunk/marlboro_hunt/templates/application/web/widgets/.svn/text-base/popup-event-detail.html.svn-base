@@ -1,0 +1,345 @@
+<div class="popup">
+	<div class="popupContainer" id="{if $pages=='news'}popup-newsdetail{else}popup-eventdetail{/if}">
+		<div class="popupContent">
+			<div class="entry-popup popupnewsdetail contentEventDetail">
+            	<div class="eventBoxDetail thedatadetail">
+                   
+                    
+                </div><!--END .eventBoxDetail-->
+                <div class="eventEntry eventDashboard">
+					{if $pages=='event'}
+                    	<div id="judulEvent" class="row">
+                        </div>
+                        <div class="rowHead">
+                            <div class="photos-head">
+                            <span>Upload your own photo from the event.</span>
+                            <a class="landbtn landbtn2 loadUploadForm" href="javascript:void(0)">UPLOAD</a>
+                            </div>
+                        </div><!-- END .rowHead -->
+					{/if}
+                    
+					{if $pages=='movefwd'}
+						<div id="judulEvent" class="row">
+                        </div>
+						<div class="commentBox">
+							 <div class="reply-box">                      
+								<form class="thecomment" method="POST" action="{$basedomain}content/comment" id="thecommentcontentid" >
+									<div class="messagesendingcontent" style="display:none" ></div>
+									<textarea name="comment" class="thecommentcontent" placeholder="Type your comment here" ></textarea>
+									<input name="usertagging" class="usertagging" type="hidden" />
+									<input name="usertaggingnames" class="usertaggingnames" type="hidden" />
+									
+									<input type="hidden" name="cid" value="-1" class="thecontentidcomment" />
+									<input type="hidden" name="gid" value="-1" class="thegidcomment" />
+									<input class="commentSubmitPost" type="submit" value="&nbsp;" style="right:10px"  />
+								</form>
+								<div style="position:relative;width:300px" class="taggingusers" ></div>
+							</div><!-- END .reply-box -->
+							<p style='margin:-10px 0;font-size:10px;'>Comments are subject to moderation. PM reserves the right to reject or remove any comment as per the <a href='#popup-tnc' class='showPopup popuptnc'>Terms and Conditions</a></p>
+						</div><!-- END .commentBox -->
+						
+						<div class="scroll-pane {if $pages=='event'}h170{/if}">
+						   
+							<div class="commentBox">
+									<div class="comments">
+									   
+										 <div class="detailusercontent">
+							   
+										</div><!-- END .detailusercontent -->
+										<div class="row comment-child commentuserdetail">
+											
+										</div><!-- END .row -->
+									</div><!-- END .comments -->
+							</div><!-- END .commentBox -->
+							
+						</div><!-- END .scroll-pane -->
+					{else}
+					<div class="scroll-pane {if $pages=='event'}h170{/if}">
+                       
+                        <div class="commentBox">
+                                <div class="comments">
+                                   
+									 <div class="detailusercontent">
+                           
+									</div><!-- END .detailusercontent -->
+                                    <div class="row comment-child commentuserdetail">
+                                        
+                                    </div><!-- END .row -->
+                                </div><!-- END .comments -->
+                        </div><!-- END .commentBox -->
+						
+                    </div><!-- END .scroll-pane -->
+                    <div class="commentBox">
+                         <div class="reply-box">                      
+                            <form class="thecomment" method="POST" action="{$basedomain}content/comment" id="thecommentcontentid" >
+                                <div class="messagesendingcontent" style="display:none" ></div>
+                                <textarea name="comment" class="thecommentcontent" placeholder="Type your comment here" ></textarea>
+                                <input name="usertagging" class="usertagging" type="hidden" />
+                                <input name="usertaggingnames" class="usertaggingnames" type="hidden" />
+                                
+                                <input type="hidden" name="cid" value="-1" class="thecontentidcomment" />
+                                <input type="hidden" name="gid" value="-1" class="thegidcomment" />
+                                <input class="commentSubmitPost" type="submit" value="&nbsp;" style="right:10px"  />
+                            </form>
+                            <div style="position:relative;width:300px" class="taggingusers" ></div>
+                        </div><!-- END .reply-box -->
+                        <p style='margin:-10px 0;font-size:10px;'>Comments are subject to moderation. PM reserves the right to reject or remove any comment as per the <a href='#popup-tnc' class='showPopup popuptnc'>Terms and Conditions</a></p>
+                    </div><!-- END .commentBox -->
+					{/if}
+                </div><!-- END .eventEntry -->
+                <div class="eventEntry eventUploadForm" style="display:none;">
+                <form id="uploadPhotoEventForm" action="{$basedomain}event/upload/"  method="post" enctype="multipart/form-data">
+                     <div class="rowHead">
+                        <div class="photos-head">
+                        <span>Upload your own photo from the event.</span>
+                        </div>
+                    </div><!-- END .rowHead -->
+                    <div class="row">
+						{*}<div style="height:50px;" > <a id="fileupload-event"></a></div>{/*}
+						{*}<!--[If IE]><label for="upload-photo" class="fileupload-event-label" style="z-index: 10000; border-bottom: 0px; position: fixed; border-left: 0px; width: 250px; display: block; float: left; height: 30px; border-top: 0px; cursor: pointer; border-right: 0px; right: 230px; top: 146px;" >&nbsp;</label><![endif]-->{/*}
+						<label for="upload-photo" id="fileupload-event"  style="height:50px;" >&nbsp;</label> 
+                        <input id="upload-photo" type="file" name="image" style="display: block; position: relative; top: -500px;" /> 
+                        
+                    </div>
+                    <div class="row previewPhotoUpload">
+                        <div id="photoUploadPreview" ></div>
+                    </div>
+                    <div class="row">
+                        <div id="loaderUpload"></div>
+                    </div>
+                    <div class="row previewPhotoUpload">
+                        <input type="hidden" name="idevent" value="-1" class="thecontentidcomment" />
+                        <input type="submit" name="save" value="Save" class="" />
+                        <!--<a class="landbtn landbtn2 saveUpload" href="javascript:void(0)">Save</a>-->
+                        <a class="landbtn landbtn2 uploadBack" href="javascript:void(0)">Back</a>
+                    </div>
+                </form>
+                    <div class="row">
+                    <p style="font-family:Arial, Helvetica, sans-serif; font-size:11px; margin-bottom:10px;">Please be reminded that as per the <a class="showPopup popuptnc" href="#popup-tnc">Terms and Conditions</a>, all photos, images or designs submitted will become the property of PM. Please do not upload or submit any photos, images or designs depicting the act of smoking or showing a lit cigarette or minors (persons less than 18 years old). PM reserves to the right to remove or reject any photo, image or design which it, in its sole and absolute discretion, deems offensive, violates the law or is unsuitable in any other manner. The photo you upload will be subject to moderation.</p>
+                    </div>
+                </div>
+			</div><!--END .entry-popup-->
+		</div><!-- END .popupContent -->
+	</div><!-- END .popupContainer -->
+</div>
+
+
+<script type="text/javascript">
+    {literal}
+ var savebutton=true;
+ var vdata;
+/*	  $('#fileupload-event').on('click',function(){
+        $("#upload-photo").trigger('click');
+    });  
+*/	
+	 
+    $('.loadUploadForm').on('click',function(){
+        $('.eventDashboard').hide();
+        $('.eventUploadForm').fadeIn();
+    });
+    $('.uploadBack').on('click',function(){
+        $('.eventUploadForm').hide();
+        $('.eventDashboard').fadeIn();
+    });
+
+	/*
+    $('.saveUpload').on('click',function(){
+        var $form = $('#uploadPhotoEventForm');
+        $('.loaderUpload').ajaxStart(function(){
+            $(this).text('Loading....');
+        });
+        $form.ajaxForm(function(e){
+            window.location.href=basedomain+"event/past/";
+        }).submit();
+    });
+    */
+    
+	var updateoptions = {
+	dataType:  'json', 	
+	beforeSubmit: function(data) { 
+			 if(savebutton==true){
+					$(".wakeboarding-thanks").trigger("click");		
+					$(".content").html(locale.pleasewait);
+			 }else{
+				
+			 }
+	},
+	success : function(data) {		
+			vdata = data;
+			//if(data.status==true){
+						if(savebutton==true){
+							var htmlThanks ="";
+							htmlThanks = "<p class='postSucces'>"+locale.postcommentorreply+"</p>";
+							$(".wakeboarding-thanks").trigger("click");
+							$(".content").html(htmlThanks);
+							$("#fancybox-close").addClass("fancybox-close-postsucces");
+							
+							$(document).on('click', '#fancybox-close, #fancybox-overlay', function(){
+								location.reload();
+							})
+						}else{
+								savebutton= true;
+								//alert(data.filename);
+							 
+								 
+									 $('#photoUploadPreview').html('<img src="'+data.filename+'" width="170" />');
+									
+									
+									$('#uploadPhotoEventForm').attr('action',basedomain+'event/upload/');
+							 
+							 
+						}
+			//}
+				 
+	}
+	};					
+
+	
+					
+    function readURLProfile(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('img#photoUploadPreview').attr('src', e.target.result);
+                $('img#photoUploadPreview').attr('width', '170');
+            }
+             reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+
+
+    $("#upload-photo").change(function(){
+       // console.log('foo');
+		
+        //readURLProfile(this);
+		savebutton= false;
+		$('#uploadPhotoEventForm').attr('action',basedomain+'about/sendtotempimages');
+		
+		$('#uploadPhotoEventForm').submit();
+		
+    });
+ 
+    {/literal}
+</script>
+
+ 
+<script>
+$("#uploadPhotoEventForm").ajaxForm(updateoptions);
+</script>
+ 
+
+<script>
+{literal}
+	var checkstrings = false;
+	var arrtagscommawithstrings = new Array();
+	var arrtagscommawithstringsnames = new Array();
+ 
+	var stringsaftertags ="";
+	$(document).on('keyup','.thecommentcontent',function(){
+	
+		var firststrings = $(this).val();
+		
+		
+		if(checkstrings) checkstring(firststrings);
+		
+		if(firststrings.match(/@/i)){
+			checkstrings = true;
+		}else checkstrings = false;
+		
+		
+	 
+		
+	});
+	
+	 
+	
+	function checkstring(firststrings){
+		
+			var fullengthstrings = firststrings.length;
+			var onpositionstring= firststrings.indexOf("@");
+			var sublengthstring = firststrings.indexOf(" ",onpositionstring);
+			if(sublengthstring!=-1)   stringsaftertags = firststrings.substring(onpositionstring+1,sublengthstring);
+			else   stringsaftertags = firststrings.substring(onpositionstring+1,fullengthstrings);
+			
+			if(stringsaftertags!=''){
+				$.post(basedomain+'content/searchnameofalluser',{q:stringsaftertags},function(data){
+					var html="";
+						if(data){
+							$.each(data,function(i,e){
+								
+								html+="<div class='tagthisuser' fid='"+e.id+"' nameuser='"+e.name+" "+e.last_name+"' >"+e.name+" "+e.last_name+"</div>";
+							
+							});
+							
+						}
+						$(".taggingusers").html(html);
+						
+						
+					
+						
+				},"JSON")
+			}
+		
+	}
+		$(document).on('click','.tagthisuser',function(){
+							var nameofuser = $(this).attr('nameuser');
+							var fid = $(this).attr('fid');
+							
+							/* userid tagging*/
+							var lastusertag = $('.usertagging').val();
+							if(lastusertag!=''){
+								if(lastusertag.indexOf(",")!=-1){
+									arrtagscommawithstrings = lastusertag.split(',');
+								}else{
+									arrtagscommawithstrings.push(lastusertag);
+								}
+							}
+							arrtagscommawithstrings.push(fid);						 
+							var tagscommawithstrings = arrtagscommawithstrings.join(',');
+							arrtagscommawithstrings = [];
+							
+							/* name user tagging*/
+							var lastusertagnames = $('.usertaggingnames').val();
+							if(lastusertagnames!=''){
+								if(lastusertagnames.indexOf(",")!=-1){
+									arrtagscommawithstringsnames = lastusertagnames.split(',');
+								}else{
+									arrtagscommawithstringsnames.push(lastusertagnames);
+								}
+							}
+							arrtagscommawithstringsnames.push(nameofuser);						 
+							var tagscommawithstringsnames = arrtagscommawithstringsnames.join(',');
+							arrtagscommawithstringsnames = [];
+							
+							/* engine replacing */
+							var stringstext = $('.thecommentcontent').val();
+							var stringsnew = stringstext.replace("@"+stringsaftertags, " "+nameofuser+" ");
+							
+							$('.thecommentcontent').val(stringsnew);
+							$('.usertagging').val(tagscommawithstrings);
+							$('.usertaggingnames').val(tagscommawithstringsnames);
+							
+						 
+							
+							var tagscommawithstrings="";
+							$('.taggingusers').html("");
+						
+							checkstrings = false;
+						});
+
+	
+	$(document).on("click",".commentSubmitPost",function(){
+	
+		$("#thecommentcontentid").submit();
+	})
+{/literal}
+</script>
+
+
+
+
+
+
+

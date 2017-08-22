@@ -1,0 +1,165 @@
+<div class="popup">
+	<div class="popupContainer popupContainer4" id="popup-inbox-new">
+        <div class="popupContent">
+        	<div class="entry-popup popupInbox">
+                <div class="inner">
+                         <ul class="columns-2 clearfix">
+                         	<li class="col2 messages-choose">
+                            	<div class="row">
+                            		<h1>Messages</h1>
+                                </div>
+                                <div class="row">
+                                	<a class="inbox-notif inboxbutton allbuttonnotifbox" href="javascript:void(0)">Inbox <span class="notifinbox"></span></a>
+                                </div>
+                                <div class="row">
+                                    <a class="notification-notif notificationbutton allbuttonnotifbox" href="javascript:void(0)">Notifications <span class="notification"></span></a>
+                                </div>
+                                <div class="row">
+                                    <a class="sent-notif sentbutton allbuttonnotifbox" href="javascript:void(0)">Sent</a>
+                                </div>
+                                <div class="row">
+                                    <a class="trash-notif trashbutton allbuttonnotifbox" href="javascript:void(0)">Trash</a>
+                                </div>
+                                
+                                <div class="row" style="display:none">
+                                	<a class="landbtn landbtn2 composebutton " href="javascript:void(0)">Compose</a>
+                                </div>
+                               
+                            </li>
+                            <li class="col2-2 message-content">
+                            
+                            	<div class="listmessageinbox">
+								{*}
+								<div class="actionInbox">
+                                            <div class="checkAll-Action fl">
+                                                <a class="selectAll selectAllMessage" href="javascript:void(0)">Select All</a>
+                                                <a class="deletetAll deletetAllMessage" href="javascript:void(0)">Delete Selected</a>
+                                                <a href="javascript:void(0)" class="prev-message-page prevInbox ">&nbsp;</a>
+                                                <a href="javascript:void(0)" class="next-message-page nextInbox">&nbsp;</a>  
+                                            </div>
+                                            <div class="page-arrow">
+                                            	<a href="javascript:void(0)" class="prev-message-page prevInbox ">&nbsp;</a>
+                                                <a href="javascript:void(0)" class="next-message-page nextInbox">&nbsp;</a> 
+                                            </div>
+                                            <div class="pageInbox fr pagingInboxMessage">
+                                                <!--Content paging -->
+                                            </div>
+                                      </div><!-- END .actionInbox-->{/*}
+                                      {*}
+                            	<div id="list-inbox" class="listinbox">
+
+                                    <div class="table-inbox listmessageinbox">
+                                        <!--Content message -->
+                                    </div> <!--END.table-inbox-->
+                                    
+                                </div><!-- END #list-inbox-->
+                                {/*}
+                                {*}
+                                <div id="read-message" class="inbox-message-detail">
+                                	<ul class="columns-isi-inbox clearfix">
+                         				<li class="col2-left">
+                                        	<div class="row">
+                                        	<div class="user-thumb">
+                                            	<img src="{$basedomain}public_assets/user/photo/profile-inbox.png"/>
+                                            </div>
+                                            </div>
+                                        </li>
+                                        <li class="col2-right">
+                                        	<div class="row messageInfo">
+                                                	<h1>I HAVE A QUESTION</h1>
+                                                    <h4>Sender : MIGUEL FRANSISCO</h4><br />
+                                                <div class="messageText">
+                                            	<p>Hello broda... Can i have your help please.. I need to redeem some code. Can I haveyour phone number?? Maybe i can call you?</p>
+                                                </div>
+                                            </div>
+                                            <div class="row messageInfo">
+                                                    <h4>YOU</h4>
+                                                <div class="messageText">
+                                            	<p>Hello Miguel! I don’t have a phone number.. Sorry</p>
+                                                </div>
+                                            </div>
+                                        </li><!-- END .col2-right-->
+                                    </ul>
+                                    <div class="row message-reply">
+										<label>Reply</label>
+                                    	<input id="reply" class="reply-message" type="text" name="reply">
+                                    </div>
+                                    <div class="row">
+                                    	<a class='fr deleteInbox deletetAllMessage' href='javascript:void(0)'>SEND</a>
+                                    </div>
+                                </div><!-- END #read-message-->
+                                {/*}
+								{*}
+                                <div id="compose-message" class="inbox-message-compose">
+                                	<h3>COMPOSE NEW MESSAGE</h3>
+                                	<div class="row">
+                                        <label>NICKNAME</label>
+                                        <input id="nickname" class="full-width required" type="text" name="nickname">
+                                    </div>
+                                    <div class="row">
+                                        <label>Recipient</label>
+                                        <input id="nickname" class="full-width required" type="text" name="nickname">
+                                    </div>
+                                    <div class="row">
+                                        <label>Subject</label>
+                                        <input id="nickname" class="full-width required" type="text" name="nickname">
+                                    </div>
+                                    <div class="row">
+                                        <label>Message</label>
+                                        <textarea id="nickname" class="message-compose" name="nickname"></textarea>
+										<!--<input id="nickname" class="message-compose" type="text" name="nickname">-->
+                                    </div>
+                                    <div class="row">
+                                    	<a class="fr landbtn landbtn2" href="#">Send</a>
+                                    </div>
+                                </div><!-- END #compose-message-->
+								{/*}
+								
+								</div><!-- END #content-message-->
+                                <div id="isi-message" class="contentMessageInbox">
+									
+                                </div><!-- END #isi-message-->
+                            </li><!-- END .columns-2 clearfix -->
+                         </ul><!-- END .columns-2 clearfix -->
+                </div><!-- END .inner -->
+            </div><!--END .entry-popup-->
+        </div><!-- END .popupContent -->
+    </div><!-- END .popupContainer -->
+</div><!-- END .popup -->
+{literal}
+<script type="text/javascript">
+/*
+function altRows(id){
+	if(document.getElementsByTagName){  
+		
+		var table = document.getElementById(id);  
+		var rows = table.getElementsByTagName("tr"); 
+		 
+		for(i = 0; i < rows.length; i++){          
+			if(i % 2 == 0){
+				rows[i].className = "evenrowcolor";
+			}else{
+				rows[i].className = "oddrowcolor";
+			}      
+		}
+	}
+}
+window.onload=function(){
+	altRows('alternatecolor');
+}
+*/
+
+$( document ).ready(function() {
+	$(".backinbox").click(function(event){
+		event.preventDefault();
+	  $("#isi-message").hide();	  
+	  $("#list-inbox").show();
+	});
+	
+	$(".deletetAll").click(function (event) {
+		event.preventDefault();
+		$('.check-inbox').removeAttr("checked");
+	});
+});
+</script>
+{/literal}

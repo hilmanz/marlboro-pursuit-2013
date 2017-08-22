@@ -1,0 +1,1435 @@
+<<<<<<< .mine
+<div id="myaccountPages">
+	<div class="myaccountPages">
+        <ul class="columns-content clearfix">
+            <li class="col-sidebar">
+            	<div class="profile-foto">
+                	<div class="profile-frame">                              	
+                    </div>
+                    <img src="{$basedomain}public_assets/user/photo/{$account.image_profile}" />
+                    <a  href="javascript:void(0)" class="changephotoprofile">Change Photo</a> 
+                </div><!-- END .profile-foto -->
+                <div class="bt-chooseMaybe">
+                	<div class="list-corssout">
+                    	<p><img src="{$basedomain}assets/images/phase4/maybe-cross.png" /><span> i will go somewhere i have never been before</span></p>
+                        <p><img src="{$basedomain}assets/images/phase4/maybe-cross.png" /><span>i will reinvent my wardrobe</span></p>
+                        <p><img src="{$basedomain}assets/images/phase4/maybe-cross.png" /><span>i will start a trend</span></p>
+                    </div>
+                    <h3>CROSS OUT THE MAYBE IN YOUR LIFE</h3>
+                	<a href="#">CLICK HERE TO CHOOSE </a>
+                </div>
+            </li><!-- END .col-sidebar -->
+            <li class="col-main">
+            	<div id="container">
+                	<div class="myaccount-entry">	
+				  	<form id="reg1" action="{$basedomain}account" class="theForm" method="POST">
+                    <ul class="columns-2 clearfix">
+                        	<div class="accountInfo account-rotate">
+                                <div class="row">
+                                    <h3 class="name-user">{$account.name} {$account.last_name}</h3>
+                                    <small>To change your name, please contact our adult restricted hotline at (02) 895-9999 or 1-800-10-895-9999 (toll-free for outside Metro Manila) or text MBChange to 0908-895-9999.</small>                  	
+                                </div>
+                                <div class="edit-profile">
+                                	<a href="javascript:void(0)" class="editit">EDIT PORFILE</a>
+                                </div>
+                                <div class="row">
+                            		<h4 class="name-user">Nickname: <span class="nickname">{$account.nickname}</span></h4>
+                            		
+									<a class="btn-edit openedit " typeinput="" whatfor="nickname" val="{$account.nickname}"  href="javascript:void(0)">&nbsp;</a>
+                                </div>
+                                <div class="row">
+                                    <h4>email address: {$account.email}</h4>
+                                    <small>To change your e-mail, please contact our adult restricted hotline at (02) 895-9999 or 1-800-10-895-9999 (toll-free for outside Metro Manila) or text MBChange to 0908-895-9999.</small>                 	
+                                </div>
+                                <div class="row">
+                                    <h4>Password: <span class="passwordchanger">************</span></h4>
+                                    <small>Password should be a minimum of 8 characters with at least one number, one letter in upper case and one letter in lower case</small>     
+									<a class="btn-edit openedit" typeinput="" whatfor="passwordchanger"  href="javascript:void(0)">&nbsp;</a>
+                                </div>
+                                <div class="row">
+                                    <h4>Gender: {$account.sex}</h4>                	
+                                </div>
+                                <div class="row">
+                                    <h4>mobile number: <span class="last_mobile">{$account.phone_number}</span></h4>  
+									<a class="btn-edit openedit" typeinput="" whatfor="last_mobile" val="{$account.phone_number}"   href="javascript:void(0)" >&nbsp;</a>
+                                </div>
+                                <div class="row">
+                                    <h4>Date of Birth: {$account.birthday}</h4>                	
+                                </div>
+                                <div class="row">
+                                    <h4>Mailing Address: <span class="mailingaddress">{$account.StreetName} ,	{$account.barangay} ,{$account.zipcode}</span></h4>
+									<a class="btn-edit openedit " 
+								whatfor="mailingaddress" 
+								typeinput="" 
+								streetname="{$account.StreetName}" 
+								barangay="{$account.barangay}" 
+								zipcode="{$account.zipcode}" 
+								cityid="{$account.city}" 
+								provinceid="{$prov_value.provinceid}" 
+								  href="javascript:void(0)"
+								>&nbsp;</a>
+                                </div>
+                                {*}
+                                <div class="row button-deactive">
+                                    <a href="#">* Deactive Account</a>
+                                </div>
+                                {/*}
+                            </div><!-- END.accountInfo -->
+						
+                    </ul>
+						{*}<a class="btn_red editit"  href="javascript:void(0)" id="simpan"  >Edit Profile</a>{/*}
+                        <div class="row save-cancel account-rotate">
+						<a class="canceleditprofile"  href="javascript:void(0)" id="canceleditprofile" style='display:none' >Cancel</a>
+                        <a class="closeeditit fr"  href="javascript:void(0)" id="saveeditprofile" style='display:none' >Save</a>
+						<input type="hidden" name="edit_account" value="1"/>
+                        </div>
+					</form>
+				   </div><!-- END .blackbox -->
+                </div><!-- END #container -->
+            </li><!-- END .col-main -->
+        </ul>
+    </div><!-- END .myaccountPages -->
+</div><!-- END #myaccountPages -->
+{include file="application/web/widgets/popup-upload-profile-webcam.html"}
+{literal}
+	<style>
+	.closeeditit{font-size:15px}
+	.editit{font-size:16px}
+	#myaccountPages .btn_red{ font-size:18px;}
+	.openedit{display:none}
+	.closeedit{display:none}
+	.contentmyaccount{text-align:left}
+	.infoText{ color:#C00;}
+	</style>
+{/literal}
+<script>
+
+	var htmlnya = "";
+	var province = {$province|@json_encode};
+	var dataCity = {$prov_value|@json_encode};
+	var mprefix = {$mprefix|@json_encode};
+	var mobile_value = {$mobile_value|@json_encode};
+	var resultmessage = {$resultmessage|@json_encode};
+	
+	
+	
+	
+	{literal}
+		$(document).ready(function(){
+		if(resultmessage){
+					$(".trigun").trigger("click");
+					$(".msgpopupglobal").html(resultmessage);
+		}
+	});
+	$(document).on('change','#province',function(){
+		var provinceid = $(this).val();
+
+		getProvinceCity(provinceid,false);
+	});
+	
+	$(document).on('click','.editit',function(){
+		$('.openedit').trigger('click');
+		
+		
+		$(".editit").addClass('closeeditit');
+		$(".closeeditit").html('Save Profile');
+		$(".closeeditit").removeClass('editit');
+			$("#canceleditprofile").show();
+			$("#saveeditprofile").show();
+	});
+	
+	$(document).on('click','.closeeditit',function(){
+	
+		console.log($("#zipcode").val());
+		console.log($("#city").val());
+		console.log($("#province").val());
+		console.log($("#barangay").val());
+		console.log($("#StreetName").val());
+		console.log($("#last_mobile").val());
+		console.log($("#nickname").val());
+		
+		
+				$(".error-valid").remove();
+		if($("#zipcode").val()==''||$("#city").val()=='-'||$("#province").val()=='-'||$("#barangay").val()==''||$("#StreetName").val()==''||$("#last_mobile").val()==''||$("#nickname").val()=='') {
+		
+
+			
+			if($("#zipcode").val()=='') {
+				$("#zipcode").addClass("error");
+				$("#zipcode").parent(".row").append("<p style='color:red' class='error-valid'>This field is required.</p>");		
+			}
+			 
+			if($("#city").val()=='-'){
+				$(".selectCity").attr("style","background-color:#FFCC00");
+				$(".selectCity").after("<p style='color:red' class='error-valid'>This field is required.</p>");
+			}
+			 
+			if($("#province").val()=='-'){
+				$(".selectProvince").attr("style","background-color:#FFCC00");
+				$(".selectProvince").after("<p style='color:red' class='error-valid'>This field is required.</p>");
+			}
+			
+			if($("#barangay").val()=='') {
+				$("#barangay").addClass("error");
+				$("#barangay").parent(".row").append("<p style='color:red' class='error-valid'>This field is required.</p>");
+			}
+			
+			if($("#StreetName").val()=='') {			
+				$("#StreetName").addClass("error");
+				$("#StreetName").parent(".row").append("<p style='color:red' class='error-valid'>This field is required.</p>");				
+			}
+			
+			if($("#nickname").val()==''){
+				$("#nickname").addClass("error");
+				$("#nickname").parent(".row").append("<p style='color:red' class='error-valid'>This field is required.</p>");				
+			}
+			
+			if($("#last_mobile").val()==''){
+				$("#last_mobile").addClass("error");
+				$("#last_mobile").parent(".row").append("<p style='color:red' class='error-valid'>This field is required.</p>");				
+			}
+		 
+			return false;
+		 }
+		$(".theForm").submit();
+		
+		
+		$('.closeedit').trigger('click');
+		
+		$(".closeeditit").addClass('editit');
+		$(".editit").html('Edit Profile');
+		$(".editit").removeClass('closeeditit');
+		$("#canceleditprofile").hide();
+		$("#saveeditprofile").hide();
+		
+	});
+	
+	$(document).on('click','.canceleditprofile,.saveeditprofile',function(){
+		
+		
+		$('.closeedit').trigger('click');
+		
+		$(".closeeditit").addClass('editit');
+		$(".editit").html('Edit Profile');
+		$(".editit").removeClass('closeeditit');
+			$("#canceleditprofile").hide();
+			$("#saveeditprofile").hide();
+		
+	});
+	
+	$(document).on('click','.openedit',function(){
+		
+		var thisobject = $(this);
+		var whatfor = $(this).attr('whatfor');
+		var typeinput = $(this).attr('typeinput');
+		var oldvalue = $(this).attr('val');
+		var html ="";
+		
+		html = globalinputtexthtml(whatfor,oldvalue);
+		
+		if(whatfor=='passwordchanger') html = passwordhtml();
+		if(whatfor=='mailingaddress') html = addresshtml(thisobject);
+					
+		$("."+whatfor).html(html);
+		
+		if(whatfor=='mailingaddress')  getProvinceCity(thisobject.attr('provinceid'),thisobject.attr('cityid'));
+		
+		$(this).addClass('closeedit');
+		$(this).removeClass('openedit');
+		
+	});
+	
+	$(document).on('click','.closeedit',function(){
+		var whatfor = $(this).attr('whatfor');
+		var typeinput = $(this).attr('typeinput');
+		var newval = $("#"+whatfor).val();
+				
+		var html ="";
+	
+		if(whatfor=='mailingaddress') {
+			newval = $("#StreetName").val()+","+$("#barangay").val()+","+$("#zipcode").val();
+			$(this).attr('streetname',$("#StreetName").val());
+			$(this).attr('barangay',$("#barangay").val());
+			$(this).attr('zipcode',$("#zipcode").val());
+			$(this).attr('cityid',$("#city").val());
+			$(this).attr('provinceid',$("#province").val());
+		}else {
+			if(whatfor=='passwordchanger') newval = '************';
+			else $(this).attr('val',newval);
+		}
+		$("."+whatfor).html("<h3>"+newval+"</h3>");
+		
+		
+	
+		
+		$(this).removeClass('closeedit');
+		$(this).addClass('openedit');
+	});
+	
+	function mobileedthtml(){		
+			
+			var html ="";
+				html+="<select name='pre_mobile' class='styled pre_mobile required'  >";
+				html+="<option value='' >-</option>";
+				$.each(mprefix,function(i,e){
+						if(e.mobile_prefix==mobile_value[0]) html+="<option value='"+e.mobile_prefix+"' selected='selected' >"+e.mobile_prefix+"</option>";
+						else html+="<option value='"+e.mobile_prefix+"' >"+e.mobile_prefix+"</option>";
+					});
+				html+="</select>";
+				return html;
+	}
+	
+	function passwordhtml(){
+			var html ="";
+				html+="<div class='row '  >";
+				html+="<input type='password' name='oldpasswd' class='full-width oldpasswd ' value='' style='width: 286px;' placeholder='old password' />";
+				html+="</div>";
+				html+="<div class='row ' >";
+				html+="<input type='password' name='newpasswd' class='full-width newpasswd' value='' style='width: 286px;' placeholder='new password' />";
+				html+="</div>";
+				html+="<div class='row ' >";
+				html+="<input type='password' name='confirmpasswd' class='full-width  confirmpasswd' value=''  style='width: 286px;' placeholder='confirm password' />";
+				html+="</div>";
+			return html;
+	}
+	
+	function addresshtml(data){
+			
+			var html ="";
+				html+="<div class='row '><h4>address: ";
+					html+="<span><input type='text' style='width: 286px;' name='house' id='StreetName' class='full-width  required' value='"+data.attr('streetname')+"' /></span></h4></div>";
+				html+="<div class='row ' ><h4>barangay: ";
+					html+="<span><input type='text' style='width: 286px;' name='barangay' id='barangay' disabled class='full-width  required' value='"+data.attr('barangay')+"'/></span></h4></div>";
+				html+="<div class='row edit-select-address' ><h4 style='float:left;'>province:</h4>";
+					html+="<div class='styledProvince selectProvince' ><select name='province' class='required' id='province' >";
+					html+="<option value='-' >-</option>";	
+					$.each(province,function(i,e){
+							
+							if(e.id==data.attr('provinceid')) html+="<option value='"+e.id+"' selected='selected' >"+e.province+"</option>";
+							else html+="<option value='"+e.id+"' >"+e.province+"</option>";
+						
+					});								
+					html+="</select></div></div>";
+				html+="<div class='row edit-select-address'><h4 style='float:left;'>city: </h4>";
+					html+="<div class='styledProvince selectCity' ><select name='city' class='required' id='city' >";
+					html+="<option value='-'  >-</option>";
+					html+="</select></div></div>";
+				html+="<div class='row ' ><h4>zipcode: ";
+					html+="<span><input type='text' style='width: 286px;' name='zipcode' maxlength='4' id='zipcode' class='full-width  required' value='"+data.attr('zipcode')+"'/></span></h4></div>";
+			return html;
+	}
+	
+	function globalinputtexthtml(whatfor,oldvalue){
+		var html = "";
+		html += "<input type='text' name='"+whatfor+"' value='"+oldvalue+"' id='"+whatfor+"' style='width: 286px;' />";
+		return html;
+		
+	}
+	
+	function globaltextareahtml(whatfor,oldvalue){
+		var html = "";
+		html += "<textarea name='"+whatfor+"'  id='"+whatfor+"'  style='width: 290px; height: 118px;' >"+oldvalue+"</textarea>";
+		return html;
+		
+	}
+	
+	
+	function getProvinceCity(provinceid,cityid){
+	
+		$.post(basedomain+"account/getProvinsibyAjax" ,{id:provinceid}, function(data){
+			var html ="<option value='-'> - </option>";
+			
+			if(!cityid) var idCity = {/literal}{$account.city}{literal}
+			else idCity = cityid;
+			if(data){
+				$.each(data,function(i,e){
+					if (e.id == idCity){
+						html+="<option value='"+e.id+"' selected=\"selected\">"+e.city+"</option>";
+						$("#selectcity").html(e.city);
+					}else{
+						html+="<option value='"+e.id+"'>"+e.city+"</option>";
+					}
+					
+				});
+				
+			}else{
+				$("#selectcity").html("-");
+			}
+			$("#city").html(html);
+			
+		},"JSON");
+	}
+	
+	$(document).on('click','.btnRed-gakepake',function(){
+		
+		var nickname = $('.nickname').val();
+		var last_mobile = $('.last_mobile').val();
+		var pre_mobile = $('.pre_mobile').val();
+		var house = $('.house').val();		
+		var zipcode = $('.zipcode').val();
+		
+		
+		if (nickname == "" || last_mobile == ""  || pre_mobile == ""|| house == "" || zipcode == ""){
+			
+			$(".trigun").trigger("click");
+			$(".msgpopupglobal").html(locale.fillallthefield);
+			
+			if(nickname=="") $('.nickname').addClass("error");
+			if(last_mobile=="") $('.last_mobile').addClass("error");
+			if(pre_mobile=="")  $("#selectpre_mobile").attr("style","background-color:#FFCC00");
+			if(house=="") $('.house').addClass("error");
+			if(zipcode=="") $('.zipcode').addClass("error");
+			
+			return false;
+		}
+		
+		var check = $("#changepassword").prop('checked');
+		if (check == true){
+			var oldpasswd = $('.oldpasswd').val();
+			var newpasswd = $('.newpasswd').val();
+			var confirmpasswd = $('.confirmpasswd').val();
+			var erroroldpass = $('.oldpasswd');
+			var errornewpass = $('.newpasswd');
+			var errorretypepass = $('.confirmpasswd');
+			
+			if (oldpasswd !=""){
+			
+				if(!newpasswd.match(/^(?=.{8,20})(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])/)){
+					$(".trigun").trigger("click");
+					$(".msgpopupglobal").html(locale.passwordwrongformat);
+					errornewpass.addClass("error");
+					errorretypepass.addClass("error");
+					return false;
+				}
+				
+				if (newpasswd != confirmpasswd){
+					$(".trigun").trigger("click");
+					$(".msgpopupglobal").html(locale.passwordnotmatch);
+					errornewpass.addClass("error");
+					errorretypepass.addClass("error");
+					return false;
+				}else{
+					
+				}
+			}else{
+				$(".trigun").trigger("click");
+				$(".msgpopupglobal").html(locale.passwordnotmatch);
+				erroroldpass.addClass("error");
+				errornewpass.addClass("error");
+				errorretypepass.addClass("error");
+				return false;
+			}
+			
+		
+		}
+		
+			
+		//alert(required);
+		
+	});
+	
+	
+	
+	// verifikasi mobile number
+	$(document).on('blur','#last_mobile', function(){
+		var thisobject = $(this);
+		var last_mobile_value = $(this).val();
+		if (isNaN(last_mobile_value)){
+			$(".trigun").trigger("click");
+			$(".msgpopupglobal").html("Only number alowed");
+			thisobject.addClass("error");
+			$(this).val('');
+		}else{
+			thisobject.removeClass("error");
+		}
+	})
+	$(document).on('change','#pre_mobile', function(){
+		var thisobject = $(this);
+		var pre_mobile_value = $(this).val();
+		if (isNaN(pre_mobile_value)){
+			$(".trigun").trigger("click");
+			$(".msgpopupglobal").html("Only number alowed");
+			thisobject.addClass("error");
+			$(this).val('');
+		}else{
+			thisobject.removeClass("error");
+		}
+	})
+	
+	
+	// verifikasi zipcode
+	$(document).on('blur','#zipcode', function(){
+		
+		var zipcode_value = $(this).val();
+		if (isNaN(zipcode_value)){
+			$(".trigun").trigger("click");
+			$(".msgpopupglobal").html(locale.onlynumber);
+			$(this).addClass("error");
+			$(this).val('');
+		}else{
+			$(this).removeClass("error");
+		}
+	})
+	
+	
+	$(document).on('blur','.newpasswd ',function(){
+		var thisobject = $(this);
+		var passw = thisobject.val();
+		var minchar = 8;
+		if(minchar>thisobject.val().length) {
+			$(".trigun").trigger("click");
+			$(".msgpopupglobal").html(locale.passwordlimit);
+			thisobject.addClass("error");
+			return false;			
+		}else {
+			thisobject.removeClass("error");
+		}
+		
+		if(!passw.match(/^(?=.{8,20})(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])/)){
+					$(".trigun").trigger("click");
+					$(".msgpopupglobal").html(locale.passwordwrongformat);
+					thisobject.addClass("error");
+					return false;
+		}else {
+			thisobject.removeClass("error");
+		}
+		
+		
+		
+	});
+	
+	$(document).on('blur',' .confirmpasswd ',function(){
+		var thisobject = $(this);
+		var passw = thisobject.val();
+		var minchar = 8;
+		if(minchar>thisobject.val().length) {
+			$(".trigun").trigger("click");
+			$(".msgpopupglobal").html(locale.passwordlimit);
+			thisobject.addClass("error");
+			return false;			
+		}else {
+			thisobject.removeClass("error");
+		}
+		
+		if(!passw.match(/^(?=.{8,20})(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])/)){
+					$(".trigun").trigger("click");
+					$(".msgpopupglobal").html(locale.passwordwrongformat);
+					thisobject.addClass("error");
+					return false;
+		}else {
+			thisobject.removeClass("error");
+		}
+		
+		if($('.confirmpasswd').val()!=$('.newpasswd').val()){
+					$(".trigun").trigger("click");
+					$(".msgpopupglobal").html(locale.passwordnotmatch);
+					thisobject.addClass("error");
+					return false;
+		}else {
+			thisobject.removeClass("error");
+		}
+		
+	});
+	
+	
+	$(document).on('click','.deactivateaccount',function(){
+					$(".contentmyaccount").html(deactivatehtml());
+					$(".my-account-profile").trigger("click");
+					
+	});
+	
+	$(document).on('click','.cancelbuttondeactivate',function(){
+					$('fancybox-close').trigger('click');
+	});
+	
+	$(document).on('click','.accountdeactivate',function(){
+					var passworddeactivate = $('#passworddeactivate').val();
+					$(".msgpopupglobal").html(locale.pleasewait);
+					$(".trigun").trigger("click");					
+					$.post(basedomain+'account/deactivate',{passworddeactivate:passworddeactivate},function(data){
+						if(data){
+							var html = 'success';
+							window.location = basedomain+'logout.php';
+						}else{
+							var html = 'failed';
+						}
+						$(".msgpopupglobal").html(html);
+						$(".trigun").trigger("click");
+					},'JSON');
+					
+					
+	});
+	
+	function deactivatehtml(){
+			var html ="";
+				html+="<h2>Deactivate Your Account</h2>";
+				html+="<h4>Enter password to successfully deactivate your account </h4>";				
+				html+="<div class='row'>";
+				html+="<input type='password' id='passworddeactivate' name='passworddeactivate' >";
+				html+="</div>";
+				html+="<div class='row'>";
+				html+="<a  class='button btnRed accountdeactivate' href='javascript:void(0)' style='height:30px' >CONFIRM</a>";
+				html+="<a  class='button btnRed cancelbuttondeactivate' href='javascript:void(0)' style='height:30px' >CANCEL</a>";
+				html+="</div>";				
+			
+			return html;
+	}
+	
+	$(document).on('click','.changephotoprofile',function(){
+					$(".contentmyaccount").html(changephoto());
+					$(".my-account-profile").trigger("click");
+								
+					
+				var uploadphotooption = {
+						dataType:"json",
+						beforeSubmit: function(data) { 
+									$('.previewer-syncro').html("<img src='"+basedomain+"assets/images/loader.gif' class='loader loader-profile' />");
+						},
+						success : function(data) {									
+								if(data.result) $('.previewer-syncro').html("<img src='"+basedomain+"public_assets/user/photo/"+data.filename.filename+"' />");
+								else $('.previewer-syncro').html("<span style='color:black' >image not found</span>");
+								if(data.nosave==false){
+									$(".contentmyaccount").html("<div style='text-align:center' >"+locale.successuploadphoto+"</div>");
+									$(".my-account-profile").trigger("click");
+								}
+						}
+					};					
+
+
+					$("#formuploadphotoprofile_syncro").ajaxForm(uploadphotooption);	
+					
+					jQuery("a.showPopups").click(function(){
+						var targetID = jQuery(this).attr('href');
+						jQuery("#fancybox-wrap").fadeOut();
+						jQuery(targetID).fadeIn();
+						jQuery(targetID).addClass('visible');
+						jQuery("#fancybox-overlay").fadeIn();
+					});
+					$(".showPopup").fancybox({
+						'titlePosition'		: 'inside',
+						'transitionIn'		: 'none',
+						'transitionOut'		: 'none'
+					});
+					
+	});
+	
+	$(document).on('change','#imagephotoprofile',function(){
+					$("#formuploadphotoprofile_syncro").attr('action',basedomain+"account/savetempphoto");
+					$("#savephotoprofile").trigger("click");					
+					$("#formuploadphotoprofile_syncro").attr('action',basedomain+"account/changesphoto");
+					
+	});
+					
+	function changephoto(){
+		var html ="";
+			html+="<div class='popup-title'>";
+			html+="          <h3>Upload Photo</h3>";
+			html+="     </div>";
+			html+=" 	<div class=''>";
+			html+="		<form action='"+basedomain+"account/savetempphoto' method='POST' enctype='multipart/form-data' id='formuploadphotoprofile_syncro' >";
+			html+="         	<div class='row'>  <a href='#popup-upload-profile-webcam' class='btnUploadWebcam showPopups'>&nbsp;</a> ";
+			html+="         	<p style='margin:0 0 20px 0;'>Please be reminded that as per the <a class='showPopup popuptnc' href='#popup-tnc'>Terms and Conditions</a>, all photos, images or designs submitted will become the property of PM. Please do not upload or submit any photos, images or designs depicting the act of smoking or showing a lit cigarette or minors (persons less than 18 years old). PM reserves to the right to remove or reject any photo, image or design which it, in its sole and absolute discretion, deems offensive, violates the law or is unsuitable in any other manner. The photo you upload will be subject to moderation.</p>";
+			html+="         	<input type='file' name='image' id='imagephotoprofile' />";
+			html+="    		    <p class='infoText'>Maximum File Size of 250KB</p>";
+			html+="            </div>";
+			html+="             <div class='row'>";
+			html+="           	<div id='photo-preview' class='previewer-syncro'>";
+			html+="                </div>";
+			html+="             </div>";
+			html+="            <div class='row rowSubmit' >";
+			html+="                <input type='submit' class='button btnRed' value='SAVE' id='savephotoprofile' >";
+			html+="            </div>";
+			html+="</form></div>";
+		return html;
+	}
+	
+	$(document).on('change','.mystatement',function(){
+		var statementid = $(this).attr('statementid');
+		var status = $(this).attr('status');
+		var mystatement = $('.mystatement');
+		
+		var checkedstatement = [];
+		$.each(mystatement,function(i,e){
+			if(mystatement[i].checked) checkedstatement.push(mystatement[i].checked);
+		});
+		var totalclick = checkedstatement.length;
+		if(totalclick>3) $(this).attr('checked',false);
+		else {
+			$.post(basedomain+'account/ajax',{needs:'setstatement',statementid:statementid,status:status},function(data){
+				if(data){
+					if(status=='unused') $(this).attr('status','used');
+					if(status=='used') $(this).attr('status','unused');
+				}
+			});
+		}
+	});
+	
+	$(document).on('click','.editmystatement',function(){
+			var html = "<input type='text' class='newstatement' />";
+	
+			$('.appenderstatement').html(html);
+			
+			$(this).html('SAVE');
+			$(this).addClass('savemystatement');
+			$(this).removeClass('editmystatement');
+	});
+	
+	$(document).on('click','.savemystatement',function(){
+			var mynewstatement = $('.newstatement').val();
+			$(".msgpopupglobal").html(locale.pleasewait);
+			$(".trigun").trigger("click");
+			$.post(basedomain+'account/ajax',{needs:'addstatement',mynewstatement:mynewstatement},function(data){
+				if(data){
+				
+					$(".msgpopupglobal").html(locale.statementadd);
+					$(".trigun").trigger("click");
+					
+					$('.appenderstatement').html("");
+					$(this).html('EDIT');			
+					$(this).addClass('editmystatement');
+					$(this).removeClass('savemystatement');
+				}
+			});			
+	});
+	
+	$(document).on('click','.closestatement',function(){
+		window.location.href = basedomain+'account';
+		//$("#fancybox-overlay").trigger('click');
+		//$("#fancybox-close").trigger('click');
+	});
+	
+		
+	$(document).on('change','#province', function(){
+		 
+			 $(".selectProvince").attr("style","background-color:WHITE");
+		 
+	})
+	$(document).on('change','#city', function(){
+		 
+			 $(".selectCity").attr("style","background-color:WHITE");
+		 
+	})
+	{/literal}
+</script>
+=======
+<div id="myaccountPages">
+	<div class="myaccountPages">
+        <ul class="columns-content clearfix">
+            <li class="col-sidebar">
+            	<div class="profile-foto">
+                	<div class="profile-frame">                              	
+                    </div>
+                    <img src="{$basedomain}public_assets/user/photo/{$account.image_profile}" />
+                    <a  href="javascript:void(0)" class="changephotoprofile">Change Photo</a> 
+                </div><!-- END .profile-foto -->
+                <div class="bt-chooseMaybe">
+                	<div class="list-corssout">
+					
+						{foreach  from=$mystatement key=k item=v}
+							{if $v.n_status==2}
+								<p><img src="{$basedomain}assets/images/phase4/maybe-cross.png" /><span> {$v.description}</span></p>
+								
+							{/if}
+						{/foreach}
+						
+						<!--
+                    	<p><img src="{$basedomain}assets/images/phase4/maybe-cross.png" /><span> i will go somewhere i have never been before</span></p>
+                        <p><img src="{$basedomain}assets/images/phase4/maybe-cross.png" /><span>i will reinvent my wardrobe</span></p>
+                        <p><img src="{$basedomain}assets/images/phase4/maybe-cross.png" /><span>i will start a trend</span></p>-->
+                    </div>
+                	<a class=" showPopup" href="#popup-statements">CLICK HERE TO CHOOSE </a>
+                </div>
+            </li><!-- END .col-sidebar -->
+            <li class="col-main">
+            	<div id="container">
+                	<div class="myaccount-entry">	
+				  	<form id="reg1" action="{$basedomain}account" class="theForm" method="POST">
+                    <ul class="columns-2 clearfix">
+                        	<div class="accountInfo account-rotate">
+                                <div class="row">
+                                    <h3 class="name-user">{$account.name} {$account.last_name}</h3>
+                                    <small>To change your name, please contact our adult restricted hotline at (02) 895-9999 or 1-800-10-895-9999 (toll-free for outside Metro Manila) or text MBChange to 0908-895-9999.</small>                  	
+                                </div>
+                                <div class="edit-profile">
+                                	<a href="javascript:void(0)" class="editit">EDIT PORFILE</a>
+                                </div>
+                                <div class="row">
+                            		<h4 class="name-user">Nickname: <span class="nickname">{$account.nickname}</span></h4>
+                            		
+									<a class="btn-edit openedit " typeinput="" whatfor="nickname" val="{$account.nickname}"  href="javascript:void(0)">&nbsp;</a>
+                                </div>
+                                <div class="row">
+                                    <h4>email address: {$account.email}</h4>
+                                    <small>To change your e-mail, please contact our adult restricted hotline at (02) 895-9999 or 1-800-10-895-9999 (toll-free for outside Metro Manila) or text MBChange to 0908-895-9999.</small>                 	
+                                </div>
+                                <div class="row">
+                                    <h4>Password: <span class="passwordchanger">************</span></h4>
+                                    <small>Password should be a minimum of 8 characters with at least one number, one letter in upper case and one letter in lower case</small>     
+									<a class="btn-edit openedit" typeinput="" whatfor="passwordchanger"  href="javascript:void(0)">&nbsp;</a>
+                                </div>
+                                <div class="row">
+                                    <h4>Gender: {$account.sex}</h4>                	
+                                </div>
+                                <div class="row">
+                                    <h4>mobile number: <span class="last_mobile">{$account.phone_number}</span></h4>  
+									<a class="btn-edit openedit" typeinput="" whatfor="last_mobile" val="{$account.phone_number}"   href="javascript:void(0)" >&nbsp;</a>
+                                </div>
+                                <div class="row">
+                                    <h4>Date of Birth: {$account.birthday}</h4>                	
+                                </div>
+                                <div class="row">
+                                    <h4>Mailing Address: <span class="mailingaddress">{$account.StreetName} ,	{$account.barangay} ,{$account.zipcode}</span></h4>
+									<a class="btn-edit openedit " 
+								whatfor="mailingaddress" 
+								typeinput="" 
+								streetname="{$account.StreetName}" 
+								barangay="{$account.barangay}" 
+								zipcode="{$account.zipcode}" 
+								cityid="{$account.city}" 
+								provinceid="{$prov_value.provinceid}" 
+								  href="javascript:void(0)"
+								>&nbsp;</a>
+                                </div>
+                                {*}
+                                <div class="row button-deactive">
+                                    <a href="#">* Deactive Account</a>
+                                </div>
+                                {/*}
+                            </div><!-- END.accountInfo -->
+						
+                    </ul>
+						{*}<a class="btn_red editit"  href="javascript:void(0)" id="simpan"  >Edit Profile</a>{/*}
+                        <div class="row save-cancel account-rotate">
+						<a class="canceleditprofile"  href="javascript:void(0)" id="canceleditprofile" style='display:none' >Cancel</a>
+                        <a class="closeeditit fr"  href="javascript:void(0)" id="saveeditprofile" style='display:none' >Save</a>
+						<input type="hidden" name="edit_account" value="1"/>
+                        </div>
+					</form>
+				   </div><!-- END .blackbox -->
+                </div><!-- END #container -->
+            </li><!-- END .col-main -->
+        </ul>
+    </div><!-- END .myaccountPages -->
+</div><!-- END #myaccountPages -->
+{include file="application/web/widgets/popup-upload-profile-webcam.html"}
+{literal}
+	<style>
+	.closeeditit{font-size:15px}
+	.editit{font-size:16px}
+	#myaccountPages .btn_red{ font-size:18px;}
+	.openedit{display:none}
+	.closeedit{display:none}
+	.contentmyaccount{text-align:left}
+	.infoText{ color:#C00;}
+	</style>
+{/literal}
+<script>
+
+	var htmlnya = "";
+	var province = {$province|@json_encode};
+	var dataCity = {$prov_value|@json_encode};
+	var mprefix = {$mprefix|@json_encode};
+	var mobile_value = {$mobile_value|@json_encode};
+	var resultmessage = {$resultmessage|@json_encode};
+	
+	
+	
+	
+	{literal}
+		$(document).ready(function(){
+		if(resultmessage){
+					$(".trigun").trigger("click");
+					$(".msgpopupglobal").html(resultmessage);
+		}
+	});
+	$(document).on('change','#province',function(){
+		var provinceid = $(this).val();
+
+		getProvinceCity(provinceid,false);
+	});
+	
+	$(document).on('click','.editit',function(){
+		$('.openedit').trigger('click');
+		
+		
+		$(".editit").addClass('closeeditit');
+		$(".closeeditit").html('Save Profile');
+		$(".closeeditit").removeClass('editit');
+			$("#canceleditprofile").show();
+			$("#saveeditprofile").show();
+	});
+	
+	$(document).on('click','.closeeditit',function(){
+	
+		console.log($("#zipcode").val());
+		console.log($("#city").val());
+		console.log($("#province").val());
+		console.log($("#barangay").val());
+		console.log($("#StreetName").val());
+		console.log($("#last_mobile").val());
+		console.log($("#nickname").val());
+		
+		
+				$(".error-valid").remove();
+		if($("#zipcode").val()==''||$("#city").val()=='-'||$("#province").val()=='-'||$("#barangay").val()==''||$("#StreetName").val()==''||$("#last_mobile").val()==''||$("#nickname").val()=='') {
+		
+
+			
+			if($("#zipcode").val()=='') {
+				$("#zipcode").addClass("error");
+				$("#zipcode").parent(".row").append("<p style='color:red' class='error-valid'>This field is required.</p>");		
+			}
+			 
+			if($("#city").val()=='-'){
+				$(".selectCity").attr("style","background-color:#FFCC00");
+				$(".selectCity").after("<p style='color:red' class='error-valid'>This field is required.</p>");
+			}
+			 
+			if($("#province").val()=='-'){
+				$(".selectProvince").attr("style","background-color:#FFCC00");
+				$(".selectProvince").after("<p style='color:red' class='error-valid'>This field is required.</p>");
+			}
+			
+			if($("#barangay").val()=='') {
+				$("#barangay").addClass("error");
+				$("#barangay").parent(".row").append("<p style='color:red' class='error-valid'>This field is required.</p>");
+			}
+			
+			if($("#StreetName").val()=='') {			
+				$("#StreetName").addClass("error");
+				$("#StreetName").parent(".row").append("<p style='color:red' class='error-valid'>This field is required.</p>");				
+			}
+			
+			if($("#nickname").val()==''){
+				$("#nickname").addClass("error");
+				$("#nickname").parent(".row").append("<p style='color:red' class='error-valid'>This field is required.</p>");				
+			}
+			
+			if($("#last_mobile").val()==''){
+				$("#last_mobile").addClass("error");
+				$("#last_mobile").parent(".row").append("<p style='color:red' class='error-valid'>This field is required.</p>");				
+			}
+		 
+			return false;
+		 }
+		$(".theForm").submit();
+		
+		
+		$('.closeedit').trigger('click');
+		
+		$(".closeeditit").addClass('editit');
+		$(".editit").html('Edit Profile');
+		$(".editit").removeClass('closeeditit');
+		$("#canceleditprofile").hide();
+		$("#saveeditprofile").hide();
+		
+	});
+	
+	$(document).on('click','.canceleditprofile,.saveeditprofile',function(){
+		
+		
+		$('.closeedit').trigger('click');
+		
+		$(".closeeditit").addClass('editit');
+		$(".editit").html('Edit Profile');
+		$(".editit").removeClass('closeeditit');
+			$("#canceleditprofile").hide();
+			$("#saveeditprofile").hide();
+		
+	});
+	
+	$(document).on('click','.openedit',function(){
+		
+		var thisobject = $(this);
+		var whatfor = $(this).attr('whatfor');
+		var typeinput = $(this).attr('typeinput');
+		var oldvalue = $(this).attr('val');
+		var html ="";
+		
+		html = globalinputtexthtml(whatfor,oldvalue);
+		
+		if(whatfor=='passwordchanger') html = passwordhtml();
+		if(whatfor=='mailingaddress') html = addresshtml(thisobject);
+					
+		$("."+whatfor).html(html);
+		
+		if(whatfor=='mailingaddress')  getProvinceCity(thisobject.attr('provinceid'),thisobject.attr('cityid'));
+		
+		$(this).addClass('closeedit');
+		$(this).removeClass('openedit');
+		
+	});
+	
+	$(document).on('click','.closeedit',function(){
+		var whatfor = $(this).attr('whatfor');
+		var typeinput = $(this).attr('typeinput');
+		var newval = $("#"+whatfor).val();
+				
+		var html ="";
+	
+		if(whatfor=='mailingaddress') {
+			newval = $("#StreetName").val()+","+$("#barangay").val()+","+$("#zipcode").val();
+			$(this).attr('streetname',$("#StreetName").val());
+			$(this).attr('barangay',$("#barangay").val());
+			$(this).attr('zipcode',$("#zipcode").val());
+			$(this).attr('cityid',$("#city").val());
+			$(this).attr('provinceid',$("#province").val());
+		}else {
+			if(whatfor=='passwordchanger') newval = '************';
+			else $(this).attr('val',newval);
+		}
+		$("."+whatfor).html("<h3>"+newval+"</h3>");
+		
+		
+	
+		
+		$(this).removeClass('closeedit');
+		$(this).addClass('openedit');
+	});
+	
+	function mobileedthtml(){		
+			
+			var html ="";
+				html+="<select name='pre_mobile' class='styled pre_mobile required'  >";
+				html+="<option value='' >-</option>";
+				$.each(mprefix,function(i,e){
+						if(e.mobile_prefix==mobile_value[0]) html+="<option value='"+e.mobile_prefix+"' selected='selected' >"+e.mobile_prefix+"</option>";
+						else html+="<option value='"+e.mobile_prefix+"' >"+e.mobile_prefix+"</option>";
+					});
+				html+="</select>";
+				return html;
+	}
+	
+	function passwordhtml(){
+			var html ="";
+				html+="<div class='row '  >";
+				html+="<input type='password' name='oldpasswd' class='full-width oldpasswd ' value='' style='width: 286px;' placeholder='old password' />";
+				html+="</div>";
+				html+="<div class='row ' >";
+				html+="<input type='password' name='newpasswd' class='full-width newpasswd' value='' style='width: 286px;' placeholder='new password' />";
+				html+="</div>";
+				html+="<div class='row ' >";
+				html+="<input type='password' name='confirmpasswd' class='full-width  confirmpasswd' value=''  style='width: 286px;' placeholder='confirm password' />";
+				html+="</div>";
+			return html;
+	}
+	
+	function addresshtml(data){
+			
+			var html ="";
+				html+="<div class='row '><h4>address: ";
+					html+="<span><input type='text' style='width: 286px;' name='house' id='StreetName' class='full-width  required' value='"+data.attr('streetname')+"' /></span></h4></div>";
+				html+="<div class='row ' ><h4>barangay: ";
+					html+="<span><input type='text' style='width: 286px;' name='barangay' id='barangay' disabled class='full-width  required' value='"+data.attr('barangay')+"'/></span></h4></div>";
+				html+="<div class='row edit-select-address' ><h4 style='float:left;'>province:</h4>";
+					html+="<div class='styledProvince selectProvince' ><select name='province' class='required' id='province' >";
+					html+="<option value='-' >-</option>";	
+					$.each(province,function(i,e){
+							
+							if(e.id==data.attr('provinceid')) html+="<option value='"+e.id+"' selected='selected' >"+e.province+"</option>";
+							else html+="<option value='"+e.id+"' >"+e.province+"</option>";
+						
+					});								
+					html+="</select></div></div>";
+				html+="<div class='row edit-select-address'><h4 style='float:left;'>city: </h4>";
+					html+="<div class='styledProvince selectCity' ><select name='city' class='required' id='city' >";
+					html+="<option value='-'  >-</option>";
+					html+="</select></div></div>";
+				html+="<div class='row ' ><h4>zipcode: ";
+					html+="<span><input type='text' style='width: 286px;' name='zipcode' maxlength='4' id='zipcode' class='full-width  required' value='"+data.attr('zipcode')+"'/></span></h4></div>";
+			return html;
+	}
+	
+	function globalinputtexthtml(whatfor,oldvalue){
+		var html = "";
+		html += "<input type='text' name='"+whatfor+"' value='"+oldvalue+"' id='"+whatfor+"' style='width: 286px;' />";
+		return html;
+		
+	}
+	
+	function globaltextareahtml(whatfor,oldvalue){
+		var html = "";
+		html += "<textarea name='"+whatfor+"'  id='"+whatfor+"'  style='width: 290px; height: 118px;' >"+oldvalue+"</textarea>";
+		return html;
+		
+	}
+	
+	
+	function getProvinceCity(provinceid,cityid){
+	
+		$.post(basedomain+"account/getProvinsibyAjax" ,{id:provinceid}, function(data){
+			var html ="<option value='-'> - </option>";
+			
+			if(!cityid) var idCity = {/literal}{$account.city}{literal}
+			else idCity = cityid;
+			if(data){
+				$.each(data,function(i,e){
+					if (e.id == idCity){
+						html+="<option value='"+e.id+"' selected=\"selected\">"+e.city+"</option>";
+						$("#selectcity").html(e.city);
+					}else{
+						html+="<option value='"+e.id+"'>"+e.city+"</option>";
+					}
+					
+				});
+				
+			}else{
+				$("#selectcity").html("-");
+			}
+			$("#city").html(html);
+			
+		},"JSON");
+	}
+	
+	$(document).on('click','.btnRed-gakepake',function(){
+		
+		var nickname = $('.nickname').val();
+		var last_mobile = $('.last_mobile').val();
+		var pre_mobile = $('.pre_mobile').val();
+		var house = $('.house').val();		
+		var zipcode = $('.zipcode').val();
+		
+		
+		if (nickname == "" || last_mobile == ""  || pre_mobile == ""|| house == "" || zipcode == ""){
+			
+			$(".trigun").trigger("click");
+			$(".msgpopupglobal").html(locale.fillallthefield);
+			
+			if(nickname=="") $('.nickname').addClass("error");
+			if(last_mobile=="") $('.last_mobile').addClass("error");
+			if(pre_mobile=="")  $("#selectpre_mobile").attr("style","background-color:#FFCC00");
+			if(house=="") $('.house').addClass("error");
+			if(zipcode=="") $('.zipcode').addClass("error");
+			
+			return false;
+		}
+		
+		var check = $("#changepassword").prop('checked');
+		if (check == true){
+			var oldpasswd = $('.oldpasswd').val();
+			var newpasswd = $('.newpasswd').val();
+			var confirmpasswd = $('.confirmpasswd').val();
+			var erroroldpass = $('.oldpasswd');
+			var errornewpass = $('.newpasswd');
+			var errorretypepass = $('.confirmpasswd');
+			
+			if (oldpasswd !=""){
+			
+				if(!newpasswd.match(/^(?=.{8,20})(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])/)){
+					$(".trigun").trigger("click");
+					$(".msgpopupglobal").html(locale.passwordwrongformat);
+					errornewpass.addClass("error");
+					errorretypepass.addClass("error");
+					return false;
+				}
+				
+				if (newpasswd != confirmpasswd){
+					$(".trigun").trigger("click");
+					$(".msgpopupglobal").html(locale.passwordnotmatch);
+					errornewpass.addClass("error");
+					errorretypepass.addClass("error");
+					return false;
+				}else{
+					
+				}
+			}else{
+				$(".trigun").trigger("click");
+				$(".msgpopupglobal").html(locale.passwordnotmatch);
+				erroroldpass.addClass("error");
+				errornewpass.addClass("error");
+				errorretypepass.addClass("error");
+				return false;
+			}
+			
+		
+		}
+		
+			
+		//alert(required);
+		
+	});
+	
+	
+	
+	// verifikasi mobile number
+	$(document).on('blur','#last_mobile', function(){
+		var thisobject = $(this);
+		var last_mobile_value = $(this).val();
+		if (isNaN(last_mobile_value)){
+			$(".trigun").trigger("click");
+			$(".msgpopupglobal").html("Only number alowed");
+			thisobject.addClass("error");
+			$(this).val('');
+		}else{
+			thisobject.removeClass("error");
+		}
+	})
+	$(document).on('change','#pre_mobile', function(){
+		var thisobject = $(this);
+		var pre_mobile_value = $(this).val();
+		if (isNaN(pre_mobile_value)){
+			$(".trigun").trigger("click");
+			$(".msgpopupglobal").html("Only number alowed");
+			thisobject.addClass("error");
+			$(this).val('');
+		}else{
+			thisobject.removeClass("error");
+		}
+	})
+	
+	
+	// verifikasi zipcode
+	$(document).on('blur','#zipcode', function(){
+		
+		var zipcode_value = $(this).val();
+		if (isNaN(zipcode_value)){
+			$(".trigun").trigger("click");
+			$(".msgpopupglobal").html(locale.onlynumber);
+			$(this).addClass("error");
+			$(this).val('');
+		}else{
+			$(this).removeClass("error");
+		}
+	})
+	
+	
+	$(document).on('blur','.newpasswd ',function(){
+		var thisobject = $(this);
+		var passw = thisobject.val();
+		var minchar = 8;
+		if(minchar>thisobject.val().length) {
+			$(".trigun").trigger("click");
+			$(".msgpopupglobal").html(locale.passwordlimit);
+			thisobject.addClass("error");
+			return false;			
+		}else {
+			thisobject.removeClass("error");
+		}
+		
+		if(!passw.match(/^(?=.{8,20})(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])/)){
+					$(".trigun").trigger("click");
+					$(".msgpopupglobal").html(locale.passwordwrongformat);
+					thisobject.addClass("error");
+					return false;
+		}else {
+			thisobject.removeClass("error");
+		}
+		
+		
+		
+	});
+	
+	$(document).on('blur',' .confirmpasswd ',function(){
+		var thisobject = $(this);
+		var passw = thisobject.val();
+		var minchar = 8;
+		if(minchar>thisobject.val().length) {
+			$(".trigun").trigger("click");
+			$(".msgpopupglobal").html(locale.passwordlimit);
+			thisobject.addClass("error");
+			return false;			
+		}else {
+			thisobject.removeClass("error");
+		}
+		
+		if(!passw.match(/^(?=.{8,20})(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])/)){
+					$(".trigun").trigger("click");
+					$(".msgpopupglobal").html(locale.passwordwrongformat);
+					thisobject.addClass("error");
+					return false;
+		}else {
+			thisobject.removeClass("error");
+		}
+		
+		if($('.confirmpasswd').val()!=$('.newpasswd').val()){
+					$(".trigun").trigger("click");
+					$(".msgpopupglobal").html(locale.passwordnotmatch);
+					thisobject.addClass("error");
+					return false;
+		}else {
+			thisobject.removeClass("error");
+		}
+		
+	});
+	
+	
+	$(document).on('click','.deactivateaccount',function(){
+					$(".contentmyaccount").html(deactivatehtml());
+					$(".my-account-profile").trigger("click");
+					
+	});
+	
+	$(document).on('click','.cancelbuttondeactivate',function(){
+					$('fancybox-close').trigger('click');
+	});
+	
+	$(document).on('click','.accountdeactivate',function(){
+					var passworddeactivate = $('#passworddeactivate').val();
+					$(".msgpopupglobal").html(locale.pleasewait);
+					$(".trigun").trigger("click");					
+					$.post(basedomain+'account/deactivate',{passworddeactivate:passworddeactivate},function(data){
+						if(data){
+							var html = 'success';
+							window.location = basedomain+'logout.php';
+						}else{
+							var html = 'failed';
+						}
+						$(".msgpopupglobal").html(html);
+						$(".trigun").trigger("click");
+					},'JSON');
+					
+					
+	});
+	
+	function deactivatehtml(){
+			var html ="";
+				html+="<h2>Deactivate Your Account</h2>";
+				html+="<h4>Enter password to successfully deactivate your account </h4>";				
+				html+="<div class='row'>";
+				html+="<input type='password' id='passworddeactivate' name='passworddeactivate' >";
+				html+="</div>";
+				html+="<div class='row'>";
+				html+="<a  class='button btnRed accountdeactivate' href='javascript:void(0)' style='height:30px' >CONFIRM</a>";
+				html+="<a  class='button btnRed cancelbuttondeactivate' href='javascript:void(0)' style='height:30px' >CANCEL</a>";
+				html+="</div>";				
+			
+			return html;
+	}
+	
+	$(document).on('click','.changephotoprofile',function(){
+					$(".contentmyaccount").html(changephoto());
+					$(".my-account-profile").trigger("click");
+								
+					
+				var uploadphotooption = {
+						dataType:"json",
+						beforeSubmit: function(data) { 
+									$('.previewer-syncro').html("<img src='"+basedomain+"assets/images/loader.gif' class='loader loader-profile' />");
+						},
+						success : function(data) {									
+								if(data.result) $('.previewer-syncro').html("<img src='"+basedomain+"public_assets/user/photo/"+data.filename.filename+"' />");
+								else $('.previewer-syncro').html("<span style='color:black' >image not found</span>");
+								if(data.nosave==false){
+									$(".contentmyaccount").html("<div style='text-align:center' >"+locale.successuploadphoto+"</div>");
+									$(".my-account-profile").trigger("click");
+								}
+						}
+					};					
+
+
+					$("#formuploadphotoprofile_syncro").ajaxForm(uploadphotooption);	
+					
+					jQuery("a.showPopups").click(function(){
+						var targetID = jQuery(this).attr('href');
+						jQuery("#fancybox-wrap").fadeOut();
+						jQuery(targetID).fadeIn();
+						jQuery(targetID).addClass('visible');
+						jQuery("#fancybox-overlay").fadeIn();
+					});
+					$(".showPopup").fancybox({
+						'titlePosition'		: 'inside',
+						'transitionIn'		: 'none',
+						'transitionOut'		: 'none'
+					});
+					
+	});
+	
+	$(document).on('change','#imagephotoprofile',function(){
+					$("#formuploadphotoprofile_syncro").attr('action',basedomain+"account/savetempphoto");
+					$("#savephotoprofile").trigger("click");					
+					$("#formuploadphotoprofile_syncro").attr('action',basedomain+"account/changesphoto");
+					
+	});
+					
+	function changephoto(){
+		var html ="";
+			html+="<div class='popup-title'>";
+			html+="          <h3>Upload Photo</h3>";
+			html+="     </div>";
+			html+=" 	<div class=''>";
+			html+="		<form action='"+basedomain+"account/savetempphoto' method='POST' enctype='multipart/form-data' id='formuploadphotoprofile_syncro' >";
+			html+="         	<div class='row'>  <a href='#popup-upload-profile-webcam' class='btnUploadWebcam showPopups'>&nbsp;</a> ";
+			html+="         	<p style='margin:0 0 20px 0;'>Please be reminded that as per the <a class='showPopup popuptnc' href='#popup-tnc'>Terms and Conditions</a>, all photos, images or designs submitted will become the property of PM. Please do not upload or submit any photos, images or designs depicting the act of smoking or showing a lit cigarette or minors (persons less than 18 years old). PM reserves to the right to remove or reject any photo, image or design which it, in its sole and absolute discretion, deems offensive, violates the law or is unsuitable in any other manner. The photo you upload will be subject to moderation.</p>";
+			html+="         	<input type='file' name='image' id='imagephotoprofile' />";
+			html+="    		    <p class='infoText'>Maximum File Size of 250KB</p>";
+			html+="            </div>";
+			html+="             <div class='row'>";
+			html+="           	<div id='photo-preview' class='previewer-syncro'>";
+			html+="                </div>";
+			html+="             </div>";
+			html+="            <div class='row rowSubmit' >";
+			html+="                <input type='submit' class='button btnRed' value='SAVE' id='savephotoprofile' >";
+			html+="            </div>";
+			html+="</form></div>";
+		return html;
+	}
+	
+	$(document).on('change','.mystatement',function(){
+		var statementid = $(this).attr('statementid');
+		var status = $(this).attr('status');
+		var mystatement = $('.mystatement');
+		
+		var checkedstatement = [];
+		$.each(mystatement,function(i,e){
+			if(mystatement[i].checked) checkedstatement.push(mystatement[i].checked);
+		});
+		var totalclick = checkedstatement.length;
+		if(totalclick>3) $(this).attr('checked',false);
+		else {
+			$.post(basedomain+'account/ajax',{needs:'setstatement',statementid:statementid,status:status},function(data){
+				if(data){
+					if(status=='unused') $(this).attr('status','used');
+					if(status=='used') $(this).attr('status','unused');
+				}
+			});
+		}
+	});
+	
+	$(document).on('click','.editmystatement',function(){
+			var html = "<input type='text' class='newstatement' />";
+	
+			$('.appenderstatement').html(html);
+			
+			$(this).html('SAVE');
+			$(this).addClass('savemystatement');
+			$(this).removeClass('editmystatement');
+	});
+	
+	$(document).on('click','.savemystatement',function(){
+			var mynewstatement = $('.newstatement').val();
+			$(".msgpopupglobal").html(locale.pleasewait);
+			$(".trigun").trigger("click");
+			$.post(basedomain+'account/ajax',{needs:'addstatement',mynewstatement:mynewstatement},function(data){
+				if(data){
+				
+					$(".msgpopupglobal").html(locale.statementadd);
+					$(".trigun").trigger("click");
+					
+					$('.appenderstatement').html("");
+					$(this).html('EDIT');			
+					$(this).addClass('editmystatement');
+					$(this).removeClass('savemystatement');
+				}
+			});			
+	});
+	
+	$(document).on('click','.closestatement',function(){
+		window.location.href = basedomain+'account';
+		//$("#fancybox-overlay").trigger('click');
+		//$("#fancybox-close").trigger('click');
+	});
+	
+		
+	$(document).on('change','#province', function(){
+		 
+			 $(".selectProvince").attr("style","background-color:WHITE");
+		 
+	})
+	$(document).on('change','#city', function(){
+		 
+			 $(".selectCity").attr("style","background-color:WHITE");
+		 
+	})
+	{/literal}
+</script>
+>>>>>>> .r1794

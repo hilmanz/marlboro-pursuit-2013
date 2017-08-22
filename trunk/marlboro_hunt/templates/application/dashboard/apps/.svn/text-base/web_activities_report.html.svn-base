@@ -1,0 +1,116 @@
+ 
+	 
+       <table class="gridtable">
+			<tr>
+			<td>ACTIVITY</td> 
+			{foreach from=$weeklyreport.login.total key=k item=v}				
+                <td>{$v.dd}</td>			
+			{/foreach}
+			</tr>
+			
+			
+			<tr><td>LOGIN</td></tr>
+			<tr>				
+				<td>TOTAL</td>
+			{foreach from=$weeklyreport.login.total key=k item=v}				
+                <td>{$v.total}</td>			
+			{/foreach}
+			</tr>
+			<tr>
+				<td>UNIQUE</td>
+			{foreach from=$weeklyreport.login.unique key=k item=v}				
+                <td>{$v.total}</td>			
+			{/foreach}
+			</tr>
+			
+			<tr><td>&nbsp;</td></tr>
+			<tr><td>GAMES</td></tr>
+			
+			{foreach from=$weeklyreport.games key=k item=v}				
+               	<tr>
+				<td>TOTAL {if $k==1}CROSS OUT{/if} {if $k==2}WALL BREAKER{/if}{if $k==3}HIDDEN MARLBORO{/if}{if $k==5}DOUBT CRASHER{/if} {if $k==4}WORD HUNT{/if}  </td>
+                {foreach from=$v.total key=key item=val}
+				<td>{$val.total}</td>		
+				{/foreach}
+				</tr>						
+			{/foreach}
+		
+			
+			{foreach from=$weeklyreport.games key=k item=v}				
+                 	<tr>
+				<td>UNIQUE {if $k==1}CROSS OUT{/if} {if $k==2}WALL BREAKER{/if}{if $k==3}HIDDEN MARLBORO{/if}{if $k==5}DOUBT CRASHER{/if} {if $k==4}WORD HUNT{/if} </td>
+                {foreach from=$v.unique key=key item=val}
+				<td>{$val.total}</td>		
+				{/foreach}
+				</tr>			
+			{/foreach}
+		
+			
+			{*}
+			<tr><td>&nbsp;</td></tr>
+			<tr><td>THIS OR THAT</td></tr>
+		
+			{foreach from=$weeklyreport.thisorthat key=k item=v}
+				<tr>
+				<td>TOTAL {$k}</td>
+                {foreach from=$v.total key=key item=val}
+				<td>{$val.total}</td>		
+				{/foreach}
+				</tr>				
+			{/foreach}
+		
+			{foreach from=$weeklyreport.thisorthat key=k item=v}				
+               <tr>
+				<td>UNIQUE {$k}</td>
+                {foreach from=$v.unique key=key item=val}
+				<td>{$val.total}</td>		
+				{/foreach}
+				</tr>				
+			{/foreach}
+		
+			{/*}
+			<tr><td>&nbsp;</td></tr>
+			<tr><td>VIDEO</td></tr>
+		
+			{foreach from=$weeklyreport.video key=k item=v}				
+               <tr>
+				<td>TOTAL {$k}</td>
+                {foreach from=$v.total key=key item=val}
+				<td>{$val.total}</td>		
+				{/foreach}
+				</tr>				
+			{/foreach}
+			
+			{foreach from=$weeklyreport.video key=k item=v}				
+                <tr>
+				<td>UNIQUE {$k}</td>
+                {foreach from=$v.unique key=key item=val}
+				<td>{$val.total}</td>		
+				{/foreach}
+				</tr>			
+			{/foreach}
+			
+			
+				
+			<tr><td>&nbsp;</td></tr>
+			<tr><td>PAGES</td></tr>
+			{foreach from=$weeklyreport.pages key=k item=v}				
+                <tr>
+				<td>TOTAL {$k}</td>
+                {foreach from=$v.total key=key item=val}
+				<td>{$val.total}</td>		
+				{/foreach}
+				</tr>				
+			{/foreach}
+		
+			{foreach from=$weeklyreport.pages key=k item=v}				
+                 <tr>
+				<td>UNIQUE {$k}</td>
+                {foreach from=$v.unique key=key item=val}
+				<td>{$val.total}</td>		
+				{/foreach}
+				</tr>					
+			{/foreach}
+		
+			
+          </table> 

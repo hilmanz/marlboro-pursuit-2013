@@ -1,0 +1,248 @@
+<script>
+	{literal}
+	
+	$(document).on('click','.question_radio', function(){
+		var idRadio = $('input[name=question_mark]:checked', '#reg2').val();
+			if (idRadio == 4){
+				
+				$("#other_answer").css("display", "none");
+				$("#anotherbrandsrow").css("display", "block");
+			}else{
+				
+				$("#anotherbrandsrow").css("display", "none");
+			}
+				
+		
+	})
+	
+	
+	$(document).on('click','#question_mark_4',function(){
+		$("#other_answer").css("display", "none");
+		$("#anotherbrandsrow").css("display", "block");
+		
+	});
+	$(document).on('click','.submiter', function(){
+		var thisobject = $(this);
+		var otherbrands = $("#question_mark_4 input").is(':checked')
+		var cansave = true;
+		$('.error-valid').remove();
+		
+		//console.log($("#brand_primary").val());
+		//return false;
+		if($("#brand_primary").val()=='-'||$("#brand_secondary").val()=='-' ) {
+		
+			
+			
+		 
+			if($("#brand_primary").val()=='-'){
+				$("#selectbrand_primary").attr("style","background-color:#FFCC00");
+				$("#brand_primary").parent(".row").append("<p style='color:red' class='error-valid'>This field is required.</p>");
+			}
+			 
+			if($("#brand_secondary").val()=='-'){
+				$("#selectbrand_secondary").attr("style","background-color:#FFCC00");
+				$("#brand_secondary").parent(".row").append("<p style='color:red' class='error-valid'>This field is required.</p>");
+			}
+			 
+		 
+			cansave =false;
+		 }
+	
+		if(otherbrands){
+				$(".error-valid-other").remove();
+				
+				var anotherbrands = $("#anotherbrands").val();
+				if(anotherbrands=='-'){
+			 
+					$("#selectanotherbrands").attr("style","background-color:#FFCC00");			 
+			 
+					$("#anotherbrands").parent(".row").append("<p style='color:red' class='error-valid-other'>This field is required.</p>");					 
+					cansave =false;
+				}
+		}
+		if(cansave==false)return false;
+	
+		//var value = $('#question_mark').checked();
+		//alert(value);
+		
+		var value = $('input[name=question_mark]:checked', '#reg2').val();
+		if (isNaN(value)){
+			$(".trigun").trigger("click");
+			$(".msgpopupglobal").html(locale.fillallthefield);
+			thisobject.addClass("error");
+			return false;
+		}
+		
+	});
+	
+	$(document).on('change','.mystatement',function(){
+		var statementid = $(this).attr('statementid');
+		var status = $(this).attr('status');
+		var mystatement = $('.mystatement');
+		
+		var checkedstatement = [];
+		$.each(mystatement,function(i,e){
+			if(mystatement[i].checked) checkedstatement.push(mystatement[i].checked);
+		});
+		var totalclick = checkedstatement.length;
+		if(totalclick>3) $(this).attr('checked',false);
+		else {
+			$.post(basedomain+'account/ajax',{needs:'setstatement',statementid:statementid,status:status},function(data){
+				if(data){
+					if(status=='unused') $(this).attr('status','used');
+					if(status=='used') $(this).attr('status','unused');
+				}
+			});
+		}
+	});
+	
+	$(document).on('click','.closestatement',function(){
+		window.location.href = basedomain+'account/brands';
+		//$("#fancybox-overlay").trigger('click');
+		//$("#fancybox-close").trigger('click');
+	});
+	
+	$(document).on('change','#brand_primary', function(){
+		 
+			 $("#selectbrand_primary").attr("style","background-color:WHITE");
+		 
+	})
+	$(document).on('change','#brand_secondary', function(){
+		 
+			 $("#selectbrand_secondary").attr("style","background-color:WHITE");
+		 
+	})
+	$(document).on('change','#anotherbrands', function(){
+		 
+			 $("#selectanotherbrands").attr("style","background-color:WHITE");
+		 
+	})
+	
+	{/literal}
+</script>
+{literal}
+<style>
+.theForm label{
+	width:90px;
+}
+</style>
+{/literal}
+<div id="myaccountPages">
+	<div class="myaccountPages">
+        <ul class="columns-content clearfix">
+            <li class="col-sidebar">
+                <div class="profile-foto">
+                	<div class="profile-frame">                              	
+                    </div>
+                    <img src="{$basedomain}public_assets/user/photo/{$account.image_profile}" />
+                    <a  href="javascript:void(0)" class="changephotoprofile"></a> 
+                </div><!-- END .profile-foto -->
+                 <div class="bt-chooseMaybe">
+                	<div class="list-corssout">
+					
+						{foreach  from=$mystatement key=k item=v}
+							{if $v.n_status==2}
+								<p><img src="{$basedomain}assets/images/phase4/maybe-cross.png" /><span> {$v.description}</span></p>
+								
+							{/if}
+						{/foreach}
+                 	   <h3>CROSS OUT THE MAYBE IN YOUR LIFE</h3>
+                		<a class="showPopup" href="#popup-statements">CLICK HERE TO CHOOSE </a>
+                    </div>
+                </div>
+            </li><!-- END .col-sidebar -->
+            <li class="col-main">
+            	<div id="container">
+                	<div class="myaccount-entry">
+                        <div class="section">
+                            <form id="reg2" action="{$basedomain}account/brands" class="theForm " method="POST" >
+                            <div class="accountBrands">
+                            <ul class="columns-1 clearfix">
+                            	<li class="col1">
+                                    <ul>
+                                        <li class="fieldset">
+                                            <div class="titleForm">
+                                                <h3>what brand do you smoke most frequently?</h3>
+                                            </div><!-- END .titleForm -->
+                                            <div class="entryForm">
+                                                <div class="row">
+                                                    <select class="styled " name="brand_primary" id="brand_primary">
+                                                        <option value="-">-</option>
+                                                        {section name=i loop=$brands}
+                                                        <option value="{$brands[i].id}" {if $brands[i].id == $userBrands.brand_primary}selected = "selected"{/if}>{$brands[i].brands_name}</option>
+                                                        {/section}
+                                                        
+                                                    </select>
+                                                </div><!-- END .row -->
+                                            </div><!-- END .entryForm -->
+                                        </li><!-- END .fieldset -->
+                                        <li class="fieldset">
+                                            <div class="titleForm">
+                                                <h3>What other brands do you smoke aside from your regular brand?</h3>
+                                            </div><!-- END .titleForm -->
+                                            <div class="entryForm">
+                                                <div class="row">
+                                                    <select class="styled " name="brand_secondary" id="brand_secondary">
+                                                        <option value="-">-</option>
+                                                        {section name=i loop=$brands}
+                                                        <option value="{$brands[i].id}" {if $brands[i].id == $userBrands.brand_secondary}selected = "selected"{/if}>{$brands[i].brands_name}</option>
+                                                        {/section}
+                                                        
+                                                    </select>
+                                                </div><!-- END .row -->
+                                            </div><!-- END .entryForm -->
+                                        </li><!-- END .fieldset -->
+                                        <li class="fieldset">
+                                            <div class="titleForm">
+                                                <h3>What would you do if your regular brand is unavailable?</h3>
+                                            </div><!-- END .titleForm -->
+                                            <div class="entryForm">
+                                                
+                                                {section name=i loop=$question}
+                                                <div class="row question_radio" id="question_mark_{$question[i].id}">
+                                                    <input type="radio" name="question_mark" class="radio styled questionmarks " value="{$question[i].id}" {if $question[i].id == $userBrands.question_mark}checked = "checked"{/if} />
+                                                    <label class="labelCheck">{$question[i].question}</label>
+                                                </div><!-- END .row -->
+                                                {/section}
+                                                <!--
+                                                <div class="row" id="other_answer" style="display:block">
+                                                    <label>&nbsp;</label>
+                                                    <input type="text" class="full-width grey-input" value="{$brands[$brandsIndex].brands_name}" name="other_answer" placeholder="please specify" id="other_answer"/>
+                                                    
+                                                </div><!-- END .row -->
+                                                <div class="row" id="anotherbrandsrow" style="display:none">
+                                                    <select class="styled " name="anotherbrands" id="anotherbrands" >
+                                                        <option value="">Please Choose</option>
+                                                        {section name=i loop=$brands}
+                                                        <option value="{$brands[i].id}" {if $brands[i].id == $userBrands.other_answer} selected="selected"{/if}>{$brands[i].brands_name}</option>
+                                                        {/section}
+                                                        
+                                                    </select>
+                                                </div>
+                                            </div><!-- END .entryForm -->
+                                        </li><!-- END .fieldset -->
+                                    </ul>
+                                </li><!-- END .col1 -->
+                               
+                            </ul><!-- END .columns-1-->
+                            </div>
+                            <div class="row rowSubmitBrand">
+                                <input type="hidden" name="tokenQuiz" value="1">
+                                
+                                <input type="submit" value="NEXT" class="button landbtn landbtn2 submiter" name="submit" />
+                            </div><!-- END .rowSubmit -->
+                            </form>
+                            {*}
+                            <div class="step">
+                                <a class="page1 btnStep fl" href="{$basedomain}account/edit">Page 1</a>
+                                <a class="page2 btnStep current">Page 2</a>
+                                <a class="page3 btnStep fr" href="{$basedomain}account/giid">Page 3</a>
+                            </div><!-- END .step -->
+                            {/*}
+                        </div><!-- END .section -->
+				    </div><!-- END .blackbox -->
+                </div><!-- END #container -->
+            </li><!-- END .col-main -->
+        </ul>
+    </div><!-- END .myaccountPages -->
+</div><!-- END #myaccountPages -->

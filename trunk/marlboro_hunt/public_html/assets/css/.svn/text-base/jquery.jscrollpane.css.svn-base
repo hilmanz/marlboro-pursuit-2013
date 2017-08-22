@@ -1,0 +1,130 @@
+/*
+ * CSS Styles that are needed by jScrollPane for it to operate correctly.
+ *
+ * Include this stylesheet in your site or copy and paste the styles below into your stylesheet - jScrollPane
+ * may not operate correctly without them.
+ */
+	/* Styles specific to this particular page */
+.scroll-pane, .scroll-pane2, .scroll-pane3,.scroll-paneRedem{
+	width: 100%;
+	height: 270px;
+	overflow: auto;
+}
+.scroll-paneMoveFwd{
+	height:226px;
+	width: 100%;
+	overflow: auto;
+}
+#popup-eventdetail .scroll-pane{
+	height:200px;
+}
+#popup-videodetail .scroll-pane{
+	height:205px;
+}
+.h250{
+	height:250px !important;
+}
+.h170{
+	height:125px !important;
+}
+#popup-newsdetail .scroll-pane{
+	height:230px;
+}
+.horizontal-only {
+	height: auto;
+	max-height: 200px;
+}
+.jspContainer {
+	overflow: hidden;
+	position: relative;
+}
+.jspPane {
+	position: absolute;
+	left:0;
+}
+.jspVerticalBar {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 18px;
+	height: 100%;
+}
+.jspHorizontalBar {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 16px;
+}
+.jspVerticalBar *, .jspHorizontalBar * {
+	margin: 0;
+	padding: 0;
+}
+.jspCap {
+	display: none;
+}
+.jspHorizontalBar .jspCap {
+	float: left;
+}
+.jspTrack {
+	position: relative;
+}
+.jspDrag {
+	background:url(../images/phase4/bg_track_white.png) repeat-y;
+	position: relative;
+	top: 0;
+	left: 0;
+	cursor: pointer;
+}
+#popup-newsdetail .jspDrag,#popup-eventdetail .jspDrag,#popup-videodetail .jspDrag{
+	background:url(../images/phase4/bg_track.png) repeat-y;
+}
+.jspHorizontalBar .jspTrack, .jspHorizontalBar .jspDrag {
+	float: left;
+	height: 100%;
+}
+.jspArrowUp{
+	background:url(../images/phase4/arrow-up_white.png) no-repeat;
+	width:18px; height:25px;
+	display:block;
+}
+.jspArrowDown{
+	background:url(../images/phase4/arrow-down_white.png) no-repeat;
+	width:18px; height:25px;
+	display:block;
+}
+#popup-newsdetail .jspArrowUp,#popup-eventdetail .jspArrowUp,#popup-videodetail .jspArrowUp{
+	background:url(../images/phase4/arrow-up.png) no-repeat;
+}
+#popup-newsdetail .jspArrowDown,#popup-eventdetail .jspArrowDown,#popup-videodetail .jspArrowDown{
+	background:url(../images/phase4/arrow-down.png) no-repeat;
+}
+.jspArrow {
+	text-indent: -20000px;
+	display: block;
+	cursor: pointer;
+}
+.jspArrow.jspDisabled {
+	cursor: default;
+	opacity:0.5;
+}
+.jspVerticalBar .jspArrow {
+	height: 25px;
+}
+.jspHorizontalBar .jspArrow {
+	width: 18px;
+	float: left;
+	height: 100%;
+}
+.jspVerticalBar .jspArrow:focus {
+	outline: none;
+}
+.jspCorner {
+	background: #eeeef4;
+	float: left;
+	height: 100%;
+}
+/* Yuk! CSS Hack for IE6 3 pixel bug :( */
+* html .jspCorner {
+	margin: 0 -3px 0 0;
+}

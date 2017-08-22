@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/marlboro-hunt-2013/!svn/ver/2199/trunk/marlboro_hunt/templates/application/admin/emailBlast
+END
+emailBlast_new.html
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/marlboro-hunt-2013/!svn/ver/1978/trunk/marlboro_hunt/templates/application/admin/emailBlast/emailBlast_new.html
+END
+emailBlast_list.html
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/marlboro-hunt-2013/!svn/ver/2199/trunk/marlboro_hunt/templates/application/admin/emailBlast/emailBlast_list.html
+END

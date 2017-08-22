@@ -1,0 +1,129 @@
+<script src="jquery-1.8.2.js" ></script>
+<script src="jquery.form.js" ></script>
+
+<h1>SANDBOX</h1>
+
+<div>
+	LOGIN
+	<form class="former" id="loginform" action="http://marlboro-stage.yellowhub.com/service/login"  method="POST"  >
+				
+					<div style="padding:10px;border-collapse:collapse;"> USERNAME<input type="text" name="username" /></div>
+					<div style="padding:10px;border-collapse:collapse;">   	PASSWORD <input type="password" name="password" /></div>
+					<input type="hidden" value="1" name="login">
+					
+					<input type="submit" value="Login">
+	</form>
+</div>
+<div>
+Home Page
+<button class="homepage"  >Get Data</button>
+
+</div>
+<div>
+TASK LIST
+<button class="tasklist"  >Get Data</button>
+
+</div>
+<div>
+TASK Accompalished LIST
+<button class="taskAcomlist"  >Get Data</button>
+
+</div>
+<div>
+Notification LIST
+<button class="notiflist"  >Get Data</button>
+
+</div>
+
+<div>
+	SUBMIT CODE
+	<form class="former" id="codesubmitform" action="http://marlboro-stage.yellowhub.com/service/submitcode"  method="POST"  >
+				
+					<div style="padding:10px;border-collapse:collapse;"> CODE <input type="text" name="code" /></div>
+						<div style="padding:10px;border-collapse:collapse;"> CAPTCHA  <input type="text" name="captcha" />
+						<div class="captcha" ></div>
+						</div>
+						<input type="submit" value="entry">
+	</form>
+</div>
+
+<div style="width:50%;height:100%;overflow:auto;float:right;position:fixed;top:0;right:0;padding:10px;border-collapse:collapse;border:1px solid"> 
+					<span >OUTPUT</span>
+					<p id="kluardisini" ></p>
+				</div> 
+
+
+<script>
+var basedomain = "http://marlboro-stage.yellowhub.com/service/";
+
+	var updateoptions = {
+						dataType : "html",
+						beforeSubmit: function(data) { 
+										$('#kluardisini').html("<blink>loading please wait</blink>");
+							},
+						success : function(data) {									
+									 $('#kluardisini').html("<p>"+data+"</p>");
+						}
+					};					
+					
+
+$("#loginform").ajaxForm(updateoptions);
+
+
+$("#codesubmitform").ajaxForm(updateoptions);
+
+$(document).on('click','.homepage',function(){
+		
+		$('#kluardisini').html("<blink>loading please wait</blink>");
+		$.post(basedomain+'home',function(data){
+			
+			 $('#kluardisini').html("<p>"+data+"</p>");
+
+		} ,"html");
+});
+
+
+
+$(document).on('click','.tasklist',function(){
+		
+		$('#kluardisini').html("<blink>loading please wait</blink>");
+		$.post(basedomain+'task',function(data){
+			
+			 $('#kluardisini').html("<p>"+data+"</p>");
+
+		} ,"html");
+});
+
+
+$(document).on('click','.taskAcomlist',function(){
+		
+		$('#kluardisini').html("<blink>loading please wait</blink>");
+		$.post(basedomain+'task/complete',function(data){
+			
+			 $('#kluardisini').html("<p>"+data+"</p>");
+
+		} ,"html");
+});
+
+
+$(document).on('click','.notiflist',function(){
+		
+		$('#kluardisini').html("<blink>loading please wait</blink>");
+		$.post(basedomain+'notification',function(data){
+			
+			 $('#kluardisini').html("<p>"+data+"</p>");
+
+		} ,"html");
+});
+
+$(document).ready(function(){
+	$.post(basedomain+'submitcode/captcha',function(data){
+			
+			 $('.captcha').html(data);
+
+	} ,"html");
+	
+
+});
+
+</script>

@@ -1,0 +1,32 @@
+<div id="event-gallery">{if $detailevent}
+
+	<div class="perspective ">
+		
+		{foreach from=$detailevent key=evnentkey item=eventdata}
+			
+			{foreach from=$eventdata.gallery key=k item=v}
+			
+			<div class="perspective_diap galeryEvent" total="{$eventdata.total}" startpage="0">
+				{if $v.files}
+				<img src="{$basedomain}public_assets/gallery/{$v.files}" alt="image" />
+				{/if}
+				<p class="caption-event">
+					<span class="entry-caption">
+						<span class="title-photo">{$detailevent[$evnentkey].title}</span>
+						{*}<span class="date-event">{$v.created_date}</span>{/*}
+						<span class="venue-event">{$v.content}</span>
+					</span><!-- END .entry-caption -->
+				</p><!-- END .caption -->
+			</div><!-- END .perspective_diap -->
+			 {/foreach}
+	   {/foreach}
+	   
+	</div><!-- END .perspective -->
+	{/if}
+	<div class="gallery-act">
+		<div class="paging fr">
+			<a class="prev" href="#">PREV</a>
+			<a class="next nextgallery" href="javasrcipt:void(0)">NEXT</a>
+		</div><!-- END .paging -->
+	</div><!-- END .gallery-act -->
+</div><!-- END #event-gallery -->

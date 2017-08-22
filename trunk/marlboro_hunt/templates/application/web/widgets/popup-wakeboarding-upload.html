@@ -1,0 +1,27 @@
+<div class="popup">
+	<div class="popupContainer popupBlack popup-small" id="popup-wakeboarding-upload">
+        <div class="popupContent contentWakeboarding">
+        	<div class="row title-wakeboarding">
+            	<h1>ultimate WAKEBOARDING<br />experience</h1>
+                <p>Upload a photo/video of you doing water sports</p>
+            </div>
+            <div class="row">
+            	<input id="upload-file" type="file"/>
+				<a id="fileupload"></a>
+            </div>
+            <div class="row">
+            	<a class="landbtn landbtn2 showPopup" href="#popup-wakeboarding-thanks">Upload</a>
+            </div>
+            <div class="row">
+            	<p>Please be reminded that as per the Terms and Conditions, all photos, images or designs submitted will become the property of PM. No photos of minors, lit cigarettes or any other photos depicting the act of smoking are not allowed. The photo you upload will be subject to moderation.</p>
+            </div>
+        </div><!-- END .popupContent -->
+    </div><!-- END .popupContainer -->
+</div><!-- END .popup -->
+{literal}
+<script>
+$("#fileupload").click(function(){
+    $("#upload-file").click();
+});
+</script>
+{/literal}

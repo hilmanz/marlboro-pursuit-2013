@@ -1,0 +1,104 @@
+<script>
+{literal}
+
+		$(document).on('change','.n_status',function(){
+		var userid = $(this).attr('proper');
+		var id = $(this).attr('prop');
+			var cid = $(this).attr('cid');
+		var histories = "commentpoint_"+cid+"_gift";
+		var n_status = $(this).val();
+		var status_inventory = 6;
+		var val_status = 0;
+
+			$.post("index.php?s=news&act=ajaxComment" ,{id:id, userid:userid, n_status:n_status,histories:histories,status_inventory:status_inventory,val_status:val_status}, function(data){
+				if (data.status == true){
+					
+						if (n_status == 2){
+							alert('Success Verified');
+							//else alert('Success Verified Point exist');
+							
+						}
+						if (n_status == 1){
+							alert('Unverified');
+						}
+					}
+				
+			},"JSON");
+		});
+		
+{/literal}
+</script>
+
+<div class="theContent">
+    <div class="theTitle"><h2>Comment List</h2></div><!--contenttitle-->
+    <div class="tableoptions">        
+		<form>
+			<input type="text" name="search" value="{$search}">
+			<input type="hidden" name="s" value="{$folder}" />
+			<input type="hidden" name="act" value="comment" />
+			<input type="hidden" name="id" value="{$cid}" />
+			{*}
+			<select name="article_type">
+				<option value=""> - Type - </option>
+				{section name=i loop=$typelist}
+				{if $typelist[i].id == $article_type}<option value="{$typelist[i].id}" selected>{$typelist[i].content_name}</option>
+				{else}<option value="{$typelist[i].id}">{$typelist[i].content_name}</option>
+				{/if}
+				{/section}
+			</select>
+			{/*}
+		   <span>Date Range</span>
+			<input type="text" name="startdate" value="{$startdate}" class="datepicker radius3" />
+		   <span>s/d</span>
+			<input type="text" name="enddate" value="{$enddate}" class="datepicker radius3" />
+			<input type="submit" value="cari" class="stdbtn btn_orange" />
+		</form>
+    </div><!--tableoptions-->	
+    <table cellpadding="0" cellspacing="0" border="0" id="table1" class="stdtable">
+        <colgroup>
+            <col class="con0" style="width: 4%" />
+            <col class="con1" />
+            <col class="con0" />
+            <col class="con1" />
+            <col class="con0" />
+            <col class="con1" />
+        </colgroup>
+        <thead>
+            <tr>
+                <th class="head0">No</th>
+				<th class="head0">User</th>
+                <th class="head0">Comment</th>
+                <th class="head1" width="200">Published Date</th>
+                <th class="head1" width="100" colspan="2">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+			{section name=i loop=$list}
+				<tr>
+					<td width="10">{$list[i].no}</td>
+					<td width="10"><nobr>{$list[i].name|capitalize} {$list[i].last_name|capitalize}</nobr></td>
+					<td>{$list[i].comment}</td>
+					<td align="center"><nobr>{$list[i].date}</nobr></td>
+					<td>
+					<form method="POST" action="">
+						<nobr>
+						<select class="n_status" prop="{$list[i].id}" proper="{$list[i].userid}"  name="n_status" cid="{$cid}" >
+							<option value="2" {if $list[i].n_status == 2} selected="selected" {/if} >Verified</option>
+							<option value="1" {if $list[i].n_status == 1} selected="selected" {/if} >Unverified</option>
+							<input type="hidden" id="{$list[i].id}" name="test" value="">
+							
+						</select>	
+						</nobr>		
+					</form>
+				</td>
+					 <td align="center">
+						<nobr> <a href="index.php?s={$folder}&act=hapusComment&id={$list[i].id}&cid={$cid}{if $st}&st={$st}{/if}{if $search}&search={$search}{/if}{if $startdate}&startdate={$startdate}{/if}{if $enddate}&enddate={$enddate}{/if}" class="red" onclick="return confirm('Are you sure you want to delete this?')">delete</a> </nobr>
+					</td>
+				</tr>
+			{/section}   
+        </tbody>
+    </table>
+    <div class="paging">
+    	{$paging}
+    </div>
+</div><!--theContent-->

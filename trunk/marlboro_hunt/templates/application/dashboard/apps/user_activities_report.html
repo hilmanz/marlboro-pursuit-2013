@@ -1,0 +1,26 @@
+<table class="gridtable" style="font-size:10px">
+				<tr>
+					<th>Name</th>
+					<th>Email</th>
+					{foreach from=$loginhistories.dates key=k item=v}
+				 
+						<th>{$v[1]}/{$v[2]}</th>
+					 
+				 
+					{/foreach}
+					
+				</tr>
+                <tbody id="loginInventory">
+				{foreach from=$loginhistories.datas key=k item=v}
+					<tr>
+						<td>{$v.users.name|lower|capitalize} {$v.users.last_name|lower|capitalize}</td>
+						<td>{$v.users.email|lower}</td>
+						{foreach from=$loginhistories.dates key=kdate item=kdate}
+							<td>{$v.datas[$kdate]}</td>
+						{/foreach}
+					</tr>	 
+				 
+				{/foreach}
+				
+                </tbody>
+            </table>

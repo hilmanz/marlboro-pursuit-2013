@@ -1,0 +1,81 @@
+<div class="popup">
+	<div class="popupContainer popupBlackPaper2 popup-redeem" id="popup-redeem2">
+        <div class="popupContent3">
+        	<div class="popup-title red_title">
+				<h3>Congratulations!</h3>
+            </div><!--END .entry-title-->
+        	<div class="entry-popup entry-popup-center">
+            	<h4>You've completed the phrase</h4>
+                <h1 class="red bigFont">"DONT BE"</h1>
+            </div>
+        	<div class="entry-popup">
+                    <div class="row centering">
+                    	<table>
+                        	<tr>
+								
+                            	<td valign="top">
+                                    <div class="boxPrize">
+                                        <a href="#popup-redeem-claim" class="thumb-prize showPopup"><img src="{$basedomain}assets/content/thumb_prize6.jpg" /></a>
+                                        <h6>Ferrari Earphone</h6>
+                                    </div><!-- END .boxPrize -->
+                                </td>
+                            	<td valign="top">
+                                    <div class="boxPrize">
+                                        <a href="#popup-redeem-claim" class="thumb-prize showPopup"><img src="{$basedomain}assets/content/thumb_prize7.jpg" /></a>
+                                        <h6>Limited Edition Marlboro Branded Rudy Project Shades</h6>
+                                    </div><!-- END .boxPrize -->
+                                </td>
+                            	<td valign="top">
+                                    <div class="boxPrize">
+                                        <a href="#popup-redeem-claim" class="thumb-prize showPopup"><img src="{$basedomain}assets/content/thumb_prize8.jpg" /></a>
+                                        <h6>Gift Certificate at Republik Wakepark</h6>
+                                    </div><!-- END .boxPrize -->
+                                </td>
+                            </tr>
+                        </table>
+                    </div><!-- END .row -->
+                    <div class="row centering">
+                    	<h6>Do you want to redeem the prize that corresponds to this word,
+or do you want to continue with The Hunt?</h6>
+					{if $redeemdontbe}
+						<a class="btn_black3 showPopup redeemdontbe" href="#popup-redeem-claim">REDEEM</a><br /><br />
+                    {/if}    
+						<h6>If YOU CONTINUE AND COMPLETE THE NEXT WORD, YOU CAN CHOOSE TO REDEEM THESE PRIZES:</h6>
+                    </div>
+                    <div class="row centering">
+                    	<table>
+                        	<tr>
+                            	<td valign="top">
+                                    <div class="boxPrize">
+                                        <a href="#popup-redeem-claim" class="thumb-prize showPopup"><img src="{$basedomain}assets/content/thumb_prize10.jpg" /></a>
+                               			 <h6>Ipod Nano 16GB</h6>
+                                    </div><!-- END .boxPrize -->
+                                </td>
+                            	<td valign="top">
+                                    <div class="boxPrize">
+                                        <a href="#popup-redeem-claim" class="thumb-prize showPopup"><img src="{$basedomain}assets/content/thumb_prize11.jpg" /></a>
+                               			 <h6>Ferrari Headphones</h6>
+                                    </div><!-- END .boxPrize -->
+                                </td>
+                            	<td valign="top">
+                                    <div class="boxPrize">
+                                        <a href="#popup-redeem-claim" class="thumb-prize showPopup"><img src="{$basedomain}assets/content/thumb_prize12.jpg" /></a>
+                               			 <h6>Cullinary Classes</h6>
+                                    </div><!-- END .boxPrize -->
+                                </td>
+                            	<td valign="top">
+                                    <div class="boxPrize">
+                                        <a href="#popup-redeem-claim" class="thumb-prize showPopup"><img src="{$basedomain}assets/content/thumb_prize13.jpg" /></a>
+                               			 <h6>Photography Classes</h6>
+                                    </div><!-- END .boxPrize -->
+                                </td>
+                            </tr>
+                        </table>
+                    </div><!-- END .row -->
+                    <div class="row centering">
+						<a class="btn_black3" href="#">CONTINUE</a>
+                    </div>
+            </div><!--END .entry-popup-->
+        </div><!-- END .popupContent -->
+    </div><!-- END .popupContainer -->
+</div><!-- END .popup -->

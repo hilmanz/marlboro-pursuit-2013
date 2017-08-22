@@ -1,0 +1,41 @@
+
+    
+<div id="videoPage">
+	<div class="videoPage">
+    
+	<div class="popupContainer popup popup-video" id="popup-video-laborday" style="display:block;">
+    	<a id="fancybox-close" class="closePopup  video-labor-close" href="{$basedomain}mscape"  >&nbsp;</a>
+        <div class="popupContents">
+        	<div class="entry-popup gamepopup">
+                	<div id="video-box" class="video-labor-content" >
+						 <video id="video-labor" class="video-js vjs-default-skin" controls="controls" preload="none" width="100%" height="400"
+                              poster="{$basedomain}assets/content/thumb_video_grandprix.jpg"
+                              data-setup=""  >
+                            <source src="{$basedomain}assets/video/FERRARI.mp4" type="video/mp4" />
+                            <source src="{$basedomain}assets/video/FERRARI.ogg" type="video/ogg" />                            
+                          
+                          </video>
+                    </div>
+            </div><!--END .entry-popup-->
+        </div><!-- END .popupContent -->
+    </div><!-- END .popupContainer -->
+    </div><!-- END .videoPage -->
+</div><!-- END #videoPage -->
+
+
+		<script>
+		{literal}
+					var myPlayerlabor = _V_("video-labor");
+				
+					 _V_("video-labor").ready(function(){
+
+						var myPlayerlabor = this;
+
+						myPlayerlabor.play();
+
+					});
+		
+		</script>
+	
+	
+	{/literal}

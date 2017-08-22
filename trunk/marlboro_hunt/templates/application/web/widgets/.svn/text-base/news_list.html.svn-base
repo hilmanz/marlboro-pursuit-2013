@@ -1,0 +1,420 @@
+<div id="news-list" class="universal">
+    <div class="paperNews"></div>
+   {include file="application/web/widgets/left_navigation.html"}
+    <div id="newslist" class="carousel">
+        <ul class="slides">	
+            {if $newsList}
+				{assign var="idxelement" value="1"}
+            {foreach from=$newsList key=k item=val}
+           <li class="slidesitem" style=" width:890px;">
+                <ul class="columns-2 clearfix">
+                    
+                    {foreach from=$val key=k item=v}
+                    <li class="col2">
+                        <div class="boxNewsDetail">
+                            <div class="thumbPrize">
+                                <div class="box-frame frame-rotate{$idxelement} rotation{$idxelement} ">
+                                    <a class="getDetailContent" href="javascript:void(0)" prop="{$v.id}"  theid="{$v.id}" ><img onerror="onerrorNews(this);" src="{$basedomain}public_assets/customCrop/news_{$v.id}.png" /></a>
+                                    <h4 class="date">{$v.datachange}</h4>
+                                </div>
+                                
+                            </div><!-- END .thumbPrize -->
+                            <div class="captions">
+                                <h4>{$v.title}</h4>
+                                <p>{$v.brief}</p>
+                                <!-- <div class="but-news"><a class="landbtn landbtn2 popupNews" href="javascript:void(0)" prop="{$v.id}">Read More</a></div> -->
+                                <div class="but-news"><a class="landbtn landbtn2 getDetailContent" href="javascript:void(0)" prop="{$v.id}"  theid="{$v.id}" >Read More</a></div>
+                            </div><!-- END .captions -->
+                        </div><!-- END .boxPrizeDetail -->
+                    </li>
+						{if $idxelement<4}{assign var="idxelement" value=$idxelement+1}
+						{else} {assign var="idxelement" value="1"}
+						{/if}
+                    {/foreach}
+                    
+                    
+                </ul>
+            </li><!-- END .slidesitem -->
+            {/foreach}
+			<a class="showPopup getEvent" style="display:none" href="#popup-newsdetail"  ></a>
+            {/if}
+        </ul><!-- END .slides -->
+	</div><!-- END #prizeList -->
+</div><!-- END #prizePage -->
+
+ 
+
+<script>
+
+{literal}
+	$(document).on('click','.openpopuptnc',function(){
+		$(".tncpopup").trigger("click");
+		$('.scroll-pane').jScrollPane(
+			{
+				showArrows: true,
+				arrowScrollOnHover: true,
+				autoReinitialise: true
+			}
+		);
+	})
+	 function onerrorNews(img){
+        $(img).attr('src',basedomain+'public_assets/frame-news-photo.png');
+    }
+	$(document).on('click','.getDetailContent',function(){
+		 
+		/* message to wait data */
+			$(".getEvent").trigger('click');
+			$(".thedatadetail").html(" <img style='padding-top:150px' src='"+basedomain+"assets/images/loader.gif' /> ");
+			$(".detailusercontent").html(" <img style='padding-top: 10px; padding-left: 0;' src='"+basedomain+"assets/images/loader.gif' /> ");
+			$(".commentuserdetail").html("  "); 
+			$("#thecommentcontentid").hide();
+		/* message to wait data */
+	 
+		var theid = $(this).attr('theid');
+			
+			 
+			$.post(basedomain+'content/detail',{id:theid},function(arr){
+				 
+				
+				if(arr.result){
+					var data = arr.article;
+				
+					var html = viewgallerycontent(data,'news');					
+					var usercontent = viewdetailusercontent(arr.article);
+					
+					
+					var commenthtml = viewcomments(arr.comment);
+					
+					$(".thedatadetail").html(html);
+					$(".detailusercontent").html(usercontent);
+					$(".commentuserdetail").html(commenthtml); 
+					$("#thecommentcontentid").show();
+					$(".thecontentidcomment").val(theid);
+					
+					
+					var updateoptions = {
+					dataType:  'json', 	
+					beforeSubmit: function(data) { 
+							 if($(".thecommentcontent").val()=='') return false;
+							$(".messagesendingcontent").html(locale.pleasewait);		
+							 
+					},
+					success : function(data) {		
+							$(".messagesendingcontent").html('');
+							if(data.result){
+										 
+								
+								/*
+										var comhtml ="";
+									
+										comhtml+="<div class='row comment-child'>";
+										comhtml+="             <div class='thumb-user'>";
+										if(data.img)comhtml+="                <a href='#'><img src='"+basedomain+"public_assets/user/photo/small_"+data.img+"' /></a>";
+										else comhtml+="                <a href='#'><img src='"+basedomain+"public_assets/user/photo/default.jpg' /></a>";
+										comhtml+="            </div>";
+										comhtml+="            <div class='entry-right'>";
+										comhtml+="               <div class='entry-header'>";
+										comhtml+="                   <h3 class='username'><a href='#'>"+data.name+"</a></h3>";
+										comhtml+="               </div> ";
+										comhtml+="               <div class='entry-body'>";
+									//	comhtml+="                   <p>"+data.comment+"</p>"; 
+										comhtml+="                   <p> your comment on moderation </p>";
+										comhtml+="                   <span class='comment-date'>Posted on "+data.date+"</span>";
+										comhtml+="               </div> ";
+										comhtml+="           </div> ";
+										comhtml+="       </div> ";
+									$(".commentuserdetail").prepend(comhtml);
+								 	$(".thecommentcontent").val("");	
+								
+								*/
+								
+								var htmlThanks ="";
+								htmlThanks = "<p class='postSucces'>"+locale.postcommentorreply+"</p>";
+								$(".wakeboarding-thanks").trigger("click");
+								$(".content").html(htmlThanks);
+								$("#fancybox-close").addClass("fancybox-close-postsucces");
+								$(document).on('click', '#fancybox-close, #fancybox-overlay', function(){
+									location.reload();
+								})
+							}
+								 
+					}
+					};					
+
+					$("#thecommentcontentid").ajaxForm(updateoptions);
+					
+					 
+					//$(".getEvent").trigger('click');
+					reinitpopupevent();
+	                
+				}
+				
+				
+			},"JSON");
+			
+		
+	})
+	 
+/* blow of this function goto the js helper */
+	 /* this function same as event */
+	 $(document).on('click','.detailimageplease',function(){
+	 
+		var fullimage = $(this).attr('fullimage');
+		var gid = $(this).attr('gid');
+		
+		$(".allimagesdetail").fadeOut();
+		$(".thiscontentfullimage_"+gid).fadeIn();
+	 });
+	
+	/* this function same as event */
+	function viewgallerycontent(data,imagepaths){
+			var html="";
+			if(data){
+					
+				 
+						html+=" <div class='eventthumb'>";
+						html+="    <div id=' ' class='flexslider'>";
+						html+="       <ul class='slides'>";
+						if(data.image){
+							html+="<li>";
+							html+="			<a class='eventthumbimg' href='#'>";
+							html+="			<img src='"+basedomain+"public_assets/"+imagepaths+"/"+data.image+"' class='allimagesdetail thiscontentfullimage_"+data.id+"' style='' />";
+							html+="		</a>";
+							html+="   </li>	";
+						}
+						
+						$.each(data.gallery,function(i,e){
+							 
+								html+="<li>";
+								html+="			<a class='eventthumbimg' href='#'>";
+								 html+="			<img src='"+basedomain+"public_assets/gallery/"+e.files+"' class='allimagesdetail thiscontentfullimage_"+e.id+"' style='' />";
+								html+="		</a>";
+								html+="   </li>	";
+							 
+						});
+
+						html+="       </ul>";
+						html+="     </div>";
+						html+=" </div> ";
+						
+						
+						if(imagepaths=='gallery'){
+							html+="     <div id='mycarousel' class='jcarousel-skin-tango'>";
+							html+="       <ul class='slides'>";
+							
+						
+							
+							if(data.image){
+									html+="	 <li>";
+								html+="		<a class='smallthumb detailimageplease' href='javascript:void(0)' fullimage='"+basedomain+"public_assets/"+imagepaths+"/"+data.image+"' gid='"+data.id+"' >";
+								html+="			<img src='"+basedomain+"public_assets/"+imagepaths+"/small_"+data.image+"' />";
+								html+="		</a>";
+								html+="	</li>	";
+							}
+							
+							if(data.gallery){
+								
+								$.each(data.gallery,function(i,e){
+									var queue = 'odd';
+									if(i%2==0) queue = 'even';
+									html+="	 <li>";
+									html+="		<a class='smallthumb detailimageplease "+queue+"' href='javascript:void(0)' fullimage='"+basedomain+"public_assets/gallery/"+e.files+"' gid='"+e.id+"' >";
+									html+="			<img src='"+basedomain+"public_assets/gallery/small_"+e.files+"' />";
+									html+="		</a>";
+									html+="	</li>	";
+
+								})
+							}
+							html+="       </ul>";
+							html+="     </div>";
+						}
+						
+						html+=" <div class='eventStats'>";
+						/*
+						html+="    <h3 class='event-title'>  ";
+						html+="    <a href='javascript:void(0)' class='addfavoritearticle' theid='"+data.id+"' totalvalue='"+data.favorite+"' >LIKE</a> ( <span class='thisfavvalues'>"+data.favorite+"</span> ) ";
+						html+="     COMMENT  ( "+data.commentcount+" ) ";
+						html+="     VIEW  ( "+data.views+" ) ";
+						html+="    </h3>";
+						*/
+						html+="  </div>";
+						
+			}
+			return html;		 
+	}
+	
+	/* this function same as event */
+	function viewcomments(comment){
+	
+				var html="";
+			
+			if(comment){
+				
+				$.each(comment,function(i,e){
+					html+="<div class='row comment-child'>";
+					html+="             <div class='thumb-user'>";
+					if(e.img)html+="                <a href='#'><img src='"+basedomain+"public_assets/user/photo/"+e.img+"' /></a>";
+					else html+="                <a href='#'><img src='"+basedomain+"public_assets/user/photo/default.jpg' /></a>";
+					html+="            </div>";
+					html+="            <div class='entry-right'>";
+					html+="               <div class='entry-header'>";
+								html+="<h3 class='username'>";
+					html+="<a href='#'>"+e.name+"</a>";
+					html+="<span class='commentafternames' >"+e.comment+"</span>";
+					html+="</h3>";		
+					html+="               </div> ";
+					
+					html+="               <div class='entry-body'>";
+				//html+="                   <p>"+e.comment+"</p>";
+					html+="                   <span class='comment-date'>Posted on "+e.date+"</span>";
+						html+=" 					<a href='javascript:void(0)' class='replyBtn replybuttontrigger' replyid='"+e.id+"' > reply </a> ";
+					html+="               </div> ";
+					html+="           </div> ";
+					html+=" <span class='allreplybox replyboxtriggered_"+e.id+"' style='padding-left: 10px;display:none' ><input type='text' style='width: 169px; height: 10px; font-size: 14px;margin-right:10px; ' name='replytxt' class='replytxt ml10 mr50' /><a  parentid='"+e.id+"'  cid='"+e.contentid+"'  href='javascript:void(0)' class='addReplytothiscomment' > Reply </a><p style='margin-left:60px;width:225px;color:#000;margin-top:10px; font-size:9px;'>Comments are subject to moderation. PM reserves the right to reject or remove any comment as per the <a class='showPopup openpopuptnc' href='#popup-tnc'>Terms and Condition</a></p></span>";
+					html+="       </div> ";
+					html+="<div class='row repycommentlists_"+e.id+"' style='padding-left:50px'>";	
+
+					if (e.replycomment){
+						html+="<div class='row replycomment'>";
+						$.each(e.replycomment,function(index,element){
+							html+="<div class='row comment-child'>";
+							html+="             <div class='thumb-user'>";
+							if(element.img)html+="                <a href='#'><img src='"+basedomain+"public_assets/user/photo/"+element.img+"' /></a>";
+							else html+="                <a href='#'><img src='"+basedomain+"public_assets/user/photo/default.jpg' /></a>";
+							html+="            </div>";
+							html+="            <div class='entry-right'>";
+							html+="               <div class='entry-header'>";
+							html+="<h3 class='username'>";
+							html+="<a href='#'>"+element.name+"</a>";
+							html+="<span class='commentafternames' >"+element.comment+"</span>";
+							html+="</h3>";					
+							html+="</div> ";
+							html+="               <div class='entry-body'>";
+							//html+="                   <p>"+e.comment+"</p>";
+							html+="                   <span class='comment-date'>Posted on "+element.date+"</span>";
+							
+							html+="               </div> ";
+							html+="           </div> ";
+							html+="           </div> ";
+							
+						})
+						html+="           </div> ";
+					}
+					
+					html+=" </div> ";
+				});
+				
+				
+			}
+		return html;
+	}
+	
+	/* this function same as event */
+	function viewdetailusercontent(contentdata){
+		var commentcount = parseInt(contentdata.commentcount);
+		var html="";
+		if(contentdata){
+					html+="    <h3 class='event-title'>"+contentdata.title+"</h3>";
+					html+="                               <div class='entry-article'> ";
+					html+="                                    <div class='entry-body news-article'> ";
+					html+= 										contentdata.content ;
+					html+="                                       <span class='comment-date'>Posted on "+contentdata.posted_date+"</span>";
+					html+="                                     </div>  ";
+					if(commentcount>1){
+						html+="                                    <a href='#' class='replycount'>"+contentdata.commentcount+" Replies</a> ";
+					}else{
+						html+="                                    <a href='#' class='replycount'>"+contentdata.commentcount+" Reply</a> ";
+					}
+					html+="                                </div>  ";
+		}
+			return html;
+										
+	}
+	
+	/* this function same as event */
+	$(document).on('click','.addfavoritearticle',function(){
+	
+		var thisobject = $(this);
+		var cid = $(this).attr('theid');
+		
+		
+		$.post(basedomain+'content/favorite',{cid:cid},function(data){
+			if(data){
+				var favvalue = parseInt(thisobject.attr('totalvalue'),10);
+				var newvaluefav = favvalue+1 ;
+				thisobject.siblings(".thisfavvalues").html(newvaluefav);
+				thisobject.attr('totalvalue',newvaluefav);
+			}
+		
+		
+		},"JSON");
+	})
+	
+
+
+	$(document).on('click','.addReplytothiscomment',function(){
+		var cid = $(this).attr('cid');
+		var parentid = $(this).attr('parentid');
+		var siblingsobject = $(this).siblings('.replytxt');
+		var comment = $(this).siblings('.replytxt').val();
+		if(comment=='') return false;
+		$.post(basedomain+'content/comment',{cid:cid,parentid:parentid,comment:comment},function(data){
+				if(data){
+						var comhtml ="";
+					/*
+						/*
+						comhtml+="<div class='row comment-child'>";
+						comhtml+="             <div class='thumb-user'>";
+						if(data.img)comhtml+="                <a href='#'><img src='"+basedomain+"public_assets/user/photo/"+data.img+"' /></a>";
+						else comhtml+="                <a href='#'><img src='"+basedomain+"public_assets/user/photo/default.jpg' /></a>";
+						comhtml+="            </div>";
+						comhtml+="            <div class='entry-right'>";
+						comhtml+="               <div class='entry-header'>";
+						comhtml+="                   <h3 class='username'><a href='#'>"+data.name+"</a></h3>";
+						comhtml+="               </div> ";
+						comhtml+="               <div class='entry-body'>";
+						//comhtml+="                   <p>"+data.comment+"</p>";
+						comhtml+="                   <p> please wait your comment on moderation </p>";
+						comhtml+="                   <span class='comment-date'>Posted on "+data.date+"</span>";
+						comhtml+="               </div> ";
+						comhtml+="           </div> ";
+						comhtml+="       </div> ";
+						$(".repycommentlists_"+parentid).prepend(comhtml);
+ 
+						*/
+						
+						var htmlThanks ="";
+						htmlThanks = "<p class='postSucces'>"+locale.postcommentorreply+"</p>";
+						$(".wakeboarding-thanks").trigger("click");
+						$(".content").html(htmlThanks);
+						$("#fancybox-close").addClass("fancybox-close-postsucces");
+						$(document).on('click', '#fancybox-close, #fancybox-overlay', function(){
+							location.reload();
+						})
+		 
+					siblingsobject.val("");
+				}
+		},"JSON");
+		
+		
+	});
+	var statreply = false;
+	$(document).on('click','.replybuttontrigger',function(){
+			var replyid = $(this).attr("replyid");
+			$(".allreplybox").hide();
+			 
+			$(".replyboxtriggered_"+replyid).show();
+			 
+	});	
+	
+</script>
+{/literal}
+{if $articleid!=0}
+<script>
+	{literal}
+	$(document).ready(function(){
+		$(".getDetailContent").eq(0).trigger('click');
+	});
+	{/literal}
+</script>	
+{/if}

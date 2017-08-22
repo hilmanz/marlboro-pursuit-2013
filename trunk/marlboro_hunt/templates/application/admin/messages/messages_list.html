@@ -1,0 +1,78 @@
+<div class="theContent">
+    <div class="theTitle">
+        <h2>{$folder} List</h2>
+        {*}<a href="index.php?s={$folder}&act=add" class="btn btn_pencil"><span>Add {$folder}</span></a>{/*}
+    </div><!--contenttitle-->
+    <div class="tableoptions">        
+    <form>
+        <input type="text" name="search" value="{$search}">
+        <input type="hidden" name="s" value="{$folder}" />
+        <input type="hidden" name="cari" value="cari" /> 
+		{*}
+        <select name="article_type">
+            <option value=""> - Type - </option>
+            {section name=i loop=$typelist}
+            {if $typelist[i].id == $article_type}<option value="{$typelist[i].id}" selected>{$typelist[i].content_name}</option>
+            {else}<option value="{$typelist[i].id}">{$typelist[i].content_name}</option>
+            {/if}
+            {/section}
+        </select>
+		{/*}
+       <span>&nbsp;Date Range&nbsp;</span>
+        <input type="text" name="startdate" value="{$startdate}" class="datepicker radius3" />
+       <span>&nbsp;s/d&nbsp;</span>
+        <input type="text" name="enddate" value="{$enddate}" class="datepicker radius3" />
+        <input type="submit" value="cari" class="stdbtn btn_orange" />
+    </form>
+    </div><!--tableoptions-->	
+    <table cellpadding="0" cellspacing="0" border="0" id="table1" class="stdtable">
+        <colgroup>
+            <col class="con0" style="width: 4%" />
+            <col class="con1" />
+            <col class="con0" />
+            <col class="con1" />
+            <col class="con0" />
+            <col class="con1" />
+        </colgroup>
+        <thead>
+            <tr>
+                <th class="head0">No</th>
+                <th class="head0">From</th>
+                <th class="head1">Recepient</th>
+                <th class="head0">Messages</th>
+                <th class="head0">Date</th>
+                <!-- <th class="head0">Status</th>
+                <th class="head0">Delete</th> -->
+               <!--  <th class="head1">Action</th> -->
+            </tr>
+        </thead>
+        <tbody>
+            {section name=i loop=$list}
+            <tr>
+                <td width="10">{$list[i].no}&nbsp;</td>              
+                <td>{$list[i].fromname|capitalize} {$list[i].fromnamelast|capitalize}</td>              
+                <td>{$list[i].recepientname|capitalize} {$list[i].recepientnamelast|capitalize}</td>              
+                <td>{$list[i].message|capitalize}</td>              
+                <td><nobr>{$list[i].datetime}</nobr></td>
+                <!-- <td align="center"><nobr> {if $list[i].typepages}{$list[i].typepages|upper}{else}{/if}</nobr></td> -->
+			<!-- 	<td width="100" align="center"><img height="65px;" src="{$basedomain}public_assets/user/photo/{if $list[i].img}small_{$list[i].img}{else}default.jpg{/if}"></td>           -->                 
+               <!--  <td align="center">
+                    {if $list[i].abuse==0} <span class="green">Standart Message</span>
+                    {elseif $list[i].abuse==1} <span class="orange">Abs</span>
+                    {else}
+                    {/if}
+                </td>    
+                <td>
+                    <nobr>					
+                        <a href="index.php?s={$folder}&act=hapus&id={$list[i].id}&do=message" class="red" onclick="return confirm('Are you sure you want to delete this?')">delete messages</a>                      
+                       <!--  | <a href="index.php?s={$folder}&act=hapus&id={$list[i].id}" class="red" onclick="return confirm('Are you sure you want to delete this?')">banned</a>          
+                    </nobr>
+                </td> -->
+            </tr>
+            {/section}
+        </tbody>
+    </table>
+    <div class="paging">
+    	{$paging}
+    </div>
+</div><!--theContent-->

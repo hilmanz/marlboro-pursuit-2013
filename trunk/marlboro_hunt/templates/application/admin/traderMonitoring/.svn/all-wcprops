@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/marlboro-hunt-2013/!svn/ver/1516/trunk/marlboro_hunt/templates/application/admin/traderMonitoring
+END
+traderMonitoring_edit.html
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/marlboro-hunt-2013/!svn/ver/1098/trunk/marlboro_hunt/templates/application/admin/traderMonitoring/traderMonitoring_edit.html
+END
+traderMonitoring_new.html
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/marlboro-hunt-2013/!svn/ver/1098/trunk/marlboro_hunt/templates/application/admin/traderMonitoring/traderMonitoring_new.html
+END
+traderMonitoring_list.html
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/marlboro-hunt-2013/!svn/ver/1516/trunk/marlboro_hunt/templates/application/admin/traderMonitoring/traderMonitoring_list.html
+END

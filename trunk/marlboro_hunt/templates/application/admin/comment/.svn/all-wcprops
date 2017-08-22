@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/marlboro-hunt-2013/!svn/ver/1845/trunk/marlboro_hunt/templates/application/admin/comment
+END
+comment_list.html
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/marlboro-hunt-2013/!svn/ver/1845/trunk/marlboro_hunt/templates/application/admin/comment/comment_list.html
+END
+comment_new.html
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/marlboro-hunt-2013/!svn/ver/1845/trunk/marlboro_hunt/templates/application/admin/comment/comment_new.html
+END

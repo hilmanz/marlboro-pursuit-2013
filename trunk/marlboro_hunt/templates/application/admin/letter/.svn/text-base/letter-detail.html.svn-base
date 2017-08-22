@@ -1,0 +1,90 @@
+
+<script>
+	{literal}
+	$(document).on('click','.changeprob', function(){
+		
+		var letterid = $(this).attr('letterid');
+		var probabilitas = $(".prob"+letterid).val();
+		var confirmationhtml = "";
+		
+		confirmationhtml += "Are You Sure ? ";
+		confirmationhtml += "<a href='javascript:void(0)' class='btn btn2 btn_pink btn_lock submitform ' ><span>Yes</span></a> ";
+		confirmationhtml += "<a href='javascript:void(0)' class='btn btn2 btn_pink btn_lock cancelsubmitform ' ><span>No</span></a> ";
+	
+	
+		
+		$(".msgpopupglobal").html(confirmationhtml);
+		$(".trigun").trigger("click");
+		
+		
+			$(document).on('click','.submitform', function(){
+				html = "please wait";
+				$(".msgpopupglobal").html(html);
+				$(".trigun").trigger("click");
+				
+				if($(".prob"+letterid).val()!=''){
+					$.post(basedomain+"admin/index.php?s=letter&act=ajax", {id:letterid, prob:probabilitas}, function(data){
+			
+						var statusData = data.status;
+						if (statusData == true){
+							html = "success add new value";
+							$(".msgpopupglobal").html(html);
+							$(".trigun").trigger("click");
+						}else{
+							
+						}
+						
+					}, 'JSON')
+				}else {
+					html = "please fill vallue ";
+					$(".msgpopupglobal").html(html);
+					$(".trigun").trigger("click");
+				}
+				
+			});
+			
+			$(document).on('click','.cancelsubmitform', function(){
+				$(".fancybox-close").trigger('click');
+			});
+		
+		
+		
+		
+	})
+	{/literal}
+</script>
+<div class="theContent">
+    
+	<div class="theTitle">
+        <h2>{$folder} Probability</h2>
+       
+           	<a  class="btn btn2 btn_pink btn_lock" href="index.php?s={$folder}&act=generateForm" ><span>Generate Form</span></a>
+           	<a  class="btn btn2 btn_pink btn_lock" href="index.php?s={$folder}" ><span>Letter List</span></a>
+    </div><!--contenttitle-->
+	
+   <table>
+		<tr>
+			<td>
+				<table>
+					<tr>
+						<th colspan="3" align="center">Letter (%)</th>
+					</tr>
+					{foreach from=$letter key=k item=v}
+					<tr>
+						<td><span style="position:relative;top:20px" ><image src="{$baseurl}assets/content/font/{$v.codename|lower}.png"  width="50px"  />   </span></td>
+						<td>
+						<form>
+						<input type="hidden" name="probdetail" value="{$v.id}" class="probdetail"/>
+						<input type="text" name="prob" value="{$v.persen}" placeholder="Probabilitas" class="prob{$v.id}" prop="{$v.id}" />
+						</form>
+								</td>
+						<td><a class="changeprob btn btn2 btn_pink btn_lock" href="javascript:void(0)"  letterid="{$v.id}" ><span>Change</span></a></td>
+					</tr>
+					{/foreach}
+				</table>
+			</td>
+		
+		</tr>
+	</table>
+ </div><!--tableoptions-->	
+

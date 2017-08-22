@@ -1,0 +1,50 @@
+<div id="gamesPage">
+	<div class="papergame"></div>
+	<div class="gamesPage imhide" id="gamesPageDetail">
+        <ul class="columns-2 clearfix">
+            <li class="col2">
+            	<div class="thumbGameBig">
+					<a href="javascript:void(0)" class="checkFlash"><img src="{$basedomain}assets/content/game_crossout.png" /></a>
+					
+                </div><!-- END .boxPaper -->
+            </li>
+            <li class="col2">
+            	<div class="gameDesc">
+                    <h1>CROSS OUT</h1>
+                    <p>Get rid of the MAYBE in your life with CROSS OUT MAYBE.</p>
+                    <p>Words will randomly appear on the screen. Draw an X on the words that represent a MAYBE attitude!</p>
+                    <p>Earn 2 points in the game if you cross out words that represent a MAYBE attitude and lose 2 points if you cross out words that represent a decisive attitude.</p>
+                    <p>Every level you complete will earn you 1 point on the website counter. </p>
+                    <!--<a class="btn_red" href="{$basedomain}games/play/wallbreaker">PLAY NOW</a>-->
+                    <a class="btnRed1 checkFlash" href="javascript:void(0)">PLAY NOW</a>
+                    <a class="btnRed2 showPopups" href="#popup-leaderboard">LEADERBOARD</a>
+                </div><!-- END .gameDesc -->
+            </li>
+        </ul>
+    </div><!-- END .gamesPage -->
+</div><!-- END #gamesPage -->
+{include file="application/web/widgets/popup_leaderboard_maybeninja.html"}
+{include file="application/web/widgets/popup-full-mechanics-maybeninja.html"}
+
+<script>
+	{literal}
+	
+	$(document).on('click', '.checkFlash', function(){
+		var version = getFlashVersion().split(',').shift();
+		var html ="";
+		if(version < 11){
+		 
+			html += locale.flashplayerrequired;
+			
+			$(".contentmyaccount").html(html);
+			$(".my-account-profile").trigger("click");	
+			//$(".confirmTitle").html('Flash Player');
+			
+		}else{
+			window.location.href=basedomain+'games/play/crossout';
+			
+		}
+	})
+	
+	{/literal}
+</script>

@@ -1,0 +1,54 @@
+<div id="trackingPage">
+<div id="circleLogin" class="trackingCodePage">
+	<div class="circleContent">
+    	<h1>SUBMIT TRACKING CODE</h1>
+		<h3>enter the tracking code sent to your e-mail<br />to submit your valid government-issued id</h3>
+        <form class="trackingCode theForms" action="{$basedomain}register/trackingcodeajax" method="POST" id="trackingcodeform">
+        	<div class="row">
+               <div class="the-field" onclick="$(this).find('#value-code').hide();$(this).find('.code').focus();">
+      				<input onBlur="if(this.value=='')$('#value-code').show();" onFocus="$('#value-code').hide();" type="text" name="code" class="code full-width required"/>
+                 	<span class="the-value" id="value-code" style="text-shadow:none;">ENTER YOUR CODE HERE</span>
+                </div>
+            </div>
+            <div class="row">
+            	<a href="{$basedomain}" class="backtologin">Back to login page</a>
+            </div>
+            <div class="row rowSubmit">
+				<input type="hidden" value="{$token}" name="token" class="" />
+				<input type="hidden" value="1" name="trackcode" class="" />
+				<input type="hidden" value="true" name="submit" />
+            	<input type="submit" value="SUBMIT" class="loginBtn" />
+            </div>
+        </form>
+    </div><!-- END .circleContent -->
+</div><!-- END #circleLogin -->
+</div>
+
+<script>
+{literal}
+	var OPTIONTRACKINGCODE = {
+						dataType : "JSON",
+						beforeSubmit: function(data) { 
+										$(".contentmyaccount").html(locale.pleasewait);
+										$(".my-account-profile").trigger("click");		
+										
+							},
+						success : function(data) {	
+										var email_token =$('.tokensubmition').val();
+										var html = "success to activate tracking code";
+									 	if(data.status){									
+											window.location.href=basedomain+"register/upload/token/"+email_token;
+										}
+										html=data.msg;
+										
+										$(".contentmyaccount").html(html);
+										$(".my-account-profile").trigger("click");
+						}
+					};					
+					
+
+	$("#trackingcodeform").ajaxForm(OPTIONTRACKINGCODE);
+	
+		
+{/literal}
+</script>

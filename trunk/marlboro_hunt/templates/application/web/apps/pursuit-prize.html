@@ -1,0 +1,56 @@
+<div id="prizePage" class="universal">
+	<div class="prizePage">
+            <ul class="columns-3 clearfix">
+                <li class="col3">
+                    <div class="boxPrize">
+                        <div class="thumbPrize">
+                            <a href="{$basedomain}mscape"><img src="{$basedomain}assets/content/phase4/prize/prize1.png" /></a>
+                        </div><!-- END .thumbPrize -->
+                        <div class="captions">
+                            <h1>BID</h1>
+                            <a class="landbtn landbtn2" href="{$basedomain}mscape">CONTINUE</a>
+                        </div><!-- END .captions -->
+                    </div><!-- END .boxPrize -->
+                </li>
+                  <li class="col3">
+                    <div class="boxPrize">
+                        <div class="thumbPrize">
+                            <a href="{$basedomain}mscape"><img src="{$basedomain}assets/content/phase4/prize/prize2.png" /></a>
+                        </div><!-- END .thumbPrize -->
+                        <div class="captions">
+                            <h1>BUY</h1>
+                            <a class="landbtn landbtn1" href="{$basedomain}mscape">CONTINUE</a>
+                        </div><!-- END .captions -->
+                    </div><!-- END .boxPrize -->
+                </li>
+                  <li class="col3">
+                    <div class="boxPrize">
+                        <div class="thumbPrize">
+                            <a href="{$basedomain}mscape"><img src="{$basedomain}assets/content/phase4/prize/prize3.png" /></a>
+                        </div><!-- END .thumbPrize -->
+                        <div class="captions">
+                            <h1>RESERVE</h1>
+                            <a class="landbtn landbtn2" href="{$basedomain}mscape">CONTINUE</a>
+                        </div><!-- END .captions -->
+                    </div><!-- END .boxPrize -->
+                </li>
+            </ul>
+    </div><!-- END .prizePage -->
+</div><!-- END #prizePage -->
+<div id="welcomePrize" class="centercontent">
+	<h1>LIVE IT UP</h1>
+    <h2>GET REWARDED FOR MAKING DECISIONS.</h2>
+    <h3>EARN POINTS WTH MARLBORO AND USE THEM FOR AUCTIONS,<br />
+	BUY EXPERIENCES, OR RESERVE TABLES AT YOUR FAVORITE BARS. </h3>
+	<a class="landbtn landbtn2" id="closewelcome" href="#">CONTINUE</a>
+</div>
+<div class="bgpopup"></div>
+<script>
+{literal}
+$(document).ready(function() { 
+	jQuery("a#closewelcome").click(function(){
+		jQuery(".bgpopup,.centercontent,.fakeheader").fadeOut();
+	});
+});
+{/literal}
+</script>

@@ -1,0 +1,27 @@
+<div class="entry-accordion" id="pursuit-players">
+    <div class="control-bar">
+        <a class="arrow-top" href="#">&nbsp;</a>
+    </div><!-- END .control-bar -->
+    <div class="entries">
+        <div class="searchBox">
+            
+                <input type="text" value="" id="searchPlayerbox"/>
+                <input type="submit" value="SEARCH" class="searchPursuitPlayer"/>
+            
+        </div><!-- END .searchBox -->
+        <div id="listPlayer" class="listPlayerPursuit">
+            {foreach from=$player key=k item=v}
+			<div class="boxPlayer">
+                 <a class="thumb-small"><img src="{$basedomain}assets/content/thumb_user.jpg"/></a>
+                 <p class="username">{$v.name}</p>
+                 {*}<a class="icons icon_trade" aria-hidden="true" data-icon="&#xe009;" href="#">&nbsp;</a>{/*}
+                 <a class="icons icon_message popup-trade-message" aria-hidden="true" data-icon="&#xe01c;" href="javascript:void(0)" prop="{$v.id}" desc="{$v.name}">&nbsp;</a>
+				
+			</div><!-- END .boxPlayer -->
+            {/foreach}
+        </div><!-- END #listPlayer -->
+    </div><!-- END .entries -->
+    <div class="control-bar control-bottom">
+        <a class="arrow-bottom" href="#">&nbsp;</a>
+    </div><!-- END .control-bar -->
+</div><!-- END .entry-accordion -->

@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/marlboro-hunt-2013/!svn/ver/2038/trunk/marlboro_hunt/templates/application/admin/userManagement
+END
+userManagement_list.html
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/marlboro-hunt-2013/!svn/ver/1098/trunk/marlboro_hunt/templates/application/admin/userManagement/userManagement_list.html
+END
+userManagement_profile.html
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/marlboro-hunt-2013/!svn/ver/2038/trunk/marlboro_hunt/templates/application/admin/userManagement/userManagement_profile.html
+END

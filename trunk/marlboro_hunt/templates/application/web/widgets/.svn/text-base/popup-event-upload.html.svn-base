@@ -1,0 +1,37 @@
+<div class="popup">
+	<div class="popupContainer popupBlack popup-small" id="popup-event-upload">
+        <div class="popupContent contentEventUpload">
+        	<ul class="columns-2">
+                <li class="col2">
+                	<div class="row">
+                    	<input id="upload-file" type="file"/>
+						<a id="fileupload2"></a>
+                    </div>
+                    <div class="row">
+                    	<div id="photo-preview">
+                        </div>
+                    </div>
+
+                </li>
+                
+                <li class="col2">
+                	<div class="row">
+                    	<p style="font-family:Arial, Helvetica, sans-serif; font-size:11px; margin-bottom:10px;">Please be reminded that as per the <a class="showPopup popuptnc" href="#popup-tnc">Terms and Conditions</a>, all photos, images or designs submitted will become the property of PM. Please do not upload or submit any photos, images or designs depicting the act of smoking or showing a lit cigarette or minors (persons less than 18 years old). PM reserves to the right to remove or reject any photo, image or design which it, in its sole and absolute discretion, deems offensive, violates the law or is unsuitable in any other manner. The photo you upload will be subject to moderation.</p>
+                    </div>
+                    <div class="row">
+                    	<a class="landbtn landbtn2" href="#">Save</a>
+                		<a class="landbtn landbtn2" href="#">Back</a>
+                    </div>
+                </li>
+            </ul>
+        </div><!-- END .popupContent -->
+    </div><!-- END .popupContainer -->
+</div><!-- END .popup -->
+{literal}
+<script>
+
+$("#fileupload2").click(function(){
+    $("#upload-file").click();
+});
+</script>
+{/literal}

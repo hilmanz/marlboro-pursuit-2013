@@ -1,0 +1,369 @@
+<div id="video-list" class="universal">
+    <div class="paperNews"></div>
+   {include file="application/web/widgets/left_navigation.html"}
+    <div id="newslist" class="carousel">
+        <ul class="slides">	
+        	 {if $dataEvent}
+        	 {assign var="idxelement" value="2"}
+        	 {assign var="id3element" value="0"}
+			{foreach from=$dataEvent key=k item=val name=foo }
+            
+                 {if $id3element eq  '0'}  
+                 <li class="slidesitem">
+                	<ul class="columns-2 clearfix"> 
+						<li class="col2">
+							<div class="boxVideoBig rotation1" style="z-index:100">
+								<div class="thumbVideoBig">
+									<div class="box-frame">
+										<a class="getDetailContent " href="javascript:void(0)" prop="{$val.id}" theid="{$val.id}"  >
+											<img src="{$basedomain}public_assets/video/{$val.image}" />
+										</a>
+									</div>
+									
+								</div><!-- END .thumbVideoBig -->
+								<div class="captions">
+									<h3>{$val.title}</h3>
+								</div><!-- END .captions -->
+							</div><!-- END .boxVideoBig -->
+						</li>
+						{assign var="id3element" value=$id3element+1}
+				{else}
+					{if $id3element eq '1'}
+					<li class="col2-2">
+					{/if}
+						<div class="boxVideosmall  rotation{$id3element} ">
+							<div class="thumbVideosmall">
+								<div class="box-frame">
+									<a class="getDetailContent " href="javascript:void(0)" prop="{$val.id}" theid="{$val.id}"  >
+										<img src="{$basedomain}public_assets/video/{$val.image}" />
+									</a>
+								</div>
+							</div><!-- END .thumbVideosmall --><br />
+							<div class="captions">
+								<h3>{$val.title}</h3>
+							</div><!-- END .captions -->
+						</div><!-- END .boxVideosmall -->
+					
+					
+					{if $id3element != '1'}
+					</li>
+					{/if}
+					{if $id3element eq '2'}
+						</ul>
+					</li>
+					{/if}
+					{assign var="id3element" value=$id3element+1}
+					{if $id3element > 2}
+						{assign var="id3element" value=0}
+					{/if}
+				{/if}
+			 		
+						
+			{/foreach}
+						
+									<a class="showPopup getVideoAbout" style="display:none" href="#popup-videodetail"  ></a>
+					
+               
+            {/if}
+             <a href="#popup-tnc" class="showPopup tncpopup" style="display:none"></a>
+        </ul><!-- END .slides -->
+	</div><!-- END #prizeList -->
+</div><!-- END #prizePage -->
+
+
+
+<script>
+
+{literal}
+$(document).on('click','.openpopuptnc',function(){
+	$(".tncpopup").trigger("click");
+	$('.scroll-pane').jScrollPane(
+		{
+			showArrows: true,
+			arrowScrollOnHover: true,
+			autoReinitialise: true
+		}
+	);
+})
+
+	function onerrorEvent(img){
+		$(img).attr('src',basedomain+'public_assets/photo_frame.png');
+	}
+	$(document).on('click','.getDetailContent',function(){
+		
+		/* message to wait data */
+			$(".getVideoAbout").trigger('click');
+			$(".thedatadetail").html(" <img style='padding-top:150px' src='"+basedomain+"assets/images/loader.gif' /> ");
+			$(".detailusercontent").html(" <img style='padding-top: 10px; padding-left: 0;' src='"+basedomain+"assets/images/loader.gif' /> ");
+			$(".commentuserdetail").html("  "); 
+			$("#thecommentcontentid").hide();
+		/* message to wait data */
+		
+		var theid = $(this).attr('theid');
+			$(".judulVideo").html("");
+			 
+			$.post(basedomain+'content/detail',{id:theid},function(arr){
+				 
+				
+				if(arr.result){
+					var data = arr.article;
+				
+					var html = viewgallerycontent(data,'video');					
+					var usercontent = viewdetailusercontent(arr.article);
+					
+					
+					var commenthtml = viewcomments(arr.comment);
+					
+					$(".thedatadetail").html(html);
+					//$(".detailusercontent").html(usercontent);
+					$(".detailusercontent").html("");
+					$(".judulVideo").html("<h3>"+arr.article.title+"</h3>");
+					$(".commentuserdetail").html(commenthtml);
+					$("#thecommentcontentid").show();
+					
+					$(".thecontentidcomment").val(theid);
+					
+					
+					var updateoptions = {
+					dataType:  'json', 	
+					beforeSubmit: function(data) { 
+							 
+							$(".messagesendingcontent").html(locale.pleasewait);		
+							 
+					},
+					success : function(data) {		
+							$(".messagesendingcontent").html('');
+							if(data.result){
+									 
+										var htmlThanks ="";
+										htmlThanks = "<p class='postSucces'>"+locale.postcommentorreply+"</p>";
+										$(".wakeboarding-thanks").trigger("click");
+										$(".content").html(htmlThanks);
+										$("#fancybox-close").addClass("fancybox-close-postsucces");
+										$(document).on('click', '#fancybox-close, #fancybox-overlay', function(){
+											location.reload();
+										})
+								 							
+							}
+								 
+					}
+					};					
+
+					$("#thecommentcontentid").ajaxForm(updateoptions);
+					
+					 
+					//$(".getEvent").trigger('click');
+					reinitpopupevent();
+				}
+				
+				
+			},"JSON");
+			
+		
+	})
+
+	 
+/* blow of this function goto the js helper */
+	 /* this function same as event */
+	 $(document).on('click','.detailimageplease',function(){
+	 
+		var fullimage = $(this).attr('fullimage');
+		var gid = $(this).attr('gid');
+		
+		$(".allimagesdetail").fadeOut();
+		$(".thiscontentfullimage_"+gid).fadeIn();
+	 });
+	
+ 
+	function viewgallerycontent(data,imagepaths){
+			var html="";
+			if(data){
+					
+				 
+						 
+						if(data.hasfile){
+								html+="<div id='video-box' class='video-labor-content' >";
+								html+="	 <video id='video-labor' class='video-js vjs-default-skin' controls='controls' preload='none' width='100%' height='298' poster='"+basedomain+"public_assets/"+imagepaths+"/"+data.image+"'  data-setup=''  >";
+								html+="		<source src='"+basedomain+"public_assets/"+imagepaths+"/"+data.file+"' type='video/mp4' />";
+								var vid = data.file;
+							 	var ogv = vid.split(".");
+							 	html+="		<source src='"+basedomain+"public_assets/"+imagepaths+"/"+ogv[0]+".ogv' type='video/ogv' />";
+							 	html+="		<source src='"+basedomain+"public_assets/"+imagepaths+"/"+ogv[0]+".ogg' type='video/ogg' />";
+							 	html+="		<source src='"+basedomain+"public_assets/"+imagepaths+"/"+ogv[0]+".webm' type='video/webm' />";
+								  
+								html+="	  </video>";
+								html+="</div> ";
+							 
+						}
+						 
+				 
+								
+						 
+						html+=" <div class='eventStats'>";
+						html+="    <h3 class='event-title'>"+data.title+"</h3>";
+						html+="    <h3 class='likecount'>  ";
+						/*html+="    <a href='javascript:void(0)' class='addfavoritearticle' theid='"+data.id+"' totalvalue='"+data.favorite+"' >LIKE</a>  <span class='thisfavvalues'>("+data.favorite+")</span>  ";*/
+						if(data.commentcount > 1) html+="     COMMENTS  <span class='values'>( "+data.commentcount+" )</span> ";
+						else html+="     COMMENT  <span class='values'>( "+data.commentcount+" )</span> ";
+						if(data.views > 1) html+="     VIEWS  <span class='values'>( "+data.views+" )</span> ";
+						else html+="     VIEW  <span class='values'>( "+data.views+" )</span> ";
+						html+="    </h3>";
+						html+="  </div>";
+			}
+			return html;		 
+	}
+	
+	/* this function same as event */
+	function viewcomments(comment){
+	
+				var html="";
+			
+			if(comment){
+				
+				$.each(comment,function(i,e){
+					html+="<div class='row comment-child'>";
+					html+="             <div class='thumb-user'>";
+					if(e.img)html+="                <a href='#'><img src='"+basedomain+"public_assets/user/photo/"+e.img+"' /></a>";
+					else html+="                <a href='#'><img src='"+basedomain+"public_assets/user/photo/default.jpg' /></a>";
+					html+="            </div>";
+					html+="            <div class='entry-right'>";
+					html+="               <div class='entry-header'>";
+								html+="<h3 class='username'>";
+					html+="<a href='#'>"+e.name+"</a>";
+					html+="<span class='commentafternames' >"+e.comment+"</span>";
+					html+="</h3>";		
+					html+="               </div> ";
+
+					html+="               <div class='entry-body'>";				
+					html+="                   <span class='comment-date'>Posted on "+e.date+"</span>";
+					html+=" 					<a href='javascript:void(0)' class='replyBtn replybuttontrigger' replyid='"+e.id+"' > reply </a> ";
+					html+="               </div> ";
+					html+="           </div> ";
+					
+					html+="                   <span class='allreplybox replyboxtriggered_"+e.id+"' style='padding-left: 10px;display:none' ><input type='text' style='width: 169px; height: 10px; font-size: 14px;margin-right:10px; ' name='replytxt' class='replytxt ml10 mr50' /><a  parentid='"+e.id+"'  cid='"+e.contentid+"'  href='javascript:void(0)' class='addReplytothiscomment' > Reply </a><p style='margin-left:60px;width:225px;color:#000;margin-top:10px; font-size:9px;'>Comments are subject to moderation. PM reserves the right to reject or remove any comment as per the <a class='showPopup openpopuptnc' href='#'>Terms and Condition</a></p></span>";
+					html+="       </div> ";
+						html+="<div class='row   repycommentlists_"+e.id+"' style='padding-left:50px'>";
+						
+						if (e.replycomment){
+						html+="<div class='row replycomment'>";
+						$.each(e.replycomment,function(index,element){
+							html+="<div class='row comment-child'>";
+							html+="             <div class='thumb-user'>";
+							if(element.img)html+="                <a href='#'><img src='"+basedomain+"public_assets/user/photo/"+element.img+"' /></a>";
+							else html+="                <a href='#'><img src='"+basedomain+"public_assets/user/photo/default.jpg' /></a>";
+							html+="            </div>";
+							html+="            <div class='entry-right'>";
+							html+="               <div class='entry-header'>";
+							html+="<h3 class='username'>";
+							html+="<a href='#'>"+element.name+"</a>";
+							html+="<span class='commentafternames' >"+element.comment+"</span>";
+							html+="</h3>";					
+							html+="</div> ";
+							html+="               <div class='entry-body'>";
+							//html+="                   <p>"+e.comment+"</p>";
+							html+="                   <span class='comment-date'>Posted on "+element.date+"</span>";
+							
+							html+="               </div> ";
+							html+="           </div> ";
+							html+="           </div> ";
+							
+						})
+						html+="           </div> ";
+					}
+						html+="       </div> ";
+				});
+				
+				
+			}
+		return html;
+	}
+	
+	
+	
+	/* this function same as event */
+	function viewdetailusercontent(contentdata){
+		
+		var html="";
+		if(contentdata){
+					html+=" <div class='thumb-user'> ";
+					if(contentdata.author.img)html+="                <a href='#'><img src='"+basedomain+"public_assets/user/photo/"+contentdata.author.img+"' /></a>";
+					else html+="                <a href='#'><img src='"+basedomain+"public_assets/user/photo/default.jpg' /></a>";
+					html+="                                </div> ";
+					html+="                               <div class='entry-right'> ";
+					html+="                                   <div class='entry-header'> ";
+					html+="                                        <h3 class='username'><a href='#'>"+contentdata.author.name+"</a></h3> ";
+					html+="                                   </div>  ";
+					html+="                                    <div class='entry-body'> ";
+					html+= 										contentdata.content ;
+					html+="                                       <span class='comment-date'>Posted on "+contentdata.posted_date+"</span> ";
+					//html+=" <a class='replyBtn'>Reply</a>";
+					html+="                                     </div>  ";
+					html+="                                    <a href='#' class='replycount'>"+contentdata.commentcount+" Replies</a> ";
+					html+="                                </div>  ";
+		}
+			return html;
+										
+	}
+	
+	/* this function same as event */
+	$(document).on('click','.addfavoritearticle',function(){
+	
+		var thisobject = $(this);
+		var cid = $(this).attr('theid');
+		
+		
+		$.post(basedomain+'content/favorite',{cid:cid},function(data){
+			if(data){
+				var favvalue = parseInt(thisobject.attr('totalvalue'),10);
+				var newvaluefav = favvalue+1 ;
+				thisobject.siblings(".thisfavvalues").html(newvaluefav);
+				thisobject.attr('totalvalue',newvaluefav);
+			}
+		
+		
+		},"JSON");
+	})
+	 
+	$(document).on('click','.addReplytothiscomment',function(){
+		var cid = $(this).attr('cid');
+		var parentid = $(this).attr('parentid');
+		var siblingsobject = $(this).siblings('.replytxt');
+		var comment = $(this).siblings('.replytxt').val();
+		if(comment=='') return false;
+		$.post(basedomain+'content/comment',{cid:cid,parentid:parentid,comment:comment},function(data){
+				if(data){
+						var comhtml ="";
+					
+					 
+						var htmlThanks ="";
+						htmlThanks = "<p class='postSucces'>"+locale.postcommentorreply+"</p>";
+						$(".wakeboarding-thanks").trigger("click");
+						$(".content").html(htmlThanks);
+						$("#fancybox-close").addClass("fancybox-close-postsucces");
+						$(document).on('click', '#fancybox-close, #fancybox-overlay', function(){
+							location.reload();
+						})
+					siblingsobject.val("");
+				}
+		},"JSON");
+		
+		
+	});
+	var statreply = false;
+	$(document).on('click','.replybuttontrigger',function(){
+			var replyid = $(this).attr("replyid");
+			$(".allreplybox").hide();
+			 
+			$(".replyboxtriggered_"+replyid).show();
+			 
+	});
+	
+	$(document).on('click',".video-labor-content",function(){
+		console.log('earn point mekans');
+	
+	});
+
+</script>
+{/literal}
+
+ 

@@ -1,0 +1,49 @@
+<div id="BrandHostes">
+	<div class="title_box">
+        <div class="the-title fl">
+            <h2>Brand Hostess</h2>
+        </div>
+     </div>
+	<table class="gridtable">
+        <tr>
+        	<td>1</td>
+            <td>Name 1</td>
+            <td>H34839</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>Name 1</td>
+            <td>H34839</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>Name 1</td>
+            <td>H34839</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>Name 1</td>
+            <td>H34839</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>Name 1</td>
+            <td>H34839</td>
+        </tr>
+        <tr>
+            <td>6</td>
+            <td>Name 1</td>
+            <td>H34839</td>
+        </tr>
+        <tr>
+           <td>7</td>
+            <td>Name 1</td>
+            <td>H34839</td>
+        </tr>
+        <tr>
+           <td>8</td>
+            <td>Name 1</td>
+            <td>H34839</td>
+        </tr>
+     </table>
+</div><!--end#BrandHostes-->

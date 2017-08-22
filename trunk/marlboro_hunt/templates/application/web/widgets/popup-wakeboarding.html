@@ -1,0 +1,29 @@
+<div class="popup">
+	<div class="popupContainer popupBlack popup-small" id="popup-wakeboarding">
+        <div class="popupContent contentWakeboarding detailChallenge">
+        	
+        </div><!-- END .popupContent -->
+    </div><!-- END .popupContainer -->
+</div><!-- END .popup -->
+
+{literal}
+<script>
+	$("#wake1").click(function(event) {
+		event.preventDefault();
+		$(this).addClass("addborder");
+		$("#wake2").removeClass("addborder");
+	});
+	$("#wake2").click(function(event) {
+		event.preventDefault();
+		$(this).addClass("addborder");
+		$("#wake1").removeClass("addborder");
+	});
+	
+	
+	
+	/*
+	$("#fileupload").click(function(){
+		$("#upload-file").click();
+	});*/
+</script>
+{/literal}

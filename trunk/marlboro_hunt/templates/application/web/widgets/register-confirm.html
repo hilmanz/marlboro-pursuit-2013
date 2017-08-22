@@ -1,0 +1,105 @@
+<script>
+	
+	{literal}
+	
+	
+	$(document).on('click','#deletegiid',function(){
+		var tokenid = $('#tokenid').val();
+		//alert(tokenid);
+		$.post(basedomain+"register/ajax" ,{remove:true, token:tokenid}, function(data){
+			var status = data.status;
+			if (status == true || status == 'true'){
+				
+				$(".trigun").trigger("click");
+				$(".msgpopupglobal").html(locale.succesdeletepoto);
+				$('.imagelistgiid').html('');
+			}else{
+				$(".trigun").trigger("click");
+				$(".msgpopupglobal").html(locale.faileddeletepoto);
+			}
+			
+			//window.location.href = basedomain+'register/confirm';
+			
+		},"JSON");
+	});
+	
+				
+	{/literal}
+</script>
+<div class="bg_transparent-reg">
+<div id="registration2" class="registration">
+	<div class="head">
+    	<h3>Registration is free. Join us and earn access to exclusive content and special offers.<br />
+To complete the registration process, a copy of a valid government-issued id has to be submitted for age verification. Upon verification, your username and password will be sent to you.
+For accuracy of registered data ,please review and confirm the details provided. </h3>
+    </div><!-- END .head -->
+    <div class="section">
+    	<form id="reg3" action="{$basedomain}register/complete" class="theForm" method="POST">
+        <span class="imagelistgiid" >
+		{if $dataFile.filename !=''}<h3>Please attach a soft copy of your VALID government-issued ID (GIID). <a href="#popup-giidlist" class="showPopup">SEE valid GIID List</a> | <a href="#" class="orange">file attached : {$dataFile.filename}</a> | {if $dataFile.filename !=''}<a href="#" id="deletegiid">delete</a>{/if}</h3>{/if}
+        </span>
+        
+<h3>To complete the profile update process, please confirm the following:</h3>
+		<h2>By clicking the "CONFIRM" button below, I here by declare and confirm that:</h2>
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+            <td valign="top">1.</td>
+            <td valign="top">The information I provided is accurate.</td>
+            </tr>
+            <tr>
+            <td valign="top">2.</td>
+            <td valign="top">I am an adult smoker 18 years old or above.</td>
+            </tr>
+            <tr>
+            <td valign="top">3.</td>
+            <td valign="top">I am a resident of the Philippines.</td>
+            </tr>
+            <tr>
+            <td valign="top">4.</td>
+            <td valign="top">The contact number(s) and email address I provided are used personally and exclusively by me and cannot be accessed or shared by other persons.</td>
+            </tr>
+            <tr>
+            <td valign="top">5.</td>
+            <td valign="top">I have read, and I affirm my agreement to, the Terms and Conditions and Privacy Statement and Consentof this Website.</td>
+            </tr>
+            <tr>
+            <td valign="top">6</td>
+            <td valign="top">I affirm giving my consent to PMFTC Inc. ("PM") to use my personal information as stated in the Privacy Statement and Consent, including but not limited to:</td>
+            </tr>
+        </table>
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        	<tr>
+            <td style="padding-left:40px;" valign="top">a)</td>
+            <td valign="top">Storingand using my personal information to allow PM and its affiliates and duly authorized representatives to verify my age and identity in compliance with applicable laws and internal policies and/or to contact me;</td>
+            </tr>
+            <tr>
+            <td style="padding-left:40px;" valign="top">b)</td>
+            <td valign="top">Providing me, using mail, email, SMS, telephone, etc., with communications related to tobacco products, including but not limited to information and material on brand launches, packaging changes, events, marketing activities, regulation of tobacco products and political topics that may be of relevance to tobacco products;</td>
+            </tr>
+            <tr>
+            <td style="padding-left:40px;" valign="top">c)</td>
+            <td valign="top">Processing my information in countries other than the country in which I live (for example, locating the database in one country and accessing the database remotely from another); and</td>
+            </tr>
+            <tr>
+            <td style="padding-left:40px;" valign="top">d)</td>
+            <td valign="top">Disclosing my personal information to service providers for the above purposes, to PM affiliates to do the above for their own purposes, and (if required by law) to relevant authorities. .</td>
+            </tr>	
+          
+        </table>
+        <div class="row rowSubmit">
+			<input type="hidden" id="tokenid" name="tokenid" value="{if $dataFile.id !=''}{$dataFile.id}{elseif $dataFile.emailtoken !=''}{$dataFile.emailtoken}{/if}">
+			<input type="hidden" name="tokenConfirm" value="1">
+			<input type="hidden" name="email_token" value="{$email_token}">
+        	<input type="submit" value="CONFIRM" class="button btnRed confirmbuttonpop" name="submit"/>
+        </div><!-- END .rowSubmit -->
+        </form>
+        <div class="step">
+        	<a class="arrow_l">&nbsp;</a>
+        	<a class="page1 btnStep fl" href="#"> 1</a>
+        	<a class="page2 btnStep" href="#"> 2</a>
+        	<a class="page3 btnStep fr current"> 3</a>
+        	<a class="arrow_r">&nbsp;</a>
+        </div><!-- END .step -->
+    </div><!-- END .section -->
+</div><!-- END .registration -->
+</div>

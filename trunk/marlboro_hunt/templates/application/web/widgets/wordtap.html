@@ -1,0 +1,49 @@
+<div id="gamesPage">
+	<div class="papergame"></div>
+	<div class="gamesPage imhide" id="gamesPageDetail">
+        <ul class="columns-2 clearfix">
+            <li class="col2">
+            	<div class="thumbGameBig">
+					<a href="javascript:void(0)" class="checkFlash"><img src="{$basedomain}assets/content/game_wordtap.png" /></a>
+					
+                </div><!-- END .boxPaper -->
+            </li>
+            <li class="col2">
+            	<div class="gameDesc wordMaster">
+                    <h1>WORD MASTER</h1>
+                     <p>Complete the phrase <span class="red">DON'T BE A MAYBE</span> by clicking on the words in the correct sequence. </p>
+                    <p>Perfect phrase: correct sequence of the same colored words</p>
+                    <p>Regular phrase: correct sequence with different colored words</p>
+                    <p>Complete the phrase as many times as possible within the given time to win. Get deducted 10 points every time you click on the words in the wrong sequence.</p>
+                    <!--<a class="btn_red" href="{$basedomain}games/play/wallbreaker">PLAY NOW</a>-->
+                    <a class="btnRed1 checkFlash" href="javascript:void(0)">PLAY NOW</a>
+                    <a class="btnRed2 showPopups" href="#popup-leaderboard">LEADERBOARD</a>
+                </div><!-- END .gameDesc -->
+            </li>
+        </ul>
+    </div><!-- END .gamesPage -->
+</div><!-- END #gamesPage -->
+
+{include file="application/web/widgets/popup_leaderboard_wordtap.html"}
+{include file="application/web/widgets/popup-full-mechanics-wordtap.html"}
+<script>
+	{literal}
+	
+	$(document).on('click', '.checkFlash', function(){
+		var version = getFlashVersion().split(',').shift();
+		var html ="";
+		if(version < 11){
+		 
+			html += locale.flashplayerrequired;
+			$(".contentmyaccount").html(html);
+			$(".my-account-profile").trigger("click");
+			//$(".confirmTitle").html('Flash Player');
+			
+		}else{
+			window.location.href=basedomain+'games/play/wordmaster';
+			
+		}
+	})
+	
+	{/literal}
+</script>

@@ -1,0 +1,69 @@
+<div id="thisorthatPage">
+	<div class="thisorthatPage">
+        <ul class="columns-content clearfix">
+            <li class="col-sidebar">
+                <div class="titlePaper">
+                    <h1><span class="red">THIS</span> <span class="black">OR</span> <span class="red">THAT</span></h1>
+                </div><!-- END .titlePaper -->
+				<div class="row thisorthatEntry" >
+<<<<<<< .mine
+				<h6>More than just making decisions, moving forward entails acting upon them.</h6>
+<h6>Every two weeks, we'll give you two choices-let go of your MAYBE and show us how you would make either one a reality. Take a photo of yourself during the experience! Upload it here so you can share it with the MARLBORO community and inspire others to let go of their own MAYBE.</h6>
+<h6>Whoever submits the best photo for every theme will win a digital camera.</h6>
+
+<h6>Your participation merits a letter for The Pursuit. You can only get one letter per theme.</h6>
+
+=======
+				<h6>THIS OR THAT </h6>
+				<h6>More than just making decisions, moving forward entails acting upon them.</h6>
+				<h6>Every two weeks, we’ll give you two choices—let go of your MAYBE and show us how you would make either one a reality. Take a photo of yourself during the experience! Upload it here so you can share it with the MARLBORO community and inspire others to let go of their own MAYBE.</h6>
+				<h6>Whoever submits the best photo for every theme will win a digital camera.</h6>
+				<h6>Your participation merits a letter for The Pursuit. You can only get one letter per theme.</h6>
+>>>>>>> .r779
+				</div>
+                <div class="sideBar">
+                    <div class="be-marlboro"></div>
+                </div><!-- END .sideBar -->
+            </li><!-- END .col-sidebar -->
+            <li class="col-main">
+            	<div class="centerButton">
+                    <div class="line1"></div>
+                    <div class="line2"></div>
+
+				{if $eventdata}
+              	  <h1>MAKE A DECISION</h1>
+
+                    <ul class="columns-3 clearfix">
+                        <li class="col3">
+                            <h3 class="centerTextBox">Upload a Picture Yourself<br />{$conditional[0].description}</h3>
+                            <a class="whiteBtns showPopup condition" href="#popup-pose-image-upload"  condition='{$conditional[0].button}' >{$conditional[0].button}</a>
+                        </li><!-- END .col3 -->
+                        <li class="col3">
+                             <h3 class="centerTextBox">&nbsp;</h3>
+           				     <h2>OR</h2>
+                        </li><!-- END .col3 -->
+                        <li class="col3">
+                            <h3 class="centerTextBox">Upload a Picture Yourself<br />{$conditional[1].description}</h3>
+                            <a class="whiteBtns showPopup condition" href="#popup-play-image-upload" condition='{$conditional[1].button}' >{$conditional[1].button}</a>
+                        </li><!-- END .col3 -->
+                    </ul><!-- END .columns-3 -->
+					{else}
+						 <h1>THERE IS NO WEEK'S DECISION</h1>
+					{/if}
+                </div>
+            </li><!-- END .col-main -->
+        </ul>
+    </div><!-- END .dyoshirtPages -->
+</div><!-- END #dyoshirtPages -->
+{include file="application/web/widgets/popup_play_image_upload.html"}
+{include file="application/web/widgets/popup_pose_image_upload.html"}
+
+{literal}
+	<script>
+		$(document).on('click','.condition',function(){
+			var buttoncondition = $(this).attr('condition');
+			$('.buttoncondition').html(buttoncondition);			
+		});
+	</script>
+	
+{/literal}

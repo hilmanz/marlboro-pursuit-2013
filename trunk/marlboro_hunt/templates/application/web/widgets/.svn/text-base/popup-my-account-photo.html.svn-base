@@ -1,0 +1,44 @@
+<div class="popup">
+	<div class="popupContainer popupBlack popup-small" id="popup-my-account-photo">
+        <div class="popupContent contentmyaccountphoto">
+			<div class='popup-title'>
+			          <h3>Upload Photo22</h3>
+			     </div>
+			 	<div class=''>
+					<form action="{$basedomain}account/changesphoto" method='POST' enctype='multipart/form-data' id='formuploadphotoprofile' >
+			         	<div class='row'>
+			         	<p>Please be reminded that as per the <a href="#popup-tnc" class="showPopup popuptnc">Terms and Conditions</a>, all photos, images or designs submitted will become the property of PM. No photos of minors allowed. The photo you upload will be subject to moderation.</p>
+			         	<input type='file' name='image' id='imgInpProfile'/>
+			    		    <p class='infoText'>Maximum File Size of 250KB</p>
+			            </div>
+			             <div class='row'>
+			           	<div id='photo-preview'>
+			           	<img id='previewprofile' src='#' alt='your image' />
+			                </div>
+			             </div>
+			            <div class='row rowSubmit' >
+			                <input type='submit' class='button btnRed' value='SAVE'>
+			            </div>
+			</form></div>
+        </div><!-- END .popupContent -->
+    </div><!-- END .popupContainer -->
+</div><!-- END .popup -->
+<script>
+{literal}
+function readURLProfile(input) {
+				if (input.files && input.files[0]) {
+					var reader = new FileReader();
+					reader.onload = function (e) {
+						$('#previewprofile').attr('src', e.target.result);
+						$('#previewprofile').attr('width', '400px');
+						$('#previewprofile').attr('height', '200px');
+					}
+					 reader.readAsDataURL(input.files[0]);
+				}
+			}
+			
+			$("#imgInpProfile").change(function(){
+				readURLProfile(this);
+			});
+{/literal}
+</script>

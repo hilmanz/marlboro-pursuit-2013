@@ -1,0 +1,102 @@
+
+<div id="about-page" class="universal">
+	<div class="landing-page">
+        <ul class="columns-3 clearfix">
+            <li class="col3">
+                <div class="box2">
+                    <div class="thumbNewsLanding">
+                        <a class="imgnews" href="{$basedomain}news/detail/">
+                            <img src="{$basedomain}assets/content/phase4/news/img-video.png" />
+                        </a>
+                    </div><!-- END .thumbNewsLanding -->
+                    <div class="entry-box">
+                    	<h2>VIDEO</h2>
+                        <h4>{$landingData.news.content|@html_entity_decode}</h4>
+                    	<a href="{$basedomain}video/" class="landbtn landbtn1">READ MORE</a></h3>
+                    </div>
+                </div><!-- END .box2 -->
+            </li>
+            <li class="col3">
+                <div class="box2">
+                    <div class="thumbNewsLanding">
+                        <a class="imgnews" href="{$basedomain}event/past/">
+                            <img src="{$basedomain}public_assets/eventManagement/{$landingData.event.image}" />
+                        </a>
+                    </div><!-- END .thumbNewsLanding -->
+                    <div class="entry-box">
+                    	<!--<h2><span class="red">MARLBORO</span> LABOR DAY EVENT</h2>-->
+                    	<h2>{$landingData.event.title}</h2>
+                    <a href="{$basedomain}event/past/" class="landbtn landbtn1">SEE ALL ALBUMS</a>
+                    </div>
+                </div><!-- END .box2 -->
+            </li>
+            <li class="col3">
+                <div class="box2">
+                    <div class="thumbNewsLanding">
+                        <a class="imgnews" href="{$basedomain}news/detail/">
+                            <img src="{$basedomain}public_assets/news/{$landingData.news.image}" />
+                        </a>
+                    </div><!-- END .thumbNewsLanding -->
+                    <div class="entry-box">
+                    	<h2>{$landingData.news.title}</h2>
+                        <h4>{$landingData.news.content|@html_entity_decode}</h4>
+                    	<a href="{$basedomain}news/detail/" class="landbtn landbtn1">READ MORE</a></h3>
+                    </div>
+                </div><!-- END .box2 -->
+            </li>
+        </ul>
+    </div><!-- END .landingPage -->
+</div><!-- END #landingPage -->
+<div id="historyPage">
+	<div class="universal">
+		<h1>BRAND HISTORY</h1>
+        <div id="historyItem" class="carousel">
+            <ul class="slides">	
+                <li class="historyItem">
+                    <img src="{$basedomain}assets/content/phase4/history/1.jpg" />
+                    <div class="caption">
+                    	<h1>1955</h1>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    </div><!-- END .caption -->
+                </li><!-- END .historyItem -->
+                <li class="historyItem">
+                    <img src="{$basedomain}assets/content/phase4/history/1.jpg" />
+                    <div class="caption">
+                    	<h1>1959</h1>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    </div><!-- END .caption -->
+                </li><!-- END .historyItem -->
+                <li class="historyItem">
+                    <img src="{$basedomain}assets/content/phase4/history/1.jpg" />
+                    <div class="caption">
+                    	<h1>1964</h1>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    </div><!-- END .caption -->
+                </li><!-- END .historyItem -->
+                <li class="historyItem">
+                    <img src="{$basedomain}assets/content/phase4/history/1.jpg" />
+                    <div class="caption">
+                    	<h1>1974</h1>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    </div><!-- END .caption -->
+                </li><!-- END .historyItem -->
+            </ul><!-- END .slides -->
+        </div><!-- END #historyItem -->
+        <div id="historyItemDate">
+            <ul class="slides">	
+                <li class="historyItemDate">
+                   <h4>1955</h4>
+                </li><!-- END .historyItemDate -->
+                <li class="historyItemDate">
+                   <h4>1959</h4>
+                </li><!-- END .historyItemDate -->
+                <li class="historyItemDate">
+                   <h4>1964</h4>
+                </li><!-- END .historyItemDate -->
+                <li class="historyItemDate">
+                   <h4>1974</h4>
+                </li><!-- END .historyItemDate -->
+            </ul><!-- END .slides -->
+        </div><!-- END #historyItem -->
+    </div>
+</div>

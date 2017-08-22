@@ -1,0 +1,160 @@
+
+<script>
+{literal}
+
+		$(document).on('change','.n_status',function(){
+		var userid = $(this).attr('proper');
+		var id = $(this).attr('prop');
+		var n_status = $(this).val();
+		var bucketid = $(this).attr('bucketid');
+
+			$.post("index.php?s=activity&act=ajax" ,{id:id, userid:userid, n_status:n_status,bucketid:bucketid}, function(data){
+				if (data.status == true){
+					
+						if (n_status == 1){
+							alert('Success Verified');
+							//else alert('Success Verified Point exist');
+							
+						}
+						if (n_status == 0){
+							alert('Unverified');
+						}
+					}
+				
+			},"JSON");
+		});
+		
+{/literal}
+</script>
+
+<div class="theContent">
+
+    <div class="theTitle">
+        <h2>{$folder} List</h2>
+		
+		 <!-- <a href="index.php?s=dyo&act=getdyoreport&article_type=&winStatus={$winStatus}&startdate={$startdate}&enddate={$enddate}" class="btn btn_document"><span>Download XLS</span></a> -->
+    </div><!--contenttitle-->
+    <div class="tableoptions">        
+    
+	<form method="GET" action="">
+		
+        <input type="text" name="search" value="{$search}"/>
+        <input type="hidden" name="s" value="{$folder}" />
+        <input type="hidden" name="cari" value="cari" />
+     &nbsp &nbsp
+		<!-- <select id="winStatus" name="winStatus">
+			<option value="0" {if $winStatus == ""} selected="selected" {/if} >All</option>
+			<option value="2" {if $winStatus == 2} selected="selected"{/if} >Winner</option>
+			<option value="1" {if $winStatus == 1}  selected="selected"{/if} >Not a Winner</option>
+		</select> -->
+
+        <!-- <select name="article_type">
+            <option value=""> - Type - </option>
+            {section name=i loop=$typelist}
+            {if $typelist[i].id == $article_type}<option value="{$typelist[i].id}" selected>{$typelist[i].content_name}</option>
+            {else}<option value="{$typelist[i].id}">{$typelist[i].content_name}</option>
+            {/if}
+            {/section}
+        </select> -->
+       <span>Date Range</span>
+        <input type="text" name="startdate" value="{$startdate}" class="datepicker radius3" />
+       <span>&nbsp to &nbsp</span>
+        <input type="text" name="enddate" value="{$enddate}" class="datepicker radius3" />&nbsp &nbsp
+        <input type="submit" value="GO" class="stdbtn btn_orange" />
+		
+		<div style="float:right"><a href="{$basedomain}admin/index.php?s=activity&act=pledge" ><input type="button" value="Pledge" class="stdbtn btn_orange" /></a>
+		<a href="{$basedomain}admin/index.php?s=activity&act=getMoveForwardReport" ><input type="button" value="Download XLS" class="stdbtn btn_orange" /></a>
+		</div>
+		<div style="clear:both"></div>
+    </form>
+    </div><!--tableoptions-->	
+    <table cellpadding="0" cellspacing="0" border="0" id="table1" class="stdtable">
+        <colgroup>
+            <col class="con0" style="width: 4%" />
+            <col class="con1" />
+            <col class="con0" />
+            <col class="con1" />
+            <col class="con0" />
+            <col class="con1" />
+        </colgroup>
+        <thead>
+            <tr>
+                <th class="head0">No</th>
+                <th class="head1">Name</th>
+                <th class="head1">Email</th>
+                <th class="head1">Category</th>
+				<th class="head1">Task</th>
+				<th class="head1">Files</th>
+				<th class="head1">Link</th>
+                <th class="head1">Date</th>
+                <th class="head1">Date Verified</th>
+                <th class="head1">Status</th>
+               <!--  <th class="head1">Status</th> -->
+			</tr>
+        </thead>
+        <tbody>
+            {foreach from=$list key=k item=v}
+            <tr>
+                <td width="10">{$v.no}&nbsp;</td>
+                <td>{$v.name}&nbsp{$v.last_name}</td>
+                <td>{$v.email}</a></td>
+                <td>{$v.category}</a></td>
+				<td>{$v.question}</td>
+				<td>
+					{if $v.typealbum==3}
+						{if $v.link}
+						<div  class='articleimagedetail' ><iframe width='180' height='135' src='https://www.youtube.com/embed/{$v.video_thumbnail}' frameborder='0' allowfullscreen></iframe></div>
+						{else}
+						<video width="180" height="135" controls>
+							<source src="{$baseurl}public_assets/moveForward/{$v.files}" type="video/mp4">
+							<object data="{$baseurl}public_assets/moveForward/{$v.files}" width="180" height="135">
+								<embed src="{$baseurl}public_assets/moveForward/{$v.files}" width="180" height="135">
+							</object>
+						</video>
+						<a href="{$basedomain}admin/index.php?s=activity&act=downloadvideo&video={$v.files}">download</a>
+						{/if}
+					{else}
+						<a class="showPopup" id="{$v.otherid}" href="#imageMoveForward{$k}"><img src="{$baseurl}public_assets/moveForward/{$v.files}" width="75px" />
+					{/if}
+					
+				</td>
+				<td><div class="linkList">{$v.link}</div></td>
+				<td>{$v.created_date}</td>
+				<td>{$v.dateverified}</td>
+				<td>
+						<form method="POST" action="">
+							
+							<select class="n_status" prop="{$v.id}" proper="{$v.userid}"  name="n_status" bucketid="{$v.bucketid}">
+								<option value="1" {if $v.n_status == 1} selected="selected" {/if} >Verified</option>
+								<option value="0" {if $v.n_status == 0} selected="selected" {/if} >Unverified</option>
+								<option value="2" {if $v.n_status == 2} selected="selected" {/if} >Rejected</option>
+								<input type="hidden" id="{$v.id}" name="test" value="">
+								
+							</select>	
+									
+						</form>
+					<!-- <nobr>
+						<input type="checkbox" class="test" id="{$v.userid}" name="test" value="" {if $v.n_status == 2}checked="checked">{/if}
+						<input type="hidden" id="{$v.userid}" name="test" value=""></nobr> -->
+					</td>
+				<div id="imageMoveForward{$k}" style="display:none">
+					<img src="{$baseurl}public_assets/moveForward/{$v.files}" width="400px" height="300px" />		
+				</div>
+			</tr>
+            {/foreach}
+        </tbody>
+    </table>
+    <div class="paging">
+    	{$paging}
+    </div>
+</div><!--theContent-->
+
+
+<div id="popupShirt">
+	<div id="popupHead">
+		<h5>DYO SHIRT</h5>
+    </div>
+	<div class="inicontainernya">
+	
+	</div>
+</div>

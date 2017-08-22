@@ -1,0 +1,83 @@
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/marlboro-hunt-2013/!svn/ver/2243/trunk/marlboro_hunt/com/dashboard/helper
+END
+uActivitiesHelper.php
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/marlboro-hunt-2013/!svn/ver/2243/trunk/marlboro_hunt/com/dashboard/helper/uActivitiesHelper.php
+END
+uDemoHelper.php
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/marlboro-hunt-2013/!svn/ver/2243/trunk/marlboro_hunt/com/dashboard/helper/uDemoHelper.php
+END
+webActivityHelper.php
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/marlboro-hunt-2013/!svn/ver/2243/trunk/marlboro_hunt/com/dashboard/helper/webActivityHelper.php
+END
+userCategoryHelper.php
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/marlboro-hunt-2013/!svn/ver/1178/trunk/marlboro_hunt/com/dashboard/helper/userCategoryHelper.php
+END
+userHelper.php
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/marlboro-hunt-2013/!svn/ver/7/trunk/marlboro_hunt/com/dashboard/helper/userHelper.php
+END
+demographyHelper.php
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/marlboro-hunt-2013/!svn/ver/1332/trunk/marlboro_hunt/com/dashboard/helper/demographyHelper.php
+END
+letterHelper.php
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/marlboro-hunt-2013/!svn/ver/1433/trunk/marlboro_hunt/com/dashboard/helper/letterHelper.php
+END
+googleAnalyticHelper.php
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/marlboro-hunt-2013/!svn/ver/1690/trunk/marlboro_hunt/com/dashboard/helper/googleAnalyticHelper.php
+END
+redeemHelper.php
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/marlboro-hunt-2013/!svn/ver/1345/trunk/marlboro_hunt/com/dashboard/helper/redeemHelper.php
+END
+taskHelper.php
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/marlboro-hunt-2013/!svn/ver/1403/trunk/marlboro_hunt/com/dashboard/helper/taskHelper.php
+END
+uCategoryHelper.php
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/marlboro-hunt-2013/!svn/ver/1345/trunk/marlboro_hunt/com/dashboard/helper/uCategoryHelper.php
+END
+uRegMethodHelper.php
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/marlboro-hunt-2013/!svn/ver/1345/trunk/marlboro_hunt/com/dashboard/helper/uRegMethodHelper.php
+END
+loginHelper.php
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/marlboro-hunt-2013/!svn/ver/433/trunk/marlboro_hunt/com/dashboard/helper/loginHelper.php
+END

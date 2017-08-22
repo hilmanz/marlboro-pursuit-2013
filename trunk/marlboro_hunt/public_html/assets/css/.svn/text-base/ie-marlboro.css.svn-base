@@ -1,0 +1,28 @@
+.ie7 #bg,
+.ie8 #bg{z-index:-1; }
+
+.ie8 #lineHOme3 .line1{
+	height: 2px;
+}
+.ie8 #lineHOme3 .line2{
+	width: 2px;
+}
+.ie7 #fancybox-close,
+.ie8 #fancybox-close{
+	background:url(../images/phase4/close.png) no-repeat;
+	width:45px; height:45px;
+	right:80px;
+	top:20px;
+	display:block;}
+.ie7 .gameDesc
+	{left:-142px;}
+.ie8 #marlboro-register .head,.ie8 #marlboro-registergiid .head,
+.ie7 #marlboro-register .head,.ie7 #marlboro-registergiid .head{
+	padding:135px 0 0;
+}
+.ie8 .select,.ie7 .select{
+	width:60%;
+}
+.ie7 .save-cancel{
+	padding-top:0 !important;
+}

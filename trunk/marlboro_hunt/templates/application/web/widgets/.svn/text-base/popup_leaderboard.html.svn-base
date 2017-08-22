@@ -1,0 +1,72 @@
+<div class="popup">
+	<div class="popupContainer" id="popup-leaderboard">
+        <div class="popupContent">
+        	<div class="popup-title">
+				<h1>LEADERBOARD</h1>
+                <span class="date">AS OF MONDAY, MARCH 11, 2013</span>
+            </div><!--END .entry-title-->
+        	<div class="entry-popup table_leaderboard">
+            	<table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <thead>
+                	<tr>
+                    	<th colspan="2">Name</th>
+                    	<th>Score</th>
+                    </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                  	<td>1.</td>
+                    <td>Robb Parish</td>
+                    <td>24</td>
+                  </tr>
+                  <tr>
+                  	<td>2.</td>
+                    <td>Jhon</td>
+                    <td>20</td>
+                  </tr>
+                  <tr>
+                  	<td>3.</td>
+                    <td>Robb Parish</td>
+                    <td>24</td>
+                  </tr>
+                  <tr>
+                  	<td>4.</td>
+                    <td>Jhon</td>
+                    <td>20</td>
+                  </tr>
+                  <tr>
+                  	<td>5.</td>
+                    <td>Robb Parish</td>
+                    <td>24</td>
+                  </tr>
+                  <tr>
+                  	<td>6.</td>
+                    <td>Jhon</td>
+                    <td>20</td>
+                  </tr>
+                  <tr>
+                  	<td>7.</td>
+                    <td>Robb Parish</td>
+                    <td>24</td>
+                  </tr>
+                  <tr>
+                  	<td>8.</td>
+                    <td>Jhon</td>
+                    <td>20</td>
+                  </tr>
+                  <tr>
+                  	<td>9.</td>
+                    <td>Robb Parish</td>
+                    <td>24</td>
+                  </tr>
+                  <tr>
+                  	<td>10.</td>
+                    <td>Jhon</td>
+                    <td>20</td>
+                  </tr>
+                 </tbody>
+                </table>
+            </div><!--END .entry-popup-->
+        </div><!-- END .popupContent -->
+    </div><!-- END .popupContainer -->
+</div><!-- END .popup -->

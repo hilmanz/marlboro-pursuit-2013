@@ -1,0 +1,75 @@
+
+<div class="theContent">
+
+    <div class="theTitle">
+        <h2>OFFLINE TASK Letter Allocation List</h2>
+		<a  href="index.php?s=thisorthat&act=getreport&article_type={$article_type}&search={$search}&startdate={$startdate}&enddate={$enddate}" class="btn btn_document" ><span>Download XLS</span></a>
+		<!--  <a href="index.php?s=dyo&act=getdyoreport&article_type=&winStatus={$winStatus}&startdate={$startdate}&enddate={$enddate}" class="btn btn_document"><span>Download XLS</span></a> -->
+    </div><!--contenttitle-->
+	<div class="tableoptions">
+	<form method="POST" action="index.php?s={$folder}&act=upload"  enctype="multipart/form-data" 	>
+        <input type="file" name="files" value="">
+        <select  name="campaign" >
+			<option value="minicooper" >minicooper</option>
+			<option value="stranger" >stranger</option>
+			<option value="marlboros" >marlboros</option>
+		</select>
+		<input type="hidden" name="upload" value="minicooper" />         
+        <input type="submit" value="GO" class="stdbtn btn_orange" />
+		 <!-- <a  href="{$basedomain}admin/index.php?s={$folder}&act=downloadreport_old" class="stdbtn " >download xls</a> -->
+    </form>
+	</div>
+    <div class="tableoptions">    
+    
+   <form method="GET" action="">
+        <input type="text" name="search" value="{$search}">
+        <input type="hidden" name="s" value="{$folder}" />
+        <input type="hidden" name="cari" value="cari" />
+   
+       <span>Date Range</span>
+        <input type="text" name="startdate" value="{$startdate}" class="datepicker radius3" />
+       <span>&nbsp to &nbsp</span>
+        <input type="text" name="enddate" value="{$enddate}" class="datepicker radius3" />&nbsp &nbsp
+        <input type="submit" value="GO" class="stdbtn btn_orange" />
+		 <!-- <a  href="{$basedomain}admin/index.php?s={$folder}&act=downloadreport_old" class="stdbtn " >download xls</a> -->
+    </form>
+    </div><!--tableoptions-->	
+	<form method="POST" action="">
+    <table cellpadding="0" cellspacing="0" border="0" id="table1" class="stdtable">
+        <colgroup>
+            <col class="con0" style="width: 4%" />
+            <col class="con1" />
+            <col class="con0" />
+            <col class="con1" />
+            <col class="con0" />
+            <col class="con1" />
+        </colgroup>
+        <thead>
+            <tr>
+                <th class="head1">EVENT</th>
+                <th class="head1">USER EMAIL</th>
+                <th class="head1">CODE ID</th>
+                <th class="head1">CODE</th>
+                <th class="head1">DATE GET LETTER</th>
+    		</tr>
+        </thead>
+        <tbody>
+            {foreach from=$list key=k item=v}
+            <tr>
+              
+                <td><nobr>{$v.histories}</nobr></td>
+                <td><nobr>{$v.email}</nobr></td>
+                <td><nobr>{$v.codeid}</a></nobr></td>
+                <td><nobr>{$v.maskcode}</a></nobr></td>
+				<td><nobr>{$v.datetimes}</nobr></td>
+								
+			</tr>
+            {/foreach}
+        </tbody>
+    </table>
+	</form>
+    <div class="paging">
+    	{$paging}
+    </div>
+</div><!--theContent-->
+

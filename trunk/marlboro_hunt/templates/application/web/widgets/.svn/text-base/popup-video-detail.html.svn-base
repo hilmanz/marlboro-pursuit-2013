@@ -1,0 +1,167 @@
+<div class="popup">
+	<div class="popupContainer" id="popup-videodetail">
+    <div class="popupContent">
+    	<div class="entry-popup popupvideoDetail">
+        	<div class="video-play-popup boxvideo-rotate thedatadetail">
+                
+				{*}
+				<div id="video-box" class="video-labor-content" >
+                     <video id="video-labor" class="video-js vjs-default-skin" controls="controls" preload="none" width="100%" height="298"
+                          poster="{$basedomain}assets/content/thumb_video_kickoff.jpg"
+                          data-setup=""  >
+                        <source src="{$basedomain}assets/video/BE_MARLBORO.mp4" type="video/mp4" />
+                        <source src="{$basedomain}assets/video/BE_MARLBORO.ogg" type="video/ogg" />
+                      
+                      </video>
+                </div><!--END #video-box-->
+				{/*}
+            </div><!--END .video-play-->
+            
+            <div class="eventEntry eventDashboard">
+            	<div class="judulVideo">
+            		<h3>Judul Video</h3>
+                </div>
+				   <div class="scroll-pane">
+						   
+							<div class="commentBox">
+									<div class="comments">
+										 <div class="detailusercontent">
+							   
+										</div><!-- END .detailusercontent -->
+										<div class="row comment-child commentuserdetail">
+											
+										</div><!-- END .row -->
+									</div><!-- END .comments -->
+							</div><!-- END .commentBox -->
+							
+						</div><!-- END .scroll-pane -->
+                        <div class="commentBox">
+                            <div class="reply-box">					
+                                <form class="thecomment" method="POST" action="{$basedomain}content/comment" id="thecommentcontentid" >
+                                    <div class="messagesendingcontent" style="display:none" ></div>
+                                    <textarea name="comment" class="thecommentcontent" placeholder="Type your comment here" ></textarea>
+                                    <input name="usertagging" class="usertagging" type="hidden" />
+                                    <input name="usertaggingnames" class="usertaggingnames" type="hidden" />
+                                    
+                                    <input type="hidden" name="cid" value="-1" class="thecontentidcomment" />
+                                    <input class="commentSubmitPost" type="submit" value="&nbsp;" style="right:10px"  />
+                                </form>
+                                <div style="position:relative;width:300px" class="taggingusers" ></div>
+                            </div><!-- END .reply-box -->
+                             <p style='margin:-10px 0;font-size:10px; color:#000;'>Comments are subject to moderation. PM reserves the right to reject or remove any comment as per the <a href='#popup-tnc' class='showPopup popuptnc'>Terms and Conditions</a></p>
+                        </div><!-- END .commentBox -->
+            </div><!-- END .eventEntry -->
+                        
+		</div><!--END .entry-popup-->
+    </div><!-- END .popupContent -->
+  </div><!-- END .popupContainer -->
+</div><!-- END .popup -->
+
+
+
+<script>
+{literal}
+	var checkstrings = false;
+	var arrtagscommawithstrings = new Array();
+	var arrtagscommawithstringsnames = new Array();
+ 
+	var stringsaftertags ="";
+	$(document).on('keyup','.thecommentcontent',function(){
+	
+		var firststrings = $(this).val();
+		
+		
+		if(checkstrings) checkstring(firststrings);
+		
+		if(firststrings.match(/@/i)){
+			checkstrings = true;
+		}else checkstrings = false;
+		
+		
+	 
+		
+	});
+	
+	 
+	
+	function checkstring(firststrings){
+		
+			var fullengthstrings = firststrings.length;
+			var onpositionstring= firststrings.indexOf("@");
+			var sublengthstring = firststrings.indexOf(" ",onpositionstring);
+			if(sublengthstring!=-1)   stringsaftertags = firststrings.substring(onpositionstring+1,sublengthstring);
+			else   stringsaftertags = firststrings.substring(onpositionstring+1,fullengthstrings);
+			
+			if(stringsaftertags!=''){
+				$.post(basedomain+'content/searchnameofalluser',{q:stringsaftertags},function(data){
+					var html="";
+						if(data){
+							$.each(data,function(i,e){
+								
+								html+="<div class='tagthisuser' fid='"+e.id+"' nameuser='"+e.name+" "+e.last_name+"' >"+e.name+" "+e.last_name+"</div>";
+							
+							});
+							
+						}
+						$(".taggingusers").html(html);
+						
+						
+					
+						
+				},"JSON")
+			}
+		
+	}
+		$(document).on('click','.tagthisuser',function(){
+							var nameofuser = $(this).attr('nameuser');
+							var fid = $(this).attr('fid');
+							
+							/* userid tagging*/
+							var lastusertag = $('.usertagging').val();
+							if(lastusertag!=''){
+								if(lastusertag.indexOf(",")!=-1){
+									arrtagscommawithstrings = lastusertag.split(',');
+								}else{
+									arrtagscommawithstrings.push(lastusertag);
+								}
+							}
+							arrtagscommawithstrings.push(fid);						 
+							var tagscommawithstrings = arrtagscommawithstrings.join(',');
+							arrtagscommawithstrings = [];
+							
+							/* name user tagging*/
+							var lastusertagnames = $('.usertaggingnames').val();
+							if(lastusertagnames!=''){
+								if(lastusertagnames.indexOf(",")!=-1){
+									arrtagscommawithstringsnames = lastusertagnames.split(',');
+								}else{
+									arrtagscommawithstringsnames.push(lastusertagnames);
+								}
+							}
+							arrtagscommawithstringsnames.push(nameofuser);						 
+							var tagscommawithstringsnames = arrtagscommawithstringsnames.join(',');
+							arrtagscommawithstringsnames = [];
+							
+							/* engine replacing */
+							var stringstext = $('.thecommentcontent').val();
+							var stringsnew = stringstext.replace("@"+stringsaftertags, " "+nameofuser+" ");
+							
+							$('.thecommentcontent').val(stringsnew);
+							$('.usertagging').val(tagscommawithstrings);
+							$('.usertaggingnames').val(tagscommawithstringsnames);
+							
+						 
+							
+							var tagscommawithstrings="";
+							$('.taggingusers').html("");
+						
+							checkstrings = false;
+						});
+
+	
+	$(document).on("click",".commentSubmitPost",function(){
+	
+		$("#thecommentcontentid").submit();
+	})
+{/literal}
+</script>

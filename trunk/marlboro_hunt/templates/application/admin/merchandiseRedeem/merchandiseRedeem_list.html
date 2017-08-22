@@ -1,0 +1,129 @@
+<script>
+	
+	{literal}
+
+	$(document).on('click','.test',function(){
+	
+	var id = $(this).attr('id');
+	var idmerchan = $(this).attr('prop');
+	var n_status = $(this).prop('checked');
+	var classmerchan = $(this).attr('idmerchan');
+	
+		if (n_status == true){
+			n_status = 2;
+		}else{
+			n_status = 1;
+		}
+	
+		$.post(basedomain+"admin/index.php?s=merchandiseRedeem&act=ajax" ,{userid:id, n_status:n_status, idmerchan:idmerchan}, function(data){
+			if (n_status == 2){
+				
+				if(data.rec){
+					$('.date_redeemed_'+classmerchan).html(data.rec.date_redeemed);
+				}
+				
+				alert('Success');
+			}else if (n_status == 1){
+				alert('Canceled');
+			}	
+		},"JSON");
+	});
+	
+	{/literal}
+</script>
+
+<div class="theContent">
+
+    <div class="theTitle">
+        <h2>Merchandise Redeem List</h2>
+		
+		<a href="index.php?s=merchandiseRedeem&act=getredeemreport&article_type=&search={$search}&startdate={$startdate}&enddate={$enddate}" class="btn btn_document"><span>Download XLS</span></a>
+		<a href="index.php?s=merchandiseRedeem&act=getredeemreport_archlight&article_type=&search={$search}&startdate={$startdate}&enddate={$enddate}" class="btn btn_document"><span>Download XLS with ID Arch</span></a>
+		<a href="index.php?s=merchandiseRedeem&act=getredeemreportwithletter&article_type=&search={$search}&startdate={$startdate}&enddate={$enddate}" class="btn btn_document"><span>Download XLS with Letter</span></a>
+    </div><!--contenttitle-->
+    <div class="tableoptions">        
+   <form method="GET" action="">
+        <input type="text" name="search" value="{$search}">
+        <input type="hidden" name="s" value="{$folder}" />
+        <input type="hidden" name="cari" value="cari" />
+     &nbsp &nbsp
+		<!-- <select id="winStatus" name="winStatus">
+			<option value="0" {if $winStatus == ""} selected="selected" {/if} >All</option>
+			<option value="2" {if $winStatus == 2} selected="selected"{/if} >Winner</option>
+			<option value="1" {if $winStatus == 1}  selected="selected"{/if} >Not a Winner</option>
+		</select> -->
+
+        <!-- <select name="article_type">
+            <option value=""> - Type - </option>
+            {section name=i loop=$typelist}
+            {if $typelist[i].id == $article_type}<option value="{$typelist[i].id}" selected>{$typelist[i].content_name}</option>
+            {else}<option value="{$typelist[i].id}">{$typelist[i].content_name}</option>
+            {/if}
+            {/section}
+        </select> -->
+       <span>Date Range</span>
+        <input type="text" name="startdate" value="{$startdate}" class="datepicker radius3" />
+       <span>&nbsp to &nbsp</span>
+        <input type="text" name="enddate" value="{$enddate}" class="datepicker radius3" />&nbsp &nbsp
+        <input type="submit" value="GO" class="stdbtn btn_orange" />
+    </form>
+    </div><!--tableoptions-->	
+	<form method="POST" action="">
+    <table cellpadding="0" cellspacing="0" border="0" id="table1" class="stdtable">
+        <colgroup>
+            <col class="con0" style="width: 4%" />
+            <col class="con1" />
+            <col class="con0" />
+            <col class="con1" />
+            <col class="con0" />
+            <col class="con1" />
+        </colgroup>
+        <thead>
+            <tr>
+                <th class="head0">No</th>
+                <th class="head1">Name</th>
+                <th class="head1">Email</th>
+                <th class="head1">Address</th>
+                <th class="head1">Phone Number</th>
+                <th class="head1">Merchandise</th>
+                <th class="head1">Images</th>
+                <!-- <th class="head1">Status</th> -->
+                <th class="head1">Date</th>
+                <th class="head1">Date Redeemed</th>
+                <th class="head1">Check</th>
+               <!--  <th class="head1">Status</th> -->
+			</tr>
+        </thead>
+        <tbody>
+            {foreach from=$list key=k item=v}
+            <tr>
+                <td width="10">{$v.no}&nbsp;</td>
+                <td>{$v.name}&nbsp{$v.last_name}</td>
+                <td>{$v.email}</a></td>
+                <td>{$v.address}</a></td>
+                <td>{$v.phonenumber}</a></td>
+				<td>{$v.merchName}</td>
+				<td><img src="{$baseurl}public_assets/merchandiseStock/{$v.image}" width="75px" /></td>
+				<!-- <td><nobr>
+					{if $v.n_status == 2} <span class="blue">Winner</span>
+					{else} <span class="red">Not a Winner</span>
+					{/if}
+				</nobr></td> -->
+				<td>{$v.redeemdate}</td>
+				<td><span class="date_redeemed_{$v.id}">{$v.date_redeemed}</span></td>
+				<form method="POST" action="">
+				<td>
+					<input type="checkbox" class="test" id="{$v.userid}" name="test" prop="{$v.merchandiseid}" value="" {if $v.n_status == 2}checked="checked"{/if} idmerchan="{$v.id}"/>
+					<input type="hidden" id="{$v.userid}" name="test" value=""></nobr>
+					
+				</td>
+				</form>
+			</tr>
+            {/foreach}
+        </tbody>
+    </table>
+	</form>
+    <div class="paging">
+    	{$paging}
+    </div>
+</div><!--theContent-->

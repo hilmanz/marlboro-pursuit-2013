@@ -1,0 +1,18 @@
+<table class="gridtable" style="font-size:10px">
+				<tr>
+					<th>Total</th>
+					<th>Date</th>
+					
+				</tr>
+                <tbody id="loginInventory">
+				{foreach from=$reporttimelogin key=k item=v}
+					<tr>
+						<td>{$v.num}</td>
+						<td>{$v.datetime}</td>
+						
+					</tr>	 
+				 
+				{/foreach}
+				
+                </tbody>
+            </table>

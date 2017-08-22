@@ -1,0 +1,7 @@
+<div class="popup">
+	<div class="popupContainer popupBlackPaper" id="post-trade-message">
+        <div class="popupContent postradecontent">
+            
+        </div><!-- END .popupContent -->
+    </div><!-- END .popupContainer -->
+</div><!-- END .popup -->

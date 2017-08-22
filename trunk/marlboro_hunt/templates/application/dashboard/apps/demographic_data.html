@@ -1,0 +1,110 @@
+<div class="section">
+	<ul class="columns-content page-content clearfix">
+    	<div class="the-title fl">
+        	<h2 class="red">GeoDemographic Data</h2>
+    	</div>
+		<form method="GET" action="">
+		<div class="menu_charts">
+				<input type="text"  id="from" name="startdate" value="{$startdate}" ><span>-</span>
+				<input type="text"  id="to" name="enddate" value="{$enddate}" /><a href="javascript:void(0)" class="calendar"></a>
+		</div>
+		</form>
+        <div class="accordion">                           
+            <h3 class=""><span>Users Based on Age</span>
+            <a class="icon_arrow expand" href="#">Click to Expand</a>
+            <a class="icon_arrow_grey hide2" href="#">hide</a> </h3>
+            <div class="acc_section">
+            	<div class="chart_section" id="basedonageField">
+                	<!-- <img src="{$assets_domain}images/charts.jpg" /> -->
+                </div>         
+            </div><!--end.acc_section-->
+            <h3 class=""><span>Users Based on Top 10 Brand Preference</span>
+            <a class="icon_arrow expand" href="#">Click to Expand</a>
+            <a class="icon_arrow_grey hide2" href="#">hide</a> </h3>
+            <div class="acc_section">
+            	<div class="chart_section" id="basedonbrandField">
+                	<!-- <img src="{$assets_domain}images/charts.jpg" /> -->
+                </div>    
+            </div><!--end.acc_section-->
+    	</div><!---end.accodrion-->
+        <div class="boxBig">
+    	<div class="title_box">
+            <div class="the-title fl">
+                <h2>Users Based on Location</h2>
+            </div>
+            <div class="select_op rt">
+                <span class="fl sorterBy">Sort by:</span>
+                <div class="styledProvince">
+					{$selected}
+                    <form method="POST" action="{$basedomain}demographic_data/" id="demographic_data">       
+                    <select class="toptensortby" name="toptensortby">
+                      <option value="1" {if $sortby=='1'} selected{/if}>Top 10 City</option>
+                      <option value="2" {if $sortby=='2'} selected{/if}>Top 10 Province</option>
+                    </select>
+					</form>
+                </div>
+             </div>
+         </div>
+        <div class="chart-section" id="basedonlocationField">
+			<!-- <img src="{$assets_domain}images/charts.jpg"> -->
+        </div>
+     </div><!--end.boxBig-->
+    </ul><!---end.columns-content page-content clearfix-->
+</div><!--end.section-->
+
+<script type="text/javascript">
+	var userBasedonAge = {$userBasedonAge|@json_encode};	
+	var basedOnBrandPref = {$basedOnBrandPref|@json_encode};	
+	var basedOnLocation = {$basedOnLocation|@json_encode};	
+	
+{literal}	
+$(function () {
+
+	var onAgeData = new Array();
+	var onAgeDate = new Array();	
+	
+	var onBrandData = new Array();
+	var onBrandDate = new Array();
+	
+	var onLocationData = new Array();
+	var onLocationDate = new Array();
+	
+	for (var onAge in userBasedonAge){
+		onAgeData.push(parseInt(userBasedonAge[onAge]));
+		onAgeDate.push(String(onAge));
+	}
+	
+	for (var onBrand in basedOnBrandPref){
+		onBrandData.push(parseInt(basedOnBrandPref[onBrand].num));
+		onBrandDate.push(String(basedOnBrandPref[onBrand].brands_name));
+	}
+	
+	for (var onLocation in basedOnLocation){
+		onLocationData.push(parseInt(basedOnLocation[onLocation].num));
+		onLocationDate.push(String(basedOnLocation[onLocation].city));
+	}
+			
+	gethighChart('column','test  Chart','basedonageField',onAgeData,onAgeDate,1, true, false, false, true, false, true);
+	gethighChart('column','test  Chart','basedonbrandField',onBrandData,onBrandDate,1, true, false, false, true, false, true);
+	gethighChart('column','test  Chart','basedonlocationField',onLocationData,onLocationDate,1, true, false, false, true, false, true);
+	
+	//drillDownChart('column','test Chart','cont',dataCoba,cateActivityGroup,1 ,false);
+	});
+	
+		
+	$(document).on('click', '.calendar', function(){
+		var from = $('#from').val();
+		var to = $('#to').val();
+		
+		window.location.href='?startdate='+from+'&enddate='+to;
+	
+	})	
+	
+	$(document).on('change', '.toptensortby', function(){
+	
+		$("#demographic_data").submit();
+		
+	})		
+	
+</script>
+{/literal}
